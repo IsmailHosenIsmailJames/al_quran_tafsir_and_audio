@@ -1,25 +1,29 @@
 import 'dart:convert';
 
 class RecitationInfoModel {
-  String? subfolder;
+  String? link;
   String? name;
   String? bitrate;
+  String? style;
 
   RecitationInfoModel({
-    this.subfolder,
+    this.link,
     this.name,
     this.bitrate,
+    this.style,
   });
 
   RecitationInfoModel copyWith({
-    String? subfolder,
+    String? link,
     String? name,
     String? bitrate,
+    String? style,
   }) =>
       RecitationInfoModel(
-        subfolder: subfolder ?? this.subfolder,
+        link: link ?? this.link,
         name: name ?? this.name,
         bitrate: bitrate ?? this.bitrate,
+        style: style ?? this.style,
       );
 
   factory RecitationInfoModel.fromJson(String str) =>
@@ -29,14 +33,16 @@ class RecitationInfoModel {
 
   factory RecitationInfoModel.fromMap(Map<String, dynamic> json) =>
       RecitationInfoModel(
-        subfolder: json["subfolder"],
+        link: json["link"],
         name: json["name"],
         bitrate: json["bitrate"],
+        style: json["style"],
       );
 
   Map<String, dynamic> toMap() => {
-        "subfolder": subfolder,
+        "link": link,
         "name": name,
         "bitrate": bitrate,
+        "style": style,
       };
 }

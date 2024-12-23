@@ -29,6 +29,9 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               shadowColor: Colors.transparent,
+              backgroundColor: Colors.green,
+              foregroundColor: Colors.white,
+              iconColor: Colors.white,
             ),
           ),
         ),
@@ -48,6 +51,9 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               shadowColor: Colors.transparent,
+              backgroundColor: Colors.green,
+              foregroundColor: Colors.white,
+              iconColor: Colors.white,
             ),
           ),
         ),

@@ -1,4 +1,4 @@
-import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/resources/recitation_info/recitation_info_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/recitation_info_model.dart';
 import 'package:get/get.dart';
 
 class InfoController extends GetxController {

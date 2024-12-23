@@ -1,12 +1,11 @@
+import 'package:al_quran_tafsir_and_audio/src/core/recitation_info/ayah_counts.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 
-import '../../resources/api_response/apis.dart';
-import '../recitation_info/ayah_counts.dart';
-import '../recitation_info/recitation_info_model.dart';
 import 'controller/audio_controller.dart';
+import 'resources/recitation_info_model.dart';
 
 class ManageQuranAudio {
   static AudioPlayer audioPlayer = AudioPlayer();
@@ -126,7 +125,7 @@ class ManageQuranAudio {
   ///
   /// https://everyayah.com/data/Abdul_Basit_Murattal_64kbps/001.mp3
   static String makeAudioUrl(RecitationInfoModel reciter, String ayahID) {
-    return "${audioBaseAPI}data/${reciter.subfolder}/$ayahID.mp3";
+    return "${reciter.link}/$ayahID.mp3";
   }
 
   /// Retrieves the currently selected reciter from the 'info' box in hive.
@@ -158,7 +157,7 @@ class ManageQuranAudio {
       title: ayahID,
       displayTitle: ayahID,
       album: reciter.name,
-      artist: reciter.subfolder,
+      artist: reciter.link,
       artUri: artUri,
     );
   }

@@ -87,7 +87,9 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                 padding: const EdgeInsets.only(left: 2.5, right: 2.5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: controller.isDark.value
+                  color: controller.isDark.value ||
+                          (controller.isDark.value == false &&
+                              Theme.of(context).brightness == Brightness.dark)
                       ? const Color.fromARGB(255, 29, 29, 29)
                       : const Color.fromARGB(255, 220, 220, 220),
                 ),
@@ -97,7 +99,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                     children: [
                       SizedBox(
                         height: 35,
-                        child: ElevatedButton(
+                        child: TextButton(
                           style: ElevatedButton.styleFrom(
                               padding:
                                   const EdgeInsets.only(left: 10, right: 10)),
@@ -114,8 +116,6 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                             children: [
                               Icon(
                                 Icons.arrow_back_outlined,
-                                color:
-                                    pageIndex != 0 ? Colors.green : Colors.grey,
                                 size: 15,
                               ),
                               const Gap(5),
@@ -147,7 +147,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                       const Spacer(),
                       SizedBox(
                         height: 35,
-                        child: ElevatedButton(
+                        child: TextButton(
                           style: ElevatedButton.styleFrom(
                               padding:
                                   const EdgeInsets.only(left: 10, right: 10)),
@@ -236,7 +236,6 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                               const Gap(5),
                               const Icon(
                                 Icons.arrow_forward_rounded,
-                                color: Colors.green,
                                 size: 18,
                               )
                             ],

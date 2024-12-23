@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../screens/setup/collect_info/resources/recitation_info/recitation_info_model.dart';
+import '../resources/recitation_info_model.dart';
 
 class AudioController extends GetxController {
   RxInt currentIndex = (-1).obs;
