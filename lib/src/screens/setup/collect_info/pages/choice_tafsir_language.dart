@@ -1,5 +1,6 @@
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tafsir_book.dart';
+import 'package:al_quran_tafsir_and_audio/src/translations/map_of_translation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -78,6 +79,13 @@ class _TafsirLanguageState extends State<TafsirLanguage> {
             const EdgeInsets.only(bottom: 100, top: 10, left: 10, right: 10),
         itemCount: language.length,
         itemBuilder: (context, index) {
+          String? nativeSpelling;
+          for (var element in used20LanguageMap) {
+            element["English"] == language[index]
+                ? nativeSpelling = element["Native"]
+                : null;
+          }
+          nativeSpelling ??= language[index];
           return TextButton(
             style: TextButton.styleFrom(
               padding:
@@ -95,7 +103,8 @@ class _TafsirLanguageState extends State<TafsirLanguage> {
             child: Obx(
               () => Row(
                 children: [
-                  Text(language[index], style: const TextStyle(fontSize: 14)),
+                  Text(nativeSpelling ?? language[index],
+                      style: const TextStyle(fontSize: 14)),
                   const Spacer(),
                   if (tafsirLanguage.tafsirIndex.value == index)
                     const CircleAvatar(

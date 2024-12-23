@@ -28,10 +28,10 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
       Map<String, dynamic> book = allTafsir[i];
       if (book['language_name'].toString().toLowerCase() ==
           infoController.tafsirLanguage.value.toLowerCase()) {
-        String autor = book['author_name'];
+        String author = book['author_name'];
         String bookName = book['name'];
         String id = book['id'].toString();
-        books.add([autor, bookName, id]);
+        books.add([author, bookName, id]);
       }
     }
   }
