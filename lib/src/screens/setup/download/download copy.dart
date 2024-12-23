@@ -55,8 +55,8 @@ class _DownloadDataState extends State<DownloadData> {
         Map<String, String> preference = {
           "translation_language": info['translation_language'],
           "translation_book_ID": info["translation_book_ID"],
-          "tafseer_language": info['tafseer_language'],
-          "tafseer_book_ID": info["tafseer_book_ID"],
+          "tafsir_language": info['tafsir_language'],
+          "tafsir_book_ID": info["tafsir_book_ID"],
           "recitation_ID": info['recitation_ID']
         };
 
@@ -252,37 +252,37 @@ class _DownloadDataState extends State<DownloadData> {
             progressValue = 0.88;
           });
         }
-        if (infoBox.get('tafseer', defaultValue: false) == false ||
-            infoBox.get('tafseer', defaultValue: false) !=
-                preference['tafseer_book_ID']) {
+        if (infoBox.get('tafsir', defaultValue: false) == false ||
+            infoBox.get('tafsir', defaultValue: false) !=
+                preference['tafsir_book_ID']) {
           setState(() {
             progressValue = 0.90;
           });
 
-          final tafseerBox = await Hive.openBox("tafseer");
+          final tafsirBox = await Hive.openBox("tafsir");
           int ran = Random().nextInt(2);
           final url = Uri.parse(ran == 1
-              ? tafseerLinks2[preference['tafseer_book_ID']]!
-              : tafseerLinks1[preference['tafseer_book_ID']]!);
+              ? tafsirLinks2[preference['tafsir_book_ID']]!
+              : tafsirLinks1[preference['tafsir_book_ID']]!);
           final headers = {"Accept": "application/json"};
           final response = await http.get(url, headers: headers);
           setState(() {
             progressValue = 0.99;
           });
           if (response.statusCode == 200) {
-            final tafseer = json.decode(response.body);
+            final tafsir = json.decode(response.body);
             for (int i = 0; i < 6236; i++) {
-              String? ayah = tafseer['$i'];
+              String? ayah = tafsir['$i'];
               if (ayah != null) {
-                tafseerBox.put(
-                  "${preference['tafseer_book_ID']}/$i",
-                  tafseer["$i"],
+                tafsirBox.put(
+                  "${preference['tafsir_book_ID']}/$i",
+                  tafsir["$i"],
                 );
               }
             }
             final dataBox = Hive.box("data");
-            dataBox.put("tafseer", true);
-            infoBox.put('tafseer', preference['tafseer_book_ID']);
+            dataBox.put("tafsir", true);
+            infoBox.put('tafsir', preference['tafsir_book_ID']);
           }
         }
         AppThemeData().initTheme();

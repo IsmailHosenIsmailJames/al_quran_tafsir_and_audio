@@ -16,10 +16,10 @@ class AllAPIRequestForQuran {
 class AllAPIRequestForAllAPIRequestForResources {
   String translationInfo =
       "https://al-bayan-quran-backend.onrender.com/translation/:id";
-  String getTafsirs = "https://al-bayan-quran-backend.onrender.com/tafseer/:id";
+  String getTafsirs = "https://al-bayan-quran-backend.onrender.com/tafsir/:id";
   String tafsirInfo =
       "https://al-bayan-quran-backend.onrender.com/tafsirs_info";
-  String listOfResourceTafseer =
-      "https://al-bayan-quran-backend.onrender.com/list_of_resource_tafseer";
+  String listOfResourceTafsir =
+      "https://al-bayan-quran-backend.onrender.com/list_of_resource_tafsir";
   String languages = "https://al-bayan-quran-backend.onrender.com/languages";
 }

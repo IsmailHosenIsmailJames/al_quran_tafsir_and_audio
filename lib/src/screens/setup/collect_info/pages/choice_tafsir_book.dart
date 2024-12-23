@@ -12,22 +12,22 @@ import 'package:http/http.dart' as http;
 
 import '../../getx/get_controller.dart';
 
-class ChoiceTafseerBook extends StatefulWidget {
+class ChoiceTafsirBook extends StatefulWidget {
   final bool? showDownloadOnAppbar;
-  const ChoiceTafseerBook({super.key, this.showDownloadOnAppbar});
+  const ChoiceTafsirBook({super.key, this.showDownloadOnAppbar});
 
   @override
-  State<ChoiceTafseerBook> createState() => _ChoiceTafseerBookState();
+  State<ChoiceTafsirBook> createState() => _ChoiceTafsirBookState();
 }
 
-class _ChoiceTafseerBookState extends State<ChoiceTafseerBook> {
+class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
   final infoController = Get.put(InfoController());
   List<List<String>> books = [];
   void getBooksAsLanguage() {
-    for (int i = 0; i < allTafseer.length; i++) {
-      Map<String, dynamic> book = allTafseer[i];
+    for (int i = 0; i < allTafsir.length; i++) {
+      Map<String, dynamic> book = allTafsir[i];
       if (book['language_name'].toString().toLowerCase() ==
-          infoController.tafseerLanguage.value.toLowerCase()) {
+          infoController.tafsirLanguage.value.toLowerCase()) {
         String autor = book['author_name'];
         String bookName = book['name'];
         String id = book['id'].toString();
@@ -49,7 +49,7 @@ class _ChoiceTafseerBookState extends State<ChoiceTafseerBook> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Tafseer Books of Quran".tr,
+          "Tafsir Books of Quran".tr,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         actions: [
@@ -58,15 +58,14 @@ class _ChoiceTafseerBookState extends State<ChoiceTafseerBook> {
                 ? const CircularProgressIndicator()
                 : TextButton.icon(
                     onPressed: () async {
-                      if (infoController.tafseerBookIndex.value != -1) {
-                        String tafsirBookID =
-                            infoController.tafseerBookID.value;
+                      if (infoController.tafsirBookIndex.value != -1) {
+                        String tafsirBookID = infoController.tafsirBookID.value;
                         debugPrint(tafsirBookID);
                         // return;
                         final dataBox = Hive.box("data");
                         final infoBox = Hive.box("info");
                         if (tafsirBookID ==
-                            infoBox.get("info")['tafseer_book_ID']) {
+                            infoBox.get("info")['tafsir_book_ID']) {
                           showDialog(
                             context: context,
                             builder: (context) {
@@ -88,41 +87,40 @@ class _ChoiceTafseerBookState extends State<ChoiceTafseerBook> {
                           return;
                         }
 
-                        dataBox.put("tafseer", false);
+                        dataBox.put("tafsir", false);
                         setState(() {
                           downloading = true;
                         });
                         int ran = Random().nextInt(2);
 
                         var url = Uri.parse(ran == 0
-                            ? tafseerLinks2[infoController.tafseerBookID.value]!
-                            : tafseerLinks1[
-                                infoController.tafseerBookID.value]!);
+                            ? tafsirLinks2[infoController.tafsirBookID.value]!
+                            : tafsirLinks1[infoController.tafsirBookID.value]!);
 
                         var headers = {"Accept": "application/json"};
 
                         var response = await http.get(url, headers: headers);
-                        final tafseerBox = await Hive.openBox("tafseer");
+                        final tafsirBox = await Hive.openBox("tafsir");
 
                         if (response.statusCode == 200) {
-                          final tafseer = json.decode(response.body);
+                          final tafsir = json.decode(response.body);
                           for (int i = 0; i < 6236; i++) {
-                            String? ayah = tafseer['$i'];
+                            String? ayah = tafsir['$i'];
                             if (ayah != null) {
-                              tafseerBox.put(
+                              tafsirBox.put(
                                 "$tafsirBookID/$i",
-                                tafseer["$i"],
+                                tafsir["$i"],
                               );
                             }
                           }
                           final info = infoBox.get("info", defaultValue: false);
-                          info['tafseer_book_ID'] = tafsirBookID;
-                          info['tafseer_language'] =
-                              infoController.tafseerLanguage.value;
+                          info['tafsir_book_ID'] = tafsirBookID;
+                          info['tafsir_language'] =
+                              infoController.tafsirLanguage.value;
                           infoBox.put("info", info);
-                          dataBox.put("tafseer", true);
+                          dataBox.put("tafsir", true);
                           infoBox.put(
-                              'tafseer', infoController.tafseerBookID.value);
+                              'tafsir', infoController.tafsirBookID.value);
 
                           Get.offAll(() => const HomePage());
                           showToastedMessage("Successful");
@@ -161,8 +159,8 @@ class _ChoiceTafseerBookState extends State<ChoiceTafseerBook> {
               ),
               onPressed: () {
                 int value = index;
-                infoController.tafseerBookIndex.value = value;
-                infoController.tafseerBookID.value = books[value][2];
+                infoController.tafsirBookIndex.value = value;
+                infoController.tafsirBookID.value = books[value][2];
               },
               child: Obx(
                 () => Row(
@@ -182,7 +180,7 @@ class _ChoiceTafseerBookState extends State<ChoiceTafseerBook> {
                       ],
                     ),
                     const Spacer(),
-                    if (infoController.tafseerBookIndex.value == index)
+                    if (infoController.tafsirBookIndex.value == index)
                       const CircleAvatar(
                         radius: 15,
                         backgroundColor: Colors.green,

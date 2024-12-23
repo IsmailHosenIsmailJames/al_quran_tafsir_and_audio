@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
-class SelectLanguage extends StatefulWidget {
-  const SelectLanguage({super.key});
+class ChoiceLanguage extends StatefulWidget {
+  const ChoiceLanguage({super.key});
 
   @override
-  State<SelectLanguage> createState() => _SelectLangaugeState();
+  State<ChoiceLanguage> createState() => _SelectLangaugeState();
 }
 
-class _SelectLangaugeState extends State<SelectLanguage> {
+class _SelectLangaugeState extends State<ChoiceLanguage> {
   final languageController = Get.put(LanguageController());
   final infoController = Get.put(InfoController());
 

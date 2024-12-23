@@ -1,25 +1,25 @@
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tafseer_book.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tafsir_book.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../getx/get_controller.dart';
 
-class TafseerLanguage extends StatefulWidget {
+class TafsirLanguage extends StatefulWidget {
   final bool? showAppBarNextButton;
-  const TafseerLanguage({super.key, this.showAppBarNextButton});
+  const TafsirLanguage({super.key, this.showAppBarNextButton});
 
   @override
-  State<TafseerLanguage> createState() => _TafseerLanguageState();
+  State<TafsirLanguage> createState() => _TafsirLanguageState();
 }
 
-class _TafseerLanguageState extends State<TafseerLanguage> {
+class _TafsirLanguageState extends State<TafsirLanguage> {
   late List<String> language;
   void getLanguageList() {
     Set<String> temLanguages = {};
-    for (int index = 0; index < allTafseer.length; index++) {
-      String lanName = "${allTafseer[index]["language_name"]}";
+    for (int index = 0; index < allTafsir.length; index++) {
+      String lanName = "${allTafsir[index]["language_name"]}";
       String tem = lanName[0];
       tem = tem.toUpperCase();
       lanName = tem + lanName.substring(1);
@@ -36,26 +36,26 @@ class _TafseerLanguageState extends State<TafseerLanguage> {
     super.initState();
   }
 
-  final tafseerLanguage = Get.put(InfoController());
+  final tafsirLanguage = Get.put(InfoController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Select language for Quran's Tafseer".tr,
+          "Select language for Quran's Tafsir".tr,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         actions: [
           if (widget.showAppBarNextButton == true)
             TextButton(
               onPressed: () {
-                tafseerLanguage.tafseerBookIndex.value = -1;
+                tafsirLanguage.tafsirBookIndex.value = -1;
                 Navigator.pop(context);
                 showCupertinoModalPopup(
                   context: context,
                   builder: (context) {
-                    return const ChoiceTafseerBook(
+                    return const ChoiceTafsirBook(
                       showDownloadOnAppbar: true,
                     );
                   },
@@ -89,15 +89,15 @@ class _TafseerLanguageState extends State<TafseerLanguage> {
             ),
             onPressed: () {
               int value = index;
-              tafseerLanguage.tafseerIndex.value = value;
-              tafseerLanguage.tafseerLanguage.value = language[value];
+              tafsirLanguage.tafsirIndex.value = value;
+              tafsirLanguage.tafsirLanguage.value = language[value];
             },
             child: Obx(
               () => Row(
                 children: [
                   Text(language[index], style: const TextStyle(fontSize: 14)),
                   const Spacer(),
-                  if (tafseerLanguage.tafseerIndex.value == index)
+                  if (tafsirLanguage.tafsirIndex.value == index)
                     const CircleAvatar(
                       radius: 15,
                       backgroundColor: Colors.green,

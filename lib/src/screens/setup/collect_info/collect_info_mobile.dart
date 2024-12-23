@@ -1,6 +1,7 @@
 import 'package:al_quran_tafsir_and_audio/src/functions/common_functions.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tafsir_book.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/intro.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/select_langauge.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_language.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +12,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../init_page.dart';
 import 'pages/choice_recitations.dart';
-import 'pages/choice_tafseer_book.dart';
 import '../getx/get_controller.dart';
 import 'pages/choice_tranlation_book.dart';
-import 'pages/tafseer_language.dart';
-import 'pages/translation_language.dart';
+import 'pages/choice_tafsir_language.dart';
+import 'pages/choice_translation_language.dart';
 
 class CollectInfoPage extends StatefulWidget {
   final int pageNumber;
@@ -69,12 +69,12 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
       body: Stack(
         children: [
           [
-            const SelectLanguage(),
+            const ChoiceLanguage(),
             const Intro(),
             const TranslationLanguage(),
             const ChoiceTranslationBook(),
-            const TafseerLanguage(),
-            const ChoiceTafseerBook(),
+            const TafsirLanguage(),
+            const ChoiceTafsirBook(),
             const RecitationChoice(),
           ][pageIndex],
           Align(
@@ -174,21 +174,21 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                               }
                             }
                             if (pageIndex == 4) {
-                              if (infoController.tafseerIndex.value == -1) {
+                              if (infoController.tafsirIndex.value == -1) {
                                 showToastedMessage(
                                     "Please Select Quran Tafsir Language");
                                 return;
                               }
                             } else if (pageIndex == 5) {
-                              if (infoController.tafseerBookIndex.value == -1) {
+                              if (infoController.tafsirBookIndex.value == -1) {
                                 showToastedMessage(
                                     "Please Select Quran Tafsir Book");
                                 return;
                               }
                             } else if (pageIndex == 6) {
                               if (infoController.recitationIndex.value != -1 &&
-                                  infoController.tafseerBookIndex.value != -1 &&
-                                  infoController.tafseerIndex.value != -1 &&
+                                  infoController.tafsirBookIndex.value != -1 &&
+                                  infoController.tafsirIndex.value != -1 &&
                                   infoController.bookNameIndex.value != -1 &&
                                   infoController
                                       .translationLanguage.value.isNotEmpty) {
@@ -197,10 +197,10 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                       infoController.translationLanguage.value,
                                   "translation_book_ID":
                                       infoController.bookIDTranslation.value,
-                                  "tafseer_language":
-                                      infoController.tafseerLanguage.value,
-                                  "tafseer_book_ID":
-                                      infoController.tafseerBookID.value,
+                                  "tafsir_language":
+                                      infoController.tafsirLanguage.value,
+                                  "tafsir_book_ID":
+                                      infoController.tafsirBookID.value,
                                   "recitation_ID":
                                       infoController.recitationName.value,
                                 };

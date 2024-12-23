@@ -1,4 +1,4 @@
-List<Map<String, dynamic>> allTafseer = [
+List<Map<String, dynamic>> allTafsir = [
   {
     "author_name": "AbdulRahman Bin Hasan Al-Alshaikh",
     "id": 381,
@@ -33,12 +33,9 @@ List<Map<String, dynamic>> allTafseer = [
     "author_name": "Tawheed Publication",
     "id": 164,
     "language_name": "bengali",
-    "name": "Tafseer ibn Kathir",
-    "slug": "bn-tafseer-ibn-e-kaseer",
-    "translated_name": {
-      "language_name": "english",
-      "name": "Tafseer ibn Kathir"
-    }
+    "name": "Tafsir ibn Kathir",
+    "slug": "bn-tafsir-ibn-e-kaseer",
+    "translated_name": {"language_name": "english", "name": "Tafsir ibn Kathir"}
   },
   {
     "author_name": "Bayaan Foundation",
@@ -74,38 +71,35 @@ List<Map<String, dynamic>> allTafseer = [
     "author_name": "Saddi",
     "id": 170,
     "language_name": "russian",
-    "name": "Tafseer Al Saddi",
-    "slug": "ru-tafseer-al-saddi",
-    "translated_name": {"language_name": "english", "name": "Tafseer Al Saddi"}
+    "name": "Tafsir Al Saddi",
+    "slug": "ru-tafsir-al-saddi",
+    "translated_name": {"language_name": "english", "name": "Tafsir Al Saddi"}
   },
   {
     "author_name": "Saddi",
     "id": 91,
     "language_name": "arabic",
-    "name": "Tafseer Al Saddi",
-    "slug": "ar-tafseer-al-saddi",
-    "translated_name": {"language_name": "english", "name": "Tafseer Al Saddi"}
+    "name": "Tafsir Al Saddi",
+    "slug": "ar-tafsir-al-saddi",
+    "translated_name": {"language_name": "english", "name": "Tafsir Al Saddi"}
   },
   {
     "author_name": "Baghawy",
     "id": 94,
     "language_name": "arabic",
-    "name": "Tafseer Al-Baghawi",
+    "name": "Tafsir Al-Baghawi",
     "slug": "ar-tafsir-al-baghawi",
-    "translated_name": {
-      "language_name": "english",
-      "name": "Tafseer Al-Baghawi"
-    }
+    "translated_name": {"language_name": "english", "name": "Tafsir Al-Baghawi"}
   },
   {
     "author_name": "Tanweer",
     "id": 92,
     "language_name": "arabic",
-    "name": "Tafseer Tanwir al-Miqbas",
-    "slug": "ar-tafseer-tanwir-al-miqbas",
+    "name": "Tafsir Tanwir al-Miqbas",
+    "slug": "ar-tafsir-tanwir-al-miqbas",
     "translated_name": {
       "language_name": "english",
-      "name": "Tafseer Tanwir al-Miqbas"
+      "name": "Tafsir Tanwir al-Miqbas"
     }
   },
   {
@@ -136,12 +130,9 @@ List<Map<String, dynamic>> allTafseer = [
     "author_name": "Qurtubi",
     "id": 90,
     "language_name": "arabic",
-    "name": "Tafseer Al Qurtubi",
-    "slug": "ar-tafseer-al-qurtubi",
-    "translated_name": {
-      "language_name": "english",
-      "name": "Tafseer Al Qurtubi"
-    }
+    "name": "Tafsir Al Qurtubi",
+    "slug": "ar-tafsir-al-qurtubi",
+    "translated_name": {"language_name": "english", "name": "Tafsir Al Qurtubi"}
   },
   {
     "author_name": "Rebar Kurdish Tafsir",
@@ -167,7 +158,7 @@ List<Map<String, dynamic>> allTafseer = [
     "id": 160,
     "language_name": "urdu",
     "name": "Tafsir Ibn Kathir",
-    "slug": "tafseer-ibn-e-kaseer-urdu",
+    "slug": "tafsir-ibn-e-kaseer-urdu",
     "translated_name": {"language_name": "english", "name": "Tafsir Ibn Kathir"}
   },
   {

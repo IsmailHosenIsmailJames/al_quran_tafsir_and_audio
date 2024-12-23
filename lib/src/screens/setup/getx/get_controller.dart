@@ -6,11 +6,11 @@ class InfoController extends GetxController {
   RxString translationLanguage = "".obs;
   RxString bookIDTranslation = "-1".obs;
   RxInt bookNameIndex = (-1).obs;
-  RxInt tafseerIndex = (-1).obs;
-  RxString tafseerID = "-1".obs;
-  RxString tafseerLanguage = "null".obs;
-  RxInt tafseerBookIndex = (-1).obs;
-  RxString tafseerBookID = "-1".obs;
+  RxInt tafsirIndex = (-1).obs;
+  RxString tafsirID = "-1".obs;
+  RxString tafsirLanguage = "null".obs;
+  RxInt tafsirBookIndex = (-1).obs;
+  RxString tafsirBookID = "-1".obs;
   Rx<RecitationInfoModel> recitationIndex = Rx(RecitationInfoModel());
   RxString recitationName = "-1".obs;
   RxString tafsirBookName = "null".obs;

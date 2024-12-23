@@ -1,4 +1,4 @@
-Map<String, String> tafseerLinks1 = {
+Map<String, String> tafsirLinks1 = {
   '14':
       "https://firebasestorage.googleapis.com/v0/b/tpiprogrammingclub.appspot.com/o/quran%2F14.json?alt=media&token=6f7113c2-85b2-4a99-b37f-686a0e7413ec",
   '15':
@@ -39,7 +39,7 @@ Map<String, String> tafseerLinks1 = {
       "https://firebasestorage.googleapis.com/v0/b/tpiprogrammingclub.appspot.com/o/quran%2F94.json?alt=media&token=0622f548-0842-428a-b66f-0970edf19275",
 };
 
-Map<String, String> tafseerLinks2 = {
+Map<String, String> tafsirLinks2 = {
   '14':
       "https://firebasestorage.googleapis.com/v0/b/alquranwithaudio.appspot.com/o/quran_tafser%2F14.json?alt=media&token=6bf023ab-d8c0-462b-847b-8080df8689ca",
   '15':

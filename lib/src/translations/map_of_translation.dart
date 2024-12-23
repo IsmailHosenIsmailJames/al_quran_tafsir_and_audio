@@ -100,8 +100,8 @@ Map<String, String> zh = {
   "We collected all data form this website": "我们从这个网站收集了所有数据",
   "Translation Book": "翻译书籍",
   "Choice Recitation": "选择朗读",
-  "Select language for Quran's Tafseer": "选择古兰经的塔夫西尔语言",
-  "Tafseer Books of Quran": "古兰经的塔夫西尔书籍",
+  "Select language for Quran's Tafsir": "选择古兰经的塔夫西尔语言",
+  "Tafsir Books of Quran": "古兰经的塔夫西尔书籍",
   "Choice your favorite Reciter of Quran": "选择您最喜欢的古兰经朗读者",
   "intro_text":
       "多合一的古兰经应用程序，支持69种语言翻译和180多种翻译书籍，6种语言的塔夫西尔和30多本塔夫西尔书籍，以及古兰经朗诵者的朗诵",
@@ -138,8 +138,8 @@ Map<String, String> hi = {
       "हमने इस वेबसाइट से सभी डेटा एकत्र किया",
   "Translation Book": "अनुवाद पुस्तक",
   "Choice Recitation": "चयन पाठ",
-  "Select language for Quran's Tafseer": "कुरान की तफ्सीर के लिए भाषा चुनें",
-  "Tafseer Books of Quran": "कुरान की तफ्सीर की किताबें",
+  "Select language for Quran's Tafsir": "कुरान की तफ्सीर के लिए भाषा चुनें",
+  "Tafsir Books of Quran": "कुरान की तफ्सीर की किताबें",
   "Choice your favorite Reciter of Quran":
       "कुरान के अपने पसंदीदा पाठक का चयन करें",
   "intro_text":
@@ -178,8 +178,8 @@ Map<String, String> en = {
       "We collected all data from this website",
   "Translation Book": "Translation Book",
   "Choice Recitation": "Choice Recitation",
-  "Select language for Quran's Tafseer": "Select language for Quran's Tafseer",
-  "Tafseer Books of Quran": "Tafseer Books of Quran",
+  "Select language for Quran's Tafsir": "Select language for Quran's Tafsir",
+  "Tafsir Books of Quran": "Tafsir Books of Quran",
   "Choice your favorite Reciter of Quran":
       "Choose your favorite Reciter of Quran",
   "intro_text":
@@ -218,9 +218,9 @@ Map<String, String> es = {
       "Hemos recolectado todos los datos de este sitio web",
   "Translation Book": "Libro de traducción",
   "Choice Recitation": "Recitación elegida",
-  "Select language for Quran's Tafseer":
+  "Select language for Quran's Tafsir":
       "Seleccione el idioma para el Tafsir del Corán",
-  "Tafseer Books of Quran": "Libros de Tafsir del Corán",
+  "Tafsir Books of Quran": "Libros de Tafsir del Corán",
   "Choice your favorite Reciter of Quran":
       "Elija su recitador favorito del Corán",
   "intro_text":
@@ -258,8 +258,8 @@ Map<String, String> ar = {
   "We collected all data form this website": "جمعنا كل البيانات من هذا الموقع",
   "Translation Book": "كتاب الترجمة",
   "Choice Recitation": "تلاوة مختارة",
-  "Select language for Quran's Tafseer": "اختر اللغة لتفسير القرآن",
-  "Tafseer Books of Quran": "كتب التفسير للقرآن",
+  "Select language for Quran's Tafsir": "اختر اللغة لتفسير القرآن",
+  "Tafsir Books of Quran": "كتب التفسير للقرآن",
   "Choice your favorite Reciter of Quran": "اختر قارئ القرآن المفضل لديك",
   "intro_text":
       "تطبيق القرآن الكريم الشامل مع ترجمة 69 لغة وأكثر من 180 كتاب ترجمة وتفسير بـ 6 لغات وأكثر من 30 كتاب تفسير وتلاوة قارئ القرآن الكريم",
@@ -297,9 +297,9 @@ Map<String, String> bn = {
       "আমরা এই ওয়েবসাইট থেকে সমস্ত তথ্য সংগ্রহ করেছি",
   "Translation Book": "অনুবাদ বই",
   "Choice Recitation": "পছন্দসই পাঠ",
-  "Select language for Quran's Tafseer":
+  "Select language for Quran's Tafsir":
       "কুরআনের তাফসীরের জন্য ভাষা নির্বাচন করুন",
-  "Tafseer Books of Quran": "কুরআনের তাফসীরের বই",
+  "Tafsir Books of Quran": "কুরআনের তাফসীরের বই",
   "Choice your favorite Reciter of Quran":
       "আপনার প্রিয় কুরআন পাঠক নির্বাচন করুন",
   "intro_text":
@@ -338,9 +338,9 @@ Map<String, String> pt = {
       "Coletamos todos os dados deste site",
   "Translation Book": "Livro de tradução",
   "Choice Recitation": "Recitação escolhida",
-  "Select language for Quran's Tafseer":
+  "Select language for Quran's Tafsir":
       "Selecione o idioma para Tafsir do Alcorão",
-  "Tafseer Books of Quran": "Livros de Tafsir do Alcorão",
+  "Tafsir Books of Quran": "Livros de Tafsir do Alcorão",
   "Choice your favorite Reciter of Quran":
       "Escolha seu recitador favorito do Alcorão",
   "intro_text":
@@ -379,8 +379,8 @@ Map<String, String> ru = {
       "Мы собрали все данные с этого сайта",
   "Translation Book": "Книга перевода",
   "Choice Recitation": "Выбор чтения",
-  "Select language for Quran's Tafseer": "Выберите язык для Тафсира Корана",
-  "Tafseer Books of Quran": "Книги Тафсира Корана",
+  "Select language for Quran's Tafsir": "Выберите язык для Тафсира Корана",
+  "Tafsir Books of Quran": "Книги Тафсира Корана",
   "Choice your favorite Reciter of Quran":
       "Выберите вашего любимого чтеца Корана",
   "intro_text":
@@ -418,8 +418,8 @@ Map<String, String> ja = {
   "We collected all data form this website": "このウェブサイトからすべてのデータを収集しました",
   "Translation Book": "翻訳書",
   "Choice Recitation": "選択された朗読",
-  "Select language for Quran's Tafseer": "コーランのタフスィールの言語を選択してください",
-  "Tafseer Books of Quran": "コーランのタフスィール書籍",
+  "Select language for Quran's Tafsir": "コーランのタフスィールの言語を選択してください",
+  "Tafsir Books of Quran": "コーランのタフスィール書籍",
   "Choice your favorite Reciter of Quran": "お気に入りのクルアーン朗読者を選んでください",
   "intro_text":
       "オールインワンのアル・クルアーンアプリ、69言語の翻訳と180以上の翻訳書籍、6言語のタフシールと30以上のタフシール書籍、およびクルアーン朗読者の朗読",
@@ -457,8 +457,8 @@ Map<String, String> pa = {
       "ਅਸੀਂ ਇਸ ਵੈੱਬਸਾਈਟ ਤੋਂ ਸਾਰੇ ਡਾਟਾ ਇਕੱਠਾ ਕੀਤਾ ਹੈ",
   "Translation Book": "ਅਨੁਵਾਦ ਕਿਤਾਬ",
   "Choice Recitation": "ਚੋਣ ਪਾਠ",
-  "Select language for Quran's Tafseer": "ਕੁਰਾਨ ਦੀ ਤਫ਼ਸੀਰ ਲਈ ਭਾਸ਼ਾ ਚੁਣੋ",
-  "Tafseer Books of Quran": "ਕੁਰਾਨ ਦੀ ਤਫ਼ਸੀਰ ਦੀਆਂ ਪੁਸਤਕਾਂ",
+  "Select language for Quran's Tafsir": "ਕੁਰਾਨ ਦੀ ਤਫ਼ਸੀਰ ਲਈ ਭਾਸ਼ਾ ਚੁਣੋ",
+  "Tafsir Books of Quran": "ਕੁਰਾਨ ਦੀ ਤਫ਼ਸੀਰ ਦੀਆਂ ਪੁਸਤਕਾਂ",
   "Choice your favorite Reciter of Quran": "ਆਪਣੇ ਮਨਪਸੰਦ ਕੁਰਾਨ ਪਾਠਕ ਦੀ ਚੋਣ ਕਰੋ",
   "intro_text":
       "ਸਾਰੇ ਇੱਕ ਵਿੱਚ ਅਲ ਕੁਰਾਨ ਐਪ 69 ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਅਨੁਵਾਦ ਅਤੇ 180+ ਅਨੁਵਾਦ ਕਿਤਾਬਾਂ, 6 ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਤਫ਼ਸੀਰ ਅਤੇ 30+ ਤਫ਼ਸੀਰ ਕਿਤਾਬਾਂ ਅਤੇ ਕੁਰਾਨ ਪਾਠਕ ਦੇ ਪਾਠ ਦੇ ਨਾਲ",
@@ -496,9 +496,9 @@ Map<String, String> de = {
       "Wir haben alle Daten von dieser Website gesammelt",
   "Translation Book": "Übersetzungsbuch",
   "Choice Recitation": "Auswahlrezitation",
-  "Select language for Quran's Tafseer":
+  "Select language for Quran's Tafsir":
       "Sprache für Tafsir des Korans auswählen",
-  "Tafseer Books of Quran": "Tafsir-Bücher des Korans",
+  "Tafsir Books of Quran": "Tafsir-Bücher des Korans",
   "Choice your favorite Reciter of Quran":
       "Wählen Sie Ihren bevorzugten Koranrezitator aus",
   "intro_text":
@@ -537,9 +537,9 @@ Map<String, String> fr = {
       "Nous avons collecté toutes les données de ce site Web",
   "Translation Book": "Livre de traduction",
   "Choice Recitation": "Récitation choisie",
-  "Select language for Quran's Tafseer":
+  "Select language for Quran's Tafsir":
       "Sélectionnez la langue pour le Tafsir du Coran",
-  "Tafseer Books of Quran": "Livres de Tafsir du Coran",
+  "Tafsir Books of Quran": "Livres de Tafsir du Coran",
   "Choice your favorite Reciter of Quran":
       "Choisissez votre réciteur préféré du Coran",
   "intro_text":
@@ -578,8 +578,8 @@ Map<String, String> id = {
       "Kami mengumpulkan semua data dari situs web ini",
   "Translation Book": "Buku terjemahan",
   "Choice Recitation": "Pembacaan pilihan",
-  "Select language for Quran's Tafseer": "Pilih bahasa untuk Tafsir Al-Qur'an",
-  "Tafseer Books of Quran": "Buku Tafsir Al-Qur'an",
+  "Select language for Quran's Tafsir": "Pilih bahasa untuk Tafsir Al-Qur'an",
+  "Tafsir Books of Quran": "Buku Tafsir Al-Qur'an",
   "Choice your favorite Reciter of Quran":
       "Pilih pembaca Al-Qur'an favorit Anda",
   "intro_text":
@@ -618,8 +618,8 @@ Map<String, String> ur = {
       "ہم نے اس ویب سائٹ سے تمام ڈیٹا اکٹھا کر لیا ہے",
   "Translation Book": "ترجمہ کتاب",
   "Choice Recitation": "منتخب تلاوت",
-  "Select language for Quran's Tafseer": "قرآن کی تفسیر کے لیے زبان منتخب کریں",
-  "Tafseer Books of Quran": "قرآن کی تفسیر کی کتابیں",
+  "Select language for Quran's Tafsir": "قرآن کی تفسیر کے لیے زبان منتخب کریں",
+  "Tafsir Books of Quran": "قرآن کی تفسیر کی کتابیں",
   "Choice your favorite Reciter of Quran":
       "اپنے پسندیدہ قرآن قاری کا انتخاب کریں",
   "intro_text":
@@ -658,8 +658,8 @@ Map<String, String> sw = {
       "Tulikusanya yote kutoka kwenye tovuti hii",
   "Translation Book": "Kitabu cha tafsiri",
   "Choice Recitation": "Tajwi ya uchaguzi",
-  "Select language for Quran's Tafseer": "Chagua lugha kwa Tafsiri ya Quran",
-  "Tafseer Books of Quran": "Vitabu vya Tafsiri ya Quran",
+  "Select language for Quran's Tafsir": "Chagua lugha kwa Tafsiri ya Quran",
+  "Tafsir Books of Quran": "Vitabu vya Tafsiri ya Quran",
   "Choice your favorite Reciter of Quran":
       "Chagua msomaji wako mwenye kupenda wa Quran",
   "intro_text":
@@ -697,8 +697,8 @@ Map<String, String> ko = {
   "We collected all data form this website": "이 웹사이트에서 모든 데이터를 수집했습니다",
   "Translation Book": "번역서",
   "Choice Recitation": "선택된 낭독",
-  "Select language for Quran's Tafseer": "꾸란의 타프시르 언어를 선택하세요",
-  "Tafseer Books of Quran": "꾸란의 타프시르 책",
+  "Select language for Quran's Tafsir": "꾸란의 타프시르 언어를 선택하세요",
+  "Tafsir Books of Quran": "꾸란의 타프시르 책",
   "Choice your favorite Reciter of Quran": "선호하는 꾸란 낭독자를 선택하세요",
   "intro_text":
       "올인원 알 꾸르안 앱, 69개 언어로 번역 및 180+권의 번역 책, 6개 언어로 타프시르 및 30+권의 타프시르 책, 그리고 꾸르안 암송자의 암송",
@@ -735,8 +735,8 @@ Map<String, String> tr = {
   "We collected all data form this website": "Bu siteden tüm verileri topladık",
   "Translation Book": "Çeviri Kitabı",
   "Choice Recitation": "Seçim Tefsiri",
-  "Select language for Quran's Tafseer": "Kuran'ın Tefsiri için dili seçin",
-  "Tafseer Books of Quran": "Kuran'ın Tefsir Kitapları",
+  "Select language for Quran's Tafsir": "Kuran'ın Tefsiri için dili seçin",
+  "Tafsir Books of Quran": "Kuran'ın Tefsir Kitapları",
   "Choice your favorite Reciter of Quran": "Favori Kur'an okuyucunuzu seçin",
   "intro_text":
       "Tümleşik Kur'an-ı Kerim Uygulaması, 69 dilde çeviri ve 180+ çeviri kitabı, 6 dilde Tefsir ve 30+ Tefsir kitabı ve Kur'an-ı Kerim okuru'nun tilaveti ile",
@@ -774,8 +774,8 @@ Map<String, String> vi = {
       "Chúng tôi đã thu thập tất cả dữ liệu từ trang web này",
   "Translation Book": "Sách dịch",
   "Choice Recitation": "Lời đọc chọn lọc",
-  "Select language for Quran's Tafseer": "Chọn ngôn ngữ cho Tafseer của Quran",
-  "Tafseer Books of Quran": "Sách Tafseer của Quran",
+  "Select language for Quran's Tafsir": "Chọn ngôn ngữ cho Tafsir của Quran",
+  "Tafsir Books of Quran": "Sách Tafsir của Quran",
   "Choice your favorite Reciter of Quran":
       "Chọn người đọc Quran yêu thích của bạn",
   "intro_text":
@@ -814,9 +814,9 @@ Map<String, String> ta = {
       "நாங்கள் இந்த இணையதளத்திலிருந்து அனைத்து தரவுகளையும் சேகரித்துள்ளோம்",
   "Translation Book": "மொழிபெயர்ப்பு புத்தகம்",
   "Choice Recitation": "தேர்ந்தெடுக்கப்பட்ட ஓதல்",
-  "Select language for Quran's Tafseer":
+  "Select language for Quran's Tafsir":
       "குர்ஆனின் தஃப்ஸீர் மொழியைத் தேர்ந்தெடுக்கவும்",
-  "Tafseer Books of Quran": "குர்ஆனின் தஃப்ஸீர் புத்தகங்கள்",
+  "Tafsir Books of Quran": "குர்ஆனின் தஃப்ஸீர் புத்தகங்கள்",
   "Choice your favorite Reciter of Quran":
       "உங்கள் பிடித்த குர்ஆன் வாசகரை தேர்ந்தெடுக்கவும்",
   "intro_text":
@@ -855,9 +855,9 @@ Map<String, String> it = {
       "Abbiamo raccolto tutti i dati da questo sito web",
   "Translation Book": "Libro di traduzione",
   "Choice Recitation": "Recitazione scelta",
-  "Select language for Quran's Tafseer":
+  "Select language for Quran's Tafsir":
       "Seleziona la lingua per il Tafsir del Corano",
-  "Tafseer Books of Quran": "Libri di Tafsir del Corano",
+  "Tafsir Books of Quran": "Libri di Tafsir del Corano",
   "Choice your favorite Reciter of Quran":
       "Scegli il tuo recitatore preferito del Corano",
   "intro_text":
