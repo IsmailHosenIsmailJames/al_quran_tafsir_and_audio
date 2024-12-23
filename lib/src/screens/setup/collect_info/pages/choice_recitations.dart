@@ -114,7 +114,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
                                         onPressed: () async {
                                           controller.currentRecitation.value =
                                               allRecitationSearch[index];
-                                          await Hive.box('info').put(
+                                          await Hive.box('user_db').put(
                                               'reciter',
                                               allRecitationSearch[index]
                                                   .toJson());

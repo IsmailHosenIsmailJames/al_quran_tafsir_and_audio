@@ -68,7 +68,7 @@ class _LogInState extends State<LogIn> {
           List<String> bookmaek = List<String>.from(
               jsonDecode(document.data['bookmark'] ?? "[]") ?? []);
 
-          final boxinf = Hive.box("info");
+          final boxinf = Hive.box("user_db");
           boxinf.put("favorite", favorite);
           boxinf.put("bookmark", bookmaek);
           boxinf.put("bookmarkUploaded", true);

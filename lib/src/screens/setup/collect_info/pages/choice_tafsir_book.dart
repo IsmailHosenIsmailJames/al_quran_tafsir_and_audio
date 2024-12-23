@@ -63,7 +63,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                         debugPrint(tafsirBookID);
                         // return;
                         final dataBox = Hive.box("data");
-                        final infoBox = Hive.box("info");
+                        final infoBox = Hive.box("user_db");
                         if (tafsirBookID ==
                             infoBox.get("info")['tafsir_book_ID']) {
                           showDialog(

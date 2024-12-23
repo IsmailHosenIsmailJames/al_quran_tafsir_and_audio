@@ -205,12 +205,12 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                       infoController.recitationName.value,
                                 };
                                 if (Hive.isBoxOpen("info")) {
-                                  final box = Hive.box("info");
+                                  final box = Hive.box("user_db");
 
                                   box.put("info", info);
                                   Get.offAll(() => const InitPage());
                                 } else {
-                                  final box = await Hive.openBox("info");
+                                  final box = Hive.box("user_db");
 
                                   box.put("info", info);
                                   Get.offAll(() => const InitPage());

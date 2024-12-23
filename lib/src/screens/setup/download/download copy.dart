@@ -49,7 +49,7 @@ class _DownloadDataState extends State<DownloadData> {
         ),
       );
     } else {
-      final infoBox = Hive.box("info");
+      final infoBox = Hive.box("user_db");
       final info = infoBox.get("info", defaultValue: false);
       if (info != false) {
         Map<String, String> preference = {

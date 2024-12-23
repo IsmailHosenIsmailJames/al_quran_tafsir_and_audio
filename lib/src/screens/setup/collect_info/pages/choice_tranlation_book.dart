@@ -59,7 +59,7 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                     onPressed: () async {
                       if (infoController.translationLanguage.value.isNotEmpty) {
                         final dataBox = Hive.box("data");
-                        final infoBox = Hive.box("info");
+                        final infoBox = Hive.box("user_db");
                         String bookTranslationID =
                             infoController.bookIDTranslation.value;
                         if (bookTranslationID ==

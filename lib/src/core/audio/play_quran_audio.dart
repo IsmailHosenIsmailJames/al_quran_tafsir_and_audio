@@ -137,7 +137,7 @@ class ManageQuranAudio {
   /// [RecitationInfoModel] using the [RecitationInfoModel.fromJson] method.
   /// The resulting [RecitationInfoModel] is then returned.
   static RecitationInfoModel findRecitationModel() {
-    final jsonReciter = Hive.box('info').get('reciter');
+    final jsonReciter = Hive.box('user_db').get('reciter');
     return RecitationInfoModel.fromJson(jsonReciter);
   }
 

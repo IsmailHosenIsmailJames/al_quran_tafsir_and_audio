@@ -53,7 +53,7 @@ class _SelectLangaugeState extends State<ChoiceLanguage> {
               onPressed: () {
                 String languageCode = used20LanguageMap[index]["Code"]!;
                 languageController.changeLanguage = languageCode;
-                final box = Hive.box("info");
+                final box = Hive.box("user_db");
                 box.put("app_lan", languageCode);
                 infoController.appLanCode.value = languageCode;
               },
