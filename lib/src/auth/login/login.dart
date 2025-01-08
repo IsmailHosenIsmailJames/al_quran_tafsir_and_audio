@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:al_quran_tafsir_and_audio/src/functions/common_functions.dart';
+import 'package:al_quran_tafsir_and_audio/src/core/show_twoested_message.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:appwrite/appwrite.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:toastification/toastification.dart';
 
 import '../../theme/theme_icon_button.dart';
 import '../account_info/account_info.dart';
@@ -98,9 +99,10 @@ class _LogInState extends State<LogIn> {
         // print("Failed while login");
       }
     } on AppwriteException catch (e) {
-      showToastedMessage(e.message ?? "something went wrong");
+      showTwoestedMessage(
+          e.message ?? "something went wrong", ToastificationType.error);
     } catch (e) {
-      showToastedMessage(e.toString());
+      showTwoestedMessage(e.toString(), ToastificationType.error);
     }
   }
 

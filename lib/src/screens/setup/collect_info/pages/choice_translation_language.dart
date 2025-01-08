@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/common/native_language_name.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tranlation_book.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_translation_book.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

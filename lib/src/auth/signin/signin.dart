@@ -1,5 +1,5 @@
 import 'package:al_quran_tafsir_and_audio/src/auth/account_info/account_info.dart';
-import 'package:al_quran_tafsir_and_audio/src/functions/common_functions.dart';
+import 'package:al_quran_tafsir_and_audio/src/core/show_twoested_message.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
 import 'package:appwrite/appwrite.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:toastification/toastification.dart';
 
 import '../../theme/theme_controller.dart';
 import '../login/login.dart';
@@ -74,9 +75,10 @@ class _SignInState extends State<SignIn> {
       }
       Get.offAll(() => const HomePage());
     } on AppwriteException catch (e) {
-      showToastedMessage(e.message ?? "Something went worng");
+      showTwoestedMessage(
+          e.message ?? "Something went wrong", ToastificationType.error);
     } catch (e) {
-      showToastedMessage(e.toString());
+      showTwoestedMessage(e.toString(), ToastificationType.error);
     }
   }
 
@@ -205,7 +207,7 @@ class _SignInState extends State<SignIn> {
                             if (value!.length >= 8) {
                               return null;
                             } else {
-                              return "Password leangth should be at least 8...";
+                              return "Password length should be at least 8...";
                             }
                           },
                           controller: password,
@@ -234,7 +236,7 @@ class _SignInState extends State<SignIn> {
                                 password.text != "") {
                               return null;
                             } else {
-                              return "Password leangth should be at least 8...";
+                              return "Password length should be at least 8...";
                             }
                           },
                           controller: confirmPass,

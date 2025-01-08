@@ -1,4 +1,4 @@
-import 'package:al_quran_tafsir_and_audio/src/functions/common_functions.dart';
+import 'package:al_quran_tafsir_and_audio/src/core/show_twoested_message.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tafsir_book.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/intro.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_language.dart';
@@ -8,12 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:toastification/toastification.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../init_page.dart';
 import 'pages/choice_recitations.dart';
 import '../info_controller/info_controller_getx.dart';
-import 'pages/choice_tranlation_book.dart';
+import 'pages/choice_translation_book.dart';
 import 'pages/choice_tafsir_language.dart';
 import 'pages/choice_translation_language.dart';
 
@@ -154,40 +155,49 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                           onPressed: () async {
                             if (pageIndex == 0) {
                               if (infoController.appLanCode.value.isEmpty) {
-                                showToastedMessage(
-                                    "Please Select Quran Translation Language");
+                                showTwoestedMessage(
+                                  "Please Select Quran Translation Language",
+                                  ToastificationType.info,
+                                );
                                 return;
                               }
                             } else if (pageIndex == 2) {
                               if (infoController
                                   .translationLanguage.value.isEmpty) {
-                                showToastedMessage(
-                                    "Please select a language for app");
+                                showTwoestedMessage(
+                                  "Please select a language for app",
+                                  ToastificationType.info,
+                                );
 
                                 return;
                               }
                             } else if (pageIndex == 3) {
                               if (infoController.bookNameIndex.value == -1) {
-                                showToastedMessage(
-                                    "Please Select Quran Translation Book");
+                                showTwoestedMessage(
+                                  "Please Select Quran Translation Book",
+                                  ToastificationType.info,
+                                );
                                 return;
                               }
                             }
                             if (pageIndex == 4) {
                               if (infoController.tafsirIndex.value == -1) {
-                                showToastedMessage(
-                                    "Please Select Quran Tafsir Language");
+                                showTwoestedMessage(
+                                  "Please Select Quran Tafsir Language",
+                                  ToastificationType.info,
+                                );
                                 return;
                               }
                             } else if (pageIndex == 5) {
                               if (infoController.tafsirBookIndex.value == -1) {
-                                showToastedMessage(
-                                    "Please Select Quran Tafsir Book");
+                                showTwoestedMessage(
+                                  "Please Select Quran Tafsir Book",
+                                  ToastificationType.info,
+                                );
                                 return;
                               }
                             } else if (pageIndex == 6) {
-                              if (infoController.recitationIndex.value != -1 &&
-                                  infoController.tafsirBookIndex.value != -1 &&
+                              if (infoController.tafsirBookIndex.value != -1 &&
                                   infoController.tafsirIndex.value != -1 &&
                                   infoController.bookNameIndex.value != -1 &&
                                   infoController
