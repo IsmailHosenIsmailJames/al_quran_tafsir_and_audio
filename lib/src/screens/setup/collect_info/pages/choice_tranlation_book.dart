@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:al_quran_tafsir_and_audio/src/functions/common_functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/controller/getx_controller.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:toastification/toastification.dart';
 
 import '../../info_controller/info_controller_getx.dart';
 
@@ -121,7 +121,12 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                         infoBox.put('translation', bookTranslationID);
 
                         Get.offAll(() => const HomePage());
-                        showToastedMessage("Successful");
+                        toastification.show(
+                          context: context,
+                          title: Text("Successful"),
+                          type: ToastificationType.success,
+                          autoCloseDuration: const Duration(seconds: 2),
+                        );
                       } else {
                         showDialog(
                           context: context,

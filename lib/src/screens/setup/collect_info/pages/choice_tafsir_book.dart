@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:developer' as dev;
 
-import 'package:al_quran_tafsir_and_audio/src/functions/common_functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/firebase/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:toastification/toastification.dart';
 
 import '../../info_controller/info_controller_getx.dart';
 
@@ -128,7 +128,14 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                               'tafsir', infoController.tafsirBookID.value);
 
                           Get.offAll(() => const HomePage());
-                          showToastedMessage("Successful");
+                          toastification.show(
+                            context: context,
+                            title: Text(
+                              "Successful",
+                            ),
+                            type: ToastificationType.success,
+                            autoCloseDuration: const Duration(seconds: 2),
+                          );
                         }
                       }
                     },
