@@ -16,9 +16,10 @@ Future<void> main() async {
     androidNotificationChannelName: 'Quran Audio',
     androidNotificationOngoing: true,
   );
-  await Hive.initFlutter("al_bayan_quran");
+  await Hive.initFlutter("al_quran");
   await Hive.openBox("user_db");
   await Hive.openBox("quran_db");
+  await Hive.openBox("translation_db");
   await Hive.openBox("tafsir_db");
   runApp(AlQuranTafsirAndAudio());
 }

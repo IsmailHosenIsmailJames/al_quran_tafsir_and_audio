@@ -102,7 +102,7 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                                   json.decode(response.body)['translations']);
 
                           final translationBox =
-                              await Hive.openBox("translation");
+                              Hive.box("quran_db"); // TODO: check
 
                           for (int i = 0; i < translation.length; i++) {
                             translationBox.put(

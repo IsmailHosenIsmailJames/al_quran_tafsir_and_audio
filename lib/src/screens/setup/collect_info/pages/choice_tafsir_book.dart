@@ -105,7 +105,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
 
                         var response =
                             await http.get(Uri.parse(url), headers: headers);
-                        final tafsirBox = await Hive.openBox("tafsir");
+                        final tafsirBox = Hive.box("tafsir_db"); // TODO: check
 
                         if (response.statusCode == 200) {
                           final tafsir = json.decode(response.body);

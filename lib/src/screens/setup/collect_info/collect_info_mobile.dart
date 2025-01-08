@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:al_quran_tafsir_and_audio/src/core/show_twoested_message.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tafsir_book.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/intro.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_language.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/download/download.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +14,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:toastification/toastification.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../init_page.dart';
 import 'pages/choice_recitations.dart';
 import '../info_controller/info_controller_getx.dart';
 import 'pages/choice_translation_book.dart';
@@ -197,7 +199,9 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                 return;
                               }
                             } else if (pageIndex == 6) {
-                              if (infoController.tafsirBookIndex.value != -1 &&
+                              if (infoController.recitationIndex.value.name !=
+                                      null &&
+                                  infoController.tafsirBookIndex.value != -1 &&
                                   infoController.tafsirIndex.value != -1 &&
                                   infoController.bookNameIndex.value != -1 &&
                                   infoController
@@ -214,17 +218,19 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   "recitation_ID":
                                       infoController.recitationName.value,
                                 };
-                                if (Hive.isBoxOpen("info")) {
-                                  final box = Hive.box("user_db");
 
-                                  box.put("info", info);
-                                  Get.offAll(() => const InitPage());
-                                } else {
-                                  final box = Hive.box("user_db");
+                                Get.offAll(() => DownloadData(
+                                      selection: info,
+                                    ));
 
-                                  box.put("info", info);
-                                  Get.offAll(() => const InitPage());
-                                }
+                                final box = await Hive.openBox("user_db");
+                                await box.put("selection_info", info);
+                                log("message");
+                              } else {
+                                showTwoestedMessage(
+                                  "Please select a default reciter",
+                                  ToastificationType.info,
+                                );
                               }
                             }
                             if (pageIndex < 6) {
@@ -267,7 +273,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
     return Padding(
       padding: const EdgeInsets.all(2.0),
       child: CircleAvatar(
-        radius: index == page ? 7 : 4,
+        radius: index == page ? 5 : 3,
         backgroundColor: index == page ? Colors.green : Colors.grey,
       ),
     );

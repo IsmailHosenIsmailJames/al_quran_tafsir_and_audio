@@ -9,10 +9,10 @@ class ChoiceLanguage extends StatefulWidget {
   const ChoiceLanguage({super.key});
 
   @override
-  State<ChoiceLanguage> createState() => _SelectLangaugeState();
+  State<ChoiceLanguage> createState() => _SelectLanguageState();
 }
 
-class _SelectLangaugeState extends State<ChoiceLanguage> {
+class _SelectLanguageState extends State<ChoiceLanguage> {
   final languageController = Get.put(LanguageController());
   final infoController = Get.put(InfoController());
 

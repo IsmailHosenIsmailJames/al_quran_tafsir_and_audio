@@ -248,7 +248,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
           ),
           style: IconButton.styleFrom(
             padding: EdgeInsets.zero,
-            backgroundColor: Colors.blue.shade800,
+            backgroundColor: Colors.green.shade700,
             foregroundColor: Colors.white,
           ),
         ),
