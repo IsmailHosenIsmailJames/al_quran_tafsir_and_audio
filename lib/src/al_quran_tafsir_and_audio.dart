@@ -1,5 +1,5 @@
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/setup/getx/get_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/init_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/language_controller.dart';

@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import '../../../../core/audio/play_quran_audio.dart';
-import '../../getx/get_controller.dart';
+import '../../info_controller/info_controller_getx.dart';
 
 class RecitationChoice extends StatefulWidget {
   final Map<String, String>? previousInfo;

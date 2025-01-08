@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'dart:math';
+import 'dart:developer' as dev;
 
 import 'package:al_quran_tafsir_and_audio/src/functions/common_functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/firebase/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/setup/download/links.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
-import '../../getx/get_controller.dart';
+import '../../info_controller/info_controller_getx.dart';
 
 class ChoiceTafsirBook extends StatefulWidget {
   final bool? showDownloadOnAppbar;
@@ -91,15 +92,19 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                         setState(() {
                           downloading = true;
                         });
-                        int ran = Random().nextInt(2);
+                        int ran = Random().nextInt(4);
 
-                        var url = Uri.parse(ran == 0
-                            ? tafsirLinks2[infoController.tafsirBookID.value]!
-                            : tafsirLinks1[infoController.tafsirBookID.value]!);
+                        String? url = getURLusingTafsirID(
+                            infoController.tafsirBookID.value, ran);
+                        if (url == null) {
+                          dev.log("url is null");
+                          return;
+                        }
 
                         var headers = {"Accept": "application/json"};
 
-                        var response = await http.get(url, headers: headers);
+                        var response =
+                            await http.get(Uri.parse(url), headers: headers);
                         final tafsirBox = await Hive.openBox("tafsir");
 
                         if (response.statusCode == 200) {

@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../getx/get_controller.dart';
+import '../../info_controller/info_controller_getx.dart';
 
 class TafsirLanguage extends StatefulWidget {
   final bool? showAppBarNextButton;

@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
-import '../../getx/get_controller.dart';
+import '../../info_controller/info_controller_getx.dart';
 
 class ChoiceTranslationBook extends StatefulWidget {
   final bool? showDownloadOnAppbar;

@@ -12,7 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../init_page.dart';
 import 'pages/choice_recitations.dart';
-import '../getx/get_controller.dart';
+import '../info_controller/info_controller_getx.dart';
 import 'pages/choice_tranlation_book.dart';
 import 'pages/choice_tafsir_language.dart';
 import 'pages/choice_translation_language.dart';

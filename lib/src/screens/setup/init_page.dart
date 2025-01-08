@@ -1,6 +1,6 @@
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/collect_info_mobile.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/setup/download/download%20copy.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/download/download.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 

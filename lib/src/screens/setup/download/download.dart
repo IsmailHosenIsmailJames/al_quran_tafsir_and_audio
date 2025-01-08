@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:al_quran_tafsir_and_audio/src/resources/firebase/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/setup/download/links.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -261,9 +261,9 @@ class _DownloadDataState extends State<DownloadData> {
 
           final tafsirBox = await Hive.openBox("tafsir");
           int ran = Random().nextInt(2);
-          final url = Uri.parse(ran == 1
-              ? tafsirLinks2[preference['tafsir_book_ID']]!
-              : tafsirLinks1[preference['tafsir_book_ID']]!);
+          final url = Uri.parse(
+              getURLusingTafsirID(preference['tafsir_book_ID']!, ran)!);
+
           final headers = {"Accept": "application/json"};
           final response = await http.get(url, headers: headers);
           setState(() {
