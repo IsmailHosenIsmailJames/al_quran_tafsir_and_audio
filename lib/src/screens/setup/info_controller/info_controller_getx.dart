@@ -11,8 +11,7 @@ class InfoController extends GetxController {
   RxString tafsirLanguage = "null".obs;
   RxInt tafsirBookIndex = (-1).obs;
   RxString tafsirBookID = "-1".obs;
-  Rx<RecitationInfoModel> recitationIndex = Rx(RecitationInfoModel());
-  RxString recitationName = "-1".obs;
+  Rx<RecitationInfoModel> selectedReciter = Rx(RecitationInfoModel());
   RxString tafsirBookName = "null".obs;
   RxString translationBookName = "null".obs;
 }

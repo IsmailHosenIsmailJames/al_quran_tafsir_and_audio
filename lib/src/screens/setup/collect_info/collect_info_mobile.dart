@@ -199,7 +199,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                 return;
                               }
                             } else if (pageIndex == 6) {
-                              if (infoController.recitationIndex.value.name !=
+                              if (infoController.selectedReciter.value.name !=
                                       null &&
                                   infoController.tafsirBookIndex.value != -1 &&
                                   infoController.tafsirIndex.value != -1 &&
@@ -215,8 +215,9 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                       infoController.tafsirLanguage.value,
                                   "tafsir_book_ID":
                                       infoController.tafsirBookID.value,
-                                  "recitation_ID":
-                                      infoController.recitationName.value,
+                                  "selected_reciter": infoController
+                                      .selectedReciter.value
+                                      .toJson(),
                                 };
 
                                 Get.offAll(() => DownloadData(

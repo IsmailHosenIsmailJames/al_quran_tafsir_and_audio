@@ -48,7 +48,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
   }
 
   void select(int index) {
-    infoController.recitationIndex.value = allRecitationSearch[index];
+    infoController.selectedReciter.value = allRecitationSearch[index];
   }
 
   void searchOnList(String text) {
@@ -205,7 +205,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
                 ],
               ),
             ),
-            if (infoController.recitationIndex.value.link ==
+            if (infoController.selectedReciter.value.link ==
                 allRecitationSearch[index].link)
               const Align(
                 alignment: Alignment.centerRight,
