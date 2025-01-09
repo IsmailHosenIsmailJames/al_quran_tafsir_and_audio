@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'dart:math';
-import 'dart:developer' as dev;
 
+import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/firebase/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:toastification/toastification.dart';
 
 import '../../info_controller/info_controller_getx.dart';
@@ -94,48 +94,46 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                         });
                         int ran = Random().nextInt(4);
 
-                        String? url = getURLusingTafsirID(
+                        String url = getURLusingTafsirID(
                             infoController.tafsirBookID.value, ran);
-                        if (url == null) {
-                          dev.log("url is null");
-                          return;
-                        }
 
-                        var headers = {"Accept": "application/json"};
+                        final tafsirDB = Hive.box("tafsir_db");
 
-                        var response =
-                            await http.get(Uri.parse(url), headers: headers);
-                        final tafsirBox = Hive.box("tafsir_db"); // TODO: check
+                        if (!tafsirDB.keys.contains(
+                            "${infoController.tafsirBookID.value}/1")) {
+                          final response = await get(Uri.parse(url),
+                              headers: {'Content-type': 'text/plain'});
+                          if (response.statusCode == 200) {
+                            String text = response.body
+                                .substring(1, response.body.length - 1);
 
-                        if (response.statusCode == 200) {
-                          final tafsir = json.decode(response.body);
-                          for (int i = 0; i < 6236; i++) {
-                            String? ayah = tafsir['$i'];
-                            if (ayah != null) {
-                              tafsirBox.put(
-                                "$tafsirBookID/$i",
-                                tafsir["$i"],
-                              );
+                            String decodedText =
+                                decompressStringWithGZip2(text);
+
+                            List<String> decodedJson =
+                                List<String>.from(jsonDecode(decodedText));
+                            for (int i = 0; i < decodedJson.length; i++) {
+                              await tafsirDB.put(
+                                  "${infoController.tafsirBookID.value}/$i",
+                                  compressStringWithGZip2(decodedJson[i]));
                             }
-                          }
-                          final info = infoBox.get("info", defaultValue: false);
-                          info['tafsir_book_ID'] = tafsirBookID;
-                          info['tafsir_language'] =
-                              infoController.tafsirLanguage.value;
-                          infoBox.put("info", info);
-                          dataBox.put("tafsir", true);
-                          infoBox.put(
-                              'tafsir', infoController.tafsirBookID.value);
+                            final info = infoBox.get("selection_info",
+                                defaultValue: false);
+                            info['tafsir_book_ID'] = tafsirBookID;
+                            info['tafsir_language'] =
+                                infoController.tafsirLanguage.value;
+                            infoBox.put("selection_info", info);
 
-                          Get.offAll(() => const HomePage());
-                          toastification.show(
-                            context: context,
-                            title: Text(
-                              "Successful",
-                            ),
-                            type: ToastificationType.success,
-                            autoCloseDuration: const Duration(seconds: 2),
-                          );
+                            Get.offAll(() => const HomePage());
+                            toastification.show(
+                              context: context,
+                              title: Text(
+                                "Successful",
+                              ),
+                              type: ToastificationType.success,
+                              autoCloseDuration: const Duration(seconds: 2),
+                            );
+                          }
                         }
                       }
                     },

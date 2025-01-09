@@ -37,7 +37,7 @@ class _DownloadDataState extends State<DownloadData> {
     infoController.tafsirLanguage.value = widget.selection["tafsir_language"];
     infoController.tafsirBookID.value = widget.selection["tafsir_book_ID"];
     infoController.selectedReciter.value =
-        RecitationInfoModel.fromJson(widget.selection["selected_recitation"]);
+        RecitationInfoModel.fromJson(widget.selection["selected_reciter"]);
     downloadData();
     super.initState();
   }
@@ -85,78 +85,83 @@ class _DownloadDataState extends State<DownloadData> {
 
     // skip chapter info. Because it support multi language
 
+    setState(() {
+      processState = "Getting translation...";
+    });
+
     // download translation
     final translationDB = Hive.box("translation_db");
     int ran = math.Random().nextInt(4);
-    String translationBookID = infoController.bookIDTranslation.value;
+    String translationBookID = widget.selection["translation_book_ID"];
+    log("Translation Book ID : $translationBookID");
     if (translationDB.keys.contains("$translationBookID/1")) {
       setState(() {
         progressValue += 0.2;
       });
       log("Already exits translationBookID");
     } else {
-      String? url = getURLusingTranslationID(translationBookID, ran);
-      if (url != null) {
-        final response =
-            await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
-        if (response.statusCode == 200) {
-          String text = response.body.substring(1, response.body.length - 1);
-          String decodedText = decompressStringWithGZip2(text);
-          List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
-          for (int i = 0; i < decodedJson.length; i++) {
-            await translationDB.put("$translationBookID/$i", decodedJson[i]);
-          }
-          setState(() {
-            progressValue += 0.2;
-          });
-        } else {
-          log("Failed to download translation");
-          setState(() {
-            errorText = "Failed to download translation";
-          });
-          return;
+      String url = getURLusingTranslationID(translationBookID, ran);
+      log("URL : $url");
+
+      final response =
+          await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
+      if (response.statusCode == 200) {
+        String text = response.body.substring(1, response.body.length - 1);
+        String decodedText = decompressStringWithGZip2(text);
+        List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
+        for (int i = 0; i < decodedJson.length; i++) {
+          await translationDB.put("$translationBookID/$i", decodedJson[i]);
         }
-      } else {
-        log("Translation book not found");
         setState(() {
-          errorText = "Translation book not found";
+          progressValue += 0.2;
+        });
+      } else {
+        log("Failed to download translation");
+        setState(() {
+          errorText = "Failed to download translation";
         });
         return;
       }
     }
 
     // get tafsir
+    setState(() {
+      processState = "Getting tafsir...";
+    });
     final tafsirDB = Hive.box("tafsir_db");
 
-    String? url = getURLusingTafsirID(infoController.tafsirBookID.value, ran);
+    String? url = getURLusingTafsirID(widget.selection["tafsir_book_ID"], ran);
+    log("Tafsir Book ID : ${widget.selection["tafsir_book_ID"]}");
+    log("URL : $url");
     if (!tafsirDB.keys.contains("${infoController.tafsirBookID.value}/1")) {
-      if (url != null) {
-        final response = await get(Uri.parse(url));
-        if (response.statusCode == 200) {
-          String text = response.body;
-          String decodedText = decompressStringWithGZip2(text);
-          List<String> decodedJson = jsonDecode(decodedText);
-          for (int i = 0; i < decodedJson.length; i++) {
-            await tafsirDB.put(
-                "${infoController.tafsirBookID.value}/$i", decodedJson[i]);
-          }
-        } else {
-          log("Failed to download tafsir");
-          setState(() {
-            errorText = "Failed to download tafsir";
-          });
-          return;
+      final response =
+          await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
+      if (response.statusCode == 200) {
+        String text = response.body.substring(1, response.body.length - 1);
+        setState(() {
+          processState = "Processing tafsir...";
+        });
+        String decodedText = decompressStringWithGZip2(text);
+        setState(() {
+          progressValue += 0.2;
+        });
+        List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
+        for (int i = 0; i < decodedJson.length; i++) {
+          await tafsirDB.put("${infoController.tafsirBookID.value}/$i",
+              compressStringWithGZip2(decodedJson[i]));
         }
+      } else {
+        log("Failed to download tafsir");
+        setState(() {
+          errorText = "Failed to download tafsir";
+        });
+        return;
       }
-    } else {
-      setState(() {
-        errorText = "Tafsir book not found";
-      });
-      return;
     }
+
     setState(() {
       progressValue = 1.0;
-      processState = "Download Completed";
+      processState = "All Completed";
     });
     await Future.delayed(const Duration(seconds: 1));
     Get.offAll(

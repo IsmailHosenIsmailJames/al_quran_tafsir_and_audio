@@ -1,11 +1,14 @@
 import 'dart:convert';
+import 'dart:math';
+import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/firebase/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/controller/getx_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:toastification/toastification.dart';
 
 import '../../info_controller/info_controller_getx.dart';
@@ -90,35 +93,39 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                           downloading = true;
                         });
 
-                        var url = Uri.parse(
-                            "https://api.quran.com/api/v4/quran/translations/${infoController.bookIDTranslation.value}");
-                        var headers = {"Accept": "application/json"};
+                        final translationDB = Hive.box("translation_db");
+                        int ran = Random().nextInt(4);
+                        String translationBookID =
+                            infoController.bookIDTranslation.value;
+                        if (translationDB.keys
+                            .contains("$translationBookID/1")) {
+                        } else {
+                          String url =
+                              getURLusingTranslationID(translationBookID, ran);
 
-                        var response = await http.get(url, headers: headers);
-
-                        if (response.statusCode == 200) {
-                          List<Map<String, dynamic>> translation =
-                              List<Map<String, dynamic>>.from(
-                                  json.decode(response.body)['translations']);
-
-                          final translationBox =
-                              Hive.box("quran_db"); // TODO: check
-
-                          for (int i = 0; i < translation.length; i++) {
-                            translationBox.put(
-                              "$bookTranslationID/$i",
-                              translation[i]['text'].toString(),
-                            );
+                          final response = await get(Uri.parse(url),
+                              headers: {'Content-type': 'text/plain'});
+                          if (response.statusCode == 200) {
+                            String text = response.body
+                                .substring(1, response.body.length - 1);
+                            String decodedText =
+                                decompressStringWithGZip2(text);
+                            List<String> decodedJson =
+                                List<String>.from(jsonDecode(decodedText));
+                            for (int i = 0; i < decodedJson.length; i++) {
+                              await translationDB.put(
+                                  "$translationBookID/$i", decodedJson[i]);
+                            }
                           }
                         }
-                        final info = infoBox.get("info", defaultValue: false);
+
+                        final info =
+                            infoBox.get("selection_info", defaultValue: false);
                         info['translation_book_ID'] =
                             bookTranslationID.toString();
                         info['translation_language'] =
                             infoController.translationLanguage.value;
-                        infoBox.put("info", info);
-                        dataBox.put("translation", true);
-                        infoBox.put('translation', bookTranslationID);
+                        infoBox.put("selection_info", info);
 
                         Get.offAll(() => const HomePage());
                         toastification.show(
