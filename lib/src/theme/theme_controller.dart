@@ -1,5 +1,5 @@
 import 'package:al_quran_tafsir_and_audio/src/auth/account_info/account_info.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/controller/universal_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';

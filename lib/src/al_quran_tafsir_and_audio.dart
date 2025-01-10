@@ -22,14 +22,14 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
         title: 'Al-Quran',
         theme: ThemeData.light().copyWith(
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.green,
+            seedColor: Colors.green.shade700,
             brightness: Brightness.light,
           ),
           textTheme: GoogleFonts.notoSansTextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               shadowColor: Colors.transparent,
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.green.shade700,
               foregroundColor: Colors.white,
               iconColor: Colors.white,
             ),
@@ -40,7 +40,7 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
             backgroundColor: Colors.grey.shade800,
           ),
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.green,
+            seedColor: Colors.green.shade600,
             brightness: Brightness.dark,
           ),
           textTheme: GoogleFonts.notoSansTextTheme().apply(
@@ -51,7 +51,7 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               shadowColor: Colors.transparent,
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.green.shade600,
               foregroundColor: Colors.white,
               iconColor: Colors.white,
             ),

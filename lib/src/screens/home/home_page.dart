@@ -1,6 +1,11 @@
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/audio_tab.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/play_list_tab.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/profile_tab.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/quran_tab.dart';
+import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,6 +22,33 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Al Quran"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return Dialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    insetPadding: EdgeInsets.all(10),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 200,
+                    ),
+                  );
+                },
+              );
+            },
+            icon: Icon(
+              Icons.search_rounded,
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: themeIconButton,
       ),
       body: PageView(
         onPageChanged: (value) {
@@ -26,64 +58,56 @@ class _HomePageState extends State<HomePage> {
         },
         controller: pageController,
         children: [
-          Container(
-            color: Colors.green,
-          ),
-          Container(
-            color: Colors.yellow,
-          ),
-          Container(
-            color: Colors.black,
-          ),
-          Container(
-            color: Colors.blue,
-          ),
+          QuranTab(),
+          AudioTab(),
+          PlayListTab(),
+          ProfileTab(),
         ],
       ),
-      bottomNavigationBar: GNav(
-        selectedIndex: selectedBottomNavIndex,
-        rippleColor: Colors.grey, // tab button ripple color when pressed
-        hoverColor: Colors.grey, // tab button hover color
-        haptic: true, // haptic feedback
-        tabBorderRadius: 15,
-        tabActiveBorder:
-            Border.all(color: Colors.black, width: 1), // tab button border
-        tabBorder:
-            Border.all(color: Colors.grey, width: 1), // tab button border
-        tabShadow: [
-          BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)
-        ], // tab button shadow
-        curve: Curves.easeOutExpo, // tab animation curves
-        duration: Duration(milliseconds: 900), // tab animation duration
-        gap: 8, // the tab button gap between icon and text
-        color: Colors.grey[800], // unselected icon color
-        activeColor: Colors.purple, // selected icon and text color
-        iconSize: 24, // tab button icon size
-        tabBackgroundColor:
-            Colors.purple.withOpacity(0.1), // selected tab background color
-        padding: EdgeInsets.symmetric(
-            horizontal: 20, vertical: 5), // navigation bar padding
-        tabs: [
-          GButton(
-            icon: LineIcons.home,
-            text: 'Home',
-          ),
-          GButton(
-            icon: LineIcons.heart,
-            text: 'Likes',
-          ),
-          GButton(
-            icon: LineIcons.search,
-            text: 'Search',
-          ),
-          GButton(
-            icon: LineIcons.user,
-            text: 'Profile',
-          )
-        ],
-        onTabChange: (value) {
-          pageController.jumpToPage(value);
-        },
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(5.0),
+        decoration: BoxDecoration(
+            border: Border(
+                top: BorderSide(color: Colors.grey.withValues(alpha: 0.3)))),
+        child: GNav(
+          selectedIndex: selectedBottomNavIndex,
+          rippleColor: Colors.grey.withValues(alpha: 0.2),
+          hoverColor: Colors.grey.withValues(alpha: 0.1),
+          haptic: true,
+          tabBorderRadius: 15,
+          curve: Curves.easeInOut,
+          duration: Duration(milliseconds: 200),
+          gap: 3,
+          activeColor: Colors.white,
+          iconSize: 24,
+          tabBackgroundColor: Colors.green.shade700,
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          tabs: [
+            GButton(
+              icon: FluentIcons.book_24_filled,
+              text: 'Quran',
+              borderRadius: BorderRadius.circular(30),
+            ),
+            GButton(
+              icon: Icons.audiotrack_rounded,
+              text: 'Recitation',
+              borderRadius: BorderRadius.circular(30),
+            ),
+            GButton(
+              icon: Icons.playlist_play_rounded,
+              text: 'Playlist',
+              borderRadius: BorderRadius.circular(30),
+            ),
+            GButton(
+              icon: FluentIcons.person_24_filled,
+              text: 'Profile',
+              borderRadius: BorderRadius.circular(30),
+            )
+          ],
+          onTabChange: (value) {
+            pageController.jumpToPage(value);
+          },
+        ),
       ),
     );
   }
