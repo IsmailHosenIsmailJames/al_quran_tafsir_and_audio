@@ -1,8 +1,12 @@
+import 'package:al_quran_tafsir_and_audio/src/core/recitation_info/ayah_counts.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/juz_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/models/surah_view_info_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/surah_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class QuranTab extends StatefulWidget {
   const QuranTab({super.key});
@@ -107,7 +111,33 @@ class _QuranTabState extends State<QuranTab> {
                         color: Colors.grey.withValues(alpha: 0.2),
                       ),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          int start = 0;
+                          for (int i = 0; i < index; i++) {
+                            start += ayahCountOfAllSurah[i];
+                          }
+                          Get.to(
+                            () => SurahView(
+                              surahInfo: [
+                                SurahViewInfoModel(
+                                  surahNumber: quranSurahInfoModel.id,
+                                  start: start,
+                                  end: quranSurahInfoModel.versesCount,
+                                  ayahCount: quranSurahInfoModel.versesCount,
+                                  surahNameArabic:
+                                      quranSurahInfoModel.nameArabic,
+                                  surahNameSimple:
+                                      quranSurahInfoModel.nameSimple,
+                                  revelationPlace:
+                                      quranSurahInfoModel.revelationPlace,
+                                  isStartWithBismillah:
+                                      quranSurahInfoModel.bismillahPre,
+                                )
+                              ],
+                              titleToShow: quranSurahInfoModel.nameSimple,
+                            ),
+                          );
+                        },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.all(5),
                           shape: RoundedRectangleBorder(
