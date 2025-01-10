@@ -1,4 +1,5 @@
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/models/juz_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -92,6 +93,7 @@ class _QuranTabState extends State<QuranTab> {
         Expanded(
           child: tabIndex == 0
               ? ListView.builder(
+                  padding: EdgeInsets.only(bottom: 100),
                   itemCount: 114,
                   itemBuilder: (context, index) {
                     QuranSurahInfoModel quranSurahInfoModel =
@@ -151,19 +153,50 @@ class _QuranTabState extends State<QuranTab> {
                   },
                 )
               : ListView.builder(
+                  padding: EdgeInsets.only(bottom: 100),
                   itemCount: 30,
                   itemBuilder: (context, index) {
+                    JuzInfoModel juzInfoModel =
+                        JuzInfoModel.fromMap(allJuzInfo[index]);
                     return Container(
-                      height: 60,
+                      height: 55,
                       width: double.infinity,
                       padding: EdgeInsets.all(5),
-                      margin: EdgeInsets.all(5),
+                      margin: EdgeInsets.only(left: 10, right: 10, top: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         color: Colors.grey.withValues(alpha: 0.2),
                       ),
-                      child: Text(
-                        index.toString(),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            child: Text("${juzInfoModel.juzNumber}"),
+                          ),
+                          Gap(10),
+                          Text(
+                            getJuzName(juzInfoModel),
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Spacer(),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "${surahCountInJuz(juzInfoModel)} surahs",
+                              ),
+                              Text(
+                                "${getAyahCountJuz(juzInfoModel)} ayahs",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey.shade600,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
                       ),
                     );
                   },
@@ -172,4 +205,28 @@ class _QuranTabState extends State<QuranTab> {
       ],
     );
   }
+}
+
+String getJuzName(JuzInfoModel juzInfoModel) {
+  int firstSurahNumber = int.parse(juzInfoModel.verseMapping.keys.first) - 1;
+  int lastSurahNumber = int.parse(juzInfoModel.verseMapping.keys.last) - 1;
+
+  QuranSurahInfoModel firstSurahInfo =
+      QuranSurahInfoModel.fromMap(allChaptersInfo[firstSurahNumber]);
+  QuranSurahInfoModel lastSurahInfo =
+      QuranSurahInfoModel.fromMap(allChaptersInfo[lastSurahNumber]);
+
+  if (firstSurahNumber == lastSurahNumber) {
+    return firstSurahInfo.nameSimple;
+  } else {
+    return "${firstSurahInfo.nameSimple} to ${lastSurahInfo.nameSimple}";
+  }
+}
+
+int surahCountInJuz(JuzInfoModel juzInfoModel) {
+  return juzInfoModel.verseMapping.length;
+}
+
+int getAyahCountJuz(JuzInfoModel juzInfoModel) {
+  return juzInfoModel.lastVerseId - juzInfoModel.firstVerseId;
 }
