@@ -173,9 +173,9 @@ class _QuranTabState extends State<QuranTab> {
                             child: Text("${juzInfoModel.juzNumber}"),
                           ),
                           Gap(10),
-                          Text(
-                            getJuzName(juzInfoModel),
-                            style: TextStyle(
+                          getJuzName(
+                            juzInfoModel,
+                            TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
@@ -207,7 +207,7 @@ class _QuranTabState extends State<QuranTab> {
   }
 }
 
-String getJuzName(JuzInfoModel juzInfoModel) {
+Widget getJuzName(JuzInfoModel juzInfoModel, TextStyle textStyle) {
   int firstSurahNumber = int.parse(juzInfoModel.verseMapping.keys.first) - 1;
   int lastSurahNumber = int.parse(juzInfoModel.verseMapping.keys.last) - 1;
 
@@ -217,9 +217,21 @@ String getJuzName(JuzInfoModel juzInfoModel) {
       QuranSurahInfoModel.fromMap(allChaptersInfo[lastSurahNumber]);
 
   if (firstSurahNumber == lastSurahNumber) {
-    return firstSurahInfo.nameSimple;
+    return Text(
+      firstSurahInfo.nameSimple,
+      style: textStyle,
+    );
   } else {
-    return "${firstSurahInfo.nameSimple} to ${lastSurahInfo.nameSimple}";
+    return Row(children: [
+      Text(firstSurahInfo.nameSimple, style: textStyle),
+      Gap(2),
+      Text(" - "),
+      Gap(2),
+      Text(
+        lastSurahInfo.nameSimple,
+        style: textStyle,
+      )
+    ]);
   }
 }
 
