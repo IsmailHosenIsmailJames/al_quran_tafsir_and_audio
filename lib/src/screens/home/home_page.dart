@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
         controller: pageController,
         children: [
           QuranTab(),
-          AudioTab(),
+          AudioTab(tabController: pageController),
           PlayListTab(),
           ProfileTab(),
         ],
@@ -67,8 +67,12 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-            border: Border(
-                top: BorderSide(color: Colors.grey.withValues(alpha: 0.3)))),
+          border: Border(
+            top: BorderSide(
+              color: Colors.grey.withValues(alpha: 0.3),
+            ),
+          ),
+        ),
         child: GNav(
           selectedIndex: selectedBottomNavIndex,
           rippleColor: Colors.grey.withValues(alpha: 0.2),

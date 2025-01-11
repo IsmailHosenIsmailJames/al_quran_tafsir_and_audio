@@ -1,4 +1,3 @@
-import 'package:al_quran_tafsir_and_audio/src/auth/account_info/account_info.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,13 +12,9 @@ class AppThemeData extends GetxController {
 
   void initTheme() async {
     final accountBox = Hive.box("user_db");
-    final accountController = Get.put(AccountInfo());
-    accountController.email.value = accountBox.get("email") ?? "";
 
     isLoggedIn =
         accountBox.get("email") != "" && accountBox.get("email") != null;
-    accountController.name.value = accountBox.get("name") ?? "";
-    accountController.uid.value = accountBox.get("uid") ?? "";
     final infoBox = Hive.box("user_db");
     final fonSize = Get.put(UniversalController());
 
