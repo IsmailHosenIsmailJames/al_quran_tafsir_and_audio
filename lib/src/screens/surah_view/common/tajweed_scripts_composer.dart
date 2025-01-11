@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -44,7 +42,6 @@ List<InlineSpan> getTajweedTexSpan(String ayah,
 }
 
 String startAyahBismillah(String scriptType) {
-  log("Bissmiallh Script: $scriptType");
   final scriptBox = Hive.box("quran_db");
   return scriptBox.get("$scriptType/1", defaultValue: "");
 }

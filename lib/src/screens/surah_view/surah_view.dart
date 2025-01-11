@@ -6,6 +6,7 @@ import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_scripts_composer.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/info_view/info_view.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/models/surah_view_info_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/tafsir_view/tafsir_view.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/language_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,7 @@ class _SurahViewState extends State<SurahView> {
         itemCount: totalAyah,
         itemBuilder: (context, index) {
           int currentAyahIndex = initialAyahID + index;
+
           if (index == 0) {
             return Column(
               children: [
@@ -275,8 +277,65 @@ class _SurahViewState extends State<SurahView> {
                           Colors.grey.shade600.withValues(alpha: 0.3),
                       iconSize: 18,
                     ),
+                    onSelected: (value) {
+                      if (value == "tafsir") {
+                        Get.to(
+                          () => TafsirView(
+                            ayahNumber: currentAyahIndex,
+                            tafsirBookID: infoController.tafsirBookID.value,
+                            fontSize:
+                                universalController.fontSizeTranslation.value,
+                          ),
+                        );
+                      }
+                    },
                     itemBuilder: (context) {
-                      return [];
+                      return [
+                        PopupMenuItem(
+                          value: "tafsir",
+                          child: ListTile(
+                            minTileHeight: 50,
+                            leading: Icon(FluentIcons.book_24_filled),
+                            title: Text(
+                              "Tafsir",
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: "bookmark",
+                          child: ListTile(
+                            minTileHeight: 50,
+                            leading: Icon(Icons.bookmark_rounded),
+                            title: Text(
+                              "Bookmark",
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: "favorite",
+                          child: ListTile(
+                            minTileHeight: 50,
+                            leading: Icon(
+                              Icons.favorite_rounded,
+                            ),
+                            title: Text(
+                              "Favorite",
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: "add_to_group",
+                          child: ListTile(
+                            minTileHeight: 50,
+                            leading: Icon(
+                              Icons.add_rounded,
+                            ),
+                            title: Text(
+                              "Add to group",
+                            ),
+                          ),
+                        ),
+                      ];
                     },
                   ),
                 ),
