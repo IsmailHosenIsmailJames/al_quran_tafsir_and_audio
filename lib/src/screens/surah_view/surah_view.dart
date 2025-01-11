@@ -16,13 +16,15 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 class SurahView extends StatefulWidget {
   final int? jumpToAyah;
+  final int? ayahStartFrom;
   final String titleToShow;
-  final List<SurahViewInfoModel> surahInfo;
+  final SurahViewInfoModel surahInfo;
   const SurahView({
     super.key,
     required this.surahInfo,
     this.jumpToAyah,
     required this.titleToShow,
+    required this.ayahStartFrom,
   });
 
   @override
@@ -34,8 +36,8 @@ class _SurahViewState extends State<SurahView> {
   UniversalController universalController = Get.find();
   LanguageController languageController = Get.find();
   String translationBookName = "";
-  int totalAyah = 0;
-  late int initialAyahID = widget.surahInfo[0].start;
+  late int totalAyah = widget.surahInfo.ayahCount;
+  late int initialAyahID = widget.surahInfo.start;
 
   int tabIndex = 0;
 
@@ -44,9 +46,6 @@ class _SurahViewState extends State<SurahView> {
 
   @override
   void initState() {
-    for (var surah in widget.surahInfo) {
-      totalAyah += surah.ayahCount;
-    }
     for (Map translation in allTranslationLanguage) {
       if ("${translation['id']}" == infoController.bookIDTranslation.value) {
         translationBookName =
@@ -192,11 +191,10 @@ class _SurahViewState extends State<SurahView> {
                 "${universalController.quranScriptTypeGetx.value}/$i",
                 defaultValue: "");
           }
-          if (widget.surahInfo[0].isStartWithBismillah) {
+          if (widget.surahInfo.isStartWithBismillah) {
             return Column(
               children: [
-                if (widget.surahInfo[0].isStartWithBismillah == true &&
-                    index == 0)
+                if (widget.surahInfo.isStartWithBismillah == true && index == 0)
                   Padding(
                     padding: EdgeInsets.all(10),
                     child: Obx(
@@ -278,7 +276,7 @@ class _SurahViewState extends State<SurahView> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage(
-                              widget.surahInfo[0].revelationPlace
+                              widget.surahInfo.revelationPlace
                                           .capitalizeFirst ==
                                       "makkah"
                                   ? "assets/img/makkah.jpg"
@@ -303,7 +301,7 @@ class _SurahViewState extends State<SurahView> {
                             ),
                           ),
                           Text(
-                            "${widget.surahInfo[0].surahNameSimple.capitalizeFirst} ( ${widget.surahInfo[0].surahNameArabic} )",
+                            "${widget.surahInfo.surahNameSimple.capitalizeFirst} ( ${widget.surahInfo.surahNameArabic} )",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -318,7 +316,7 @@ class _SurahViewState extends State<SurahView> {
                             ),
                           ),
                           Text(
-                            "${widget.surahInfo[0].revelationPlace.capitalizeFirst} (${widget.surahInfo[0].revelationPlace == "makkah" ? "مكي" : "مدني"} )",
+                            "${widget.surahInfo.revelationPlace.capitalizeFirst} (${widget.surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -341,14 +339,14 @@ class _SurahViewState extends State<SurahView> {
                               ),
                               onPressed: () {
                                 String url =
-                                    "https://api.quran.com/api/v4/chapters/${widget.surahInfo[0].surahNumber}/info";
+                                    "https://api.quran.com/api/v4/chapters/${widget.surahInfo.surahNumber}/info";
                                 String languageName =
                                     languageController.selectedLanguage.value;
                                 log(languageName);
                                 Get.to(
                                   () => InfoViewOfSurah(
                                     surahName:
-                                        "${widget.surahInfo[0].surahNameSimple} ( ${widget.surahInfo[0].surahNameArabic} )",
+                                        "${widget.surahInfo.surahNameSimple} ( ${widget.surahInfo.surahNameArabic} )",
                                     infoURL: url,
                                     languageName: languageName,
                                   ),
@@ -379,7 +377,7 @@ class _SurahViewState extends State<SurahView> {
                     ],
                   ),
                 ),
-                if (widget.surahInfo[0].isStartWithBismillah == true)
+                if (widget.surahInfo.isStartWithBismillah == true)
                   Padding(
                     padding: EdgeInsets.all(10),
                     child: Obx(
@@ -432,7 +430,8 @@ class _SurahViewState extends State<SurahView> {
                       color: Colors.green.shade700.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(5)),
                   child: Text(
-                    (index + 1).toString(),
+                    (((widget.ayahStartFrom ?? 1) - 1) + (index + 1))
+                        .toString(),
                   ),
                 ),
                 Spacer(),

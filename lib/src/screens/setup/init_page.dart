@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/recitation_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/collect_info_mobile.dart';
@@ -23,9 +21,7 @@ class _InitPageState extends State<InitPage> {
 
     final userBox = Hive.box("user_db");
     final selection = userBox.get("selection_info", defaultValue: null);
-    log(selection.toString());
     if (selection == null) {
-      log("message///");
       return const CollectInfoPage(pageNumber: 0);
     }
 
@@ -36,14 +32,9 @@ class _InitPageState extends State<InitPage> {
     infoController.tafsirBookID.value = selection["tafsir_book_ID"];
     infoController.selectedReciter.value =
         RecitationInfoModel.fromJson(selection["selected_reciter"]);
-
-    print(
-        "(${Hive.box('quran_db').keys.isNotEmpty} &&${Hive.box('translation_db').keys.isNotEmpty} &&${Hive.box('tafsir_db').keys.isNotEmpty})");
-
     if (!(Hive.box('quran_db').keys.isNotEmpty &&
         Hive.box('translation_db').keys.isNotEmpty &&
         Hive.box('tafsir_db').keys.isNotEmpty)) {
-      log("'message'");
       return DownloadData(
         selection: Map<String, dynamic>.from(selection),
       );

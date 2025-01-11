@@ -17,6 +17,7 @@ class QuranTab extends StatefulWidget {
 
 class _QuranTabState extends State<QuranTab> {
   int tabIndex = 0;
+  List<bool> isExpanded = List.generate(30, (index) => false);
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -118,22 +119,19 @@ class _QuranTabState extends State<QuranTab> {
                           }
                           Get.to(
                             () => SurahView(
-                              surahInfo: [
-                                SurahViewInfoModel(
-                                  surahNumber: quranSurahInfoModel.id,
-                                  start: start,
-                                  end: quranSurahInfoModel.versesCount,
-                                  ayahCount: quranSurahInfoModel.versesCount,
-                                  surahNameArabic:
-                                      quranSurahInfoModel.nameArabic,
-                                  surahNameSimple:
-                                      quranSurahInfoModel.nameSimple,
-                                  revelationPlace:
-                                      quranSurahInfoModel.revelationPlace,
-                                  isStartWithBismillah:
-                                      quranSurahInfoModel.bismillahPre,
-                                )
-                              ],
+                              ayahStartFrom: 1,
+                              surahInfo: SurahViewInfoModel(
+                                surahNumber: quranSurahInfoModel.id,
+                                start: start,
+                                end: quranSurahInfoModel.versesCount,
+                                ayahCount: quranSurahInfoModel.versesCount,
+                                surahNameArabic: quranSurahInfoModel.nameArabic,
+                                surahNameSimple: quranSurahInfoModel.nameSimple,
+                                revelationPlace:
+                                    quranSurahInfoModel.revelationPlace,
+                                isStartWithBismillah:
+                                    quranSurahInfoModel.bismillahPre,
+                              ),
                               titleToShow: quranSurahInfoModel.nameSimple,
                             ),
                           );
@@ -197,60 +195,203 @@ class _QuranTabState extends State<QuranTab> {
                   itemBuilder: (context, index) {
                     JuzInfoModel juzInfoModel =
                         JuzInfoModel.fromMap(allJuzInfo[index]);
-                    return Container(
-                      height: 55,
-                      width: double.infinity,
-                      margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: Colors.grey.withValues(alpha: 0.2),
-                      ),
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.all(5),
-                          shape: RoundedRectangleBorder(
+                    return Column(
+                      children: [
+                        Container(
+                          height: 55,
+                          width: double.infinity,
+                          margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(7),
+                            color: Colors.grey.withValues(alpha: 0.2),
                           ),
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              child: Text(
-                                "${juzInfoModel.juzNumber}",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.all(5),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(7),
                               ),
                             ),
-                            Gap(10),
-                            getJuzName(
-                              juzInfoModel,
-                              TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Spacer(),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            onPressed: () {
+                              setState(() {
+                                isExpanded[index] = !isExpanded[index];
+                              });
+                            },
+                            child: Row(
                               children: [
-                                Text(
-                                  "${surahCountInJuz(juzInfoModel)} surahs",
-                                ),
-                                Text(
-                                  "${getAyahCountJuz(juzInfoModel)} ayahs",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey.shade600,
+                                CircleAvatar(
+                                  child: Text(
+                                    "${juzInfoModel.juzNumber}",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                )
+                                ),
+                                Gap(10),
+                                getJuzName(
+                                  juzInfoModel,
+                                  TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Spacer(),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "${surahCountInJuz(juzInfoModel)} surahs",
+                                    ),
+                                    Text(
+                                      "${getAyahCountJuz(juzInfoModel)} ayahs",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey.shade600,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                        AnimatedContainer(
+                          height: isExpanded[index] == true
+                              ? (60 * juzInfoModel.verseMapping.length)
+                                      .toDouble() +
+                                  20
+                              : 0,
+                          duration: Duration(milliseconds: 300),
+                          margin: EdgeInsets.only(left: 18, right: 18),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(7),
+                              bottomRight: Radius.circular(7),
+                            ),
+                            color: Colors.grey.withValues(alpha: 0.1),
+                          ),
+                          child: Column(
+                            children: List.generate(
+                              juzInfoModel.verseMapping.length,
+                              (index) {
+                                final key = juzInfoModel.verseMapping.keys
+                                    .toList()[index];
+                                String value = juzInfoModel.verseMapping[key]!;
+                                int start = int.parse(value.split("-")[0]);
+                                int end = int.parse(value.split("-")[1]);
+                                int surahNumber = int.parse(key) - 1;
+
+                                QuranSurahInfoModel quranSurahInfoModel =
+                                    QuranSurahInfoModel.fromMap(
+                                  allChaptersInfo[surahNumber],
+                                );
+
+                                return Container(
+                                  height: 55,
+                                  margin: EdgeInsets.all(2.5),
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7),
+                                    color: Colors.green.withValues(
+                                      alpha: 0.2,
+                                    ),
+                                  ),
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(
+                                      padding: EdgeInsets.all(5),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(7),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      int startAyahNumber = 0;
+                                      for (int x = 0; x < surahNumber; x++) {
+                                        startAyahNumber += ayahCount[x];
+                                      }
+                                      Get.to(
+                                        () => SurahView(
+                                          ayahStartFrom: start,
+                                          surahInfo: SurahViewInfoModel(
+                                              surahNumber:
+                                                  quranSurahInfoModel.id,
+                                              start:
+                                                  startAyahNumber + start - 1,
+                                              end: startAyahNumber + end - 1,
+                                              ayahCount: (end - start) + 1,
+                                              surahNameArabic:
+                                                  quranSurahInfoModel
+                                                      .nameArabic,
+                                              surahNameSimple:
+                                                  quranSurahInfoModel
+                                                      .nameSimple,
+                                              revelationPlace:
+                                                  quranSurahInfoModel
+                                                      .revelationPlace,
+                                              isStartWithBismillah:
+                                                  quranSurahInfoModel
+                                                      .bismillahPre),
+                                          titleToShow:
+                                              quranSurahInfoModel.nameSimple,
+                                        ),
+                                      );
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              quranSurahInfoModel.nameSimple,
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Gap(5),
+                                            if (ayahCount[int.parse(key) - 1] !=
+                                                ((end - start) + 1))
+                                              Text("( $value )")
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              quranSurahInfoModel.nameArabic,
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              "${(end - start) + 1} ayahs",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey.shade600,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
                     );
                   },
                 ),
