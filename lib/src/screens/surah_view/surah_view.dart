@@ -180,7 +180,9 @@ class _SurahViewState extends State<SurahView> {
       interactive: true,
       child: ListView.builder(
         controller: tab2ScrollController,
-        padding: EdgeInsets.only(bottom: 100, left: 5, right: 5, top: 5),
+        padding: EdgeInsets.only(
+          bottom: 100,
+        ),
         itemCount: (totalAyah / 10).ceil(),
         itemBuilder: (context, index) {
           int start = initialAyahID + (index * 10);
@@ -191,28 +193,32 @@ class _SurahViewState extends State<SurahView> {
                 "${universalController.quranScriptTypeGetx.value}/$i",
                 defaultValue: "");
           }
-          if (widget.surahInfo.isStartWithBismillah) {
-            return Column(
-              children: [
-                if (widget.surahInfo.isStartWithBismillah == true && index == 0)
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Obx(
-                      () => Text.rich(
-                        TextSpan(
-                          children: getTajweedTexSpan(
-                            startAyahBismillah(
-                              universalController.quranScriptTypeGetx.value,
-                            ),
+
+          return Column(
+            children: [
+              if (index == 0) getInfoHeaderWidget(),
+              if (widget.surahInfo.isStartWithBismillah != true) Gap(10),
+              if (widget.surahInfo.isStartWithBismillah == true && index == 0)
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Obx(
+                    () => Text.rich(
+                      TextSpan(
+                        children: getTajweedTexSpan(
+                          startAyahBismillah(
+                            universalController.quranScriptTypeGetx.value,
                           ),
                         ),
-                        style: TextStyle(
-                          fontSize: universalController.fontSizeArabic.value,
-                        ),
+                      ),
+                      style: TextStyle(
+                        fontSize: universalController.fontSizeArabic.value,
                       ),
                     ),
                   ),
-                Text.rich(
+                ),
+              Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: Text.rich(
                   TextSpan(
                     children: getTajweedTexSpan(
                       ayah10,
@@ -223,23 +229,10 @@ class _SurahViewState extends State<SurahView> {
                   ),
                   textAlign: TextAlign.justify,
                   textDirection: TextDirection.rtl,
-                )
-              ],
-            );
-          } else {
-            return Text.rich(
-              TextSpan(
-                children: getTajweedTexSpan(
-                  ayah10,
                 ),
-              ),
-              style: TextStyle(
-                fontSize: universalController.fontSizeArabic.value,
-              ),
-              textAlign: TextAlign.justify,
-              textDirection: TextDirection.rtl,
-            );
-          }
+              )
+            ],
+          );
         },
       ),
     );
@@ -259,124 +252,7 @@ class _SurahViewState extends State<SurahView> {
           if (index == 0) {
             return Column(
               children: [
-                Container(
-                  margin: EdgeInsets.all(5),
-                  padding: EdgeInsets.all(5),
-                  height: 110,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: Colors.green.shade700.withValues(alpha: 0.1),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                              widget.surahInfo.revelationPlace
-                                          .capitalizeFirst ==
-                                      "makkah"
-                                  ? "assets/img/makkah.jpg"
-                                  : "assets/img/madina.jpeg",
-                            ),
-                            fit: BoxFit.fill,
-                          ),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      Gap(10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Surah Name",
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey.shade500,
-                            ),
-                          ),
-                          Text(
-                            "${widget.surahInfo.surahNameSimple.capitalizeFirst} ( ${widget.surahInfo.surahNameArabic} )",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "Revelation Place",
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey.shade500,
-                            ),
-                          ),
-                          Text(
-                            "${widget.surahInfo.revelationPlace.capitalizeFirst} (${widget.surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SizedBox(
-                            width: 35,
-                            height: 35,
-                            child: IconButton(
-                              style: IconButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                                backgroundColor: Colors.green.shade700,
-                                foregroundColor: Colors.white,
-                              ),
-                              onPressed: () {
-                                String url =
-                                    "https://api.quran.com/api/v4/chapters/${widget.surahInfo.surahNumber}/info";
-                                String languageName =
-                                    languageController.selectedLanguage.value;
-                                log(languageName);
-                                Get.to(
-                                  () => InfoViewOfSurah(
-                                    surahName:
-                                        "${widget.surahInfo.surahNameSimple} ( ${widget.surahInfo.surahNameArabic} )",
-                                    infoURL: url,
-                                    languageName: languageName,
-                                  ),
-                                );
-                              },
-                              icon: Icon(
-                                FluentIcons.info_24_filled,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 35,
-                            width: 35,
-                            child: IconButton(
-                              style: IconButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                                backgroundColor: Colors.green.shade700,
-                                foregroundColor: Colors.white,
-                              ),
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.play_arrow_rounded,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                getInfoHeaderWidget(),
                 if (widget.surahInfo.isStartWithBismillah == true)
                   Padding(
                     padding: EdgeInsets.all(10),
@@ -402,6 +278,125 @@ class _SurahViewState extends State<SurahView> {
             return buildAyah(index, currentAyahIndex);
           }
         },
+      ),
+    );
+  }
+
+  Container getInfoHeaderWidget() {
+    return Container(
+      margin: EdgeInsets.all(5),
+      padding: EdgeInsets.all(5),
+      height: 110,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(7),
+        color: Colors.green.shade700.withValues(alpha: 0.1),
+      ),
+      child: Row(
+        children: [
+          Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  widget.surahInfo.revelationPlace.capitalizeFirst == "makkah"
+                      ? "assets/img/makkah.jpg"
+                      : "assets/img/madina.jpeg",
+                ),
+                fit: BoxFit.fill,
+              ),
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+          Gap(10),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Surah Name",
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey.shade500,
+                ),
+              ),
+              Text(
+                "${widget.surahInfo.surahNameSimple.capitalizeFirst} ( ${widget.surahInfo.surahNameArabic} )",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                "Revelation Place",
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey.shade500,
+                ),
+              ),
+              Text(
+                "${widget.surahInfo.revelationPlace.capitalizeFirst} (${widget.surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          Spacer(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                width: 35,
+                height: 35,
+                child: IconButton(
+                  style: IconButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    backgroundColor: Colors.green.shade700,
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {
+                    String url =
+                        "https://api.quran.com/api/v4/chapters/${widget.surahInfo.surahNumber}/info";
+                    String languageName =
+                        languageController.selectedLanguage.value;
+                    log(languageName);
+                    Get.to(
+                      () => InfoViewOfSurah(
+                        surahName:
+                            "${widget.surahInfo.surahNameSimple} ( ${widget.surahInfo.surahNameArabic} )",
+                        infoURL: url,
+                        languageName: languageName,
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    FluentIcons.info_24_filled,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 35,
+                width: 35,
+                child: IconButton(
+                  style: IconButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    backgroundColor: Colors.green.shade700,
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.play_arrow_rounded,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
