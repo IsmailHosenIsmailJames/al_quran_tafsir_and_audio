@@ -37,7 +37,7 @@ class _DownloadDataState extends State<DownloadData> {
     infoController.tafsirLanguage.value = widget.selection["tafsir_language"];
     infoController.tafsirBookID.value = widget.selection["tafsir_book_ID"];
     infoController.selectedReciter.value =
-        RecitationInfoModel.fromJson(widget.selection["selected_reciter"]);
+        ReciterInfoModel.fromJson(widget.selection["selected_reciter"]);
     downloadData();
     super.initState();
   }

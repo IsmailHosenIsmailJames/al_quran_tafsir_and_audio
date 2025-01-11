@@ -1,48 +1,38 @@
 import 'dart:convert';
 
-class RecitationInfoModel {
-  String? link;
-  String? name;
-  String? bitrate;
-  String? style;
+class ReciterInfoModel {
+  String link;
+  String name;
 
-  RecitationInfoModel({
-    this.link,
-    this.name,
-    this.bitrate,
-    this.style,
+  ReciterInfoModel({
+    required this.link,
+    required this.name,
   });
 
-  RecitationInfoModel copyWith({
+  ReciterInfoModel copyWith({
     String? link,
     String? name,
     String? bitrate,
     String? style,
   }) =>
-      RecitationInfoModel(
+      ReciterInfoModel(
         link: link ?? this.link,
         name: name ?? this.name,
-        bitrate: bitrate ?? this.bitrate,
-        style: style ?? this.style,
       );
 
-  factory RecitationInfoModel.fromJson(String str) =>
-      RecitationInfoModel.fromMap(json.decode(str));
+  factory ReciterInfoModel.fromJson(String str) =>
+      ReciterInfoModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory RecitationInfoModel.fromMap(Map<String, dynamic> json) =>
-      RecitationInfoModel(
+  factory ReciterInfoModel.fromMap(Map<String, dynamic> json) =>
+      ReciterInfoModel(
         link: json["link"],
         name: json["name"],
-        bitrate: json["bitrate"],
-        style: json["style"],
       );
 
   Map<String, dynamic> toMap() => {
         "link": link,
         "name": name,
-        "bitrate": bitrate,
-        "style": style,
       };
 }

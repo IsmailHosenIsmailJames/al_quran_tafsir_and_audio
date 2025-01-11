@@ -57,7 +57,7 @@ class ManageQuranAudio {
   static Future<void> playSingleAyah({
     required int ayahNumber,
     required int surahNumber,
-    RecitationInfoModel? reciter,
+    ReciterInfoModel? reciter,
     MediaItem? mediaItem,
   }) async {
     if (audioControllerGetx.isStreamRegistered.value == false) {
@@ -81,7 +81,7 @@ class ManageQuranAudio {
 
   static Future<void> playMultipleAyahOfSurah({
     required int surahNumber,
-    RecitationInfoModel? reciter,
+    ReciterInfoModel? reciter,
     MediaItem? mediaItem,
   }) async {
     if (audioControllerGetx.isStreamRegistered.value == false) {
@@ -124,7 +124,7 @@ class ManageQuranAudio {
   /// and the ayah number is 1, the generated URL will be:
   ///
   /// https://everyayah.com/data/Abdul_Basit_Murattal_64kbps/001.mp3
-  static String makeAudioUrl(RecitationInfoModel reciter, String ayahID) {
+  static String makeAudioUrl(ReciterInfoModel reciter, String ayahID) {
     return "${reciter.link}/$ayahID.mp3";
   }
 
@@ -133,11 +133,11 @@ class ManageQuranAudio {
   /// The currently selected reciter is stored as a JSON string in the
   /// 'reciter' key of the 'info' box in hive. When this function is called,
   /// it reads the JSON string from that key and parses it into a
-  /// [RecitationInfoModel] using the [RecitationInfoModel.fromJson] method.
-  /// The resulting [RecitationInfoModel] is then returned.
-  static RecitationInfoModel findRecitationModel() {
+  /// [ReciterInfoModel] using the [ReciterInfoModel.fromJson] method.
+  /// The resulting [ReciterInfoModel] is then returned.
+  static ReciterInfoModel findRecitationModel() {
     final jsonReciter = Hive.box('user_db').get('reciter');
-    return RecitationInfoModel.fromJson(jsonReciter);
+    return ReciterInfoModel.fromJson(jsonReciter);
   }
 
   /// Returns a [MediaItem] with the given [ayahID] and [reciter].
@@ -150,7 +150,7 @@ class ManageQuranAudio {
   /// - [artUri] set to the given [artUri] if not null, or null if null.
   static MediaItem findMediaItem(
       {required String ayahID,
-      required RecitationInfoModel reciter,
+      required ReciterInfoModel reciter,
       Uri? artUri}) {
     return MediaItem(
       id: ayahID,

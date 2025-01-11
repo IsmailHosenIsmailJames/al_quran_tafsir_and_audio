@@ -31,7 +31,7 @@ class _InitPageState extends State<InitPage> {
     infoController.tafsirLanguage.value = selection["tafsir_language"];
     infoController.tafsirBookID.value = selection["tafsir_book_ID"];
     infoController.selectedReciter.value =
-        RecitationInfoModel.fromJson(selection["selected_reciter"]);
+        ReciterInfoModel.fromJson(selection["selected_reciter"]);
     if (!(Hive.box('quran_db').keys.isNotEmpty &&
         Hive.box('translation_db').keys.isNotEmpty &&
         Hive.box('tafsir_db').keys.isNotEmpty)) {

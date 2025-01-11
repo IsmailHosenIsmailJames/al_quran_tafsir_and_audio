@@ -12,11 +12,11 @@ Map<String, String> mapOfAyahSymbol = {
   "8": '\u0668',
   "9": '\u0669',
 };
-String getEndSyambolOfAyah(String ayahNumber) {
-  String endSyambolOfAyah = "\u06DD";
+String endSymbolOfAyah(String ayahNumber) {
+  String endSymbolOfAyah = "\u06DD";
   List<String> tem = ayahNumber.characters.toList();
   for (String c in tem) {
-    endSyambolOfAyah += mapOfAyahSymbol[c] ?? "";
+    endSymbolOfAyah += mapOfAyahSymbol[c] ?? "";
   }
-  return endSyambolOfAyah;
+  return endSymbolOfAyah;
 }

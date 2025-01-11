@@ -24,7 +24,7 @@ class RecitationChoice extends StatefulWidget {
 
 class _RecitationChoiceState extends State<RecitationChoice> {
   final infoController = Get.put(InfoController());
-  late List<RecitationInfoModel> allRecitationSearch = [];
+  late List<ReciterInfoModel> allRecitationSearch = [];
 
   @override
   void initState() {
@@ -36,12 +36,12 @@ class _RecitationChoiceState extends State<RecitationChoice> {
     allRecitationSearch = [];
     if (selectedTabForAudioSource == 0) {
       for (var element in recitationsInfoListEveryAyahCom) {
-        allRecitationSearch.add(RecitationInfoModel.fromMap(element));
+        allRecitationSearch.add(ReciterInfoModel.fromMap(element));
       }
     }
     if (selectedTabForAudioSource == 1) {
       for (var element in recitationsListOfQuranCom) {
-        allRecitationSearch.add(RecitationInfoModel.fromMap(element));
+        allRecitationSearch.add(ReciterInfoModel.fromMap(element));
       }
     }
     setState(() {});
@@ -52,12 +52,12 @@ class _RecitationChoiceState extends State<RecitationChoice> {
   }
 
   void searchOnList(String text) {
-    List<RecitationInfoModel> matched = [];
+    List<ReciterInfoModel> matched = [];
     for (var element in recitationsInfoListEveryAyahCom) {
-      final tem = RecitationInfoModel.fromMap(element);
-      if (tem.name?.toLowerCase().contains(text) == true ||
-          tem.link?.toLowerCase().contains(text) == true) {
-        matched.add(RecitationInfoModel.fromMap(element));
+      final tem = ReciterInfoModel.fromMap(element);
+      if (tem.name.toLowerCase().contains(text) == true ||
+          tem.link.toLowerCase().contains(text) == true) {
+        matched.add(ReciterInfoModel.fromMap(element));
       }
     }
     log(text);
@@ -197,7 +197,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Text(
-                        "${allRecitationSearch[index].name ?? ""}${allRecitationSearch[index].style == null ? "" : " (${allRecitationSearch[index].style})"}${allRecitationSearch[index].bitrate == null ? "" : " - (${allRecitationSearch[index].bitrate}allRecitationSearch[index].bitrate)"}",
+                        allRecitationSearch[index].name,
                         style: const TextStyle(fontSize: 14),
                       ),
                     ),

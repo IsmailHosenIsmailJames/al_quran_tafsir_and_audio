@@ -9,5 +9,7 @@ class AudioController extends GetxController {
   RxInt duration = 0.obs;
   RxDouble speed = 1.0.obs;
   RxBool isStreamRegistered = false.obs;
-  Rx<RecitationInfoModel> currentRecitation = Rx(RecitationInfoModel());
+  Rx<ReciterInfoModel> currentRecitation = Rx(ReciterInfoModel(
+      link: "https://verses.quran.foundation/AbdulBaset/Murattal/mp3",
+      name: "AbdulBaset AbdulSamad"));
 }
