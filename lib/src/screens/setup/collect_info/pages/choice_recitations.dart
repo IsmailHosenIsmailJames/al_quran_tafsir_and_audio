@@ -36,11 +36,13 @@ class _RecitationChoiceState extends State<RecitationChoice> {
     allRecitationSearch = [];
     if (selectedTabForAudioSource == 0) {
       for (var element in recitationsInfoListEveryAyahCom) {
+        log(element.toString());
         allRecitationSearch.add(ReciterInfoModel.fromMap(element));
       }
     }
     if (selectedTabForAudioSource == 1) {
       for (var element in recitationsListOfQuranCom) {
+        log(element.toString());
         allRecitationSearch.add(ReciterInfoModel.fromMap(element));
       }
     }
@@ -232,16 +234,16 @@ class _RecitationChoiceState extends State<RecitationChoice> {
         builder: (controller) => IconButton(
           iconSize: 18,
           onPressed: () async {
-            controller.currentRecitation.value = allRecitationSearch[index];
+            controller.currentReciterModel.value = allRecitationSearch[index];
             await Hive.box('user_db')
                 .put('reciter', allRecitationSearch[index].toJson());
-            ManageQuranAudio.playMultipleAyahOfSurah(
+            ManageQuranAudio.playMultipleSurahAsPlayList(
               surahNumber: 1,
             );
           },
           icon: Icon(
             (controller.isPlaying.value &&
-                    controller.currentRecitation.value.link ==
+                    controller.currentReciterModel.value.link ==
                         allRecitationSearch[index].link)
                 ? Icons.pause
                 : Icons.play_arrow,

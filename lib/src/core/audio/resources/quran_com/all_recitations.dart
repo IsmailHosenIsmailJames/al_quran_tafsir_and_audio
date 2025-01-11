@@ -29,12 +29,15 @@ List<Map<String, dynamic>> recitationsListOfQuranCom = [
   },
   {
     "link": "https://verses.quran.foundation/Alafasy/mp3",
+    "name": "Mishari Rashid al-`Afasy",
   },
   {
-    "link": "https://verses.quran.foundation//Murattal/mp3",
+    "link": "https://verses.quran.foundation/Murattal/mp3",
+    "name": "Muhammad al-Murattal",
   },
   {
     "link": "https://verses.quran.foundation/Minshawi/Mujawwad/mp3",
+    "name": "Mohamed Siddiq al-Minshawi",
   },
   {
     "link": "https://verses.quran.foundation/Shuraym/mp3",

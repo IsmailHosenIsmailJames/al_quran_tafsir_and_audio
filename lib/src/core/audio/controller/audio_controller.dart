@@ -1,15 +1,36 @@
-import 'package:get/get.dart';
+import 'dart:convert';
 
+import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../resources/quran_com/all_recitations.dart';
 import '../resources/recitation_info_model.dart';
 
 class AudioController extends GetxController {
-  RxInt currentIndex = (-1).obs;
+  static final box = Hive.box("user_db");
+  RxInt currentReciterIndex = (0).obs;
+  RxInt currentPlayListIndex = (0).obs;
+  RxInt setupSelectedReciterIndex = (0).obs;
+  RxBool isFullScreenMode = false.obs;
+
+  RxInt currentPlayingSurah = (0).obs;
+  Rx<ReciterInfoModel> currentReciterModel = ReciterInfoModel.fromJson(
+    box.get(
+      "default_reciter",
+      defaultValue: jsonEncode(recitationsListOfQuranCom[0]),
+    ),
+  ).obs;
+  RxDouble fontSizeArabic =
+      (box.get("fontSizeArabic", defaultValue: 16.0) as double).obs;
   RxBool isPlaying = false.obs;
-  RxInt progress = 0.obs;
-  RxInt duration = 0.obs;
+  Rx<Duration> progress = const Duration().obs;
+  Rx<Duration> totalDuration = const Duration().obs;
+  Rx<Duration> bufferPosition = const Duration().obs;
+  Rx<Duration> totalPosition = const Duration().obs;
   RxDouble speed = 1.0.obs;
   RxBool isStreamRegistered = false.obs;
-  Rx<ReciterInfoModel> currentRecitation = Rx(ReciterInfoModel(
-      link: "https://verses.quran.foundation/AbdulBaset/Murattal/mp3",
-      name: "AbdulBaset AbdulSamad"));
+  RxBool isLoading = false.obs;
+  RxBool isSurahAyahMode = false.obs;
+  RxBool isReadyToControl = false.obs;
+  RxBool isPlayingCompleted = false.obs;
 }
