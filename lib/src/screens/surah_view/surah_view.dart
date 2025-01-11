@@ -470,6 +470,7 @@ class _SurahViewState extends State<SurahView> {
                             tafsirBookID: infoController.tafsirBookID.value,
                             fontSize:
                                 universalController.fontSizeTranslation.value,
+                            surahName: widget.surahInfo.surahNameSimple,
                           ),
                         );
                       }

@@ -33,6 +33,7 @@ class TafsirView extends StatelessWidget {
                 controller: scrollController,
                 interactive: true,
                 child: SingleChildScrollView(
+                  padding: EdgeInsets.all(8),
                   controller: scrollController,
                   child: HtmlWidget(
                     snapshot.data!,
