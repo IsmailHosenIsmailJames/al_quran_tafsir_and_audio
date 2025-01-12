@@ -224,14 +224,21 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
           Gap(5),
           Row(
             children: [
-              Gap(10),
-              Text(
-                audioController.currentPlayingAyah.value.toString(),
+              SizedBox(
+                width: 25,
+                height: 25,
+                child: FittedBox(
+                  child: Center(
+                    child: Text(
+                      audioController.currentPlayingAyah.value.toString(),
+                    ),
+                  ),
+                ),
               ),
-              Gap(5),
               Expanded(
                 child: SizedBox(
                   height: 30,
+                  width: MediaQuery.of(context).size.width * 0.7,
                   child: Slider(
                     value: audioController.currentPlayingAyah.value.toDouble(),
                     onChanged: (value) {
@@ -245,11 +252,17 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                   ),
                 ),
               ),
-              Gap(5),
-              Text(
-                audioController.totalAyah.value.toString(),
+              SizedBox(
+                width: 25,
+                height: 25,
+                child: FittedBox(
+                  child: Center(
+                    child: Text(
+                      audioController.totalAyah.value.toString(),
+                    ),
+                  ),
+                ),
               ),
-              Gap(10),
             ],
           ),
           Gap(5),
