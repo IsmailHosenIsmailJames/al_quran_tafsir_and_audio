@@ -8,6 +8,7 @@ import '../resources/recitation_info_model.dart';
 
 class AudioController extends GetxController {
   static final box = Hive.box("user_db");
+  RxInt currentSurahNumber = (-1).obs;
   RxInt currentReciterIndex = (0).obs;
   RxInt currentPlayListIndex = (0).obs;
   RxInt setupSelectedReciterIndex = (0).obs;

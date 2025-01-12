@@ -5,7 +5,12 @@ import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/quran_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+
+import '../../core/audio/controller/audio_controller.dart';
+import '../../core/audio/play_quran_audio.dart';
+import '../../core/audio/widget_audio_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,6 +22,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   PageController pageController = PageController();
   int selectedBottomNavIndex = 0;
+  AudioController audioController = ManageQuranAudio.audioController;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,18 +57,34 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: themeIconButton,
       ),
-      body: PageView(
-        onPageChanged: (value) {
-          setState(() {
-            selectedBottomNavIndex = value;
-          });
-        },
-        controller: pageController,
+      body: Stack(
         children: [
-          QuranTab(),
-          AudioTab(tabController: pageController),
-          PlayListTab(),
-          ProfileTab(),
+          PageView(
+            onPageChanged: (value) {
+              setState(() {
+                selectedBottomNavIndex = value;
+              });
+            },
+            controller: pageController,
+            children: [
+              QuranTab(),
+              AudioTab(tabController: pageController),
+              PlayListTab(),
+              ProfileTab(),
+            ],
+          ),
+          Obx(
+            () => Container(
+              child: (audioController.isPlaying.value == true ||
+                      audioController.isReadyToControl.value == true)
+                  ? WidgetAudioController(
+                      showSurahNumber: false,
+                      showQuranAyahMode: true,
+                      surahNumber: audioController.currentPlayingSurah.value,
+                    )
+                  : null,
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: Container(

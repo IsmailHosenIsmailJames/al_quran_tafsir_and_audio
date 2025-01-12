@@ -237,7 +237,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
             controller.currentReciterModel.value = allRecitationSearch[index];
             await Hive.box('user_db')
                 .put('reciter', allRecitationSearch[index].toJson());
-            ManageQuranAudio.playMultipleSurahAsPlayList(
+            ManageQuranAudio.playMultipleAyahAsPlayList(
               surahNumber: 1,
             );
           },

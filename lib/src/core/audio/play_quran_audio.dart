@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/quran_com/all_recitations.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/recitation_info_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/map_of_translation.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -90,9 +91,10 @@ class ManageQuranAudio {
     await audioPlayer.play();
   }
 
-  static Future<void> playMultipleSurahAsPlayList(
+  static Future<void> playMultipleAyahAsPlayList(
       {required int surahNumber,
       ReciterInfoModel? reciter,
+      int? startOn,
       bool playInstantly = true}) async {
     if (audioController.isStreamRegistered.value == false) {
       await startListening();
@@ -100,13 +102,15 @@ class ManageQuranAudio {
     await audioPlayer.stop();
     reciter ??= findRecitationModel();
     List<LockCachingAudioSource> audioSources = [];
-    for (var i = 0; i < 114; i++) {
+    int ayahNumber = ayahCount[surahNumber];
+    for (var i = 0; i < ayahNumber; i++) {
       audioSources.add(
         LockCachingAudioSource(
             Uri.parse(
               makeAudioUrl(
                 reciter,
-                surahIDFromNumber(i + 1),
+                surahIDFromNumber(
+                    surahNumber: surahNumber + 1, ayahNumber: i + 1),
               ),
             ),
             tag: MediaItem(
@@ -119,7 +123,7 @@ class ManageQuranAudio {
       ConcatenatingAudioSource(
         children: audioSources,
       ),
-      initialIndex: surahNumber,
+      initialIndex: startOn,
       initialPosition: Duration.zero,
     );
     if (playInstantly) await audioPlayer.play();
@@ -184,7 +188,7 @@ class ManageQuranAudio {
   ///
   /// Returns a string representation of the ayah ID in the format 'SSSAAA'
   /// where 'SSS' is the zero-padded surah number and 'AAA' is the zero-padded ayah number.
-  static String surahIDFromNumber(int surahNumber) {
-    return surahNumber.toString().padLeft(3, '0');
+  static String surahIDFromNumber({required int surahNumber, int? ayahNumber}) {
+    return "${surahNumber.toString().padLeft(3, '0')}${ayahNumber.toString().padLeft(3, '0')}";
   }
 }

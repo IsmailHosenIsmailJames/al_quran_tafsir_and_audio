@@ -46,7 +46,8 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
   AudioController audioController = ManageQuranAudio.audioController;
   final themeController = Get.put(AppThemeData());
 
-  final infoBox = Hive.box("info");
+  final userDB = Hive.box("user_db");
+  final quranDB = Hive.box("quran_db");
 
   ScrollController scrollController = ScrollController();
 
@@ -163,7 +164,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
               currentAyahNumber++) {
             listOfAyahsSpanText.addAll(
               getTajweedTexSpan(
-                infoBox.get(
+                quranDB.get(
                   "uthmani_tajweed/${(latestSurahNumber) + 1}:$currentAyahNumber",
                   defaultValue: "",
                 ),
@@ -211,7 +212,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
             progressBarColor: Colors.green,
             baseBarColor: colorToApply.withValues(alpha: 0.2),
             bufferedBarColor: Colors.green.shade200,
-            thumbColor: Colors.grey.withValues(alpha: 0.3),
+            thumbColor: const Color.fromARGB(255, 0, 119, 8),
             barHeight: 5.0,
             thumbRadius: 7.0,
             timeLabelLocation: TimeLabelLocation.sides,

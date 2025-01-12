@@ -21,5 +21,6 @@ Future<void> main() async {
   await Hive.openBox("quran_db");
   await Hive.openBox("translation_db");
   await Hive.openBox("tafsir_db");
+  await Hive.openBox("play_list");
   runApp(AlQuranTafsirAndAudio());
 }

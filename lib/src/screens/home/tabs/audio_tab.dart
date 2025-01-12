@@ -29,7 +29,8 @@ class _AudioTabState extends State<AudioTab> {
   final HomePageController homePageController = Get.put(HomePageController());
   final AppThemeData themeController = Get.find<AppThemeData>();
   final ScrollController scrollController = ScrollController();
-  final infoBox = Hive.box("info");
+  final userDB = Hive.box("user_db");
+  final quranDB = Hive.box("user_db");
 
   @override
   Widget build(BuildContext context) {
@@ -219,8 +220,7 @@ class _AudioTabState extends State<AudioTab> {
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               Text(
-                                (allChaptersInfo[index]['revelation_place'] ??
-                                        "")
+                                "${(allChaptersInfo[index]['revelation_place'] ?? "".capitalizeFirst)}"
                                     .capitalizeFirst,
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
@@ -232,7 +232,7 @@ class _AudioTabState extends State<AudioTab> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                (allChaptersInfo[index]['name_arabic'] ?? "")
+                                "${(allChaptersInfo[index]['name_arabic'] ?? "")}"
                                     .capitalizeFirst,
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
@@ -321,7 +321,7 @@ class _AudioTabState extends State<AudioTab> {
                       currentAyahNumber++) {
                     listOfAyahsSpanText.addAll(
                       getTajweedTexSpan(
-                        infoBox.get(
+                        quranDB.get(
                           "uthmani_tajweed/${(index) + 1}:$currentAyahNumber",
                           defaultValue: "",
                         ),
@@ -375,7 +375,7 @@ class _AudioTabState extends State<AudioTab> {
       onSelected: (value) async {
         String url = ManageQuranAudio.makeAudioUrl(
             audioController.currentReciterModel.value,
-            ManageQuranAudio.surahIDFromNumber(index + 1));
+            ManageQuranAudio.surahIDFromNumber(surahNumber: index + 1));
 
         if (value == "Favorite") {
           await addOrRemoveFavorite(
@@ -595,7 +595,7 @@ class _AudioTabState extends State<AudioTab> {
   }
 }
 
-Obx getPlayButton(int index, AudioController audioController) {
+Widget getPlayButton(int index, AudioController audioController) {
   return Obx(
     () {
       return IconButton(
@@ -605,10 +605,10 @@ Obx getPlayButton(int index, AudioController audioController) {
           padding: EdgeInsets.zero,
         ),
         tooltip: "Play or Pause",
-        icon: (audioController.currentPlayingSurah.value == index &&
+        icon: (audioController.currentSurahNumber.value == index &&
                 audioController.isPlaying.value == true)
             ? const Icon(Icons.pause)
-            : (audioController.currentPlayingSurah.value == index &&
+            : (audioController.currentSurahNumber.value == index &&
                     audioController.isLoading.value)
                 ? CircularProgressIndicator(
                     color: Colors.white,
@@ -618,21 +618,21 @@ Obx getPlayButton(int index, AudioController audioController) {
                 : const Icon(Icons.play_arrow),
         onPressed: () async {
           if (audioController.isPlaying.value == true &&
-              audioController.currentPlayingSurah.value == index) {
+              audioController.currentSurahNumber.value == index) {
             await ManageQuranAudio.audioPlayer.pause();
           } else if ((audioController.isPlaying.value == true ||
                   audioController.isLoading.value == true) &&
-              audioController.currentPlayingSurah.value != index) {
-            audioController.currentPlayingSurah.value = index;
+              audioController.currentSurahNumber.value != index) {
+            audioController.currentSurahNumber.value = index;
             await ManageQuranAudio.audioPlayer.stop();
-            await ManageQuranAudio.playMultipleSurahAsPlayList(
+            await ManageQuranAudio.playMultipleAyahAsPlayList(
               surahNumber: index,
               reciter: audioController.currentReciterModel.value,
             );
           } else if (audioController.isPlaying.value == false &&
-              audioController.currentPlayingSurah.value == index) {
+              audioController.currentSurahNumber.value == index) {
             if (audioController.isReadyToControl.value == false) {
-              await ManageQuranAudio.playMultipleSurahAsPlayList(
+              await ManageQuranAudio.playMultipleAyahAsPlayList(
                 surahNumber: index,
                 reciter: audioController.currentReciterModel.value,
               );
@@ -640,9 +640,9 @@ Obx getPlayButton(int index, AudioController audioController) {
               await ManageQuranAudio.audioPlayer.play();
             }
           } else if (audioController.isPlaying.value == false &&
-              audioController.currentPlayingSurah.value != index) {
-            audioController.currentPlayingSurah.value = index;
-            await ManageQuranAudio.playMultipleSurahAsPlayList(
+              audioController.currentSurahNumber.value != index) {
+            audioController.currentSurahNumber.value = index;
+            await ManageQuranAudio.playMultipleAyahAsPlayList(
               surahNumber: index,
               reciter: audioController.currentReciterModel.value,
             );
