@@ -1,6 +1,7 @@
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/play_quran_audio.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_recitations.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:toastification/toastification.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/audio/resources/ayah_counts.dart';
+import '../../../core/audio/resources/recitation_info_model.dart';
 import '../../surah_view/common/tajweed_scripts_composer.dart';
 import '../controller/home_page_controller.dart';
 import '../controller/model/play_list_model.dart';
@@ -68,29 +70,40 @@ class _AudioTabState extends State<AudioTab> {
                         foregroundColor: Colors.white,
                       ),
                       onPressed: () async {
-                        // final result = await Get.to(() =>
-                        //     const ChoiceDefaultRecitation(
-                        //         forChangeReciter: true));
-                        // if (result.runtimeType == ReciterInfoModel) {
-                        //   audioController.currentReciterModel.value =
-                        //       result as ReciterInfoModel;
-                        //   if (audioController.currentPlayingAyah.value != -1) {
-                        //     if (audioController.isPlaying.value) {
-                        //       await ManageQuranAudio
-                        //           .playMultipleSurahAsPlayList(
-                        //         surahNumber:
-                        //             audioController.currentPlayingAyah.value,
-                        //       );
-                        //     } else {
-                        //       await ManageQuranAudio
-                        //           .playMultipleSurahAsPlayList(
-                        //         surahNumber:
-                        //             audioController.currentPlayingAyah.value,
-                        //         playInstantly: false,
-                        //       );
-                        //     }
-                        //   }
-                        // }
+                        int temSurahNumber =
+                            audioController.currentSurahNumber.value;
+                        int temAyahNumber =
+                            audioController.currentPlayingAyah.value;
+                        ManageQuranAudio.audioPlayer.stop();
+                        final result = await Get.to(
+                          () => RecitationChoice(
+                            previousInfo:
+                                audioController.currentReciterModel.value,
+                          ),
+                        );
+
+                        if (result.runtimeType == ReciterInfoModel) {
+                          audioController.currentReciterModel.value =
+                              result as ReciterInfoModel;
+                        }
+                        if (audioController.currentPlayingAyah.value != -1) {
+                          if (audioController.isPlaying.value) {
+                            await ManageQuranAudio.playMultipleAyahAsPlayList(
+                              surahNumber: temSurahNumber,
+                              reciter:
+                                  audioController.currentReciterModel.value,
+                              startOn: temAyahNumber,
+                            );
+                          } else {
+                            await ManageQuranAudio.playMultipleAyahAsPlayList(
+                              surahNumber: temSurahNumber,
+                              playInstantly: false,
+                              reciter:
+                                  audioController.currentReciterModel.value,
+                              startOn: temAyahNumber,
+                            );
+                          }
+                        }
                       },
                       child: const Text("Change"),
                     ),

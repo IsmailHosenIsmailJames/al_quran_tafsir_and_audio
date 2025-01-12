@@ -10,12 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:toastification/toastification.dart';
 
 import '../../../../core/audio/play_quran_audio.dart';
+import '../../../../core/audio/widget_audio_controller.dart';
 import '../../info_controller/info_controller_getx.dart';
 
 class RecitationChoice extends StatefulWidget {
-  final Map<String, String>? previousInfo;
+  final ReciterInfoModel? previousInfo;
   const RecitationChoice({super.key, this.previousInfo});
 
   @override
@@ -24,6 +26,7 @@ class RecitationChoice extends StatefulWidget {
 
 class _RecitationChoiceState extends State<RecitationChoice> {
   final infoController = Get.put(InfoController());
+  final AudioController audioController = Get.find<AudioController>();
   late List<ReciterInfoModel> allRecitationSearch = [];
 
   @override
@@ -51,6 +54,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
 
   void select(int index) {
     infoController.selectedReciter.value = allRecitationSearch[index];
+    audioController.currentReciterModel.value = allRecitationSearch[index];
   }
 
   void searchOnList(String text) {
@@ -79,102 +83,141 @@ class _RecitationChoiceState extends State<RecitationChoice> {
           "Choice Recitation",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
+        actions: [
+          TextButton.icon(
+            onPressed: () {
+              Map<String, String> info = {
+                "translation_language":
+                    infoController.translationLanguage.value,
+                "translation_book_ID": infoController.bookIDTranslation.value,
+                "tafsir_language": infoController.tafsirLanguage.value,
+                "tafsir_book_ID": infoController.tafsirBookID.value,
+                "selected_reciter":
+                    audioController.currentReciterModel.value.toJson(),
+              };
+              Hive.box("user_db").put("selection_info", info);
+              toastification.show(
+                context: context,
+                title: Text("Saved"),
+                type: ToastificationType.success,
+              );
+              Get.back(result: audioController.currentReciterModel.value);
+            },
+            icon: Icon(Icons.done),
+            label: Text("Change"),
+          ),
+        ],
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 5.0, right: 5, bottom: 2, top: 2),
-            child: CupertinoSearchTextField(
-              style: Theme.of(context).textTheme.bodyMedium,
-              autofocus: false,
-              onChanged: (value) {
-                searchOnList(value.toLowerCase());
-              },
-            ),
-          ),
-          Container(
-            height: 40,
-            width: double.infinity,
-            margin: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: Colors.grey.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(1000),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  child: selectedTabForAudioSource != 0
-                      ? TextButton(
-                          onPressed: () {
-                            selectedTabForAudioSource = 0;
-                            loadRecitationsData();
-                          },
-                          child: Text(
-                            "everyayah.com",
-                          ),
-                        )
-                      : ElevatedButton(
-                          onPressed: () {
-                            selectedTabForAudioSource = 0;
-                            loadRecitationsData();
-                          },
-                          child: Text(
-                            "everyayah.com",
-                          ),
-                        ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 5.0, right: 5, bottom: 2, top: 2),
+                child: CupertinoSearchTextField(
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  autofocus: false,
+                  onChanged: (value) {
+                    searchOnList(value.toLowerCase());
+                  },
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  child: selectedTabForAudioSource != 1
-                      ? TextButton(
-                          onPressed: () {
-                            selectedTabForAudioSource = 1;
-                            loadRecitationsData();
-                          },
-                          child: Text(
-                            "quran.com",
-                          ),
-                        )
-                      : ElevatedButton(
-                          onPressed: () {
-                            selectedTabForAudioSource = 1;
-                            loadRecitationsData();
-                          },
-                          child: Text(
-                            "quran.com",
-                          ),
-                        ),
+              ),
+              Container(
+                height: 40,
+                width: double.infinity,
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.grey.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(1000),
                 ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.only(
-                  bottom: 100, top: 10, left: 1, right: 1),
-              itemCount: allRecitationSearch.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.only(top: 5, bottom: 5),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.only(
-                          left: 10, right: 10, bottom: 5, top: 5),
-                      backgroundColor: Colors.green.shade400.withOpacity(0.1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7),
-                      ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      child: selectedTabForAudioSource != 0
+                          ? TextButton(
+                              onPressed: () {
+                                selectedTabForAudioSource = 0;
+                                loadRecitationsData();
+                              },
+                              child: Text(
+                                "everyayah.com",
+                              ),
+                            )
+                          : ElevatedButton(
+                              onPressed: () {
+                                selectedTabForAudioSource = 0;
+                                loadRecitationsData();
+                              },
+                              child: Text(
+                                "everyayah.com",
+                              ),
+                            ),
                     ),
-                    onPressed: () {
-                      select(index);
-                    },
-                    child: getWidgetForReciters(index),
-                  ),
-                );
-              },
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      child: selectedTabForAudioSource != 1
+                          ? TextButton(
+                              onPressed: () {
+                                selectedTabForAudioSource = 1;
+                                loadRecitationsData();
+                              },
+                              child: Text(
+                                "quran.com",
+                              ),
+                            )
+                          : ElevatedButton(
+                              onPressed: () {
+                                selectedTabForAudioSource = 1;
+                                loadRecitationsData();
+                              },
+                              child: Text(
+                                "quran.com",
+                              ),
+                            ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(
+                      bottom: 100, top: 10, left: 1, right: 1),
+                  itemCount: allRecitationSearch.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: const EdgeInsets.only(top: 5, bottom: 5),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 10, bottom: 5, top: 5),
+                          backgroundColor:
+                              Colors.green.shade400.withOpacity(0.1),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                        ),
+                        onPressed: () {
+                          select(index);
+                        },
+                        child: getWidgetForReciters(index),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Obx(
+              () => WidgetAudioController(
+                showSurahNumber: false,
+                showQuranAyahMode: true,
+                surahNumber: audioController.currentPlayingAyah.value,
+              ),
             ),
           ),
         ],
@@ -234,20 +277,37 @@ class _RecitationChoiceState extends State<RecitationChoice> {
         builder: (controller) => IconButton(
           iconSize: 18,
           onPressed: () async {
-            controller.currentReciterModel.value = allRecitationSearch[index];
-            await Hive.box('user_db')
-                .put('reciter', allRecitationSearch[index].toJson());
-            ManageQuranAudio.playMultipleAyahAsPlayList(
-              surahNumber: 1,
-            );
+            if (audioController.isPlaying.value &&
+                audioController.currentReciterIndex.value == index) {
+              ManageQuranAudio.audioPlayer.pause();
+            } else if (audioController.currentReciterIndex.value == index) {
+              controller.currentReciterIndex.value = index;
+              controller.currentReciterModel.value = allRecitationSearch[index];
+              controller.totalAyah.value = 7;
+              ManageQuranAudio.audioPlayer.play();
+            } else {
+              controller.currentReciterIndex.value = index;
+              controller.currentReciterModel.value = allRecitationSearch[index];
+              controller.totalAyah.value = 7;
+              await Hive.box('user_db')
+                  .put('reciter', allRecitationSearch[index].toJson());
+              ManageQuranAudio.playMultipleAyahAsPlayList(
+                surahNumber: 0,
+                reciter: allRecitationSearch[index],
+              );
+            }
           },
-          icon: Icon(
-            (controller.isPlaying.value &&
-                    controller.currentReciterModel.value.link ==
-                        allRecitationSearch[index].link)
-                ? Icons.pause
-                : Icons.play_arrow,
-          ),
+          icon: controller.isLoading.value &&
+                  controller.currentReciterIndex.value == index
+              ? const CircularProgressIndicator(
+                  strokeWidth: 2,
+                )
+              : Icon(
+                  (controller.isPlaying.value &&
+                          controller.currentReciterIndex.value == index)
+                      ? Icons.pause
+                      : Icons.play_arrow,
+                ),
           style: IconButton.styleFrom(
             padding: EdgeInsets.zero,
             backgroundColor: Colors.green.shade700,
