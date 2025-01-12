@@ -14,7 +14,7 @@ class AudioController extends GetxController {
   RxInt setupSelectedReciterIndex = (0).obs;
   RxBool isFullScreenMode = false.obs;
 
-  RxInt currentPlayingSurah = (0).obs;
+  RxInt currentPlayingAyah = (0).obs;
   Rx<ReciterInfoModel> currentReciterModel = ReciterInfoModel.fromJson(
     box.get(
       "default_reciter",

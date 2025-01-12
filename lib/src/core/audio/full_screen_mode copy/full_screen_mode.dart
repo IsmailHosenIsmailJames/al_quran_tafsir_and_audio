@@ -38,7 +38,7 @@ class _FullScreenAudioModeState extends State<FullScreenAudioMode> {
             WidgetAudioController(
               showSurahNumber: false,
               showQuranAyahMode: true,
-              surahNumber: audioController.currentPlayingSurah.value,
+              surahNumber: audioController.currentPlayingAyah.value,
             ),
           ],
         ),

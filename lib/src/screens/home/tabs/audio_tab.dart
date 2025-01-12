@@ -74,18 +74,18 @@ class _AudioTabState extends State<AudioTab> {
                         // if (result.runtimeType == ReciterInfoModel) {
                         //   audioController.currentReciterModel.value =
                         //       result as ReciterInfoModel;
-                        //   if (audioController.currentPlayingSurah.value != -1) {
+                        //   if (audioController.currentPlayingAyah.value != -1) {
                         //     if (audioController.isPlaying.value) {
                         //       await ManageQuranAudio
                         //           .playMultipleSurahAsPlayList(
                         //         surahNumber:
-                        //             audioController.currentPlayingSurah.value,
+                        //             audioController.currentPlayingAyah.value,
                         //       );
                         //     } else {
                         //       await ManageQuranAudio
                         //           .playMultipleSurahAsPlayList(
                         //         surahNumber:
-                        //             audioController.currentPlayingSurah.value,
+                        //             audioController.currentPlayingAyah.value,
                         //         playInstantly: false,
                         //       );
                         //     }

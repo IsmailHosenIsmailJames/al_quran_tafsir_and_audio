@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   ? WidgetAudioController(
                       showSurahNumber: false,
                       showQuranAyahMode: true,
-                      surahNumber: audioController.currentPlayingSurah.value,
+                      surahNumber: audioController.currentPlayingAyah.value,
                     )
                   : null,
             ),

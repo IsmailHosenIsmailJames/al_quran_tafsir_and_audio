@@ -64,7 +64,7 @@ class ManageQuranAudio {
 
     audioPlayer.playbackEventStream.listen((event) {
       if (event.currentIndex != null) {
-        audioController.currentPlayingSurah.value = event.currentIndex!;
+        audioController.currentPlayingAyah.value = event.currentIndex!;
       }
       audioController.isReadyToControl.value = true;
       audioController.isPlayingCompleted.value =
