@@ -6,6 +6,7 @@ import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
@@ -186,7 +187,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
   Container getControllers(
       BuildContext context, bool isDark, Color colorToApply) {
     return Container(
-      height: 85,
+      height: 115,
       width: animation.value * MediaQuery.of(context).size.width * 1,
       margin: EdgeInsets.only(
           left: 5,
@@ -213,13 +214,45 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
             baseBarColor: colorToApply.withValues(alpha: 0.2),
             bufferedBarColor: Colors.green.shade200,
             thumbColor: const Color.fromARGB(255, 0, 119, 8),
-            barHeight: 5.0,
-            thumbRadius: 7.0,
+            barHeight: 6.0,
+            thumbRadius: 10.0,
             timeLabelLocation: TimeLabelLocation.sides,
             onSeek: (duration) {
               ManageQuranAudio.audioPlayer.seek(duration);
             },
           ),
+          Gap(5),
+          Row(
+            children: [
+              Gap(10),
+              Text(
+                audioController.currentPlayingAyah.value.toString(),
+              ),
+              Gap(5),
+              Expanded(
+                child: SizedBox(
+                  height: 30,
+                  child: Slider(
+                    value: audioController.currentPlayingAyah.value.toDouble(),
+                    onChanged: (value) {
+                      ManageQuranAudio.audioPlayer
+                          .seek(Duration(seconds: 0), index: value.toInt());
+                    },
+                    max: audioController.totalAyah.value.toDouble(),
+                    min: 0,
+                    thumbColor: const Color.fromARGB(255, 0, 119, 8),
+                    divisions: audioController.totalAyah.value,
+                  ),
+                ),
+              ),
+              Gap(5),
+              Text(
+                audioController.totalAyah.value.toString(),
+              ),
+              Gap(10),
+            ],
+          ),
+          Gap(5),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

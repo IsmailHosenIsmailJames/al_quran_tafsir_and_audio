@@ -109,7 +109,7 @@ class _QuranTabState extends State<QuranTab> {
                       margin: EdgeInsets.only(left: 10, right: 10, top: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
-                        color: Colors.grey.withValues(alpha: 0.2),
+                        color: Colors.grey.withValues(alpha: 0.1),
                       ),
                       child: TextButton(
                         onPressed: () {

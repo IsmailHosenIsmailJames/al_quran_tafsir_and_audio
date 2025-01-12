@@ -13,6 +13,7 @@ class AudioController extends GetxController {
   RxInt currentPlayListIndex = (0).obs;
   RxInt setupSelectedReciterIndex = (0).obs;
   RxBool isFullScreenMode = false.obs;
+  RxInt totalAyah = (0).obs;
 
   RxInt currentPlayingAyah = (0).obs;
   Rx<ReciterInfoModel> currentReciterModel = ReciterInfoModel.fromJson(

@@ -624,6 +624,7 @@ Widget getPlayButton(int index, AudioController audioController) {
                   audioController.isLoading.value == true) &&
               audioController.currentSurahNumber.value != index) {
             audioController.currentSurahNumber.value = index;
+            audioController.totalAyah.value = ayahCount[index];
             await ManageQuranAudio.audioPlayer.stop();
             await ManageQuranAudio.playMultipleAyahAsPlayList(
               surahNumber: index,
@@ -642,6 +643,7 @@ Widget getPlayButton(int index, AudioController audioController) {
           } else if (audioController.isPlaying.value == false &&
               audioController.currentSurahNumber.value != index) {
             audioController.currentSurahNumber.value = index;
+            audioController.totalAyah.value = ayahCount[index];
             await ManageQuranAudio.playMultipleAyahAsPlayList(
               surahNumber: index,
               reciter: audioController.currentReciterModel.value,
