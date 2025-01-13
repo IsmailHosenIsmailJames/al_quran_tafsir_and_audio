@@ -3,14 +3,11 @@ import 'package:al_quran_tafsir_and_audio/src/core/audio/play_quran_audio.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_recitations.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:toastification/toastification.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/audio/resources/ayah_counts.dart';
 import '../../../core/audio/resources/recitation_info_model.dart';
@@ -393,10 +390,6 @@ class _AudioTabState extends State<AudioTab> {
     return PopupMenuButton(
       borderRadius: BorderRadius.circular(7),
       onSelected: (value) async {
-        String url = ManageQuranAudio.makeAudioUrl(
-            audioController.currentReciterModel.value,
-            ManageQuranAudio.surahIDFromNumber(surahNumber: index + 1));
-
         if (value == "Favorite") {
           await addOrRemoveFavorite(
               favoriteListModel, isExitsInFavorite, currentPlayModel, context);
@@ -484,21 +477,6 @@ class _AudioTabState extends State<AudioTab> {
               );
             },
           );
-        } else if (value == "Download") {
-          // Download
-          launchUrl(
-            Uri.parse(
-              url,
-            ),
-            mode: LaunchMode.externalApplication,
-          );
-        } else if (value == "Share") {
-          // Share
-          final reciter = audioController.currentReciterModel.value;
-
-          await Share.share(
-            "Reciter: ${reciter.name}\nSurah: ${allChaptersInfo[index]['name_simple']}\nSurah Number: ${index + 1}\nURL: $url",
-          );
         }
       },
       itemBuilder: (context) {
@@ -524,26 +502,6 @@ class _AudioTabState extends State<AudioTab> {
                 Icon(Icons.playlist_add_rounded),
                 Gap(7),
                 Text("Add to Playlist"),
-              ],
-            ),
-          ),
-          const PopupMenuItem(
-            value: "Download",
-            child: Row(
-              children: [
-                Icon(Icons.download_rounded),
-                Gap(7),
-                Text("Download"),
-              ],
-            ),
-          ),
-          const PopupMenuItem(
-            value: "Share",
-            child: Row(
-              children: [
-                Icon(FluentIcons.share_24_filled),
-                Gap(7),
-                Text("Share"),
               ],
             ),
           ),
