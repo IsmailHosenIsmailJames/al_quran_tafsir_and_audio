@@ -123,8 +123,8 @@ class _HomePageState extends State<HomePage> {
               borderRadius: BorderRadius.circular(30),
             ),
             GButton(
-              icon: Icons.playlist_play_rounded,
-              text: 'Playlist',
+              icon: Icons.collections_bookmark_rounded,
+              text: 'Collection',
               borderRadius: BorderRadius.circular(30),
             ),
             GButton(

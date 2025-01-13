@@ -5,6 +5,7 @@ import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_re
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/home_page_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/model/play_list_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -31,78 +32,191 @@ class _PlayListTabState extends State<PlayListTab> {
     super.initState();
   }
 
+  int tabIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        final allPlayList = homePageController.allPlaylistInDB.value;
-        return allPlayList.isEmpty
-            ? Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 75,
-                      width: 75,
-                      child: Obx(
-                        () {
-                          bool isDark = themeController.themeModeName.value ==
-                                  "dark" ||
-                              (themeController.themeModeName.value ==
-                                      "system" &&
-                                  MediaQuery.of(context).platformBrightness ==
-                                      Brightness.dark);
-
-                          return Image(
-                            image: const AssetImage(
-                              "assets/empty-folder.png",
-                            ),
-                            color: isDark ? Colors.white : Colors.black,
-                          );
-                        },
+    double width = MediaQuery.of(context).size.width;
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.grey.withValues(
+              alpha: 0.3,
+            ),
+          ),
+          height: 30,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: width * 0.5,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: tabIndex == 0
+                        ? Colors.green.shade700
+                        : Colors.transparent,
+                    foregroundColor:
+                        tabIndex == 0 ? Colors.white : Colors.green.shade700,
+                    iconColor:
+                        tabIndex == 0 ? Colors.white : Colors.green.shade700,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(30),
+                        bottomRight: Radius.circular(30),
                       ),
                     ),
-                    const Gap(10),
-                    const Text("No PlayList found"),
-                    const Gap(10),
-                    ElevatedButton.icon(
-                      onPressed: createANewPlayList,
-                      icon: const Icon(Icons.add),
-                      label: const Text(
-                        "Create PlayList",
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      tabIndex = 0;
+                    });
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.playlist_play_rounded),
+                      Gap(10),
+                      Text(
+                        "Playlist",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              )
-            : ListView(
-                padding: const EdgeInsets.only(
-                    left: 5, right: 5, top: 5, bottom: 100),
-                children: <Widget>[
-                      Row(
-                        children: [
-                          Text("Total PlayList: ${allPlayList.length}"),
-                          const Spacer(),
-                          SizedBox(
-                            height: 25,
-                            child: ElevatedButton.icon(
-                              onPressed: createANewPlayList,
-                              icon: const Icon(Icons.add),
-                              label: const Text("Create New PlayList"),
-                            ),
-                          ),
-                        ],
+              ),
+              SizedBox(
+                width: width * 0.5,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: tabIndex == 1
+                        ? Colors.green.shade700
+                        : Colors.transparent,
+                    foregroundColor:
+                        tabIndex == 1 ? Colors.white : Colors.green.shade700,
+                    iconColor:
+                        tabIndex == 1 ? Colors.white : Colors.green.shade700,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        bottomLeft: Radius.circular(30),
                       ),
-                    ] +
-                    List<Widget>.generate(
-                      allPlayList.length,
-                      (index) {
-                        return getPlayListCards(allPlayList, index);
-                      },
                     ),
-              );
-      },
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      tabIndex = 1;
+                    });
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(FluentIcons.bookmark_24_filled),
+                      Gap(10),
+                      Text(
+                        "Groups",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: tabIndex == 0
+              ? Obx(
+                  () {
+                    final allPlayList =
+                        homePageController.allPlaylistInDB.value;
+                    return allPlayList.isEmpty
+                        ? Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 75,
+                                  width: 75,
+                                  child: Obx(
+                                    () {
+                                      bool isDark =
+                                          themeController.themeModeName.value ==
+                                                  "dark" ||
+                                              (themeController.themeModeName
+                                                          .value ==
+                                                      "system" &&
+                                                  MediaQuery.of(context)
+                                                          .platformBrightness ==
+                                                      Brightness.dark);
+
+                                      return Image(
+                                        image: const AssetImage(
+                                          "assets/empty-folder.png",
+                                        ),
+                                        color: isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      );
+                                    },
+                                  ),
+                                ),
+                                const Gap(10),
+                                const Text("No PlayList found"),
+                                const Gap(10),
+                                ElevatedButton.icon(
+                                  onPressed: createANewPlayList,
+                                  icon: const Icon(Icons.add),
+                                  label: const Text(
+                                    "Create PlayList",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView(
+                            padding: const EdgeInsets.only(
+                                left: 5, right: 5, top: 5, bottom: 100),
+                            children: <Widget>[
+                                  Row(
+                                    children: [
+                                      Text(
+                                          "Total PlayList: ${allPlayList.length}"),
+                                      const Spacer(),
+                                      SizedBox(
+                                        height: 25,
+                                        child: ElevatedButton.icon(
+                                          onPressed: createANewPlayList,
+                                          icon: const Icon(Icons.add),
+                                          label:
+                                              const Text("Create New PlayList"),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ] +
+                                List<Widget>.generate(
+                                  allPlayList.length,
+                                  (index) {
+                                    return getPlayListCards(allPlayList, index);
+                                  },
+                                ),
+                          );
+                  },
+                )
+              : Center(
+                  child: Text("Under Development"),
+                ),
+        ),
+      ],
     );
   }
 
@@ -526,88 +640,6 @@ class _PlayListTabState extends State<PlayListTab> {
     );
   }
 
-  // IconButton getPlayButton(int index) {
-  //   return IconButton(
-  //     style: IconButton.styleFrom(
-  //       backgroundColor: Colors.green.shade800,
-  //       foregroundColor: Colors.white,
-  //       padding: EdgeInsets.zero,
-  //     ),
-  //     tooltip: "Play or Pause",
-  //     icon: (audioController.currentPlayListIndex.value == index &&
-  //             audioController.isPlaying.value == true)
-  //         ? const Icon(Icons.pause_rounded)
-  //         : (audioController.currentPlayListIndex.value == index &&
-  //                 audioController.isLoading.value)
-  //             ? CircularProgressIndicator(
-  //                 color: Colors.white,
-  //                 backgroundColor: Colors.white.withValues(alpha: 0.2),
-  //                 strokeWidth: 2,
-  //               )
-  //             : const Icon(Icons.play_arrow_rounded),
-  //     onPressed: () async {
-  //       // Play the PlayList
-  //       if (audioController.isPlaying.value == true &&
-  //           audioController.currentPlayListIndex.value == index) {
-  //         await ManageQuranAudio.audioPlayer.pause();
-  //       } else if ((audioController.isPlaying.value == true ||
-  //               audioController.isLoading.value == true) &&
-  //           audioController.currentPlayListIndex.value != index) {
-  //         audioController.currentPlayListIndex.value = index;
-  //         await ManageQuranAudio.audioPlayer.stop();
-  //         List<LockCachingAudioSource> playList =
-  //             getPlayList(homePageController.allPlaylistInDB[index].playList);
-
-  //         await ManageQuranAudio.playProvidedPlayList(
-  //           playList: playList,
-  //         );
-  //       } else if (audioController.isPlaying.value == false &&
-  //           audioController.currentPlayListIndex.value == index) {
-  //         if (audioController.isReadyToControl.value == false) {
-  //           List<LockCachingAudioSource> playList =
-  //               getPlayList(homePageController.allPlaylistInDB[index].playList);
-
-  //           await ManageQuranAudio.playProvidedPlayList(
-  //             playList: playList,
-  //           );
-  //         } else {
-  //           await ManageQuranAudio.audioPlayer.play();
-  //         }
-  //       } else if (audioController.isPlaying.value == false &&
-  //           audioController.currentPlayListIndex.value != index) {
-  //         audioController.currentPlayListIndex.value = index;
-  //         List<LockCachingAudioSource> playList =
-  //             getPlayList(homePageController.allPlaylistInDB[index].playList);
-  //         await ManageQuranAudio.playProvidedPlayList(
-  //           playList: playList,
-  //         );
-  //       }
-  //     },
-  //   );
-  // }
-
-  // List<LockCachingAudioSource> getPlayList(List<PlayListModel> playList) {
-  //   List<LockCachingAudioSource> playListAudioSource = [];
-  //   for (var playListModel in playList) {
-  //     playListAudioSource.add(
-  //       LockCachingAudioSource(
-  //         Uri.parse(
-  //           ManageQuranAudio.makeAudioUrl(
-  //             playListModel.reciter,
-  //             ManageQuranAudio.surahIDFromNumber(
-  //                 surahNumber: playListModel.surahNumber + 1),
-  //           ),
-  //         ),
-  //         tag: MediaItem(
-  //           id: "${playListModel.reciter.link}${playListModel.surahNumber}",
-  //           title: playListModel.reciter.name,
-  //         ),
-  //       ),
-  //     );
-  //   }
-  //   return playListAudioSource;
-  // }
-
   createANewPlayList() async {
     showDialog(
       context: context,
@@ -669,7 +701,7 @@ class _PlayListTabState extends State<PlayListTab> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       if (playListController.text.isNotEmpty) {
-                        if (Hive.box('info')
+                        if (Hive.box('play_list')
                             .containsKey(playListController.text.trim())) {
                           toastification.show(
                             context: context,

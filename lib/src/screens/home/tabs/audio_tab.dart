@@ -32,7 +32,7 @@ class _AudioTabState extends State<AudioTab> {
   final AppThemeData themeController = Get.find<AppThemeData>();
   final ScrollController scrollController = ScrollController();
   final userDB = Hive.box("user_db");
-  final quranDB = Hive.box("user_db");
+  final quranDB = Hive.box("quran_db");
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +206,11 @@ class _AudioTabState extends State<AudioTab> {
                 return GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
-                    showPopUpForQuranWithTajweedText(context, index);
+                    int ayahStart = 0;
+                    for (int i = 0; i < index; i++) {
+                      ayahStart += ayahCount[i];
+                    }
+                    showPopUpForQuranWithTajweedText(context, index, ayahStart);
                   },
                   child: Card(
                     elevation: 0,
@@ -301,7 +305,7 @@ class _AudioTabState extends State<AudioTab> {
   }
 
   Future<dynamic> showPopUpForQuranWithTajweedText(
-      BuildContext context, int index) {
+      BuildContext context, int index, int ayahStart) {
     return showModalBottomSheet(
       showDragHandle: true,
       scrollControlDisabledMaxHeightRatio: 1,
@@ -316,37 +320,40 @@ class _AudioTabState extends State<AudioTab> {
           snap: true,
           builder: (context, scrollController) {
             return ListView.builder(
-                controller: scrollController,
-                padding: const EdgeInsets.all(10),
-                itemCount: (surahAyahCount[(index)] / 10).ceil(),
-                itemBuilder: (context, index) {
-                  int ayahCount = surahAyahCount[index];
-                  int start = index * 10 + 1;
-                  int end = (index + 1) * 10;
-                  if (end > ayahCount) {
-                    end = ayahCount;
-                  }
+              controller: scrollController,
+              padding: const EdgeInsets.all(10),
+              itemCount: (surahAyahCount[(index)] / 10).ceil(),
+              itemBuilder: (context, index) {
+                int currentAyahCount = ayahCount[index];
+                int start = index * 10 + 1;
+                int end = (index + 1) * 10;
+                if (end > currentAyahCount) {
+                  end = currentAyahCount;
+                }
 
-                  List<InlineSpan> listOfAyahsSpanText = [];
+                List<InlineSpan> listOfAyahsSpanText = [];
 
-                  for (int currentAyahNumber = start;
-                      currentAyahNumber <= end;
-                      currentAyahNumber++) {
-                    listOfAyahsSpanText.addAll(
-                      getTajweedTexSpan(
-                        quranDB.get(
-                          "uthmani_tajweed/${(index) + 1}:$currentAyahNumber",
-                          defaultValue: "",
-                        ),
+                for (int currentAyahNumber = start;
+                    currentAyahNumber <= end;
+                    currentAyahNumber++) {
+                  listOfAyahsSpanText.addAll(
+                    getTajweedTexSpan(
+                      quranDB.get(
+                        "uthmani_tajweed/${ayahStart + currentAyahNumber}",
+                        defaultValue: "",
                       ),
-                    );
-                  }
+                    ),
+                  );
+                }
 
-                  return Text.rich(TextSpan(children: listOfAyahsSpanText),
-                      style: TextStyle(
-                        fontSize: audioController.fontSizeArabic.value,
-                      ));
-                });
+                return Text.rich(
+                  TextSpan(children: listOfAyahsSpanText),
+                  style: TextStyle(
+                    fontSize: audioController.fontSizeArabic.value,
+                  ),
+                );
+              },
+            );
           },
         );
       },
@@ -356,7 +363,7 @@ class _AudioTabState extends State<AudioTab> {
   void addSelectedDataToPlayList(BuildContext context) async {
     await homePageController.saveToPlayList();
     homePageController.reloadPlayList();
-    widget.tabController.jumpToPage(1);
+    widget.tabController.jumpToPage(2);
     toastification.show(
       context: context,
       title: const Text("Added to Playlist"),
@@ -477,12 +484,6 @@ class _AudioTabState extends State<AudioTab> {
               );
             },
           );
-          // Add to playlist
-          // toastification.show(
-          //   context: context,
-          //   title: const Text("Added to Playlist"),
-          //   autoCloseDuration: const Duration(seconds: 2),
-          // );
         } else if (value == "Download") {
           // Download
           launchUrl(

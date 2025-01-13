@@ -27,7 +27,7 @@ class _QuranTabState extends State<QuranTab> {
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.grey.withValues(
-              alpha: 0.3,
+              alpha: 0.2,
             ),
           ),
           height: 30,
