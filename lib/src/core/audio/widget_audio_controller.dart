@@ -230,7 +230,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                 child: FittedBox(
                   child: Center(
                     child: Text(
-                      audioController.currentPlayingAyah.value.toString(),
+                      (audioController.currentPlayingAyah.value + 1).toString(),
                     ),
                   ),
                 ),
@@ -245,10 +245,11 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                       ManageQuranAudio.audioPlayer
                           .seek(Duration(seconds: 0), index: value.toInt());
                     },
-                    max: audioController.totalAyah.value.toDouble(),
+                    max: audioController.totalAyah.value.toDouble() - 1,
                     min: 0,
+                    activeColor: Colors.green,
                     thumbColor: const Color.fromARGB(255, 0, 119, 8),
-                    divisions: audioController.totalAyah.value,
+                    divisions: audioController.totalAyah.value - 1,
                   ),
                 ),
               ),
