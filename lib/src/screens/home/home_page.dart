@@ -69,7 +69,9 @@ class _HomePageState extends State<HomePage> {
             children: [
               QuranTab(),
               AudioTab(tabController: pageController),
-              PlayListTab(),
+              PlayListTab(
+                tabController: pageController,
+              ),
               ProfileTab(),
             ],
           ),

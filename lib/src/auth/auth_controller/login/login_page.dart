@@ -1,12 +1,11 @@
 import 'dart:developer';
 
+import 'package:al_quran_tafsir_and_audio/src/auth/auth_controller/auth_controller.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:toastification/toastification.dart';
-
-import '../auth_controller/auth_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
