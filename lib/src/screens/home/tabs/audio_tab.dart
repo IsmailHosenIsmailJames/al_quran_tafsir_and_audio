@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:toastification/toastification.dart';
 
-import '../../../core/audio/resources/ayah_counts.dart';
 import '../../../core/audio/resources/recitation_info_model.dart';
 import '../../surah_view/common/tajweed_scripts_composer.dart';
 import '../controller/home_page_controller.dart';
@@ -251,7 +250,7 @@ class _AudioTabState extends State<AudioTab> {
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               Text(
-                                surahAyahCount[index].toString(),
+                                ayahCount[index].toString(),
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
                             ],
@@ -319,7 +318,7 @@ class _AudioTabState extends State<AudioTab> {
             return ListView.builder(
               controller: scrollController,
               padding: const EdgeInsets.all(10),
-              itemCount: (surahAyahCount[(index)] / 10).ceil(),
+              itemCount: (ayahCount[(index)] / 10).ceil(),
               itemBuilder: (context, index) {
                 int currentAyahCount = ayahCount[index];
                 int start = index * 10 + 1;

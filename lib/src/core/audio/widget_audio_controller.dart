@@ -1,6 +1,7 @@
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/full_screen_mode%20copy/full_screen_mode.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/play_quran_audio.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_scripts_composer.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
@@ -9,8 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-
-import 'resources/ayah_counts.dart';
 
 class WidgetAudioController extends StatefulWidget {
   final bool showSurahNumber;
@@ -63,9 +62,8 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                 (themeController.themeModeName.value == "system" &&
                     MediaQuery.of(context).platformBrightness ==
                         Brightness.dark));
-            Color colorToApply =
-                isDark ? Colors.white : Colors.grey.withValues(alpha: 0.3);
-            int latestSurahNumber = audioController.currentPlayingAyah.value;
+            Color colorToApply = isDark ? Colors.white : Colors.grey.shade900;
+            int latestSurahNumber = audioController.currentSurahNumber.value;
 
             return Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -87,6 +85,10 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
   }
 
   Widget getSurahView(bool isDark, int latestSurahNumber) {
+    int ayahStart = 0;
+    for (int i = 0; i < latestSurahNumber; i++) {
+      ayahStart += ayahCount[i];
+    }
     return Stack(
       children: [
         Container(
@@ -108,7 +110,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
             thumbVisibility: true,
             radius: const Radius.circular(7),
             interactive: true,
-            child: getWidgetOfQuranWithTajweed(latestSurahNumber),
+            child: getWidgetOfQuranWithTajweed(latestSurahNumber, ayahStart),
           ),
         ),
         if (!audioController.isFullScreenMode.value)
@@ -145,17 +147,17 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
     );
   }
 
-  ListView getWidgetOfQuranWithTajweed(int latestSurahNumber) {
+  ListView getWidgetOfQuranWithTajweed(int latestSurahNumber, ayahStart) {
     return ListView.builder(
         controller: scrollController,
         padding: const EdgeInsets.all(10),
-        itemCount: (surahAyahCount[(latestSurahNumber)] / 10).ceil(),
+        itemCount: (ayahCount[latestSurahNumber] / 10).ceil(),
         itemBuilder: (context, index) {
-          int ayahCount = surahAyahCount[latestSurahNumber];
+          int currentAyahCount = ayahCount[latestSurahNumber];
           int start = index * 10 + 1;
           int end = (index + 1) * 10;
-          if (end > ayahCount) {
-            end = ayahCount;
+          if (end > currentAyahCount) {
+            end = currentAyahCount;
           }
 
           List<InlineSpan> listOfAyahsSpanText = [];
@@ -166,7 +168,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
             listOfAyahsSpanText.addAll(
               getTajweedTexSpan(
                 quranDB.get(
-                  "uthmani_tajweed/${(latestSurahNumber) + 1}:$currentAyahNumber",
+                  "uthmani_tajweed/${ayahStart + currentAyahNumber}",
                   defaultValue: "",
                 ),
               ),
