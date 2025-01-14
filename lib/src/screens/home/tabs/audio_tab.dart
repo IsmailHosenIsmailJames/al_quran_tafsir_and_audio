@@ -303,54 +303,78 @@ class _AudioTabState extends State<AudioTab> {
   Future<dynamic> showPopUpForQuranWithTajweedText(
       BuildContext context, int index, int ayahStart) {
     return showModalBottomSheet(
-      showDragHandle: true,
-      scrollControlDisabledMaxHeightRatio: 1,
+      showDragHandle: false,
+      scrollControlDisabledMaxHeightRatio: 0.9,
       isScrollControlled: true,
       context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(7),
+          topRight: Radius.circular(7),
+        ),
+      ),
       builder: (context) {
-        return DraggableScrollableSheet(
-          initialChildSize: 1,
-          minChildSize: 0.75,
-          maxChildSize: 1,
-          expand: true,
-          snap: true,
-          builder: (context, scrollController) {
-            return ListView.builder(
-              controller: scrollController,
-              padding: const EdgeInsets.all(10),
-              itemCount: (ayahCount[(index)] / 10).ceil(),
-              itemBuilder: (context, index) {
-                int currentAyahCount = ayahCount[index];
-                int start = index * 10 + 1;
-                int end = (index + 1) * 10;
-                if (end > currentAyahCount) {
-                  end = currentAyahCount;
-                }
+        return SafeArea(
+          child: DraggableScrollableSheet(
+            initialChildSize: 0.95,
+            minChildSize: 0.75,
+            maxChildSize: 0.95,
+            expand: true,
+            snap: true,
+            builder: (context, scrollController) {
+              return Stack(
+                children: [
+                  ListView.builder(
+                    controller: scrollController,
+                    padding: const EdgeInsets.only(
+                        top: 40, bottom: 50, left: 10, right: 10),
+                    itemCount: (ayahCount[(index)] / 10).ceil(),
+                    itemBuilder: (context, index) {
+                      int currentAyahCount = ayahCount[index];
+                      int start = index * 10 + 1;
+                      int end = (index + 1) * 10;
+                      if (end > currentAyahCount) {
+                        end = currentAyahCount;
+                      }
 
-                List<InlineSpan> listOfAyahsSpanText = [];
+                      List<InlineSpan> listOfAyahsSpanText = [];
 
-                for (int currentAyahNumber = start;
-                    currentAyahNumber <= end;
-                    currentAyahNumber++) {
-                  listOfAyahsSpanText.addAll(
-                    getTajweedTexSpan(
-                      quranDB.get(
-                        "uthmani_tajweed/${ayahStart + currentAyahNumber}",
-                        defaultValue: "",
-                      ),
-                    ),
-                  );
-                }
+                      for (int currentAyahNumber = start;
+                          currentAyahNumber <= end;
+                          currentAyahNumber++) {
+                        listOfAyahsSpanText.addAll(
+                          getTajweedTexSpan(
+                            quranDB.get(
+                              "uthmani_tajweed/${ayahStart + currentAyahNumber}",
+                              defaultValue: "",
+                            ),
+                          ),
+                        );
+                      }
 
-                return Text.rich(
-                  TextSpan(children: listOfAyahsSpanText),
-                  style: TextStyle(
-                    fontSize: audioController.fontSizeArabic.value,
+                      return Text.rich(
+                        TextSpan(children: listOfAyahsSpanText),
+                        style: TextStyle(
+                          fontSize: audioController.fontSizeArabic.value,
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            );
-          },
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                        style: IconButton.styleFrom(
+                          backgroundColor: Colors.grey.withValues(alpha: 0.2),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(Icons.close)),
+                  )
+                ],
+              );
+            },
+          ),
         );
       },
     );

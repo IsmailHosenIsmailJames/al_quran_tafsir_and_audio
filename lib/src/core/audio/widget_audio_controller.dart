@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:line_icons/line_icons.dart';
 
 class WidgetAudioController extends StatefulWidget {
   final bool showSurahNumber;
@@ -291,7 +292,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                           !audioController.isSurahAyahMode.value;
                     },
                     icon: Icon(
-                      Icons.text_snippet_rounded,
+                      LineIcons.quran,
                       color: audioController.isSurahAyahMode.value
                           ? Colors.green
                           : colorToApply,
