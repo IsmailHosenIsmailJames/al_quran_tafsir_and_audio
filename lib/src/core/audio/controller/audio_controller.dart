@@ -22,8 +22,6 @@ class AudioController extends GetxController {
       defaultValue: jsonEncode(recitationsListOfQuranCom[0]),
     ),
   ).obs;
-  RxDouble fontSizeArabic =
-      (box.get("fontSizeArabic", defaultValue: 16.0) as double).obs;
   RxBool isPlaying = false.obs;
   Rx<Duration> progress = const Duration().obs;
   Rx<Duration> totalDuration = const Duration().obs;

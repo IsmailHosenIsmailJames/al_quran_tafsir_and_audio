@@ -1,6 +1,7 @@
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/play_quran_audio.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_recitations.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class AudioTab extends StatefulWidget {
 class _AudioTabState extends State<AudioTab> {
   final AudioController audioController = ManageQuranAudio.audioController;
   final HomePageController homePageController = Get.put(HomePageController());
+  final UniversalController universalController = Get.find();
   final AppThemeData themeController = Get.find<AppThemeData>();
   final ScrollController scrollController = ScrollController();
   final userDB = Hive.box("user_db");
@@ -355,7 +357,7 @@ class _AudioTabState extends State<AudioTab> {
                       return Text.rich(
                         TextSpan(children: listOfAyahsSpanText),
                         style: TextStyle(
-                          fontSize: audioController.fontSizeArabic.value,
+                          fontSize: universalController.fontSizeArabic.value,
                         ),
                       );
                     },

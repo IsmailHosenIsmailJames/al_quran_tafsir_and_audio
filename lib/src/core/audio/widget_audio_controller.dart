@@ -2,6 +2,7 @@ import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_contro
 import 'package:al_quran_tafsir_and_audio/src/core/audio/full_screen_mode%20copy/full_screen_mode.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/play_quran_audio.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_scripts_composer.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
@@ -31,6 +32,8 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<double> animation;
+
+  final UniversalController universalController = Get.find();
 
   @override
   void initState() {
@@ -179,7 +182,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
           return Text.rich(
             TextSpan(children: listOfAyahsSpanText),
             style: TextStyle(
-              fontSize: audioController.fontSizeArabic.value,
+              fontSize: universalController.fontSizeArabic.value,
             ),
             textAlign: TextAlign.justify,
             textDirection: TextDirection.rtl,

@@ -228,6 +228,8 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
 
                                   final box = await Hive.openBox("user_db");
                                   await box.put("selection_info", info);
+                                  await box.put("default_reciter",
+                                      infoController.selectedReciter.toJson());
                                   log("message");
                                 } else {
                                   showTwoestedMessage(

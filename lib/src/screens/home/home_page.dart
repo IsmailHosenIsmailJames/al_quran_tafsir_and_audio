@@ -2,6 +2,7 @@ import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/audio_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/play_list_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/profile_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/quran_tab.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -49,8 +50,15 @@ class _HomePageState extends State<HomePage> {
               );
             },
             icon: Icon(
-              Icons.search_rounded,
+              FluentIcons.search_24_filled,
             ),
+          ),
+          IconButton(
+            onPressed: () async {
+              await Get.to(() => SettingsPage());
+              setState(() {});
+            },
+            icon: Icon(FluentIcons.settings_24_filled),
           ),
         ],
       ),

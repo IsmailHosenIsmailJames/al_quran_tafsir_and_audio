@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_scripts_composer.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/info_view/info_view.dart';
@@ -63,7 +64,10 @@ class _SurahViewState extends State<SurahView> {
         title: Text(widget.titleToShow),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await Get.to(() => SettingsPage());
+              setState(() {});
+            },
             icon: Icon(
               Icons.settings_rounded,
               size: 18,
