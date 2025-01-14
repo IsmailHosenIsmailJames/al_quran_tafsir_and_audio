@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _SettingsPageState extends State<SettingsPage> {
   final audioController = Get.find<AudioController>();
   final appThemeDataController = Get.find<AppThemeData>();
   final universalController = Get.find<UniversalController>();
+  final InfoController infoController = Get.find<InfoController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,6 +167,62 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   style: TextStyle(
                     fontSize: universalController.fontSizeArabic.value,
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+              ),
+            ),
+            const Gap(15),
+            const Row(
+              children: [
+                Icon(FluentIcons.text_font_16_filled),
+                Gap(10),
+                Text(
+                  "Translation Font Size",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Obx(
+              () => Row(
+                children: [
+                  Expanded(
+                    child: Slider(
+                      value: universalController.fontSizeTranslation.value,
+                      min: 10,
+                      max: 50,
+                      divisions: 40,
+                      onChanged: (value) {
+                        universalController.fontSizeTranslation.value = value;
+                        Hive.box("user_db").put("fontSizeTranslation", value);
+                      },
+                    ),
+                  ),
+                  const Gap(5),
+                  Text(
+                    universalController.fontSizeArabic.value.round().toString(),
+                  ),
+                  const Gap(10),
+                ],
+              ),
+            ),
+            Container(
+              alignment: Alignment.topRight,
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: Colors.grey.withValues(
+                  alpha: 0.2,
+                ),
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: Obx(
+                () => Text(
+                  Hive.box("translation_db").get(
+                    "${infoController.bookIDTranslation.value}/0",
+                    defaultValue: "",
+                  ),
+                  style: TextStyle(
+                    fontSize: universalController.fontSizeTranslation.value,
                   ),
                   textDirection: TextDirection.rtl,
                 ),
