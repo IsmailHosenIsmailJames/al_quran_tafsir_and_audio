@@ -6,7 +6,7 @@ class CollectionInfoModel {
   String name;
   String? description;
   List<int>? ayahs;
-  String createdBy;
+  String? createdBy;
   String? createdAt;
   int? peopleAdded;
 
@@ -16,7 +16,7 @@ class CollectionInfoModel {
     required this.name,
     this.description,
     this.ayahs,
-    required this.createdBy,
+    this.createdBy,
     this.createdAt,
     this.peopleAdded,
   });

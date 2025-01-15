@@ -4,6 +4,8 @@ import 'package:al_quran_tafsir_and_audio/src/core/audio/play_quran_audio.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/home_page_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/model/play_list_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,8 @@ class _CollectionTabState extends State<CollectionTab> {
   final HomePageController homePageController = Get.put(HomePageController());
   final AudioController audioController = Get.put(AudioController());
   final themeController = Get.find<AppThemeData>();
+
+  CollectionController collectionController = Get.put(CollectionController());
   List<int> expandedList = [];
   @override
   void initState() {
@@ -133,8 +137,15 @@ class _CollectionTabState extends State<CollectionTab> {
         ),
         Expanded(
             child: tabIndex == 0
-                ? Center(
-                    child: Text("Under Development"),
+                ? ListView.builder(
+                    itemCount: collectionController.collectionList.length,
+                    itemBuilder: (context, index) {
+                      CollectionInfoModel currentCollection =
+                          collectionController.collectionList[index];
+                      return Text(
+                        currentCollection.toJson(),
+                      );
+                    },
                   )
                 : Obx(
                     () {
