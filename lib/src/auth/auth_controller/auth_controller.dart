@@ -29,7 +29,7 @@ class AuthController extends GetxController {
       loggedInUser.value = user;
       return user;
     } on AppwriteException catch (e) {
-      print(e.message);
+      log(e.message.toString());
     }
     return null;
   }
@@ -50,6 +50,7 @@ class AuthController extends GetxController {
         databaseId: authController.databaseID,
         collectionId: authController.collectionID,
         documentId: id,
+
       );
       return response.then((value) async {
         if (value.data["all_playlist_data"] != null) {

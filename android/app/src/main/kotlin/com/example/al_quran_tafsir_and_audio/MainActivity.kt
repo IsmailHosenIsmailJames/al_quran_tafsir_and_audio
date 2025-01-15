@@ -1,4 +1,4 @@
-package com.example.al_quran_tafsir_and_audio
+package com.ismail_hosen_james.al_bayan_quran
 
 import io.flutter.embedding.android.FlutterActivity
 

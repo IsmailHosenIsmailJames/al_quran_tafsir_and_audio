@@ -12,17 +12,17 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:toastification/toastification.dart';
 
-import '../../../core/audio/controller/audio_controller.dart';
+import '../../../../core/audio/controller/audio_controller.dart';
 
-class PlayListTab extends StatefulWidget {
+class CollectionTab extends StatefulWidget {
   final PageController tabController;
-  const PlayListTab({super.key, required this.tabController});
+  const CollectionTab({super.key, required this.tabController});
 
   @override
-  State<PlayListTab> createState() => _PlayListTabState();
+  State<CollectionTab> createState() => _CollectionTabState();
 }
 
-class _PlayListTabState extends State<PlayListTab> {
+class _CollectionTabState extends State<CollectionTab> {
   final HomePageController homePageController = Get.put(HomePageController());
   final AudioController audioController = Get.put(AudioController());
   final themeController = Get.find<AppThemeData>();
@@ -77,10 +77,10 @@ class _PlayListTabState extends State<PlayListTab> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.playlist_play_rounded),
+                      Icon(FluentIcons.bookmark_24_filled),
                       Gap(10),
                       Text(
-                        "Playlist",
+                        "Groups",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -116,10 +116,10 @@ class _PlayListTabState extends State<PlayListTab> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(FluentIcons.bookmark_24_filled),
+                      Icon(Icons.playlist_play_rounded),
                       Gap(10),
                       Text(
-                        "Groups",
+                        "Playlist",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -132,90 +132,90 @@ class _PlayListTabState extends State<PlayListTab> {
           ),
         ),
         Expanded(
-          child: tabIndex == 0
-              ? Obx(
-                  () {
-                    final allPlayList =
-                        homePageController.allPlaylistInDB.value;
-                    return allPlayList.isEmpty
-                        ? Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 75,
-                                  width: 75,
-                                  child: Obx(
-                                    () {
-                                      bool isDark =
-                                          themeController.themeModeName.value ==
-                                                  "dark" ||
-                                              (themeController.themeModeName
-                                                          .value ==
-                                                      "system" &&
-                                                  MediaQuery.of(context)
-                                                          .platformBrightness ==
-                                                      Brightness.dark);
+            child: tabIndex == 0
+                ? Center(
+                    child: Text("Under Development"),
+                  )
+                : Obx(
+                    () {
+                      final allPlayList =
+                          homePageController.allPlaylistInDB.value;
+                      return allPlayList.isEmpty
+                          ? Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 75,
+                                    width: 75,
+                                    child: Obx(
+                                      () {
+                                        bool isDark = themeController
+                                                    .themeModeName.value ==
+                                                "dark" ||
+                                            (themeController
+                                                        .themeModeName.value ==
+                                                    "system" &&
+                                                MediaQuery.of(context)
+                                                        .platformBrightness ==
+                                                    Brightness.dark);
 
-                                      return Image(
-                                        image: const AssetImage(
-                                          "assets/empty-folder.png",
+                                        return Image(
+                                          image: const AssetImage(
+                                            "assets/empty-folder.png",
+                                          ),
+                                          color: isDark
+                                              ? Colors.white
+                                              : Colors.black,
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  const Gap(10),
+                                  const Text("No PlayList found"),
+                                  const Gap(10),
+                                  ElevatedButton.icon(
+                                    onPressed: createANewPlayList,
+                                    icon: const Icon(Icons.add),
+                                    label: const Text(
+                                      "Create PlayList",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : ListView(
+                              padding: const EdgeInsets.only(
+                                  left: 5, right: 5, top: 5, bottom: 100),
+                              children: <Widget>[
+                                    Row(
+                                      children: [
+                                        Text(
+                                            "Total PlayList: ${allPlayList.length}"),
+                                        const Spacer(),
+                                        SizedBox(
+                                          height: 25,
+                                          child: ElevatedButton.icon(
+                                            onPressed: createANewPlayList,
+                                            icon: const Icon(Icons.add),
+                                            label: const Text(
+                                                "Create New PlayList"),
+                                          ),
                                         ),
-                                        color: isDark
-                                            ? Colors.white
-                                            : Colors.black,
-                                      );
+                                      ],
+                                    ),
+                                  ] +
+                                  List<Widget>.generate(
+                                    allPlayList.length,
+                                    (index) {
+                                      return getPlayListCards(
+                                          allPlayList, index);
                                     },
                                   ),
-                                ),
-                                const Gap(10),
-                                const Text("No PlayList found"),
-                                const Gap(10),
-                                ElevatedButton.icon(
-                                  onPressed: createANewPlayList,
-                                  icon: const Icon(Icons.add),
-                                  label: const Text(
-                                    "Create PlayList",
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        : ListView(
-                            padding: const EdgeInsets.only(
-                                left: 5, right: 5, top: 5, bottom: 100),
-                            children: <Widget>[
-                                  Row(
-                                    children: [
-                                      Text(
-                                          "Total PlayList: ${allPlayList.length}"),
-                                      const Spacer(),
-                                      SizedBox(
-                                        height: 25,
-                                        child: ElevatedButton.icon(
-                                          onPressed: createANewPlayList,
-                                          icon: const Icon(Icons.add),
-                                          label:
-                                              const Text("Create New PlayList"),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ] +
-                                List<Widget>.generate(
-                                  allPlayList.length,
-                                  (index) {
-                                    return getPlayListCards(allPlayList, index);
-                                  },
-                                ),
-                          );
-                  },
-                )
-              : Center(
-                  child: Text("Under Development"),
-                ),
-        ),
+                            );
+                    },
+                  )),
       ],
     );
   }

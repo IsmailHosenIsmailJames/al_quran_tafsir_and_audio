@@ -1,0 +1,16 @@
+[
+    {
+        "id": "125",
+        "is_public_resources" : true,
+        "name": "name_of_collection",
+        "description": "description_of_collection",
+        "ayahs": [
+            2,
+            3,
+            5
+        ],
+        "created_by": "created_by_user_id",
+        "created_at": "created_at_date",
+        "people_added": 2
+    }
+]

@@ -1,5 +1,5 @@
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/audio_tab.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/play_list_tab.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/collection_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/profile_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/quran_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dart';
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               QuranTab(),
               AudioTab(tabController: pageController),
-              PlayListTab(
+              CollectionTab(
                 tabController: pageController,
               ),
               ProfileTab(),
