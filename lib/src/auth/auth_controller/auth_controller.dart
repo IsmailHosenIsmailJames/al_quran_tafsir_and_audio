@@ -7,7 +7,6 @@ import 'package:appwrite/models.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../api/appwrite/config.dart';
-import '../../functions/safe_email_to_id.dart';
 import '../../screens/home/controller/home_page_controller.dart';
 import '../../screens/home/controller/model/play_list_model.dart';
 
@@ -44,13 +43,12 @@ class AuthController extends GetxController {
     final user = await AppWriteConfig.account.get();
     loggedInUser.value = user;
     try {
-      String id = encodeEmailForId(user.email);
+      String id = user.$id;
       final AuthController authController = Get.find<AuthController>();
       final response = Databases(AppWriteConfig.client).getDocument(
         databaseId: authController.databaseID,
         collectionId: authController.collectionID,
         documentId: id,
-
       );
       return response.then((value) async {
         if (value.data["all_playlist_data"] != null) {

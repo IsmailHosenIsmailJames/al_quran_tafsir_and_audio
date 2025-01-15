@@ -8,7 +8,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../api/appwrite/config.dart';
 import '../../../auth/auth_controller/auth_controller.dart';
 import '../../../core/audio/resources/recitation_info_model.dart';
-import '../../../functions/safe_email_to_id.dart';
 
 class HomePageController extends GetxController {
   RxBool selectForPlaylistMode = false.obs;
@@ -86,7 +85,7 @@ class HomePageController extends GetxController {
 
       try {
         final AuthController authController = Get.find<AuthController>();
-        String id = encodeEmailForId(authController.loggedInUser.value!.email);
+        String id = authController.loggedInUser.value!.$id;
         if (Hive.box('cloud_play_list').keys.isNotEmpty) {
           await db.updateDocument(
             databaseId: authController.databaseID,
