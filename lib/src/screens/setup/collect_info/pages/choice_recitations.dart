@@ -213,11 +213,13 @@ class _RecitationChoiceState extends State<RecitationChoice> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Obx(
-              () => WidgetAudioController(
-                showSurahNumber: false,
-                showQuranAyahMode: true,
-                surahNumber: audioController.currentPlayingAyah.value,
-              ),
+              () => audioController.isReadyToControl.value
+                  ? WidgetAudioController(
+                      showSurahNumber: false,
+                      showQuranAyahMode: true,
+                      surahNumber: audioController.currentPlayingAyah.value,
+                    )
+                  : SizedBox(),
             ),
           ),
         ],

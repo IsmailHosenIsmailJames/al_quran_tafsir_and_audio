@@ -95,7 +95,8 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                         int ran = Random().nextInt(4);
 
                         String url = getURLusingTafsirID(
-                            infoController.tafsirBookID.value, ran);
+                            int.parse(infoController.tafsirBookID.value.trim()),
+                            ran);
 
                         final tafsirDB = Hive.box("tafsir_db");
 

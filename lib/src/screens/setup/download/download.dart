@@ -100,7 +100,8 @@ class _DownloadDataState extends State<DownloadData> {
       });
       log("Already exits translationBookID");
     } else {
-      String url = getURLusingTranslationID(translationBookID, ran);
+      String url =
+          getURLusingTranslationID(int.parse(translationBookID.trim()), ran);
       log("URL : $url");
 
       final response =
@@ -130,26 +131,37 @@ class _DownloadDataState extends State<DownloadData> {
     });
     final tafsirDB = Hive.box("tafsir_db");
 
-    String? url = getURLusingTafsirID(widget.selection["tafsir_book_ID"], ran);
+    String? url = getURLusingTafsirID(
+        int.parse(widget.selection["tafsir_book_ID"].toString().trim()), ran);
     log("Tafsir Book ID : ${widget.selection["tafsir_book_ID"]}");
     log("URL : $url");
     if (!tafsirDB.keys.contains("${infoController.tafsirBookID.value}/1")) {
       final response =
           await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
       if (response.statusCode == 200) {
+        DateTime now = DateTime.now();
         String text = response.body.substring(1, response.body.length - 1);
+        log("Substring Time : ${DateTime.now().difference(now).inMilliseconds}");
+        now = DateTime.now();
         setState(() {
           processState = "Processing tafsir...";
         });
-        String decodedText = decompressStringWithGZip2(text);
+
+        String decodedText = decompressServerDataWithGZip2(text);
+        log("Decompressed Time : ${DateTime.now().difference(now).inMilliseconds}");
+        now = DateTime.now();
         setState(() {
           progressValue += 0.2;
         });
         List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
+        log("json decode Time : ${DateTime.now().difference(now).inMilliseconds}");
+        now = DateTime.now();
         for (int i = 0; i < decodedJson.length; i++) {
           await tafsirDB.put("${infoController.tafsirBookID.value}/$i",
               compressStringWithGZip2(decodedJson[i]));
         }
+        log("json decode Time : ${DateTime.now().difference(now).inMilliseconds}");
+        now = DateTime.now();
       } else {
         log("Failed to download tafsir");
         setState(() {

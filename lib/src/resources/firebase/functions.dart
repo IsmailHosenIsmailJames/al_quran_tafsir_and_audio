@@ -1,10 +1,10 @@
 import 'package:al_quran_tafsir_and_audio/src/resources/firebase/qurans_resources_link.dart';
 
-String getURLusingTafsirID(String tafsirID, int ranIndex) {
+String getURLusingTafsirID(int tafsirID, int ranIndex) {
   String? url = tafsirs[ranIndex][tafsirID];
   if (url == null) {
     tafsirs[ranIndex].forEach((key, value) {
-      if (key == tafsirID || key.contains(tafsirID)) {
+      if (key == tafsirID) {
         url = value;
       }
     });
@@ -12,11 +12,11 @@ String getURLusingTafsirID(String tafsirID, int ranIndex) {
   return url!;
 }
 
-String getURLusingTranslationID(String translationID, int ranIndex) {
+String getURLusingTranslationID(int translationID, int ranIndex) {
   String? url = translation[ranIndex][translationID];
   if (url == null) {
     translation[ranIndex].forEach((key, value) {
-      if (key == translationID || key.contains(translationID)) {
+      if (key == translationID) {
         url = value;
       }
     });

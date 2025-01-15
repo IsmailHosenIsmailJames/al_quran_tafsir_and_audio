@@ -100,8 +100,8 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                         if (translationDB.keys
                             .contains("$translationBookID/1")) {
                         } else {
-                          String url =
-                              getURLusingTranslationID(translationBookID, ran);
+                          String url = getURLusingTranslationID(
+                              int.parse(translationBookID.trim()), ran);
 
                           final response = await get(Uri.parse(url),
                               headers: {'Content-type': 'text/plain'});

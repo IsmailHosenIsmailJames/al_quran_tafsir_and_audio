@@ -65,37 +65,39 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: themeIconButton,
       ),
-      body: Stack(
-        children: [
-          PageView(
-            onPageChanged: (value) {
-              setState(() {
-                selectedBottomNavIndex = value;
-              });
-            },
-            controller: pageController,
-            children: [
-              QuranTab(),
-              AudioTab(tabController: pageController),
-              CollectionTab(
-                tabController: pageController,
-              ),
-              ProfileTab(),
-            ],
-          ),
-          Obx(
-            () => Container(
-              child: (audioController.isPlaying.value == true ||
-                      audioController.isReadyToControl.value == true)
-                  ? WidgetAudioController(
-                      showSurahNumber: false,
-                      showQuranAyahMode: true,
-                      surahNumber: audioController.currentPlayingAyah.value,
-                    )
-                  : null,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            PageView(
+              onPageChanged: (value) {
+                setState(() {
+                  selectedBottomNavIndex = value;
+                });
+              },
+              controller: pageController,
+              children: [
+                QuranTab(),
+                AudioTab(tabController: pageController),
+                CollectionTab(
+                  tabController: pageController,
+                ),
+                ProfileTab(),
+              ],
             ),
-          ),
-        ],
+            Obx(
+              () => Container(
+                child: (audioController.isPlaying.value == true ||
+                        audioController.isReadyToControl.value == true)
+                    ? WidgetAudioController(
+                        showSurahNumber: false,
+                        showQuranAyahMode: true,
+                        surahNumber: audioController.currentPlayingAyah.value,
+                      )
+                    : null,
+              ),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(5.0),
