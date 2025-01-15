@@ -6,6 +6,7 @@ import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/home_page_
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/model/play_list_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/create_new_collection_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -136,97 +137,115 @@ class _CollectionTabState extends State<CollectionTab> {
           ),
         ),
         Expanded(
-            child: tabIndex == 0
-                ? ListView.builder(
-                    itemCount: collectionController.collectionList.length,
-                    itemBuilder: (context, index) {
-                      CollectionInfoModel currentCollection =
-                          collectionController.collectionList[index];
-                      return Text(
-                        currentCollection.toJson(),
+          child: tabIndex == 0
+              ? ListView.builder(
+                  padding: EdgeInsets.only(
+                    top: 10,
+                    left: 10,
+                    right: 10,
+                    bottom: 100,
+                  ),
+                  itemCount: collectionController.collectionList.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return ElevatedButton(
+                        onPressed: () {
+                          Get.to(
+                            () => const CreateNewCollectionPage(
+                              previousData: null,
+                            ),
+                          );
+                        },
+                        child: Text("Create New Group"),
                       );
-                    },
-                  )
-                : Obx(
-                    () {
-                      final allPlayList =
-                          homePageController.allPlaylistInDB.value;
-                      return allPlayList.isEmpty
-                          ? Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 75,
-                                    width: 75,
-                                    child: Obx(
-                                      () {
-                                        bool isDark = themeController
-                                                    .themeModeName.value ==
-                                                "dark" ||
-                                            (themeController
-                                                        .themeModeName.value ==
-                                                    "system" &&
-                                                MediaQuery.of(context)
-                                                        .platformBrightness ==
-                                                    Brightness.dark);
+                    }
+                    CollectionInfoModel currentCollection =
+                        collectionController.collectionList[index - 1];
+                    return Text(
+                      currentCollection.toJson(),
+                    );
+                  },
+                )
+              : Obx(
+                  () {
+                    final allPlayList =
+                        homePageController.allPlaylistInDB.value;
+                    return allPlayList.isEmpty
+                        ? Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 75,
+                                  width: 75,
+                                  child: Obx(
+                                    () {
+                                      bool isDark =
+                                          themeController.themeModeName.value ==
+                                                  "dark" ||
+                                              (themeController.themeModeName
+                                                          .value ==
+                                                      "system" &&
+                                                  MediaQuery.of(context)
+                                                          .platformBrightness ==
+                                                      Brightness.dark);
 
-                                        return Image(
-                                          image: const AssetImage(
-                                            "assets/empty-folder.png",
-                                          ),
-                                          color: isDark
-                                              ? Colors.white
-                                              : Colors.black,
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  const Gap(10),
-                                  const Text("No PlayList found"),
-                                  const Gap(10),
-                                  ElevatedButton.icon(
-                                    onPressed: createANewPlayList,
-                                    icon: const Icon(Icons.add),
-                                    label: const Text(
-                                      "Create PlayList",
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : ListView(
-                              padding: const EdgeInsets.only(
-                                  left: 5, right: 5, top: 5, bottom: 100),
-                              children: <Widget>[
-                                    Row(
-                                      children: [
-                                        Text(
-                                            "Total PlayList: ${allPlayList.length}"),
-                                        const Spacer(),
-                                        SizedBox(
-                                          height: 25,
-                                          child: ElevatedButton.icon(
-                                            onPressed: createANewPlayList,
-                                            icon: const Icon(Icons.add),
-                                            label: const Text(
-                                                "Create New PlayList"),
-                                          ),
+                                      return Image(
+                                        image: const AssetImage(
+                                          "assets/empty-folder.png",
                                         ),
-                                      ],
-                                    ),
-                                  ] +
-                                  List<Widget>.generate(
-                                    allPlayList.length,
-                                    (index) {
-                                      return getPlayListCards(
-                                          allPlayList, index);
+                                        color: isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      );
                                     },
                                   ),
-                            );
-                    },
-                  )),
+                                ),
+                                const Gap(10),
+                                const Text("No PlayList found"),
+                                const Gap(10),
+                                ElevatedButton.icon(
+                                  onPressed: createANewPlayList,
+                                  icon: const Icon(Icons.add),
+                                  label: const Text(
+                                    "Create PlayList",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView(
+                            padding: const EdgeInsets.only(
+                                left: 5, right: 5, top: 5, bottom: 100),
+                            children: <Widget>[
+                                  Row(
+                                    children: [
+                                      Text(
+                                          "Total PlayList: ${allPlayList.length}"),
+                                      const Spacer(),
+                                      SizedBox(
+                                        height: 25,
+                                        child: ElevatedButton.icon(
+                                          onPressed: createANewPlayList,
+                                          icon: const Icon(Icons.add),
+                                          label:
+                                              const Text("Create New PlayList"),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ] +
+                                List<Widget>.generate(
+                                  allPlayList.length,
+                                  (index) {
+                                    return getPlayListCards(allPlayList, index);
+                                  },
+                                ),
+                          );
+                  },
+                ),
+        ),
       ],
     );
   }

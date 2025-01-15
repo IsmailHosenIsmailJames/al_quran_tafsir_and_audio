@@ -275,11 +275,27 @@ class _SurahViewState extends State<SurahView> {
                       ),
                     ),
                   ),
-                buildAyah(index, currentAyahIndex),
+                buildAyahWidget(
+                  index: index,
+                  currentAyahIndex: currentAyahIndex,
+                  infoController: infoController,
+                  ayahStartFrom: widget.ayahStartFrom,
+                  surahInfo: widget.surahInfo,
+                  translationBookName: translationBookName,
+                  universalController: universalController,
+                ),
               ],
             );
           } else {
-            return buildAyah(index, currentAyahIndex);
+            return buildAyahWidget(
+              index: index,
+              currentAyahIndex: currentAyahIndex,
+              infoController: infoController,
+              ayahStartFrom: widget.ayahStartFrom,
+              surahInfo: widget.surahInfo,
+              translationBookName: translationBookName,
+              universalController: universalController,
+            );
           }
         },
       ),
@@ -404,24 +420,35 @@ class _SurahViewState extends State<SurahView> {
       ),
     );
   }
+}
 
-  Container buildAyah(int index, int currentAyahIndex) {
-    return Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: Colors.grey.withValues(
-          alpha: 0.1,
-        ),
-        borderRadius: BorderRadius.circular(7),
+Container buildAyahWidget({
+  required int index,
+  required int currentAyahIndex,
+  required InfoController infoController,
+  int? ayahStartFrom,
+  required UniversalController universalController,
+  SurahViewInfoModel? surahInfo,
+  required String translationBookName,
+  bool showAyahNumber = true,
+}) {
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.all(5),
+    padding: EdgeInsets.all(5),
+    decoration: BoxDecoration(
+      color: Colors.grey.withValues(
+        alpha: 0.1,
       ),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 30,
-            child: Row(
-              children: [
+      borderRadius: BorderRadius.circular(7),
+    ),
+    child: Column(
+      children: [
+        SizedBox(
+          height: 30,
+          child: Row(
+            children: [
+              if (showAyahNumber)
                 Container(
                   height: 30,
                   padding: EdgeInsets.all(5),
@@ -429,153 +456,151 @@ class _SurahViewState extends State<SurahView> {
                       color: Colors.green.shade700.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(5)),
                   child: Text(
-                    (((widget.ayahStartFrom ?? 1) - 1) + (index + 1))
-                        .toString(),
+                    (((ayahStartFrom ?? 1) - 1) + (index + 1)).toString(),
                   ),
                 ),
-                Spacer(),
-                SizedBox(
-                  width: 30,
-                  height: 30,
-                  child: IconButton(
-                    style: IconButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      foregroundColor: Colors.green.shade700,
-                      backgroundColor:
-                          Colors.grey.shade600.withValues(alpha: 0.3),
-                    ),
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.play_arrow_rounded,
-                    ),
+              Spacer(),
+              SizedBox(
+                width: 30,
+                height: 30,
+                child: IconButton(
+                  style: IconButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    foregroundColor: Colors.green.shade700,
+                    backgroundColor:
+                        Colors.grey.shade600.withValues(alpha: 0.3),
                   ),
-                ),
-                Gap(10),
-                SizedBox(
-                  height: 30,
-                  width: 30,
-                  child: PopupMenuButton(
-                    style: IconButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      backgroundColor:
-                          Colors.grey.shade600.withValues(alpha: 0.3),
-                      iconSize: 18,
-                    ),
-                    onSelected: (value) {
-                      if (value == "tafsir") {
-                        Get.to(
-                          () => TafsirView(
-                            ayahNumber: currentAyahIndex,
-                            tafsirBookID: infoController.tafsirBookID.value,
-                            fontSize:
-                                universalController.fontSizeTranslation.value,
-                            surahName: widget.surahInfo.surahNameSimple,
-                          ),
-                        );
-                      }
-                    },
-                    itemBuilder: (context) {
-                      return [
-                        PopupMenuItem(
-                          value: "tafsir",
-                          child: ListTile(
-                            minTileHeight: 50,
-                            leading: Icon(FluentIcons.book_24_filled),
-                            title: Text(
-                              "Tafsir",
-                            ),
-                          ),
-                        ),
-                        PopupMenuItem(
-                          value: "bookmark",
-                          child: ListTile(
-                            minTileHeight: 50,
-                            leading: Icon(Icons.bookmark_rounded),
-                            title: Text(
-                              "Bookmark",
-                            ),
-                          ),
-                        ),
-                        PopupMenuItem(
-                          value: "favorite",
-                          child: ListTile(
-                            minTileHeight: 50,
-                            leading: Icon(
-                              Icons.favorite_rounded,
-                            ),
-                            title: Text(
-                              "Favorite",
-                            ),
-                          ),
-                        ),
-                        PopupMenuItem(
-                          value: "add_to_group",
-                          child: ListTile(
-                            minTileHeight: 50,
-                            leading: Icon(
-                              Icons.add_rounded,
-                            ),
-                            title: Text(
-                              "Add to group",
-                            ),
-                          ),
-                        ),
-                      ];
-                    },
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.play_arrow_rounded,
                   ),
-                ),
-              ],
-            ),
-          ),
-          Gap(10),
-          Align(
-            alignment: Alignment.topRight,
-            child: Obx(
-              () => Text.rich(
-                TextSpan(
-                  children: getTajweedTexSpan(
-                    Hive.box("quran_db").get(
-                      "uthmani_tajweed/${currentAyahIndex + 1}",
-                      defaultValue: "",
-                    ),
-                  ),
-                ),
-                textAlign: TextAlign.right,
-                textDirection: TextDirection.rtl,
-                style: TextStyle(
-                  fontSize: universalController.fontSizeArabic.value,
                 ),
               ),
-            ),
+              Gap(10),
+              SizedBox(
+                height: 30,
+                width: 30,
+                child: PopupMenuButton(
+                  style: IconButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    backgroundColor:
+                        Colors.grey.shade600.withValues(alpha: 0.3),
+                    iconSize: 18,
+                  ),
+                  onSelected: (value) {
+                    if (value == "tafsir") {
+                      Get.to(
+                        () => TafsirView(
+                          ayahNumber: currentAyahIndex,
+                          tafsirBookID: infoController.tafsirBookID.value,
+                          fontSize:
+                              universalController.fontSizeTranslation.value,
+                          surahName: surahInfo?.surahNameSimple,
+                        ),
+                      );
+                    }
+                  },
+                  itemBuilder: (context) {
+                    return [
+                      PopupMenuItem(
+                        value: "tafsir",
+                        child: ListTile(
+                          minTileHeight: 50,
+                          leading: Icon(FluentIcons.book_24_filled),
+                          title: Text(
+                            "Tafsir",
+                          ),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: "bookmark",
+                        child: ListTile(
+                          minTileHeight: 50,
+                          leading: Icon(Icons.bookmark_rounded),
+                          title: Text(
+                            "Bookmark",
+                          ),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: "favorite",
+                        child: ListTile(
+                          minTileHeight: 50,
+                          leading: Icon(
+                            Icons.favorite_rounded,
+                          ),
+                          title: Text(
+                            "Favorite",
+                          ),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: "add_to_group",
+                        child: ListTile(
+                          minTileHeight: 50,
+                          leading: Icon(
+                            Icons.add_rounded,
+                          ),
+                          title: Text(
+                            "Add to group",
+                          ),
+                        ),
+                      ),
+                    ];
+                  },
+                ),
+              ),
+            ],
           ),
-          Divider(),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              "Translation book :\n$translationBookName",
+        ),
+        Gap(10),
+        Align(
+          alignment: Alignment.topRight,
+          child: Obx(
+            () => Text.rich(
+              TextSpan(
+                children: getTajweedTexSpan(
+                  Hive.box("quran_db").get(
+                    "uthmani_tajweed/${currentAyahIndex + 1}",
+                    defaultValue: "",
+                  ),
+                ),
+              ),
+              textAlign: TextAlign.right,
+              textDirection: TextDirection.rtl,
               style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey.shade500,
+                fontSize: universalController.fontSizeArabic.value,
               ),
             ),
           ),
-          Gap(5),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Obx(
-              () => Text(
-                Hive.box("translation_db").get(
-                  "${infoController.bookIDTranslation.value}/$currentAyahIndex",
-                  defaultValue: "",
-                ),
-                style: TextStyle(
-                  fontSize: universalController.fontSizeTranslation.value,
-                ),
+        ),
+        Divider(),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            "Translation book :\n$translationBookName",
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey.shade500,
+            ),
+          ),
+        ),
+        Gap(5),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Obx(
+            () => Text(
+              Hive.box("translation_db").get(
+                "${infoController.bookIDTranslation.value}/$currentAyahIndex",
+                defaultValue: "",
+              ),
+              style: TextStyle(
+                fontSize: universalController.fontSizeTranslation.value,
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
 }

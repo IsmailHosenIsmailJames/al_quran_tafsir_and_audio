@@ -8,22 +8,26 @@ class TafsirView extends StatelessWidget {
   final String tafsirBookID;
   final String? surahName;
   final double? fontSize;
+  final bool showAppBar;
   const TafsirView({
     super.key,
     required this.ayahNumber,
     required this.tafsirBookID,
     this.surahName,
     this.fontSize,
+    this.showAppBar = true,
   });
 
   @override
   Widget build(BuildContext context) {
     ScrollController scrollController = ScrollController();
     return Scaffold(
-      appBar: AppBar(
-        title:
-            Text(surahName != null ? "$surahName ( $ayahNumber )" : "Tafsir"),
-      ),
+      appBar: showAppBar
+          ? AppBar(
+              title: Text(
+                  surahName != null ? "$surahName ( $ayahNumber )" : "Tafsir"),
+            )
+          : null,
       body: FutureBuilder(
         future: getTafsirText(tafsirBookID, ayahNumber),
         builder: (context, snapshot) {

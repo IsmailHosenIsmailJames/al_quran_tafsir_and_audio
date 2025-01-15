@@ -108,7 +108,7 @@ class _DownloadDataState extends State<DownloadData> {
           await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
       if (response.statusCode == 200) {
         String text = response.body.substring(1, response.body.length - 1);
-        String decodedText = decompressStringWithGZip2(text);
+        String decodedText = decompressServerDataWithGZip2(text);
         List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
         for (int i = 0; i < decodedJson.length; i++) {
           await translationDB.put("$translationBookID/$i", decodedJson[i]);
