@@ -25,6 +25,8 @@ class CollectionTab extends StatefulWidget {
   State<CollectionTab> createState() => _CollectionTabState();
 }
 
+int collectionTabIndex = 0;
+
 class _CollectionTabState extends State<CollectionTab> {
   final HomePageController homePageController = Get.put(HomePageController());
   final AudioController audioController = Get.put(AudioController());
@@ -36,8 +38,6 @@ class _CollectionTabState extends State<CollectionTab> {
   void initState() {
     super.initState();
   }
-
-  int tabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +59,15 @@ class _CollectionTabState extends State<CollectionTab> {
                 width: width * 0.5,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: tabIndex == 0
+                    backgroundColor: collectionTabIndex == 0
                         ? Colors.green.shade700
                         : Colors.transparent,
-                    foregroundColor:
-                        tabIndex == 0 ? Colors.white : Colors.green.shade700,
-                    iconColor:
-                        tabIndex == 0 ? Colors.white : Colors.green.shade700,
+                    foregroundColor: collectionTabIndex == 0
+                        ? Colors.white
+                        : Colors.green.shade700,
+                    iconColor: collectionTabIndex == 0
+                        ? Colors.white
+                        : Colors.green.shade700,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),
@@ -75,7 +77,7 @@ class _CollectionTabState extends State<CollectionTab> {
                   ),
                   onPressed: () {
                     setState(() {
-                      tabIndex = 0;
+                      collectionTabIndex = 0;
                     });
                   },
                   child: Row(
@@ -98,13 +100,15 @@ class _CollectionTabState extends State<CollectionTab> {
                 width: width * 0.5,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: tabIndex == 1
+                    backgroundColor: collectionTabIndex == 1
                         ? Colors.green.shade700
                         : Colors.transparent,
-                    foregroundColor:
-                        tabIndex == 1 ? Colors.white : Colors.green.shade700,
-                    iconColor:
-                        tabIndex == 1 ? Colors.white : Colors.green.shade700,
+                    foregroundColor: collectionTabIndex == 1
+                        ? Colors.white
+                        : Colors.green.shade700,
+                    iconColor: collectionTabIndex == 1
+                        ? Colors.white
+                        : Colors.green.shade700,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -114,7 +118,7 @@ class _CollectionTabState extends State<CollectionTab> {
                   ),
                   onPressed: () {
                     setState(() {
-                      tabIndex = 1;
+                      collectionTabIndex = 1;
                     });
                   },
                   child: Row(
@@ -140,7 +144,7 @@ class _CollectionTabState extends State<CollectionTab> {
           () {
             final allPlayList = homePageController.allPlaylistInDB.value;
             return Expanded(
-              child: tabIndex == 0
+              child: collectionTabIndex == 0
                   ? ListView.builder(
                       padding: EdgeInsets.only(
                         top: 5,

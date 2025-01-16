@@ -15,8 +15,9 @@ class QuranTab extends StatefulWidget {
   State<QuranTab> createState() => _QuranTabState();
 }
 
+int quranTabIndex = 0;
+
 class _QuranTabState extends State<QuranTab> {
-  int tabIndex = 0;
   List<bool> isExpanded = List.generate(30, (index) => false);
   @override
   Widget build(BuildContext context) {
@@ -38,11 +39,12 @@ class _QuranTabState extends State<QuranTab> {
                 width: width * 0.5,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: tabIndex == 0
+                    backgroundColor: quranTabIndex == 0
                         ? Colors.green.shade700
                         : Colors.transparent,
-                    foregroundColor:
-                        tabIndex == 0 ? Colors.white : Colors.green.shade700,
+                    foregroundColor: quranTabIndex == 0
+                        ? Colors.white
+                        : Colors.green.shade700,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),
@@ -52,7 +54,7 @@ class _QuranTabState extends State<QuranTab> {
                   ),
                   onPressed: () {
                     setState(() {
-                      tabIndex = 0;
+                      quranTabIndex = 0;
                     });
                   },
                   child: Text(
@@ -67,11 +69,12 @@ class _QuranTabState extends State<QuranTab> {
                 width: width * 0.5,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: tabIndex == 1
+                    backgroundColor: quranTabIndex == 1
                         ? Colors.green.shade700
                         : Colors.transparent,
-                    foregroundColor:
-                        tabIndex == 1 ? Colors.white : Colors.green.shade700,
+                    foregroundColor: quranTabIndex == 1
+                        ? Colors.white
+                        : Colors.green.shade700,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -81,7 +84,7 @@ class _QuranTabState extends State<QuranTab> {
                   ),
                   onPressed: () {
                     setState(() {
-                      tabIndex = 1;
+                      quranTabIndex = 1;
                     });
                   },
                   child: Text(
@@ -96,7 +99,7 @@ class _QuranTabState extends State<QuranTab> {
           ),
         ),
         Expanded(
-          child: tabIndex == 0
+          child: quranTabIndex == 0
               ? ListView.builder(
                   padding: EdgeInsets.only(bottom: 100),
                   itemCount: 114,
