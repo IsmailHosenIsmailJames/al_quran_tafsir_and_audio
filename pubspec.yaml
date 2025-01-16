@@ -43,6 +43,7 @@ dependencies:
   crypto: ^3.0.6
   path_provider: ^2.1.5
   path: ^1.9.0
+  hive_generator: ^2.0.1
 
 dev_dependencies:
   flutter_test:

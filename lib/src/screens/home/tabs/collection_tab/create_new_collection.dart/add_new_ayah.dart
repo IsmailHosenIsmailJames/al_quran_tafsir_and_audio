@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/tafsir_view/tafsir_view.dart';
 import 'package:flutter/material.dart';
@@ -36,9 +35,7 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
               child: ElevatedButton.icon(
                   onPressed: () {
                     Get.back(
-                      result: Ayah(
-                          surahNumber: selectedSurahNumber!,
-                          ayahNumber: selectedAyahNumber!),
+                      result: "$selectedSurahNumber:$selectedAyahNumber",
                     );
                   },
                   icon: Icon(Icons.add),

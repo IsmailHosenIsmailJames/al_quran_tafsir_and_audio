@@ -5,7 +5,7 @@ class CollectionInfoModel {
   bool isPublicResources;
   String name;
   String? description;
-  List<Ayah>? ayahs;
+  List<String>? ayahs;
   String? createdBy;
   String? createdAt;
   int? peopleAdded;
@@ -26,7 +26,7 @@ class CollectionInfoModel {
     bool? isPublicResources,
     String? name,
     String? description,
-    List<Ayah>? ayahs,
+    List<String>? ayahs,
     String? createdBy,
     String? createdAt,
     int? peopleAdded,
@@ -53,7 +53,7 @@ class CollectionInfoModel {
         isPublicResources: json["is_public_resources"],
         name: json["name"],
         description: json["description"],
-        ayahs: List<Ayah>.from(json["ayahs"].map((x) => Ayah.fromMap(x))),
+        ayahs: List<String>.from(json["ayahs"].map((x) => x)),
         createdBy: json["created_by"],
         createdAt: json["created_at"],
         peopleAdded: json["people_added"],
@@ -69,38 +69,5 @@ class CollectionInfoModel {
         "created_by": createdBy,
         "created_at": createdAt,
         "people_added": peopleAdded,
-      };
-}
-
-class Ayah {
-  int surahNumber;
-  int ayahNumber;
-
-  Ayah({
-    required this.surahNumber,
-    required this.ayahNumber,
-  });
-
-  Ayah copyWith({
-    int? surahNumber,
-    int? ayahNumber,
-  }) =>
-      Ayah(
-        surahNumber: surahNumber ?? this.surahNumber,
-        ayahNumber: ayahNumber ?? this.ayahNumber,
-      );
-
-  factory Ayah.fromJson(String str) => Ayah.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Ayah.fromMap(Map<String, dynamic> json) => Ayah(
-        surahNumber: json["surah_number"],
-        ayahNumber: json["ayah_number"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "surah_number": surahNumber,
-        "ayah_number": ayahNumber,
       };
 }

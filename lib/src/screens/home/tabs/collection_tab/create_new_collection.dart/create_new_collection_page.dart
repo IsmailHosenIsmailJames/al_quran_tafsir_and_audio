@@ -1,9 +1,11 @@
+import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/add_new_ayah.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:toastification/toastification.dart';
 
 class CreateNewCollectionPage extends StatefulWidget {
@@ -98,8 +100,41 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                   List<Widget>.generate(
                     editingCollection.ayahs?.length ?? 0,
                     (index) {
-                      return Text(
-                        editingCollection.ayahs![index].toString(),
+                      return Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: CircleAvatar(
+                              radius: 15,
+                              child: FittedBox(child: Text("${index + 1}")),
+                            ),
+                          ),
+                          Gap(10),
+                          Text(
+                            "${editingCollection.ayahs![index].split(":")[0]}. ${allChaptersInfo[int.parse(editingCollection.ayahs![index].split(":")[0])]["name_simple"]} ( ${editingCollection.ayahs![index].split(":")[1]} )",
+                          ),
+                          Gap(15),
+                          Spacer(),
+                          SizedBox(
+                            width: 40,
+                            height: 30,
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  editingCollection.ayahs?.removeAt(index);
+                                });
+                              },
+                              style: IconButton.styleFrom(
+                                iconSize: 18,
+                                padding: EdgeInsets.zero,
+                              ),
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
+                        ],
                       );
                     },
                   ) +
@@ -107,19 +142,20 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                     Gap(15),
                     Container(
                       height: 30,
+                      width: double.infinity,
                       margin: const EdgeInsets.all(8.0),
-                      child: ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
+                      child: OutlinedButton.icon(
+                        style: OutlinedButton.styleFrom(
                           padding: EdgeInsets.only(left: 15, right: 15),
                         ),
                         onPressed: () async {
                           dynamic result = await Get.to(
                             () => AddNewAyahForCollection(),
                           );
-                          if (result.runtimeType == Ayah) {
+                          if (result.runtimeType == String) {
                             setState(() {
                               editingCollection.ayahs ??= [];
-                              editingCollection.ayahs?.add(result as Ayah);
+                              editingCollection.ayahs?.add(result as String);
                             });
                             toastification.show(
                               context: context,
@@ -135,7 +171,51 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                     ),
                   ],
             ),
-          )
+          ),
+          Gap(10),
+          ElevatedButton.icon(
+            onPressed: () async {
+              if (nameController.text.isEmpty) {
+                toastification.show(
+                  context: context,
+                  title: const Text("Collection name is required"),
+                  autoCloseDuration: const Duration(seconds: 2),
+                  type: ToastificationType.error,
+                );
+                return;
+              } else if (editingCollection.ayahs?.isNotEmpty != true) {
+                toastification.show(
+                  context: context,
+                  title: const Text("No Ayahs Added"),
+                  autoCloseDuration: const Duration(seconds: 2),
+                  type: ToastificationType.error,
+                );
+              } else {
+                final box = Hive.box("collections_db");
+                String name = nameController.text.trim();
+                if (box.containsKey(name)) {
+                  toastification.show(
+                    context: context,
+                    title: const Text("Collection name already exists"),
+                    autoCloseDuration: const Duration(seconds: 2),
+                    type: ToastificationType.error,
+                  );
+                } else {
+                  box.put(name, editingCollection.toMap());
+                  collectionController.collectionList.add(editingCollection);
+                  toastification.show(
+                    context: context,
+                    title: const Text("Collection Created"),
+                    autoCloseDuration: const Duration(seconds: 2),
+                    type: ToastificationType.success,
+                  );
+                  Get.back();
+                }
+              }
+            },
+            icon: Icon(Icons.done),
+            label: Text("Create Collection"),
+          ),
         ],
       ),
     );

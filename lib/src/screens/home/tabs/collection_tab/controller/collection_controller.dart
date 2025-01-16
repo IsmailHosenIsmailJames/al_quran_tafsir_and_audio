@@ -15,8 +15,8 @@ class CollectionController extends GetxController {
   @override
   void onInit() {
     Hive.box("collections_db").keys.forEach((key) {
-      CollectionInfoModel collectionInfoModel =
-          CollectionInfoModel.fromJson(Hive.box("collections_db").get(key));
+      CollectionInfoModel collectionInfoModel = CollectionInfoModel.fromMap(
+          Map<String, dynamic>.from(Hive.box("collections_db").get(key)));
       collectionList.add(collectionInfoModel);
     });
     super.onInit();
