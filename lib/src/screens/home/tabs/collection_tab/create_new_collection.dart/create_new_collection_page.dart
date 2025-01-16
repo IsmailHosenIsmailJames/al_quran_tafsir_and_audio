@@ -111,7 +111,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                           ),
                           Gap(10),
                           Text(
-                            "${editingCollection.ayahs![index].split(":")[0]}. ${allChaptersInfo[int.parse(editingCollection.ayahs![index].split(":")[0])]["name_simple"]} ( ${editingCollection.ayahs![index].split(":")[1]} )",
+                            "${int.parse(editingCollection.ayahs![index].split(":")[0]) + 1}. ${allChaptersInfo[int.parse(editingCollection.ayahs![index].split(":")[0])]["name_simple"]} ( ${editingCollection.ayahs![index].split(":")[1]} )",
                           ),
                           Gap(15),
                           Spacer(),
@@ -193,6 +193,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
               } else {
                 final box = Hive.box("collections_db");
                 String name = nameController.text.trim();
+                String description = descriptionController.text.trim();
                 if (box.containsKey(name)) {
                   toastification.show(
                     context: context,
@@ -201,11 +202,24 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                     type: ToastificationType.error,
                   );
                 } else {
-                  box.put(name, editingCollection.toMap());
-                  collectionController.collectionList.add(editingCollection);
+                  editingCollection.name = name;
+                  if (description.isNotEmpty) {
+                    editingCollection.description = description;
+                  }
+                  box.put(editingCollection.id, editingCollection.toMap());
+                  if (widget.previousData == null) {
+                    collectionController.collectionList.add(editingCollection);
+                  } else {
+                    collectionController.collectionList[
+                        collectionController.collectionList.indexWhere(
+                      (element) => widget.previousData?.id == element.id,
+                    )] = editingCollection;
+                  }
                   toastification.show(
                     context: context,
-                    title: const Text("Collection Created"),
+                    title: Text(widget.previousData == null
+                        ? "Collection Created"
+                        : "Saved Changes"),
                     autoCloseDuration: const Duration(seconds: 2),
                     type: ToastificationType.success,
                   );
@@ -214,7 +228,9 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
               }
             },
             icon: Icon(Icons.done),
-            label: Text("Create Collection"),
+            label: Text(widget.previousData == null
+                ? "Create Collection"
+                : "Save Changes"),
           ),
         ],
       ),
