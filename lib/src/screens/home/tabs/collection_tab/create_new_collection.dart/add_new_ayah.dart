@@ -11,7 +11,15 @@ import 'package:get/get.dart';
 import '../../../../surah_view/surah_view.dart';
 
 class AddNewAyahForCollection extends StatefulWidget {
-  const AddNewAyahForCollection({super.key});
+  final int? selectedSurahNumber;
+  final int? selectedAyahNumber;
+  final String? surahName;
+  const AddNewAyahForCollection({
+    super.key,
+    this.selectedSurahNumber,
+    this.selectedAyahNumber,
+    this.surahName,
+  });
 
   @override
   State<AddNewAyahForCollection> createState() =>
@@ -19,15 +27,19 @@ class AddNewAyahForCollection extends StatefulWidget {
 }
 
 class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
-  int? selectedSurahNumber;
-  int? selectedAyahNumber;
+  late int? selectedSurahNumber = widget.selectedSurahNumber;
+  late int? selectedAyahNumber = widget.selectedAyahNumber;
+  late String? surahName = widget.surahName;
   InfoController infoController = Get.find();
   UniversalController universalController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Select Ayah"),
+        title: surahName == null
+            ? Text("Select Ayah")
+            : Text(
+                "$surahName ${(selectedSurahNumber ?? 0) + 1}:${(selectedAyahNumber ?? 0) + 1} "),
         actions: [
           if (selectedSurahNumber != null && selectedAyahNumber != null)
             Padding(
@@ -51,6 +63,7 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: DropdownButtonFormField(
+                value: selectedSurahNumber,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Select Surah",
@@ -75,15 +88,16 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
 
                   setState(() {
                     selectedSurahNumber = value;
+                    surahName = allChaptersInfo[value!]["name_simple"];
                   });
                 },
               ),
             ),
-            Gap(15),
             if (selectedSurahNumber != null)
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: DropdownButtonFormField(
+                  value: selectedAyahNumber,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Select Ayah Number",

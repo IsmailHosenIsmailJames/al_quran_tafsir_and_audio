@@ -44,6 +44,7 @@ dependencies:
   path_provider: ^2.1.5
   path: ^1.9.0
   hive_generator: ^2.0.1
+  scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:
   flutter_test:

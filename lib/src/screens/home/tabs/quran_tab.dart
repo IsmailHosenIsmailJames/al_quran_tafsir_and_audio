@@ -1,4 +1,3 @@
-import 'package:al_quran_tafsir_and_audio/src/core/recitation_info/ayah_counts.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/juz_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
@@ -118,7 +117,7 @@ class _QuranTabState extends State<QuranTab> {
                         onPressed: () {
                           int start = 0;
                           for (int i = 0; i < index; i++) {
-                            start += ayahCountOfAllSurah[i];
+                            start += ayahCount[i];
                           }
                           Get.to(
                             () => SurahView(

@@ -6,6 +6,7 @@ import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/home_page_
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/model/play_list_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/add_new_ayah.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/create_new_collection_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -242,23 +243,39 @@ class _CollectionTabState extends State<CollectionTab> {
                                         int.parse(ayahKey[i].split(":")[i]);
                                     int ayahNumber =
                                         int.parse(ayahKey[i].split(":")[1]);
-                                    return Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(2.0),
-                                          child: CircleAvatar(
-                                            radius: 15,
-                                            child: FittedBox(
-                                                child: Text("${i + 1}")),
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Get.to(
+                                          () => AddNewAyahForCollection(
+                                            selectedAyahNumber: ayahNumber,
+                                            selectedSurahNumber: surahNumber,
+                                            surahName:
+                                                allChaptersInfo[surahNumber]
+                                                    ["name_simple"],
                                           ),
-                                        ),
-                                        Gap(10),
-                                        Text(
-                                          "${surahNumber + 1}. ${allChaptersInfo[surahNumber]["name_simple"]} ( $ayahNumber )",
-                                        ),
-                                        Gap(15),
-                                        Spacer(),
-                                      ],
+                                        );
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(2.0),
+                                            child: CircleAvatar(
+                                              radius: 15,
+                                              child: FittedBox(
+                                                  child: Text("${i + 1}")),
+                                            ),
+                                          ),
+                                          Gap(10),
+                                          Text(
+                                            "${surahNumber + 1}. ${allChaptersInfo[surahNumber]["name_simple"]} ( ${ayahNumber + 1} )",
+                                          ),
+                                          Spacer(),
+                                          Icon(
+                                            Icons.arrow_forward,
+                                            size: 16,
+                                          ),
+                                        ],
+                                      ),
                                     );
                                   }),
                                 ),
@@ -298,12 +315,50 @@ class _CollectionTabState extends State<CollectionTab> {
                                             left: 10, right: 10),
                                       ),
                                       onPressed: () {
-                                        collectionController.collectionList
-                                            .removeAt(index - 1);
-                                        Hive.box("collections_db").delete(
-                                          currentCollection.id,
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              title: Text("Are you sure?"),
+                                              content: Text(
+                                                  "Once deleted, it can't be recovered"),
+                                              actions: [
+                                                TextButton.icon(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  icon: Icon(Icons.close),
+                                                  label: Text("Cancel"),
+                                                ),
+                                                ElevatedButton.icon(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor: Colors.red,
+                                                  ),
+                                                  onPressed: () {
+                                                    collectionController
+                                                        .collectionList
+                                                        .removeAt(index - 1);
+                                                    Hive.box("collections_db")
+                                                        .delete(
+                                                      currentCollection.id,
+                                                    );
+                                                    Navigator.pop(context);
+                                                    setState(() {});
+                                                    toastification.show(
+                                                      context: context,
+                                                      title: Text("Deleted"),
+                                                      type: ToastificationType
+                                                          .success,
+                                                    );
+                                                  },
+                                                  icon: Icon(Icons.delete),
+                                                  label: Text("Delete"),
+                                                )
+                                              ],
+                                            );
+                                          },
                                         );
-                                        setState(() {});
                                       },
                                       icon: Icon(
                                         Icons.delete,
