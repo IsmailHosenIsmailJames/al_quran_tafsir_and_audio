@@ -1,9 +1,9 @@
+import 'package:al_quran_tafsir_and_audio/src/screens/home/drawer/my_app_drawer.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/audio_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/collection_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/profile_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/quran_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dart';
-import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -62,9 +62,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      drawer: Drawer(
-        child: themeIconButton,
-      ),
+      drawer: MyAppDrawer(),
       body: SafeArea(
         child: Stack(
           children: [
