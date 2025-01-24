@@ -107,13 +107,6 @@ class _DownloadDataState extends State<DownloadData> {
       if (response.statusCode == 200) {
         String text = response.body;
         String decodedText = decompressServerDataWithGZip2(text);
-        final x = Map<String, dynamic>.from(jsonDecode(decodedText));
-
-        x.forEach((key, value) {
-          log("Key: $key");
-          log("Value: $value");
-        });
-
         List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
         for (int i = 0; i < decodedJson.length; i++) {
           await translationDB.put("$translationBookID/$i", decodedJson[i]);

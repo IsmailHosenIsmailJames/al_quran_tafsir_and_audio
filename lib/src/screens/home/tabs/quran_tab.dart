@@ -100,15 +100,15 @@ class _QuranTabState extends State<QuranTab> {
         Expanded(
           child: quranTabIndex == 0
               ? ListView.builder(
-                  padding: EdgeInsets.only(bottom: 100),
+                  padding: EdgeInsets.only(bottom: 100, top: 5),
                   itemCount: 114,
                   itemBuilder: (context, index) {
                     QuranSurahInfoModel quranSurahInfoModel =
                         QuranSurahInfoModel.fromMap(allChaptersInfo[index]);
                     return Container(
-                      height: 55,
+                      height: 50,
                       width: double.infinity,
-                      margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+                      margin: EdgeInsets.only(left: 10, right: 10, top: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         color: Colors.grey.withValues(alpha: 0.1),
@@ -172,7 +172,7 @@ class _QuranTabState extends State<QuranTab> {
                                 Text(
                                   quranSurahInfoModel.nameArabic,
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
