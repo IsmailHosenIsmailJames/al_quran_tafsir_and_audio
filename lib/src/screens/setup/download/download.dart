@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:math' as math;
 
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/recitation_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
-import 'package:al_quran_tafsir_and_audio/src/resources/firebase/functions.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/files/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:flutter/material.dart';
@@ -108,6 +107,13 @@ class _DownloadDataState extends State<DownloadData> {
       if (response.statusCode == 200) {
         String text = response.body;
         String decodedText = decompressServerDataWithGZip2(text);
+        final x = Map<String, dynamic>.from(jsonDecode(decodedText));
+
+        x.forEach((key, value) {
+          log("Key: $key");
+          log("Value: $value");
+        });
+
         List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
         for (int i = 0; i < decodedJson.length; i++) {
           await translationDB.put("$translationBookID/$i", decodedJson[i]);

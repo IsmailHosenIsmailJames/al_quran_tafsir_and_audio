@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
-import 'package:al_quran_tafsir_and_audio/src/resources/firebase/functions.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/files/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
