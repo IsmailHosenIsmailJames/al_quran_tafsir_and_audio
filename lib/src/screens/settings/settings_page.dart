@@ -264,9 +264,17 @@ class _SettingsPageState extends State<SettingsPage> {
                     List<String> keys = data.keys.toList();
 
                     return getListOfCacheWidget(keys, data);
-                  } else {
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text(
+                        "Cache Not Found",
+                      ),
+                    );
+                  } else if (snapshot.connectionState ==
+                      ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   }
+                  return SizedBox();
                 },
               ),
             ),
