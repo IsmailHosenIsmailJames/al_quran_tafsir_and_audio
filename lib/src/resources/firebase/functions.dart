@@ -1,25 +1,32 @@
-import 'package:al_quran_tafsir_and_audio/src/resources/firebase/qurans_resources_link.dart';
+import 'dart:math';
+import 'dart:developer' as dev;
 
-String getURLusingTafsirID(int tafsirID, int ranIndex) {
-  String? url = tafsirs[ranIndex][tafsirID];
-  if (url == null) {
-    tafsirs[ranIndex].forEach((key, value) {
-      if (key == tafsirID) {
-        url = value;
-      }
-    });
+import 'package:http/http.dart';
+
+String baseVercel = "https://quran-server-vercel-gray.vercel.app";
+String baseRender = "https://quran-backend-qme2.onrender.com";
+
+String getURLusingTafsirID(int tafsirID) {
+  int ran = Random().nextInt(2);
+  if (ran % 0 == 0) {
+    return "$baseRender/tafsir/$tafsirID.txt";
+  } else {
+    return "$baseVercel/tafsir/$tafsirID.txt";
   }
-  return url!;
 }
 
-String getURLusingTranslationID(int translationID, int ranIndex) {
-  String? url = translation[ranIndex][translationID];
-  if (url == null) {
-    translation[ranIndex].forEach((key, value) {
-      if (key == translationID) {
-        url = value;
-      }
-    });
+String getURLusingTranslationID(int translationID) {
+  int ran = Random().nextInt(2);
+  if (ran % 0 == 0) {
+    return "$baseRender/translation/$translationID.txt";
+  } else {
+    return "$baseVercel/translation/$translationID.txt";
   }
-  return url!;
+}
+
+Future<void> hitForActivateServer() async {
+  final respose = await get(
+      Uri.parse("https://quran-server-vercel-gray.vercel.app/health"));
+  dev.log(respose.body);
+  dev.log(respose.statusCode.toString());
 }

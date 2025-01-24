@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
@@ -92,11 +91,10 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                         setState(() {
                           downloading = true;
                         });
-                        int ran = Random().nextInt(4);
 
                         String url = getURLusingTafsirID(
-                            int.parse(infoController.tafsirBookID.value.trim()),
-                            ran);
+                          int.parse(infoController.tafsirBookID.value.trim()),
+                        );
 
                         final tafsirDB = Hive.box("tafsir_db");
 
@@ -105,8 +103,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                           final response = await get(Uri.parse(url),
                               headers: {'Content-type': 'text/plain'});
                           if (response.statusCode == 200) {
-                            String text = response.body
-                                .substring(1, response.body.length - 1);
+                            String text = response.body;
 
                             String decodedText =
                                 decompressStringWithGZip2(text);

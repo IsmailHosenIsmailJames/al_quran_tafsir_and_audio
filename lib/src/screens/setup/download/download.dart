@@ -91,7 +91,6 @@ class _DownloadDataState extends State<DownloadData> {
 
     // download translation
     final translationDB = Hive.box("translation_db");
-    int ran = math.Random().nextInt(4);
     String translationBookID = widget.selection["translation_book_ID"];
     log("Translation Book ID : $translationBookID");
     if (translationDB.keys.contains("$translationBookID/1")) {
@@ -101,13 +100,13 @@ class _DownloadDataState extends State<DownloadData> {
       log("Already exits translationBookID");
     } else {
       String url =
-          getURLusingTranslationID(int.parse(translationBookID.trim()), ran);
+          getURLusingTranslationID(int.parse(translationBookID.trim()));
       log("URL : $url");
 
       final response =
           await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
       if (response.statusCode == 200) {
-        String text = response.body.substring(1, response.body.length - 1);
+        String text = response.body;
         String decodedText = decompressServerDataWithGZip2(text);
         List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
         for (int i = 0; i < decodedJson.length; i++) {
@@ -132,7 +131,7 @@ class _DownloadDataState extends State<DownloadData> {
     final tafsirDB = Hive.box("tafsir_db");
 
     String? url = getURLusingTafsirID(
-        int.parse(widget.selection["tafsir_book_ID"].toString().trim()), ran);
+        int.parse(widget.selection["tafsir_book_ID"].toString().trim()));
     log("Tafsir Book ID : ${widget.selection["tafsir_book_ID"]}");
     log("URL : $url");
     if (!tafsirDB.keys.contains("${infoController.tafsirBookID.value}/1")) {
@@ -140,7 +139,7 @@ class _DownloadDataState extends State<DownloadData> {
           await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
       if (response.statusCode == 200) {
         DateTime now = DateTime.now();
-        String text = response.body.substring(1, response.body.length - 1);
+        String text = response.body;
         log("Substring Time : ${DateTime.now().difference(now).inMilliseconds}");
         now = DateTime.now();
         setState(() {

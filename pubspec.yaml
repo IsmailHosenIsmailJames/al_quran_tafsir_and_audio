@@ -2,7 +2,7 @@ name: al_quran_tafsir_and_audio
 description: "All in one Al Quran App with Translation, Tefsir, Quran Audio Book & Notes Backup"
 publish_to: 'none' 
 
-version: 1.0.0+1
+version: 2.0.1+33
 
 environment:
   sdk: ^3.6.0
