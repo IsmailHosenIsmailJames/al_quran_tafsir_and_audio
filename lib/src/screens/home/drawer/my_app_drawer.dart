@@ -1,7 +1,10 @@
+import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/platforms/others_platform.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -78,7 +81,10 @@ class MyAppDrawer extends StatelessWidget {
           Gap(20),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Get.off(() => HomePage());
+            },
             leading: Icon(
               FluentIcons.home_24_filled,
               color: Colors.green.shade600,
@@ -158,7 +164,10 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Get.to(() => OthersPlatform());
+            },
             leading: Icon(
               Icons.laptop_windows_rounded,
               color: Colors.green.shade600,
@@ -206,7 +215,12 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              launchUrl(
+                Uri.parse(
+                    "https://play.google.com/store/apps/details?id=com.ismail_hosen_james.al_bayan_quran"),
+              );
+            },
             leading: Icon(
               Icons.star_rounded,
               color: Colors.green.shade600,
