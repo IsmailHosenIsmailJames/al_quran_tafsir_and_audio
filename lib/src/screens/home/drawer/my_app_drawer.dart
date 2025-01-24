@@ -3,6 +3,8 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyAppDrawer extends StatelessWidget {
   const MyAppDrawer({super.key});
@@ -220,7 +222,13 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              launchUrl(
+                Uri.parse(
+                    "https://www.freeprivacypolicy.com/live/d8c08904-a100-4f0b-94d8-13d86a8c8605"),
+              );
+            },
             leading: Icon(
               Icons.privacy_tip_rounded,
               color: Colors.green.shade600,
@@ -236,7 +244,12 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Share.share(
+                'Here is Quran App with Quran Tafsir and Audio\nhttps://play.google.com/store/apps/details?id=com.ismail_hosen_james.al_bayan_quran',
+              );
+            },
             leading: Icon(
               Icons.share_rounded,
               color: Colors.green.shade600,
