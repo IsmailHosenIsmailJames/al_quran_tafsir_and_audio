@@ -1,4 +1,5 @@
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/my_developed_apps/my_developed_apps.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/platforms/others_platform.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -271,6 +272,26 @@ class MyAppDrawer extends StatelessWidget {
             ),
             title: Text(
               "Share App",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            minTileHeight: 45,
+            onTap: () {
+              Navigator.pop(context);
+              // Show My Developed all apps
+              Get.to(() => MyDevelopedApps());
+            },
+            leading: Icon(
+              Icons.more_horiz,
+              color: Colors.green.shade600,
+              size: 20,
+            ),
+            title: Text(
+              "My Apps",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
