@@ -205,7 +205,17 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              final Uri emailLaunchUri = Uri(
+                scheme: 'mailto',
+                path: 'md.ismailhosenismailjames@gmail.com',
+                query: encodeQueryParameters(<String, String>{
+                  'subject': 'Feedback of Al Quran Tafsir and Audio App',
+                }),
+              );
+
+              launchUrl(emailLaunchUri);
+            },
             leading: Icon(
               FluentIcons.person_feedback_48_filled,
               color: Colors.green.shade600,
@@ -323,4 +333,11 @@ class MyAppDrawer extends StatelessWidget {
       ),
     );
   }
+}
+
+String? encodeQueryParameters(Map<String, String> params) {
+  return params.entries
+      .map((MapEntry<String, String> e) =>
+          '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+      .join('&');
 }
