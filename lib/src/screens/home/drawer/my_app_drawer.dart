@@ -1,3 +1,4 @@
+import 'package:al_quran_tafsir_and_audio/src/screens/about_app/about_app_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/my_developed_apps/my_developed_apps.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/platforms/others_platform.dart';
@@ -184,7 +185,11 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              Get.to(
+                () => AboutAppPage(),
+              );
+            },
             leading: Icon(
               Icons.info_rounded,
               color: Colors.green.shade600,
