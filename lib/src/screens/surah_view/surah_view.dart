@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:al_quran_tafsir_and_audio/src/core/audio/widget_audio_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/audio_tracting.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/audio_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_scripts_composer.dart';
@@ -170,9 +173,25 @@ class _SurahViewState extends State<SurahView> {
             ),
           ),
           Expanded(
-              child: tabIndex == 0
+              child: Stack(
+            children: [
+              tabIndex == 0
                   ? getViewWithTranslation()
-                  : getViewWithOutTranslation()),
+                  : getViewWithOutTranslation(),
+              Obx(
+                () => Container(
+                  child: (audioController.isPlaying.value == true ||
+                          audioController.isReadyToControl.value == true)
+                      ? WidgetAudioController(
+                          showSurahNumber: false,
+                          showQuranAyahMode: true,
+                          surahNumber: audioController.currentPlayingAyah.value,
+                        )
+                      : null,
+                ),
+              ),
+            ],
+          )),
         ],
       ),
     );
@@ -402,16 +421,9 @@ class _SurahViewState extends State<SurahView> {
               SizedBox(
                 height: 35,
                 width: 35,
-                child: IconButton(
-                  style: IconButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    backgroundColor: Colors.green.shade700,
-                    foregroundColor: Colors.white,
-                  ),
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.play_arrow_rounded,
-                  ),
+                child: getPlayButton(
+                  widget.surahInfo.surahNumber - 1,
+                  audioController,
                 ),
               ),
             ],

@@ -604,7 +604,7 @@ Widget getPlayButton(int index, AudioController audioController) {
         tooltip: "Play or Pause",
         icon: (audioController.currentSurahNumber.value == index &&
                 audioController.isPlaying.value == true)
-            ? const Icon(Icons.pause)
+            ? const Icon(Icons.pause_rounded)
             : (audioController.currentSurahNumber.value == index &&
                     audioController.isLoading.value)
                 ? CircularProgressIndicator(
@@ -612,7 +612,7 @@ Widget getPlayButton(int index, AudioController audioController) {
                     backgroundColor: Colors.white.withValues(alpha: 0.2),
                     strokeWidth: 2,
                   )
-                : const Icon(Icons.play_arrow),
+                : const Icon(Icons.play_arrow_rounded),
         onPressed: () async {
           if (audioController.isPlaying.value == true &&
               audioController.currentSurahNumber.value == index) {

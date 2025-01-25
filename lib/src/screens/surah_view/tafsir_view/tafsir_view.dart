@@ -24,8 +24,9 @@ class TafsirView extends StatelessWidget {
     return Scaffold(
       appBar: showAppBar
           ? AppBar(
-              title: Text(
-                  surahName != null ? "$surahName ( $ayahNumber )" : "Tafsir"),
+              title: Text(surahName != null
+                  ? "$surahName ( ${ayahNumber + 1} )"
+                  : "Tafsir"),
             )
           : null,
       body: FutureBuilder(
