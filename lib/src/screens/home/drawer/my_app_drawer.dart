@@ -7,6 +7,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,6 +19,7 @@ class MyAppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
+        padding: EdgeInsets.only(bottom: 50),
         children: [
           Container(
             height: 165,
@@ -206,6 +208,7 @@ class MyAppDrawer extends StatelessWidget {
           ListTile(
             minTileHeight: 45,
             onTap: () {
+              Navigator.pop(context);
               final Uri emailLaunchUri = Uri(
                 scheme: 'mailto',
                 path: 'md.ismailhosenismailjames@gmail.com',
@@ -231,11 +234,12 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {
-              launchUrl(
-                Uri.parse(
-                    "https://play.google.com/store/apps/details?id=com.ismail_hosen_james.al_bayan_quran"),
-              );
+            onTap: () async {
+              final InAppReview inAppReview = InAppReview.instance;
+
+              if (await inAppReview.isAvailable()) {
+                inAppReview.requestReview();
+              }
             },
             leading: Icon(
               Icons.star_rounded,
