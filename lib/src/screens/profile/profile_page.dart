@@ -1,322 +1,522 @@
+import 'dart:async';
 import 'dart:convert';
 
-import 'package:appwrite/appwrite.dart';
+import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/model.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/home_page_controller.dart';
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:toastification/toastification.dart';
 
-import '../../theme/theme_controller.dart';
-import '../auth/account_info/account_info.dart';
-import '../auth/login/login.dart';
+import '../../auth/auth_controller/auth_controller.dart';
+import '../../auth/auth_controller/login/login_page.dart';
+import '../../functions/safe_substring.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfileState extends State<Profile> with TickerProviderStateMixin {
-  List<int> expandedPosition = [];
-  List<AnimationController> controller = [];
-  List<Animation<double>> sizeAnimation = [];
+class _ProfilePageState extends State<ProfilePage> {
+  AuthController authController = Get.put(AuthController());
+  final AudioController audioController = Get.find<AudioController>();
+  final HomePageController homePageController = Get.put(HomePageController());
+  bool backUpAsync = false;
 
-  bool bookmarkDone = false;
-  bool favoriteDone = false;
-  bool notesDone = false;
-
-  @override
-  void initState() {
-    for (int i = 0; i < 3; i++) {
-      final tem = AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 350),
-      );
-      controller.add(tem);
-      sizeAnimation.add(CurvedAnimation(parent: tem, curve: Curves.easeInOut));
-      expandedPosition.add(-1);
-    }
-
-    final infoBox = Hive.box("user_db");
-    favoriteDone = infoBox.get("favoriteUploaded", defaultValue: false);
-    bookmarkDone = infoBox.get("bookmarkUploaded", defaultValue: false);
-    final notes = Hive.box("notes");
-    for (String key in notes.keys) {
-      if (key.endsWith("title")) {
-        String ayahKey = key.substring(0, 6);
-        notesDone = notes.get(
-          "${ayahKey}upload",
-          defaultValue: false,
-        );
-        setState(() {
-          notesDone;
-        });
-        if (notesDone == false) {
-          break;
-        }
-      }
-    }
-    super.initState();
-  }
-
-  Future<void> uploadNotes(String keyOfAyah, titleText, notesText) async {
-    Client client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("albayanquran")
-        .setSelfSigned(status: true);
-
-    Databases databases = Databases(client);
-
-    try {
-      final account = Account(client);
-      final user = await account.get();
-
-      try {
-        final document = await databases.getDocument(
-            databaseId: "65bf585cdf62317b4d91",
-            collectionId: "65bfa12aa542dc981ea8",
-            documentId: user.$id);
-        List listOfKey = jsonDecode(document.data['allnotes']);
-        if (!listOfKey.contains(keyOfAyah)) {
-          listOfKey.add(keyOfAyah);
-        }
-
-        await databases.updateDocument(
-            databaseId: "65bf585cdf62317b4d91",
-            collectionId: "65bfa12aa542dc981ea8",
-            documentId: user.$id,
-            data: {"allnotes": jsonEncode(listOfKey)});
-      } catch (e) {
-        await databases.createDocument(
-            databaseId: "65bf585cdf62317b4d91",
-            collectionId: "65bfa12aa542dc981ea8",
-            documentId: user.$id,
-            data: {
-              "allnotes": jsonEncode([keyOfAyah])
-            });
-      }
-
-      try {
-        await databases.updateDocument(
-          databaseId: "65bf585cdf62317b4d91",
-          collectionId: "65d1ca40a427099b17f1",
-          documentId: "${user.$id}$keyOfAyah",
-          data: <String, String>{
-            "title": titleText,
-            "note": notesText,
-          },
-        );
-      } catch (e) {
-        await databases.createDocument(
-          databaseId: "65bf585cdf62317b4d91",
-          collectionId: "65d1ca40a427099b17f1",
-          documentId: "${user.$id}$keyOfAyah",
-          data: <String, String>{
-            "title": titleText,
-            "note": notesText,
-          },
-        );
-      }
-      String boxKeyForNoteUpload = "${keyOfAyah}upload";
-      final box = Hive.box("notes");
-
-      box.put(boxKeyForNoteUpload, true);
-      setState(() {
-        notesDone = true;
-      });
-    } catch (e) {
-      showDialog(
-        // ignore: use_build_context_synchronously
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text("An Error Occurred"),
-          content: Text(e.toString()),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text("OK"),
-            ),
-          ],
-        ),
-      );
-    }
-  }
-
-  void uploadAll() async {
-    if (notesDone != true) {
-      final notesBox = Hive.box("notes");
-      for (String key in notesBox.keys) {
-        if (key.endsWith("title") || key.endsWith("note")) {
-          String ayahKey = key.substring(0, 6);
-          String n = notesBox.get("${ayahKey}note", defaultValue: "");
-          String t = notesBox.get("${ayahKey}title", defaultValue: "");
-          if (!(notesBox.get("${ayahKey}upload", defaultValue: false))) {
-            await uploadNotes(ayahKey, t, n);
-          } else {
-            debugPrint("object");
-          }
-          debugPrint("");
-        }
-      }
-    }
-    final infbox = Hive.box("user_db");
-    Client client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("albayanquran")
-        .setSelfSigned(status: true);
-    final account = Account(client);
-    final user = await account.get();
-    Databases databases = Databases(client);
-
-    if (favoriteDone != true) {
-      try {
-        await databases.updateDocument(
-          databaseId: "65bf585cdf62317b4d91",
-          collectionId: "65bfa12aa542dc981ea8",
-          documentId: user.$id,
-          data: {
-            "favorite": jsonEncode(
-              infbox.get("favorite", defaultValue: []),
-            ),
-          },
-        );
-        infbox.put("favoriteUploaded", true);
-        setState(() {
-          favoriteDone = true;
-        });
-      } catch (e) {
-        debugPrint(e.toString());
-      }
-    }
-    if (bookmarkDone != true) {
-      await databases.updateDocument(
-        databaseId: "65bf585cdf62317b4d91",
-        collectionId: "65bfa12aa542dc981ea8",
-        documentId: user.$id,
-        data: {
-          "bookmark": jsonEncode(
-            infbox.get("bookmark", defaultValue: []),
-          ),
-        },
-      );
-      infbox.put("bookmarkUploaded", true);
-      setState(() {
-        bookmarkDone = true;
-      });
+  Future<User?> loggedInUser() async {
+    if (authController.loggedInUser.value == null) {
+      return await authController.getUser();
+    } else {
+      return authController.loggedInUser.value;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(5),
       children: [
-        !isLoggedIn
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TextButton.icon(
-                    onPressed: () {
-                      Get.to(() => const LogIn());
-                    },
-                    label: Text(
-                      "LogIn".tr,
-                      style: const TextStyle(
-                        color: Colors.green,
-                        fontSize: 30,
-                      ),
-                    ),
-                    icon: const Icon(
-                      Icons.login,
-                      color: Colors.green,
-                    ),
-                  ),
-                  Center(
-                    child: SizedBox(
-                      width: 210,
+        FutureBuilder(
+          future: loggedInUser(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text("Error"),
+              );
+            } else {
+              User? user = snapshot.data;
+              if (user == null) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(20),
                       child: Text(
-                        "loginReason".tr,
-                        style: const TextStyle(
-                          fontSize: 12,
+                        "Get the best experience by logging in ->",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                  )
-                ],
-              )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey.shade600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            await Get.to(() => const LoginPage());
+                            setState(() {});
+                          },
+                          iconAlignment: IconAlignment.end,
+                          child: const Row(
+                            children: [
+                              Spacer(),
+                              Text(
+                                'Login',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Spacer(),
+                              Icon(Icons.fast_forward_rounded),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              } else {
+                return getUserUI(user);
+              }
+            }
+          },
+        ),
+        const Gap(15),
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Audio History",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "Listened ${formatDuration(Duration(seconds: getTotalDurationInSeconds()))}",
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
+              ),
+              SizedBox(
+                height: 30,
+                width: 50,
+                child: PopupMenuButton(
+                    style: IconButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                    ),
+                    onSelected: (value) {
+                      setState(() {
+                        sortBy = value.toString();
+                      });
+                    },
+                    itemBuilder: (context) {
+                      return [
+                        PopupMenuItem(
+                          value: "surahIncreasing",
+                          child: Text(
+                            "Sort by increasing Surah Number",
+                            style: TextStyle(
+                              color: sortBy == "surahIncreasing"
+                                  ? Colors.green
+                                  : null,
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: "surahDecreasing",
+                          child: Text(
+                            "Sort by decreasing Surah Number",
+                            style: TextStyle(
+                              color: sortBy == "surahDecreasing"
+                                  ? Colors.green
+                                  : null,
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: "increasing",
+                          child: Text(
+                            "Sort by increasing surah duration",
+                            style: TextStyle(
+                              color:
+                                  sortBy == "increasing" ? Colors.green : null,
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: "decreasing",
+                          child: Text(
+                            "Sort by decreasing surah duration",
+                            style: TextStyle(
+                              color:
+                                  sortBy == "decreasing" ? Colors.green : null,
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: "increasingListened",
+                          child: Text(
+                            "Sort by increasing listened duration",
+                            style: TextStyle(
+                              color: sortBy == "increasingListened"
+                                  ? Colors.green
+                                  : null,
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          value: "decreasingListened",
+                          child: Text(
+                            "Sort by decreasing listened duration",
+                            style: TextStyle(
+                              color: sortBy == "decreasingListened"
+                                  ? Colors.green
+                                  : null,
+                            ),
+                          ),
+                        ),
+                      ];
+                    }),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.grey.withValues(alpha: 0.05),
+          ),
+          child: StreamBuilder(
+            stream: getPeriodicStream(),
+            builder: (context, snapshot) {
+              List<TrackingAudioModel> audioTrackingModelList =
+                  getAudioTrackingModelList();
+              return Column(
+                children: List.generate(
+                  audioTrackingModelList.length,
+                  (index) {
+                    TrackingAudioModel currentTrackingModel =
+                        audioTrackingModelList[index];
+                    Set<int> playedAyah = currentTrackingModel.playedAyah;
+                    int ayahNumber =
+                        ayahCount[currentTrackingModel.surahNumber];
+                    bool isDone = playedAyah.length >= ayahNumber;
+                    bool didNotPlayed =
+                        currentTrackingModel.totalPlayedDurationInSeconds ==
+                                0 &&
+                            currentTrackingModel.playedAyah.isEmpty;
+                    return getAudioHistoryOfSurahs(
+                        currentTrackingModel, didNotPlayed, context, isDone);
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  String sortBy = "surahIncreasing";
+
+  Padding getAudioHistoryOfSurahs(TrackingAudioModel currentTrackingModel,
+      bool didNotPlayed, BuildContext context, bool isDone) {
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 15,
+            child: FittedBox(
+              child: Text(
+                (currentTrackingModel.surahNumber + 1).toString(),
+              ),
+            ),
+          ),
+          const Gap(10),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundColor: Colors.green,
-                    child: GetX<AccountInfo>(
-                      builder: (controller) => Text(
-                        controller.name.value.substring(0, 1),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                  Text(
+                    allChaptersInfo[currentTrackingModel.surahNumber]
+                            ["name_simple"] ??
+                        "",
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GetX<AccountInfo>(
-                        builder: (controller) => Text(
-                          controller.name.value.length > 10
-                              ? "${controller.name.value.substring(0, 10)}..."
-                              : controller.name.value,
+                  const Gap(10),
+                  (didNotPlayed)
+                      ? const Text(
+                          "Didn't played yet",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey,
+                          ),
+                        )
+                      : Text(
+                          "Listened: ${formatDuration(Duration(seconds: currentTrackingModel.totalPlayedDurationInSeconds))} | Played ${currentTrackingModel.playedAyah.length} / ${ayahCount[currentTrackingModel.surahNumber]} ayahs",
                           style: const TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 10,
+                            color: Colors.grey,
                           ),
                         ),
-                      ),
-                      GetX<AccountInfo>(
-                        builder: (controller) => Text(
-                          controller.email.value.length > 20
-                              ? "${controller.email.value.substring(0, 15)}...${controller.email.value.substring(controller.email.value.length - 9, controller.email.value.length)}"
-                              : controller.email.value,
-                          style: const TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                      GetX<AccountInfo>(
-                        builder: (controller) => Text(
-                          controller.uid.value,
-                          style: const TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextButton(
-                    onPressed: uploadAll,
-                    child: Icon(
-                      (favoriteDone && bookmarkDone && notesDone) == true
-                          ? Icons.cloud_done
-                          : Icons.cloud_upload,
-                    ),
-                  ),
                 ],
               ),
-      ],
+              SizedBox(
+                height: 20,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.75 -
+                          ((isDone && didNotPlayed == false) ? 30 : 0),
+                      child: LinearProgressIndicator(
+                        value: currentTrackingModel.playedAyah.length /
+                            ayahCount[currentTrackingModel.surahNumber],
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                    ),
+                    const Gap(5),
+                    if (isDone && didNotPlayed == false)
+                      const SizedBox(
+                        height: 25,
+                        width: 25,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.green,
+                          child: Icon(
+                            Icons.done,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Stream<int> getPeriodicStream() async* {
+    yield* Stream.periodic(const Duration(seconds: 5), (_) {
+      return 1;
+    }).asyncMap(
+      (value) async => value,
+    );
+  }
+
+  List<TrackingAudioModel> getAudioTrackingModelList() {
+    List<TrackingAudioModel> toReturn = [];
+    final box = Hive.box("audio_track");
+    for (int key = 0; key < 114; key++) {
+      final value = box.get(key);
+      TrackingAudioModel? model = value != null
+          ? TrackingAudioModel.fromMap(
+              Map<String, dynamic>.from(value),
+            )
+          : null;
+      model ??= TrackingAudioModel(
+          surahNumber: key,
+          lastReciterId: audioController.currentReciterModel.value.link,
+          playedAyah: {},
+          totalPlayedDurationInSeconds: 0);
+
+      toReturn.add(model);
+    }
+
+    if (sortBy == "surahIncreasing") {
+      return toReturn;
+    } else if (sortBy == "surahDecreasing") {
+      return toReturn.reversed.toList();
+    } else if (sortBy == "increasing") {
+      toReturn.sort((a, b) => ayahCount[a.surahNumber].compareTo(
+            ayahCount[b.surahNumber],
+          ));
+      return toReturn;
+    } else if (sortBy == "decreasing") {
+      toReturn.sort((a, b) => ayahCount[b.surahNumber].compareTo(
+            ayahCount[a.surahNumber],
+          ));
+      return toReturn;
+    } else if (sortBy == "increasingListened") {
+      toReturn.sort((a, b) => a.totalPlayedDurationInSeconds.compareTo(
+            b.totalPlayedDurationInSeconds,
+          ));
+      return toReturn;
+    } else if (sortBy == "decreasingListened") {
+      toReturn.sort((a, b) => b.totalPlayedDurationInSeconds.compareTo(
+            a.totalPlayedDurationInSeconds,
+          ));
+      return toReturn;
+    }
+
+    return toReturn;
+  }
+
+  int getTotalDurationInSeconds() {
+    int totalDurationInSeconds = 0;
+    getAudioTrackingModelList().forEach((element) {
+      totalDurationInSeconds += element.totalPlayedDurationInSeconds;
+    });
+    return totalDurationInSeconds;
+  }
+
+  String formatDuration(Duration duration) {
+    return "${duration.inHours}:${duration.inMinutes % 60}:${duration.inSeconds % 60}";
+  }
+
+  Widget getUserUI(User user) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Obx(
+        () {
+          final allPlaylist = homePageController.allPlaylistInDB.value;
+          List<String> rawStringOfAllPlaylist = [];
+          for (var element in allPlaylist) {
+            rawStringOfAllPlaylist.add(element.toJson());
+          }
+          String? cloudPlayListString = Hive.box('cloud_play_list')
+              .get("all_playlist", defaultValue: null);
+          bool isBackedUp =
+              cloudPlayListString == jsonEncode(rawStringOfAllPlaylist);
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        child: Text(
+                          user.email.substring(0, 2).toUpperCase(),
+                        ),
+                      ),
+                      const Gap(10),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            safeSubString(user.email, 25),
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          const Gap(5),
+                          Text(
+                            "ID: ${user.$id}",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(color: Colors.grey.shade400),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              const Gap(10),
+              Text(
+                (!isBackedUp)
+                    ? cloudPlayListString?.isEmpty == true
+                        ? "Your Playlists need to backup."
+                        : "Backup changes to cloud"
+                    : "Your Playlists are up to date",
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Gap(10),
+              if (!isBackedUp && allPlaylist.isNotEmpty)
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
+                    onPressed: () async {
+                      setState(() {
+                        backUpAsync = true;
+                      });
+                      String? error = await homePageController.backupPlayList();
+                      setState(() {
+                        backUpAsync = false;
+                      });
+                      if (error == null) {
+                        toastification.show(
+                          context: context,
+                          title: const Text("Successful"),
+                          description: const Text("Backup process successful"),
+                          type: ToastificationType.success,
+                          autoCloseDuration: const Duration(seconds: 3),
+                        );
+                      } else {
+                        toastification.show(
+                          context: context,
+                          title: const Text("Error"),
+                          description: Text(error),
+                          type: ToastificationType.error,
+                          autoCloseDuration: const Duration(seconds: 5),
+                        );
+                      }
+                    },
+                    icon: const Icon(Icons.backup_rounded),
+                    label: Text(
+                      cloudPlayListString?.isEmpty == true
+                          ? "Backup Now"
+                          : "Backup Changes",
+                    ),
+                  ),
+                ),
+              const Gap(20),
+            ],
+          );
+        },
+      ),
     );
   }
 }

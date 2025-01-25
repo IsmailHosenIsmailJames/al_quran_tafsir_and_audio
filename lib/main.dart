@@ -25,5 +25,6 @@ Future<void> main() async {
   await Hive.openBox("cloud_play_list");
   await Hive.openBox("collections_db");
   await Hive.openBox("notes");
+  await Hive.openBox("audio_track");
   runApp(AlQuranTafsirAndAudio());
 }
