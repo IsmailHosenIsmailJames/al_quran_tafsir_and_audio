@@ -592,9 +592,104 @@ class _AudioTabState extends State<AudioTab> {
   }
 }
 
-Widget getPlayButton(int index, AudioController audioController) {
+Widget getPlayButton(
+  int index,
+  AudioController audioController, {
+  bool relatedWithAyah = false,
+  int? surahNumber, // only if relatedWithAyah is true
+  int? indexOfAyahInSurah,
+}) {
   return Obx(
     () {
+      bool isPlaying = audioController.currentSurahNumber.value == index &&
+          audioController.isPlaying.value == true;
+      bool isLoading = audioController.currentSurahNumber.value == index &&
+          audioController.isLoading.value;
+      bool isLoadANewOne = (audioController.isPlaying.value == true ||
+              audioController.isLoading.value == true) &&
+          audioController.currentSurahNumber.value != index;
+      bool resumeOrPlay = audioController.isPlaying.value == false &&
+          audioController.currentSurahNumber.value == index;
+      bool playNewOneFirstTime = audioController.isPlaying.value == false &&
+          audioController.currentSurahNumber.value != index;
+
+      if (relatedWithAyah) {
+        isPlaying =
+            audioController.currentPlayingAyah.value == indexOfAyahInSurah &&
+                audioController.isPlaying.value == true &&
+                audioController.currentSurahNumber.value == surahNumber;
+
+        return IconButton(
+          style: ElevatedButton.styleFrom(padding: EdgeInsets.all(0)),
+          onPressed: () {
+            if (isPlaying &&
+                audioController.currentPlayingAyah.value ==
+                    indexOfAyahInSurah) {
+              ManageQuranAudio.audioPlayer.pause();
+              return;
+            } else if (isPlaying &&
+                audioController.currentPlayingAyah.value !=
+                    indexOfAyahInSurah) {
+              ManageQuranAudio.audioPlayer
+                  .seek(Duration.zero, index: indexOfAyahInSurah);
+              return;
+            } else if (isPlaying == false) {
+              if (audioController.currentPlayingAyah.value ==
+                      indexOfAyahInSurah &&
+                  audioController.currentSurahNumber.value == surahNumber) {
+                ManageQuranAudio.audioPlayer.play();
+                return;
+              } else if (audioController.currentPlayingAyah.value !=
+                      indexOfAyahInSurah &&
+                  audioController.isReadyToControl.value == false) {
+                // play A new one
+                audioController.currentSurahNumber.value = surahNumber ?? 0;
+                audioController.totalAyah.value = ayahCount[surahNumber ?? 0];
+                ManageQuranAudio.playMultipleAyahAsPlayList(
+                  surahNumber: surahNumber ?? 0,
+                  reciter: audioController.currentReciterModel.value,
+                  startOn: indexOfAyahInSurah,
+                );
+                return;
+              } else if (surahNumber !=
+                  audioController.currentSurahNumber.value) {
+                // play A new one at first time
+                audioController.currentSurahNumber.value = surahNumber ?? 0;
+                audioController.totalAyah.value = ayahCount[surahNumber ?? 0];
+                ManageQuranAudio.playMultipleAyahAsPlayList(
+                  surahNumber: surahNumber ?? 0,
+                  reciter: audioController.currentReciterModel.value,
+                  startOn: indexOfAyahInSurah,
+                );
+                return;
+              }
+            }
+            audioController.currentSurahNumber.value = surahNumber ?? 0;
+            audioController.totalAyah.value = ayahCount[surahNumber ?? 0];
+            ManageQuranAudio.playMultipleAyahAsPlayList(
+              surahNumber: surahNumber ?? 0,
+              reciter: audioController.currentReciterModel.value,
+              startOn: indexOfAyahInSurah,
+            );
+          },
+          icon: (isPlaying &&
+                  audioController.currentPlayingAyah.value ==
+                      indexOfAyahInSurah)
+              ? const Icon(Icons.pause_rounded)
+              : (isLoading &&
+                      audioController.currentPlayingAyah.value ==
+                          indexOfAyahInSurah)
+                  ? CircularProgressIndicator(
+                      color: Colors.white,
+                      backgroundColor: Colors.white.withValues(alpha: 0.2),
+                      strokeWidth: 2,
+                    )
+                  : Icon(
+                      Icons.play_arrow_rounded,
+                    ),
+        );
+      }
+
       return IconButton(
         style: IconButton.styleFrom(
           backgroundColor: Colors.green.shade800,
@@ -602,11 +697,9 @@ Widget getPlayButton(int index, AudioController audioController) {
           padding: EdgeInsets.zero,
         ),
         tooltip: "Play or Pause",
-        icon: (audioController.currentSurahNumber.value == index &&
-                audioController.isPlaying.value == true)
+        icon: (isPlaying)
             ? const Icon(Icons.pause_rounded)
-            : (audioController.currentSurahNumber.value == index &&
-                    audioController.isLoading.value)
+            : (isLoading)
                 ? CircularProgressIndicator(
                     color: Colors.white,
                     backgroundColor: Colors.white.withValues(alpha: 0.2),
@@ -614,12 +707,9 @@ Widget getPlayButton(int index, AudioController audioController) {
                   )
                 : const Icon(Icons.play_arrow_rounded),
         onPressed: () async {
-          if (audioController.isPlaying.value == true &&
-              audioController.currentSurahNumber.value == index) {
+          if (isPlaying) {
             await ManageQuranAudio.audioPlayer.pause();
-          } else if ((audioController.isPlaying.value == true ||
-                  audioController.isLoading.value == true) &&
-              audioController.currentSurahNumber.value != index) {
+          } else if (isLoadANewOne) {
             audioController.currentSurahNumber.value = index;
             audioController.totalAyah.value = ayahCount[index];
             await ManageQuranAudio.audioPlayer.stop();
@@ -627,8 +717,7 @@ Widget getPlayButton(int index, AudioController audioController) {
               surahNumber: index,
               reciter: audioController.currentReciterModel.value,
             );
-          } else if (audioController.isPlaying.value == false &&
-              audioController.currentSurahNumber.value == index) {
+          } else if (resumeOrPlay) {
             if (audioController.isReadyToControl.value == false) {
               audioController.currentSurahNumber.value = index;
               await ManageQuranAudio.playMultipleAyahAsPlayList(
@@ -638,8 +727,7 @@ Widget getPlayButton(int index, AudioController audioController) {
             } else {
               await ManageQuranAudio.audioPlayer.play();
             }
-          } else if (audioController.isPlaying.value == false &&
-              audioController.currentSurahNumber.value != index) {
+          } else if (playNewOneFirstTime) {
             audioController.currentSurahNumber.value = index;
             audioController.totalAyah.value = ayahCount[index];
             await ManageQuranAudio.playMultipleAyahAsPlayList(

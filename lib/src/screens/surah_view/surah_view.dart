@@ -473,19 +473,14 @@ Container buildAyahWidget({
                 ),
               Spacer(),
               SizedBox(
-                width: 30,
+                width: 50,
                 height: 30,
-                child: IconButton(
-                  style: IconButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    foregroundColor: Colors.green.shade700,
-                    backgroundColor:
-                        Colors.grey.shade600.withValues(alpha: 0.3),
-                  ),
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.play_arrow_rounded,
-                  ),
+                child: getPlayButton(
+                  currentAyahIndex,
+                  audioController,
+                  relatedWithAyah: true,
+                  surahNumber: (surahInfo?.surahNumber ?? 1) - 1,
+                  indexOfAyahInSurah: index,
                 ),
               ),
               Gap(10),
