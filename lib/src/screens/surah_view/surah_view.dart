@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:share_plus/share_plus.dart';
 
 class SurahView extends StatefulWidget {
   final int? jumpToAyah;
@@ -527,7 +528,7 @@ Container buildAyahWidget({
                         Colors.grey.shade600.withValues(alpha: 0.3),
                     iconSize: 18,
                   ),
-                  onSelected: (value) {
+                  onSelected: (value) async {
                     if (value == "tafsir") {
                       Get.to(
                         () => TafsirView(
@@ -538,6 +539,34 @@ Container buildAyahWidget({
                           surahName: surahInfo?.surahNameSimple,
                         ),
                       );
+                    } else if (value.contains("share")) {
+                      String text = Hive.box("quran_db")
+                          .get(
+                            "uthmani_simple/${currentAyahIndex + 1}",
+                            defaultValue: "",
+                          )
+                          .toString();
+
+                      String trans = Hive.box("translation_db").get(
+                        "${infoController.bookIDTranslation.value}/$currentAyahIndex",
+                        defaultValue: "",
+                      );
+                      String subject =
+                          "${surahInfo?.surahNameSimple ?? ""} ( ${surahInfo?.surahNameArabic ?? ""} ) - ${currentAyahIndex + 1}";
+                      if (value == "share") {
+                        Share.share(
+                          "$text\nTranslation:\n$trans\n\n$subject",
+                          subject: subject,
+                        );
+                      } else {
+                        String tafsir = await getTafsirText(
+                            infoController.tafsirBookID.value,
+                            currentAyahIndex);
+                        Share.share(
+                          "$text\nTranslation:\n$trans\nTafsir:\n$tafsir\n\n$subject",
+                          subject: subject,
+                        );
+                      }
                     }
                   },
                   itemBuilder: (context) {
@@ -583,6 +612,30 @@ Container buildAyahWidget({
                           ),
                           title: Text(
                             "Add to group",
+                          ),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: "share",
+                        child: ListTile(
+                          minTileHeight: 50,
+                          leading: Icon(
+                            Icons.share,
+                          ),
+                          title: Text(
+                            "Share",
+                          ),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: "share_with_tafsir",
+                        child: ListTile(
+                          minTileHeight: 50,
+                          leading: Icon(
+                            Icons.share,
+                          ),
+                          title: Text(
+                            "Share With Tafsir",
                           ),
                         ),
                       ),
