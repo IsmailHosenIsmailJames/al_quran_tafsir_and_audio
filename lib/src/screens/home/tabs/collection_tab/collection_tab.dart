@@ -84,9 +84,8 @@ class _CollectionTabState extends State<CollectionTab> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() {
-                          collectionTabIndex = 0;
-                        });
+                        collectionTabIndex = 0;
+                        pageController.jumpToPage(0);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -125,9 +124,8 @@ class _CollectionTabState extends State<CollectionTab> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() {
-                          collectionTabIndex = 1;
-                        });
+                        collectionTabIndex = 1;
+                        pageController.jumpToPage(1);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

@@ -91,7 +91,6 @@ class _SurahViewState extends State<SurahView> {
             height: 30,
             child: Obx(
               () {
-                int tabIndex = universalController.surahViewTabIndex.value;
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -99,15 +98,18 @@ class _SurahViewState extends State<SurahView> {
                       width: width * 0.5,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: tabIndex == 0
-                              ? Colors.green.shade700
-                              : Colors.transparent,
-                          foregroundColor: tabIndex == 0
-                              ? Colors.white
-                              : Colors.green.shade700,
-                          iconColor: tabIndex == 0
-                              ? Colors.white
-                              : Colors.green.shade700,
+                          backgroundColor:
+                              universalController.surahViewTabIndex.value == 0
+                                  ? Colors.green.shade700
+                                  : Colors.transparent,
+                          foregroundColor:
+                              universalController.surahViewTabIndex.value == 0
+                                  ? Colors.white
+                                  : Colors.green.shade700,
+                          iconColor:
+                              universalController.surahViewTabIndex.value == 0
+                                  ? Colors.white
+                                  : Colors.green.shade700,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(30),
@@ -116,9 +118,8 @@ class _SurahViewState extends State<SurahView> {
                           ),
                         ),
                         onPressed: () {
-                          setState(() {
-                            tabIndex = 0;
-                          });
+                          universalController.surahViewTabIndex.value = 0;
+                          pageController.jumpToPage(0);
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -140,15 +141,18 @@ class _SurahViewState extends State<SurahView> {
                       width: width * 0.5,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: tabIndex == 1
-                              ? Colors.green.shade700
-                              : Colors.transparent,
-                          foregroundColor: tabIndex == 1
-                              ? Colors.white
-                              : Colors.green.shade700,
-                          iconColor: tabIndex == 1
-                              ? Colors.white
-                              : Colors.green.shade700,
+                          backgroundColor:
+                              universalController.surahViewTabIndex.value == 1
+                                  ? Colors.green.shade700
+                                  : Colors.transparent,
+                          foregroundColor:
+                              universalController.surahViewTabIndex.value == 1
+                                  ? Colors.white
+                                  : Colors.green.shade700,
+                          iconColor:
+                              universalController.surahViewTabIndex.value == 1
+                                  ? Colors.white
+                                  : Colors.green.shade700,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(30),
@@ -157,9 +161,8 @@ class _SurahViewState extends State<SurahView> {
                           ),
                         ),
                         onPressed: () {
-                          setState(() {
-                            tabIndex = 1;
-                          });
+                          universalController.surahViewTabIndex.value = 1;
+                          pageController.jumpToPage(1);
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
