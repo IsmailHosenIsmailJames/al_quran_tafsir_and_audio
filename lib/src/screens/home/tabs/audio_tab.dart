@@ -620,7 +620,10 @@ Widget getPlayButton(
                 audioController.currentSurahNumber.value == surahNumber;
 
         return IconButton(
-          style: ElevatedButton.styleFrom(padding: EdgeInsets.all(0)),
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.all(0),
+            iconColor: Colors.green.shade600,
+          ),
           onPressed: () {
             if (isPlaying &&
                 audioController.currentPlayingAyah.value ==
@@ -679,10 +682,14 @@ Widget getPlayButton(
               : (isLoading &&
                       audioController.currentPlayingAyah.value ==
                           indexOfAyahInSurah)
-                  ? CircularProgressIndicator(
-                      color: Colors.white,
-                      backgroundColor: Colors.white.withValues(alpha: 0.2),
-                      strokeWidth: 2,
+                  ? SizedBox(
+                      height: 30,
+                      width: 30,
+                      child: CircularProgressIndicator(
+                        color: Colors.green,
+                        backgroundColor: Colors.white.withValues(alpha: 0.2),
+                        strokeWidth: 2,
+                      ),
                     )
                   : Icon(
                       Icons.play_arrow_rounded,
