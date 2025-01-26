@@ -43,10 +43,11 @@ class _SurahViewState extends State<SurahView> {
   late int totalAyah = widget.surahInfo.ayahCount;
   late int initialAyahID = widget.surahInfo.start;
 
-  int tabIndex = 0;
-
   ScrollController tab1ScrollController = ScrollController();
   ScrollController tab2ScrollController = ScrollController();
+
+  late PageController pageController =
+      PageController(initialPage: universalController.surahViewTabIndex.value);
 
   @override
   void initState() {
@@ -88,96 +89,111 @@ class _SurahViewState extends State<SurahView> {
               ),
             ),
             height: 30,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: width * 0.5,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: tabIndex == 0
-                          ? Colors.green.shade700
-                          : Colors.transparent,
-                      foregroundColor:
-                          tabIndex == 0 ? Colors.white : Colors.green.shade700,
-                      iconColor:
-                          tabIndex == 0 ? Colors.white : Colors.green.shade700,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(30),
-                          bottomRight: Radius.circular(30),
+            child: Obx(
+              () {
+                int tabIndex = universalController.surahViewTabIndex.value;
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: width * 0.5,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: tabIndex == 0
+                              ? Colors.green.shade700
+                              : Colors.transparent,
+                          foregroundColor: tabIndex == 0
+                              ? Colors.white
+                              : Colors.green.shade700,
+                          iconColor: tabIndex == 0
+                              ? Colors.white
+                              : Colors.green.shade700,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30),
+                              bottomRight: Radius.circular(30),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            tabIndex = 0;
+                          });
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.translate),
+                            Gap(10),
+                            Text(
+                              "Translation",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        tabIndex = 0;
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(Icons.translate),
-                        Gap(10),
-                        Text(
-                          "Translation",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                    SizedBox(
+                      width: width * 0.5,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: tabIndex == 1
+                              ? Colors.green.shade700
+                              : Colors.transparent,
+                          foregroundColor: tabIndex == 1
+                              ? Colors.white
+                              : Colors.green.shade700,
+                          iconColor: tabIndex == 1
+                              ? Colors.white
+                              : Colors.green.shade700,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              bottomLeft: Radius.circular(30),
+                            ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: width * 0.5,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: tabIndex == 1
-                          ? Colors.green.shade700
-                          : Colors.transparent,
-                      foregroundColor:
-                          tabIndex == 1 ? Colors.white : Colors.green.shade700,
-                      iconColor:
-                          tabIndex == 1 ? Colors.white : Colors.green.shade700,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          bottomLeft: Radius.circular(30),
+                        onPressed: () {
+                          setState(() {
+                            tabIndex = 1;
+                          });
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.book),
+                            Gap(10),
+                            Text(
+                              "Reading",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        tabIndex = 1;
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(Icons.book),
-                        Gap(10),
-                        Text(
-                          "Reading",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+                  ],
+                );
+              },
             ),
           ),
           Expanded(
               child: Stack(
             children: [
-              tabIndex == 0
-                  ? getViewWithTranslation()
-                  : getViewWithOutTranslation(),
+              PageView(
+                controller: pageController,
+                onPageChanged: (value) =>
+                    {universalController.surahViewTabIndex.value = value},
+                children: [
+                  getViewWithTranslation(),
+                  getViewWithOutTranslation()
+                ],
+              ),
               Obx(
                 () => Container(
                   child: (audioController.isPlaying.value == true ||
