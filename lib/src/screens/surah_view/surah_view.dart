@@ -49,6 +49,8 @@ class _SurahViewState extends State<SurahView> {
   late PageController pageController =
       PageController(initialPage: universalController.surahViewTabIndex.value);
 
+  List<GlobalKey> items = [];
+
   @override
   void initState() {
     for (Map translation in allTranslationLanguage) {
@@ -56,6 +58,10 @@ class _SurahViewState extends State<SurahView> {
         translationBookName =
             "${translation['name']} by ${translation['author_name']}";
       }
+    }
+    int ayahCount = widget.surahInfo.ayahCount;
+    for (int i = 0; i < ayahCount; i++) {
+      items.add(GlobalKey());
     }
     super.initState();
   }
@@ -220,6 +226,8 @@ class _SurahViewState extends State<SurahView> {
     return Scrollbar(
       controller: tab2ScrollController,
       interactive: true,
+      thickness: 10,
+      radius: Radius.circular(10),
       child: ListView.builder(
         controller: tab2ScrollController,
         padding: EdgeInsets.only(
@@ -284,6 +292,8 @@ class _SurahViewState extends State<SurahView> {
     return Scrollbar(
       controller: tab1ScrollController,
       interactive: true,
+      thickness: 10,
+      radius: Radius.circular(10),
       child: ListView.builder(
         controller: tab1ScrollController,
         padding: EdgeInsets.only(bottom: 100),
@@ -314,6 +324,7 @@ class _SurahViewState extends State<SurahView> {
                     ),
                   ),
                 buildAyahWidget(
+                  key: items[index],
                   index: index,
                   currentAyahIndex: currentAyahIndex,
                   infoController: infoController,
@@ -326,6 +337,7 @@ class _SurahViewState extends State<SurahView> {
             );
           } else {
             return buildAyahWidget(
+              key: items[index],
               index: index,
               currentAyahIndex: currentAyahIndex,
               infoController: infoController,
@@ -454,6 +466,7 @@ class _SurahViewState extends State<SurahView> {
 }
 
 Container buildAyahWidget({
+  GlobalKey? key,
   required int index,
   required int currentAyahIndex,
   required InfoController infoController,
@@ -464,6 +477,7 @@ Container buildAyahWidget({
   bool showAyahNumber = true,
 }) {
   return Container(
+    key: key,
     width: double.infinity,
     margin: EdgeInsets.all(5),
     padding: EdgeInsets.all(5),
