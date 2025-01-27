@@ -189,6 +189,7 @@ class _CollectionTabState extends State<CollectionTab> {
                       List<String> ayahKey = currentCollection.ayahs ?? [];
                       return Container(
                         padding: EdgeInsets.all(5),
+                        margin: EdgeInsets.only(bottom: 8),
                         decoration: BoxDecoration(
                           color: Colors.grey.withValues(alpha: 0.1),
                           border: Border.all(
@@ -232,7 +233,12 @@ class _CollectionTabState extends State<CollectionTab> {
                                           color: Colors.grey,
                                         )),
                                   if (currentCollection.description != null)
-                                    Text(currentCollection.description!),
+                                    Text(
+                                      currentCollection.description!,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
                                   Gap(10),
                                 ],
                               ),

@@ -5,6 +5,7 @@ import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/audio_tra
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/audio_tab.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_scripts_composer.dart';
@@ -17,7 +18,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path/path.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:toastification/toastification.dart';
 
 class SurahView extends StatefulWidget {
   final int? jumpToAyah;
@@ -477,6 +480,8 @@ Container buildAyahWidget({
   required String translationBookName,
   bool showAyahNumber = true,
 }) {
+  final collectionBox = Hive.box("collections_db");
+  String ayahKey = "${surahInfo?.surahNumber}:${index + 1}";
   return Container(
     key: key,
     width: double.infinity,
@@ -539,6 +544,27 @@ Container buildAyahWidget({
                           surahName: surahInfo?.surahNameSimple,
                         ),
                       );
+                    } else if (value == "bookmark" || value == "favorite") {
+                      CollectionInfoModel? collectionInfoModel =
+                          getCollectionData(collectionBox, value);
+                      if (collectionInfoModel?.ayahs?.contains(ayahKey) ??
+                          false) {
+                        collectionInfoModel?.ayahs!.remove(ayahKey);
+                        toastification.show(
+                            title:
+                                Text("Removed from ${value.capitalizeFirst}"),
+                            autoCloseDuration: const Duration(seconds: 2),
+                            type: ToastificationType.success);
+                      } else {
+                        collectionInfoModel?.ayahs!.add(ayahKey);
+                        toastification.show(
+                            title: Text("Added to ${value.capitalizeFirst}"),
+                            autoCloseDuration: const Duration(seconds: 2),
+                            type: ToastificationType.success);
+                      }
+                      if (collectionInfoModel != null) {
+                        collectionBox.put(value, collectionInfoModel.toJson());
+                      }
                     } else if (value.contains("share")) {
                       String text = Hive.box("quran_db")
                           .get(
@@ -585,7 +611,20 @@ Container buildAyahWidget({
                         value: "bookmark",
                         child: ListTile(
                           minTileHeight: 50,
-                          leading: Icon(Icons.bookmark_rounded),
+                          leading: Icon(
+                            getCollectionData(collectionBox, "bookmark")
+                                        ?.ayahs!
+                                        .contains(ayahKey) ??
+                                    false
+                                ? Icons.bookmark_added_rounded
+                                : Icons.bookmark_rounded,
+                            color: getCollectionData(collectionBox, "bookmark")
+                                        ?.ayahs!
+                                        .contains(ayahKey) ??
+                                    false
+                                ? Colors.green
+                                : Colors.grey,
+                          ),
                           title: Text(
                             "Bookmark",
                           ),
@@ -596,7 +635,18 @@ Container buildAyahWidget({
                         child: ListTile(
                           minTileHeight: 50,
                           leading: Icon(
-                            Icons.favorite_rounded,
+                            getCollectionData(collectionBox, "favorite")
+                                        ?.ayahs!
+                                        .contains(ayahKey) ??
+                                    false
+                                ? Icons.favorite_rounded
+                                : Icons.favorite_border_rounded,
+                            color: getCollectionData(collectionBox, "favorite")
+                                        ?.ayahs!
+                                        .contains(ayahKey) ??
+                                    false
+                                ? Colors.green
+                                : Colors.grey,
                           ),
                           title: Text(
                             "Favorite",
@@ -696,4 +746,20 @@ Container buildAyahWidget({
       ],
     ),
   );
+}
+
+CollectionInfoModel? getCollectionData(
+    Box<dynamic> collectionBox, String value) {
+  CollectionInfoModel? collectionInfoModel;
+  final previousData = collectionBox.get(value, defaultValue: null);
+  if (previousData != null) {
+    collectionInfoModel = CollectionInfoModel.fromJson(previousData);
+  }
+  collectionInfoModel ??= CollectionInfoModel(
+    id: value,
+    isPublicResources: false,
+    name: value.capitalizeFirst,
+  );
+  collectionInfoModel.ayahs ??= [];
+  return collectionInfoModel;
 }
