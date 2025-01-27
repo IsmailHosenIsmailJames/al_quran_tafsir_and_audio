@@ -206,7 +206,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                   if (description.isNotEmpty) {
                     editingCollection.description = description;
                   }
-                  box.put(editingCollection.id, editingCollection.toMap());
+                  box.put(editingCollection.id, editingCollection.toJson());
                   if (widget.previousData == null) {
                     collectionController.collectionList.add(editingCollection);
                   } else {

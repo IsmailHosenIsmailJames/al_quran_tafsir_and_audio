@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path/path.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:toastification/toastification.dart';
 
@@ -523,176 +522,8 @@ Container buildAyahWidget({
                 ),
               ),
               Gap(10),
-              SizedBox(
-                height: 30,
-                width: 30,
-                child: PopupMenuButton(
-                  style: IconButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    backgroundColor:
-                        Colors.grey.shade600.withValues(alpha: 0.3),
-                    iconSize: 18,
-                  ),
-                  onSelected: (value) async {
-                    if (value == "tafsir") {
-                      Get.to(
-                        () => TafsirView(
-                          ayahNumber: currentAyahIndex,
-                          tafsirBookID: infoController.tafsirBookID.value,
-                          fontSize:
-                              universalController.fontSizeTranslation.value,
-                          surahName: surahInfo?.surahNameSimple,
-                        ),
-                      );
-                    } else if (value == "bookmark" || value == "favorite") {
-                      CollectionInfoModel? collectionInfoModel =
-                          getCollectionData(collectionBox, value);
-                      if (collectionInfoModel?.ayahs?.contains(ayahKey) ??
-                          false) {
-                        collectionInfoModel?.ayahs!.remove(ayahKey);
-                        toastification.show(
-                            title:
-                                Text("Removed from ${value.capitalizeFirst}"),
-                            autoCloseDuration: const Duration(seconds: 2),
-                            type: ToastificationType.success);
-                      } else {
-                        collectionInfoModel?.ayahs!.add(ayahKey);
-                        toastification.show(
-                            title: Text("Added to ${value.capitalizeFirst}"),
-                            autoCloseDuration: const Duration(seconds: 2),
-                            type: ToastificationType.success);
-                      }
-                      if (collectionInfoModel != null) {
-                        collectionBox.put(value, collectionInfoModel.toJson());
-                      }
-                    } else if (value.contains("share")) {
-                      String text = Hive.box("quran_db")
-                          .get(
-                            "uthmani_simple/${currentAyahIndex + 1}",
-                            defaultValue: "",
-                          )
-                          .toString();
-
-                      String trans = Hive.box("translation_db").get(
-                        "${infoController.bookIDTranslation.value}/$currentAyahIndex",
-                        defaultValue: "",
-                      );
-                      String subject =
-                          "${surahInfo?.surahNameSimple ?? ""} ( ${surahInfo?.surahNameArabic ?? ""} ) - ${currentAyahIndex + 1}";
-                      if (value == "share") {
-                        Share.share(
-                          "$text\nTranslation:\n$trans\n\n$subject",
-                          subject: subject,
-                        );
-                      } else {
-                        String tafsir = await getTafsirText(
-                            infoController.tafsirBookID.value,
-                            currentAyahIndex);
-                        Share.share(
-                          "$text\nTranslation:\n$trans\nTafsir:\n$tafsir\n\n$subject",
-                          subject: subject,
-                        );
-                      }
-                    }
-                  },
-                  itemBuilder: (context) {
-                    return [
-                      PopupMenuItem(
-                        value: "tafsir",
-                        child: ListTile(
-                          minTileHeight: 50,
-                          leading: Icon(FluentIcons.book_24_filled),
-                          title: Text(
-                            "Tafsir",
-                          ),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        value: "bookmark",
-                        child: ListTile(
-                          minTileHeight: 50,
-                          leading: Icon(
-                            getCollectionData(collectionBox, "bookmark")
-                                        ?.ayahs!
-                                        .contains(ayahKey) ??
-                                    false
-                                ? Icons.bookmark_added_rounded
-                                : Icons.bookmark_rounded,
-                            color: getCollectionData(collectionBox, "bookmark")
-                                        ?.ayahs!
-                                        .contains(ayahKey) ??
-                                    false
-                                ? Colors.green
-                                : Colors.grey,
-                          ),
-                          title: Text(
-                            "Bookmark",
-                          ),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        value: "favorite",
-                        child: ListTile(
-                          minTileHeight: 50,
-                          leading: Icon(
-                            getCollectionData(collectionBox, "favorite")
-                                        ?.ayahs!
-                                        .contains(ayahKey) ??
-                                    false
-                                ? Icons.favorite_rounded
-                                : Icons.favorite_border_rounded,
-                            color: getCollectionData(collectionBox, "favorite")
-                                        ?.ayahs!
-                                        .contains(ayahKey) ??
-                                    false
-                                ? Colors.green
-                                : Colors.grey,
-                          ),
-                          title: Text(
-                            "Favorite",
-                          ),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        value: "add_to_group",
-                        child: ListTile(
-                          minTileHeight: 50,
-                          leading: Icon(
-                            Icons.add_rounded,
-                          ),
-                          title: Text(
-                            "Add to group",
-                          ),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        value: "share",
-                        child: ListTile(
-                          minTileHeight: 50,
-                          leading: Icon(
-                            Icons.share,
-                          ),
-                          title: Text(
-                            "Share",
-                          ),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        value: "share_with_tafsir",
-                        child: ListTile(
-                          minTileHeight: 50,
-                          leading: Icon(
-                            Icons.share,
-                          ),
-                          title: Text(
-                            "Share With Tafsir",
-                          ),
-                        ),
-                      ),
-                    ];
-                  },
-                ),
-              ),
+              getPopUpMenu(currentAyahIndex, infoController,
+                  universalController, surahInfo, collectionBox, ayahKey),
             ],
           ),
         ),
@@ -745,6 +576,253 @@ Container buildAyahWidget({
         ),
       ],
     ),
+  );
+}
+
+SizedBox getPopUpMenu(
+    int currentAyahIndex,
+    InfoController infoController,
+    UniversalController universalController,
+    SurahViewInfoModel? surahInfo,
+    Box<dynamic> collectionBox,
+    String ayahKey) {
+  return SizedBox(
+    height: 30,
+    width: 30,
+    child: PopupMenuButton(
+      style: IconButton.styleFrom(
+        padding: EdgeInsets.zero,
+        backgroundColor: Colors.grey.shade600.withValues(alpha: 0.3),
+        iconSize: 18,
+      ),
+      onSelected: (value) async {
+        if (value == "tafsir") {
+          Get.to(
+            () => TafsirView(
+              ayahNumber: currentAyahIndex,
+              tafsirBookID: infoController.tafsirBookID.value,
+              fontSize: universalController.fontSizeTranslation.value,
+              surahName: surahInfo?.surahNameSimple,
+            ),
+          );
+        } else if (value == "bookmark" || value == "favorite") {
+          CollectionInfoModel? collectionInfoModel =
+              getCollectionData(collectionBox, value);
+          if (collectionInfoModel?.ayahs?.contains(ayahKey) ?? false) {
+            collectionInfoModel?.ayahs!.remove(ayahKey);
+            toastification.show(
+                title: Text("Removed from ${value.capitalizeFirst}"),
+                autoCloseDuration: const Duration(seconds: 2),
+                type: ToastificationType.success);
+          } else {
+            collectionInfoModel?.ayahs!.add(ayahKey);
+            toastification.show(
+                title: Text("Added to ${value.capitalizeFirst}"),
+                autoCloseDuration: const Duration(seconds: 2),
+                type: ToastificationType.success);
+          }
+          if (collectionInfoModel != null) {
+            collectionBox.put(value, collectionInfoModel.toJson());
+          }
+        } else if (value == "add_to_group") {
+          showAddToCollectGroupDialog(collectionBox, ayahKey);
+        } else if (value.contains("share")) {
+          String text = Hive.box("quran_db")
+              .get(
+                "uthmani_simple/${currentAyahIndex + 1}",
+                defaultValue: "",
+              )
+              .toString();
+
+          String trans = Hive.box("translation_db").get(
+            "${infoController.bookIDTranslation.value}/$currentAyahIndex",
+            defaultValue: "",
+          );
+          String subject =
+              "${surahInfo?.surahNameSimple ?? ""} ( ${surahInfo?.surahNameArabic ?? ""} ) - ${currentAyahIndex + 1}";
+          if (value == "share") {
+            Share.share(
+              "$text\nTranslation:\n$trans\n\n$subject",
+              subject: subject,
+            );
+          } else {
+            String tafsir = await getTafsirText(
+                infoController.tafsirBookID.value, currentAyahIndex);
+            Share.share(
+              "$text\nTranslation:\n$trans\nTafsir:\n$tafsir\n\n$subject",
+              subject: subject,
+            );
+          }
+        }
+      },
+      itemBuilder: (context) {
+        return [
+          PopupMenuItem(
+            value: "tafsir",
+            child: ListTile(
+              minTileHeight: 50,
+              leading: Icon(FluentIcons.book_24_filled),
+              title: Text(
+                "Tafsir",
+              ),
+            ),
+          ),
+          PopupMenuItem(
+            value: "bookmark",
+            child: ListTile(
+              minTileHeight: 50,
+              leading: Icon(
+                getCollectionData(collectionBox, "bookmark")
+                            ?.ayahs!
+                            .contains(ayahKey) ??
+                        false
+                    ? Icons.bookmark_added_rounded
+                    : Icons.bookmark_rounded,
+                color: getCollectionData(collectionBox, "bookmark")
+                            ?.ayahs!
+                            .contains(ayahKey) ??
+                        false
+                    ? Colors.green
+                    : Colors.grey,
+              ),
+              title: Text(
+                "Bookmark",
+              ),
+            ),
+          ),
+          PopupMenuItem(
+            value: "favorite",
+            child: ListTile(
+              minTileHeight: 50,
+              leading: Icon(
+                getCollectionData(collectionBox, "favorite")
+                            ?.ayahs!
+                            .contains(ayahKey) ??
+                        false
+                    ? Icons.favorite_rounded
+                    : Icons.favorite_border_rounded,
+                color: getCollectionData(collectionBox, "favorite")
+                            ?.ayahs!
+                            .contains(ayahKey) ??
+                        false
+                    ? Colors.green
+                    : Colors.grey,
+              ),
+              title: Text(
+                "Favorite",
+              ),
+            ),
+          ),
+          PopupMenuItem(
+            value: "add_to_group",
+            child: ListTile(
+              minTileHeight: 50,
+              leading: Icon(
+                Icons.add_rounded,
+              ),
+              title: Text(
+                "Add to group",
+              ),
+            ),
+          ),
+          PopupMenuItem(
+            value: "share",
+            child: ListTile(
+              minTileHeight: 50,
+              leading: Icon(
+                Icons.share,
+              ),
+              title: Text(
+                "Share",
+              ),
+            ),
+          ),
+          PopupMenuItem(
+            value: "share_with_tafsir",
+            child: ListTile(
+              minTileHeight: 50,
+              leading: Icon(
+                Icons.share,
+              ),
+              title: Text(
+                "Share With Tafsir",
+              ),
+            ),
+          ),
+        ];
+      },
+    ),
+  );
+}
+
+Future<dynamic> showAddToCollectGroupDialog(
+    Box<dynamic> collectionBox, String ayahKey) {
+  return showDialog(
+    context: Get.context!,
+    builder: (context) {
+      return Dialog(
+        insetPadding: const EdgeInsets.all(10),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Add to Group",
+                style: TextStyle(fontSize: 20),
+              ),
+              Divider(),
+              if (collectionBox.keys.isEmpty)
+                Center(
+                  child: Text(
+                    "There are no existing groups\n Please create one",
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ...List.generate(
+                collectionBox.keys.length,
+                (index) {
+                  return ListTile(
+                      minTileHeight: 50,
+                      onTap: () {
+                        String value = collectionBox.keys.elementAt(index);
+                        CollectionInfoModel? collectionInfoModel =
+                            getCollectionData(collectionBox, value);
+                        if (collectionInfoModel?.ayahs?.contains(ayahKey) ??
+                            false) {
+                          toastification.show(
+                              title: Text(
+                                "Already exists in ${value.capitalizeFirst}",
+                              ),
+                              autoCloseDuration: const Duration(seconds: 2),
+                              type: ToastificationType.success);
+                          return;
+                        } else {
+                          collectionInfoModel?.ayahs!.add(ayahKey);
+                          toastification.show(
+                              title: Text("Added to ${value.capitalizeFirst}"),
+                              autoCloseDuration: const Duration(seconds: 2),
+                              type: ToastificationType.success);
+                        }
+                        if (collectionInfoModel != null) {
+                          collectionBox.put(
+                              value, collectionInfoModel.toJson());
+                        }
+                        Navigator.pop(context);
+                      },
+                      title: Text(
+                        collectionBox.keys
+                            .elementAt(index)
+                            .toString()
+                            .capitalizeFirst,
+                      ));
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    },
   );
 }
 
