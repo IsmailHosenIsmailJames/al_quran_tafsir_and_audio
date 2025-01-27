@@ -14,11 +14,13 @@ class AddNewAyahForCollection extends StatefulWidget {
   final int? selectedSurahNumber;
   final int? selectedAyahNumber;
   final String? surahName;
+  final bool? isJumpToAyah;
   const AddNewAyahForCollection({
     super.key,
     this.selectedSurahNumber,
     this.selectedAyahNumber,
     this.surahName,
+    this.isJumpToAyah,
   });
 
   @override
@@ -41,7 +43,9 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
             : Text(
                 "$surahName ${(selectedSurahNumber ?? 0) + 1}:${(selectedAyahNumber ?? 0) + 1} "),
         actions: [
-          if (selectedSurahNumber != null && selectedAyahNumber != null)
+          if (selectedSurahNumber != null &&
+              selectedAyahNumber != null &&
+              widget.isJumpToAyah != true)
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton.icon(

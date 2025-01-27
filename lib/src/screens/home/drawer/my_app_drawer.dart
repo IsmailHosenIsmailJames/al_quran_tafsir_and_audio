@@ -1,5 +1,7 @@
+import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/about_app/about_app_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/add_new_ayah.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/my_developed_apps/my_developed_apps.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/platforms/others_platform.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_icon_button.dart';
@@ -11,6 +13,8 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../resources/models/quran_surah_info_model.dart';
 
 class MyAppDrawer extends StatelessWidget {
   const MyAppDrawer({super.key});
@@ -104,7 +108,13 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              Get.to(
+                () => AddNewAyahForCollection(
+                  isJumpToAyah: true,
+                ),
+              );
+            },
             leading: Icon(
               Icons.subdirectory_arrow_right_rounded,
               color: Colors.green.shade600,
