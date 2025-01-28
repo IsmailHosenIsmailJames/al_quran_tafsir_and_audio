@@ -1,4 +1,3 @@
-import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/about_app/about_app_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/add_new_ayah.dart';
@@ -13,8 +12,6 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../resources/models/quran_surah_info_model.dart';
 
 class MyAppDrawer extends StatelessWidget {
   const MyAppDrawer({super.key});
@@ -132,6 +129,22 @@ class MyAppDrawer extends StatelessWidget {
             minTileHeight: 45,
             onTap: () {},
             leading: Icon(
+              FluentIcons.notepad_24_filled,
+              color: Colors.green.shade600,
+              size: 20,
+            ),
+            title: Text(
+              "Notes",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            minTileHeight: 45,
+            onTap: () {},
+            leading: Icon(
               FluentIcons.bookmark_24_filled,
               color: Colors.green.shade600,
               size: 20,
@@ -154,22 +167,6 @@ class MyAppDrawer extends StatelessWidget {
             ),
             title: Text(
               "Favorites",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ListTile(
-            minTileHeight: 45,
-            onTap: () {},
-            leading: Icon(
-              FluentIcons.notepad_24_filled,
-              color: Colors.green.shade600,
-              size: 20,
-            ),
-            title: Text(
-              "Notes",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

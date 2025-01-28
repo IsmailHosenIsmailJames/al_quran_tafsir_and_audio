@@ -5,11 +5,13 @@ import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/language_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/map_of_translation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:toastification/toastification.dart';
 import 'dart:ui' as ui;
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class AlQuranTafsirAndAudio extends StatelessWidget {
   const AlQuranTafsirAndAudio({super.key});
@@ -19,6 +21,12 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
     return ToastificationWrapper(
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          FlutterQuillLocalizations.delegate,
+        ],
         title: 'Al-Quran',
         theme: ThemeData.light().copyWith(
           colorScheme: ColorScheme.fromSeed(

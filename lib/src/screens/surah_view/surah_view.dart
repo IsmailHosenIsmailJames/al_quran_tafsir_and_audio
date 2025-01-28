@@ -12,6 +12,7 @@ import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/info_view/info_view.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/models/surah_view_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/tafsir_view/tafsir_view.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/take_note/take_note_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/language_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -653,6 +654,13 @@ SizedBox getPopUpMenu(
               subject: subject,
             );
           }
+        } else if (value == "note") {
+          Get.to(
+            () => TakeNotePage(
+              surahViewInfoModel: surahInfo!,
+              ayahNumber: currentAyahIndex,
+            ),
+          );
         }
       },
       itemBuilder: (context) {
@@ -664,6 +672,18 @@ SizedBox getPopUpMenu(
               leading: Icon(FluentIcons.book_24_filled),
               title: Text(
                 "Tafsir",
+              ),
+            ),
+          ),
+          PopupMenuItem(
+            value: "note",
+            child: ListTile(
+              minTileHeight: 50,
+              leading: Icon(
+                FluentIcons.notepad_24_filled,
+              ),
+              title: Text(
+                "Take Note",
               ),
             ),
           ),
@@ -683,7 +703,7 @@ SizedBox getPopUpMenu(
                             .contains(ayahKey) ??
                         false
                     ? Colors.green
-                    : Colors.grey,
+                    : Colors.grey.withValues(alpha: 0.5),
               ),
               title: Text(
                 "Bookmark",
@@ -706,7 +726,7 @@ SizedBox getPopUpMenu(
                             .contains(ayahKey) ??
                         false
                     ? Colors.green
-                    : Colors.grey,
+                    : Colors.grey.withValues(alpha: 0.5),
               ),
               title: Text(
                 "Favorite",
@@ -762,6 +782,7 @@ Future<dynamic> showAddToCollectGroupDialog(
     builder: (context) {
       return Dialog(
         insetPadding: const EdgeInsets.all(10),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
