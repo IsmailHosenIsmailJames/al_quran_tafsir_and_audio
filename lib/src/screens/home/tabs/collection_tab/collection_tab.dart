@@ -64,6 +64,9 @@ class _CollectionTabState extends State<CollectionTab> {
                   allPlayList.isEmpty
                       ? getEmptyPlaylistView(context)
                       : getPlayListView(allPlayList),
+                  Container(
+                    color: Colors.green,
+                  ),
                 ],
               ),
             );
@@ -89,9 +92,10 @@ class _CollectionTabState extends State<CollectionTab> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: width * 0.5,
+                width: width * 0.3,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero,
                     backgroundColor: collectionTabIndex == 0
                         ? Colors.green.shade700
                         : Colors.transparent,
@@ -110,14 +114,18 @@ class _CollectionTabState extends State<CollectionTab> {
                   ),
                   onPressed: () {
                     collectionTabIndex = 0;
-                    pageController.jumpToPage(0);
+                    pageController.animateTo(
+                      0,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(FluentIcons.bookmark_24_filled),
-                      Gap(10),
+                      Gap(5),
                       Text(
                         "Groups",
                         style: TextStyle(
@@ -129,9 +137,10 @@ class _CollectionTabState extends State<CollectionTab> {
                 ),
               ),
               SizedBox(
-                width: width * 0.5,
+                width: width * 0.3,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero,
                     backgroundColor: collectionTabIndex == 1
                         ? Colors.green.shade700
                         : Colors.transparent,
@@ -142,6 +151,48 @@ class _CollectionTabState extends State<CollectionTab> {
                         ? Colors.white
                         : Colors.green.shade700,
                     shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  onPressed: () {
+                    collectionTabIndex = 1;
+                    pageController.animateToPage(
+                      1,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.playlist_play_rounded),
+                      Gap(5),
+                      Text(
+                        "Playlist",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: width * 0.3,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    backgroundColor: collectionTabIndex == 2
+                        ? Colors.green.shade700
+                        : Colors.transparent,
+                    foregroundColor: collectionTabIndex == 2
+                        ? Colors.white
+                        : Colors.green.shade700,
+                    iconColor: collectionTabIndex == 2
+                        ? Colors.white
+                        : Colors.green.shade700,
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         bottomLeft: Radius.circular(30),
@@ -149,17 +200,21 @@ class _CollectionTabState extends State<CollectionTab> {
                     ),
                   ),
                   onPressed: () {
-                    collectionTabIndex = 1;
-                    pageController.jumpToPage(1);
+                    collectionTabIndex = 3;
+                    pageController.animateToPage(
+                      2,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.playlist_play_rounded),
-                      Gap(10),
+                      Icon(FluentIcons.notepad_24_filled),
+                      Gap(5),
                       Text(
-                        "Playlist",
+                        "Notes",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
