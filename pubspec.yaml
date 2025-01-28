@@ -66,6 +66,7 @@ flutter:
     - assets/img/madina.jpeg
     - assets/img/QuranLogo.png
     - assets/
+    - assets/dev/
 
 
 icons_launcher:

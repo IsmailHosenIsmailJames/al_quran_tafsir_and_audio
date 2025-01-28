@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/notes/models/notes_model.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/models/surah_view_info_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:gap/gap.dart';
