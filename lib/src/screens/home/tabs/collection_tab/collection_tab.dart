@@ -48,106 +48,7 @@ class _CollectionTabState extends State<CollectionTab> {
     double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.grey.withValues(
-              alpha: 0.3,
-            ),
-          ),
-          height: 30,
-          child: Obx(
-            () {
-              int collectionTabIndex =
-                  universalController.collectionTabIndex.value;
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: width * 0.5,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: collectionTabIndex == 0
-                            ? Colors.green.shade700
-                            : Colors.transparent,
-                        foregroundColor: collectionTabIndex == 0
-                            ? Colors.white
-                            : Colors.green.shade700,
-                        iconColor: collectionTabIndex == 0
-                            ? Colors.white
-                            : Colors.green.shade700,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(30),
-                            bottomRight: Radius.circular(30),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        collectionTabIndex = 0;
-                        pageController.jumpToPage(0);
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(FluentIcons.bookmark_24_filled),
-                          Gap(10),
-                          Text(
-                            "Groups",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: width * 0.5,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: collectionTabIndex == 1
-                            ? Colors.green.shade700
-                            : Colors.transparent,
-                        foregroundColor: collectionTabIndex == 1
-                            ? Colors.white
-                            : Colors.green.shade700,
-                        iconColor: collectionTabIndex == 1
-                            ? Colors.white
-                            : Colors.green.shade700,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomLeft: Radius.circular(30),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        collectionTabIndex = 1;
-                        pageController.jumpToPage(1);
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(Icons.playlist_play_rounded),
-                          Gap(10),
-                          Text(
-                            "Playlist",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
+        getTopTabController(width),
         Obx(
           () {
             final allPlayList = homePageController.allPlaylistInDB.value;
@@ -159,315 +60,408 @@ class _CollectionTabState extends State<CollectionTab> {
                   universalController.collectionTabIndex.value = value;
                 },
                 children: [
-                  ListView.builder(
-                    padding: EdgeInsets.only(
-                      top: 5,
-                      left: 5,
-                      right: 5,
-                      bottom: 100,
-                    ),
-                    itemCount: collectionController.collectionList.length + 1,
-                    itemBuilder: (context, index) {
-                      if (index == 0) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 10, bottom: 5),
-                          child: OutlinedButton(
-                            onPressed: () async {
-                              await Get.to(
-                                () => const CreateNewCollectionPage(
-                                  previousData: null,
-                                ),
-                              );
-                              setState(() {});
-                            },
-                            child: Text("Create New Group"),
-                          ),
-                        );
-                      }
-                      CollectionInfoModel currentCollection =
-                          collectionController.collectionList[index - 1];
-                      List<String> ayahKey = currentCollection.ayahs ?? [];
-                      return Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(bottom: 8),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.withValues(alpha: 0.1),
-                          border: Border.all(
-                            color: Colors.green.withValues(
-                              alpha: 0.3,
-                            ),
-                          ),
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(5),
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(7),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Name",
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  Text(
-                                    currentCollection.name,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  if (currentCollection.description != null)
-                                    Gap(7),
-                                  if (currentCollection.description != null)
-                                    Text("Description",
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                        )),
-                                  if (currentCollection.description != null)
-                                    Text(
-                                      currentCollection.description!,
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  Gap(10),
-                                ],
-                              ),
-                            ),
-                            Gap(7),
-                            Text(
-                              "Ayahs",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Gap(5),
-                            Container(
-                              padding: EdgeInsets.all(5),
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(7),
-                              ),
-                              child: Column(
-                                children: List.generate(ayahKey.length, (i) {
-                                  int surahNumber =
-                                      int.parse(ayahKey[i].split(":")[i]);
-                                  int ayahNumber =
-                                      int.parse(ayahKey[i].split(":")[1]);
-                                  return GestureDetector(
-                                    onTap: () {
-                                      Get.to(
-                                        () => AddNewAyahForCollection(
-                                          selectedAyahNumber: ayahNumber,
-                                          selectedSurahNumber: surahNumber,
-                                          surahName:
-                                              allChaptersInfo[surahNumber]
-                                                  ["name_simple"],
-                                        ),
-                                      );
-                                    },
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(2.0),
-                                          child: CircleAvatar(
-                                            radius: 15,
-                                            child: FittedBox(
-                                                child: Text("${i + 1}")),
-                                          ),
-                                        ),
-                                        Gap(10),
-                                        Text(
-                                          "${surahNumber + 1}. ${allChaptersInfo[surahNumber]["name_simple"]} ( ${ayahNumber + 1} )",
-                                        ),
-                                        Spacer(),
-                                        Icon(
-                                          Icons.arrow_forward,
-                                          size: 16,
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  IconButton(
-                                    style: IconButton.styleFrom(
-                                      padding:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                    ),
-                                    onPressed: () async {
-                                      collectionController
-                                              .editingCollection.value =
-                                          collectionController
-                                              .collectionList[index - 1];
-                                      await Get.to(
-                                        () => CreateNewCollectionPage(
-                                          previousData: collectionController
-                                              .editingCollection.value,
-                                        ),
-                                      );
-                                      setState(() {});
-                                    },
-                                    icon: Icon(
-                                      Icons.edit,
-                                      color: Colors.green,
-                                    ),
-                                  ),
-                                  Gap(10),
-                                  IconButton(
-                                    style: IconButton.styleFrom(
-                                      padding:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                    ),
-                                    onPressed: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            title: Text("Are you sure?"),
-                                            content: Text(
-                                                "Once deleted, it can't be recovered"),
-                                            actions: [
-                                              TextButton.icon(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                icon: Icon(Icons.close),
-                                                label: Text("Cancel"),
-                                              ),
-                                              ElevatedButton.icon(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor: Colors.red,
-                                                ),
-                                                onPressed: () {
-                                                  collectionController
-                                                      .collectionList
-                                                      .removeAt(index - 1);
-                                                  Hive.box("collections_db")
-                                                      .delete(
-                                                    currentCollection.id,
-                                                  );
-                                                  Navigator.pop(context);
-                                                  setState(() {});
-                                                  toastification.show(
-                                                    context: context,
-                                                    title: Text("Deleted"),
-                                                    type: ToastificationType
-                                                        .success,
-                                                  );
-                                                },
-                                                icon: Icon(Icons.delete),
-                                                label: Text("Delete"),
-                                              )
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    },
-                                    icon: Icon(
-                                      Icons.delete,
-                                      color: Colors.red,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                  getGroupsTab(),
                   allPlayList.isEmpty
-                      ? Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: 75,
-                                width: 75,
-                                child: Obx(
-                                  () {
-                                    bool isDark = themeController
-                                                .themeModeName.value ==
-                                            "dark" ||
-                                        (themeController.themeModeName.value ==
-                                                "system" &&
-                                            MediaQuery.of(context)
-                                                    .platformBrightness ==
-                                                Brightness.dark);
-
-                                    return Image(
-                                      image: const AssetImage(
-                                        "assets/empty-folder.png",
-                                      ),
-                                      color:
-                                          isDark ? Colors.white : Colors.black,
-                                    );
-                                  },
-                                ),
-                              ),
-                              const Gap(10),
-                              const Text("No PlayList found"),
-                              const Gap(10),
-                              ElevatedButton.icon(
-                                onPressed: createANewPlayList,
-                                icon: const Icon(Icons.add),
-                                label: const Text(
-                                  "Create PlayList",
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      : ListView(
-                          padding: const EdgeInsets.only(
-                              left: 5, right: 5, top: 5, bottom: 100),
-                          children: <Widget>[
-                                Row(
-                                  children: [
-                                    Text(
-                                        "Total PlayList: ${allPlayList.length}"),
-                                    const Spacer(),
-                                    SizedBox(
-                                      height: 25,
-                                      child: ElevatedButton.icon(
-                                        onPressed: createANewPlayList,
-                                        icon: const Icon(Icons.add),
-                                        label:
-                                            const Text("Create New PlayList"),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ] +
-                              List<Widget>.generate(
-                                allPlayList.length,
-                                (index) {
-                                  return getPlayListCards(allPlayList, index);
-                                },
-                              ),
-                        ),
+                      ? getEmptyPlaylistView(context)
+                      : getPlayListView(allPlayList),
                 ],
               ),
             );
           },
         ),
       ],
+    );
+  }
+
+  Container getTopTabController(double width) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.grey.withValues(
+          alpha: 0.3,
+        ),
+      ),
+      height: 30,
+      child: Obx(
+        () {
+          int collectionTabIndex = universalController.collectionTabIndex.value;
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: width * 0.5,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: collectionTabIndex == 0
+                        ? Colors.green.shade700
+                        : Colors.transparent,
+                    foregroundColor: collectionTabIndex == 0
+                        ? Colors.white
+                        : Colors.green.shade700,
+                    iconColor: collectionTabIndex == 0
+                        ? Colors.white
+                        : Colors.green.shade700,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(30),
+                        bottomRight: Radius.circular(30),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    collectionTabIndex = 0;
+                    pageController.jumpToPage(0);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(FluentIcons.bookmark_24_filled),
+                      Gap(10),
+                      Text(
+                        "Groups",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: width * 0.5,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: collectionTabIndex == 1
+                        ? Colors.green.shade700
+                        : Colors.transparent,
+                    foregroundColor: collectionTabIndex == 1
+                        ? Colors.white
+                        : Colors.green.shade700,
+                    iconColor: collectionTabIndex == 1
+                        ? Colors.white
+                        : Colors.green.shade700,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        bottomLeft: Radius.circular(30),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    collectionTabIndex = 1;
+                    pageController.jumpToPage(1);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.playlist_play_rounded),
+                      Gap(10),
+                      Text(
+                        "Playlist",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  ListView getPlayListView(List<AllPlayListModel> allPlayList) {
+    return ListView(
+      padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 100),
+      children: <Widget>[
+            Row(
+              children: [
+                Text("Total PlayList: ${allPlayList.length}"),
+                const Spacer(),
+                SizedBox(
+                  height: 25,
+                  child: ElevatedButton.icon(
+                    onPressed: createANewPlayList,
+                    icon: const Icon(Icons.add),
+                    label: const Text("Create New PlayList"),
+                  ),
+                ),
+              ],
+            ),
+          ] +
+          List<Widget>.generate(
+            allPlayList.length,
+            (index) {
+              return getPlayListCards(allPlayList, index);
+            },
+          ),
+    );
+  }
+
+  Center getEmptyPlaylistView(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 75,
+            width: 75,
+            child: Obx(
+              () {
+                bool isDark = themeController.themeModeName.value == "dark" ||
+                    (themeController.themeModeName.value == "system" &&
+                        MediaQuery.of(context).platformBrightness ==
+                            Brightness.dark);
+
+                return Image(
+                  image: const AssetImage(
+                    "assets/empty-folder.png",
+                  ),
+                  color: isDark ? Colors.white : Colors.black,
+                );
+              },
+            ),
+          ),
+          const Gap(10),
+          const Text("No PlayList found"),
+          const Gap(10),
+          ElevatedButton.icon(
+            onPressed: createANewPlayList,
+            icon: const Icon(Icons.add),
+            label: const Text(
+              "Create PlayList",
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  ListView getGroupsTab() {
+    return ListView.builder(
+      padding: EdgeInsets.only(
+        top: 5,
+        left: 5,
+        right: 5,
+        bottom: 100,
+      ),
+      itemCount: collectionController.collectionList.length + 1,
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 5),
+            child: OutlinedButton(
+              onPressed: () async {
+                await Get.to(
+                  () => const CreateNewCollectionPage(
+                    previousData: null,
+                  ),
+                );
+                setState(() {});
+              },
+              child: Text("Create New Group"),
+            ),
+          );
+        }
+        CollectionInfoModel currentCollection =
+            collectionController.collectionList[index - 1];
+        List<String> ayahKey = currentCollection.ayahs ?? [];
+        return Container(
+          padding: EdgeInsets.all(5),
+          margin: EdgeInsets.only(bottom: 8),
+          decoration: BoxDecoration(
+            color: Colors.grey.withValues(alpha: 0.1),
+            border: Border.all(
+              color: Colors.green.withValues(
+                alpha: 0.3,
+              ),
+            ),
+            borderRadius: BorderRadius.circular(7),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.all(5),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Name",
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Text(
+                      currentCollection.name,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    if (currentCollection.description != null) Gap(7),
+                    if (currentCollection.description != null)
+                      Text("Description",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          )),
+                    if (currentCollection.description != null)
+                      Text(
+                        currentCollection.description!,
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                    Gap(10),
+                  ],
+                ),
+              ),
+              Gap(7),
+              Text(
+                "Ayahs",
+                style: TextStyle(color: Colors.grey),
+              ),
+              Gap(5),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Column(
+                  children: List.generate(ayahKey.length, (i) {
+                    int surahNumber = int.parse(ayahKey[i].split(":")[i]);
+                    int ayahNumber = int.parse(ayahKey[i].split(":")[1]);
+                    return GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          () => AddNewAyahForCollection(
+                            selectedAyahNumber: ayahNumber,
+                            selectedSurahNumber: surahNumber,
+                            surahName: allChaptersInfo[surahNumber]
+                                ["name_simple"],
+                          ),
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: CircleAvatar(
+                              radius: 15,
+                              child: FittedBox(child: Text("${i + 1}")),
+                            ),
+                          ),
+                          Gap(10),
+                          Text(
+                            "${surahNumber + 1}. ${allChaptersInfo[surahNumber]["name_simple"]} ( ${ayahNumber + 1} )",
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      style: IconButton.styleFrom(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                      ),
+                      onPressed: () async {
+                        collectionController.editingCollection.value =
+                            collectionController.collectionList[index - 1];
+                        await Get.to(
+                          () => CreateNewCollectionPage(
+                            previousData:
+                                collectionController.editingCollection.value,
+                          ),
+                        );
+                        setState(() {});
+                      },
+                      icon: Icon(
+                        Icons.edit,
+                        color: Colors.green,
+                      ),
+                    ),
+                    Gap(10),
+                    IconButton(
+                      style: IconButton.styleFrom(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                      ),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Are you sure?"),
+                              content:
+                                  Text("Once deleted, it can't be recovered"),
+                              actions: [
+                                TextButton.icon(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: Icon(Icons.close),
+                                  label: Text("Cancel"),
+                                ),
+                                ElevatedButton.icon(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    collectionController.collectionList
+                                        .removeAt(index - 1);
+                                    Hive.box("collections_db").delete(
+                                      currentCollection.id,
+                                    );
+                                    Navigator.pop(context);
+                                    setState(() {});
+                                    toastification.show(
+                                      context: context,
+                                      title: Text("Deleted"),
+                                      type: ToastificationType.success,
+                                    );
+                                  },
+                                  icon: Icon(Icons.delete),
+                                  label: Text("Delete"),
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
