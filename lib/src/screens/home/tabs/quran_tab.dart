@@ -59,7 +59,11 @@ class _QuranTabState extends State<QuranTab> {
                       ),
                       onPressed: () {
                         quranTabIndex = 0;
-                        pageController.jumpToPage(0);
+                        pageController.animateToPage(
+                          0,
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
                       },
                       child: Text(
                         "Surah",
@@ -88,7 +92,11 @@ class _QuranTabState extends State<QuranTab> {
                       ),
                       onPressed: () {
                         quranTabIndex = 1;
-                        pageController.jumpToPage(1);
+                        pageController.animateToPage(
+                          1,
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
                       },
                       child: Text(
                         "Juz",
