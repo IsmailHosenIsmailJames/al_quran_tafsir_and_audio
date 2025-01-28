@@ -56,6 +56,16 @@ class AboutAppPage extends StatelessWidget {
               ],
             ),
             Divider(),
+            Text(
+              "Note: Quran, Tafsir & Audio are collected from quran.com & everyayah.com",
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    backgroundColor: Colors.red.withValues(
+                      alpha: 0.2,
+                    ),
+                  ),
+            ),
+            Divider(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

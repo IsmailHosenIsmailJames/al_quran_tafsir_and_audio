@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      drawer: MyAppDrawer(),
+      drawer: MyAppDrawer(pageController: pageController),
       body: SafeArea(
         child: Stack(
           children: [

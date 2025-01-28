@@ -1,5 +1,6 @@
 import 'package:al_quran_tafsir_and_audio/src/screens/about_app/about_app_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/developer/developer_page.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/add_new_ayah.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/my_developed_apps/my_developed_apps.dart';
@@ -15,10 +16,13 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyAppDrawer extends StatelessWidget {
-  const MyAppDrawer({super.key});
+  final PageController pageController;
+  const MyAppDrawer({super.key, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
+    UniversalController universalController = Get.find<UniversalController>();
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.only(bottom: 50),
@@ -128,7 +132,15 @@ class MyAppDrawer extends StatelessWidget {
           ),
           ListTile(
             minTileHeight: 45,
-            onTap: () {},
+            onTap: () {
+              universalController.collectionTabIndex.value = 2;
+              pageController.animateToPage(
+                2,
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              );
+              Navigator.pop(context);
+            },
             leading: Icon(
               FluentIcons.notepad_24_filled,
               color: Colors.green.shade600,
@@ -136,38 +148,6 @@ class MyAppDrawer extends StatelessWidget {
             ),
             title: Text(
               "Notes",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ListTile(
-            minTileHeight: 45,
-            onTap: () {},
-            leading: Icon(
-              FluentIcons.bookmark_24_filled,
-              color: Colors.green.shade600,
-              size: 20,
-            ),
-            title: Text(
-              "Bookmarks",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ListTile(
-            minTileHeight: 45,
-            onTap: () {},
-            leading: Icon(
-              Icons.favorite_outlined,
-              color: Colors.green.shade600,
-              size: 20,
-            ),
-            title: Text(
-              "Favorites",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -289,7 +269,7 @@ class MyAppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Share.share(
-                'Here is Quran App with Quran Tafsir and Audio\nhttps://play.google.com/store/apps/details?id=com.ismail_hosen_james.al_bayan_quran',
+                'Here is Quran App with Quran Tafsir and Audio\n\nhttps://play.google.com/store/apps/details?id=com.ismail_hosen_james.al_bayan_quran',
               );
             },
             leading: Icon(
