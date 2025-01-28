@@ -3,8 +3,8 @@ import 'dart:convert';
 class NotesModel {
   final int dateTimestamp;
   final String noteDelta;
-  final int surahNumber;
-  final int ayahNumber;
+  final int? surahNumber;
+  final int? ayahNumber;
 
   NotesModel({
     required this.dateTimestamp,

@@ -18,6 +18,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:toastification/toastification.dart';
 
 import '../../../../core/audio/controller/audio_controller.dart';
+import '../../../notes/all_notes.dart';
 
 class CollectionTab extends StatefulWidget {
   final PageController tabController;
@@ -64,9 +65,7 @@ class _CollectionTabState extends State<CollectionTab> {
                   allPlayList.isEmpty
                       ? getEmptyPlaylistView(context)
                       : getPlayListView(allPlayList),
-                  Container(
-                    color: Colors.green,
-                  ),
+                  AllNotes(),
                 ],
               ),
             );

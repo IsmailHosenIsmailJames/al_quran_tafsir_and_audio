@@ -8,15 +8,18 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:toastification/toastification.dart';
 
+import '../../resources/api_response/some_api_response.dart';
 import 'models/notes_model.dart';
 
 class TakeNotePage extends StatefulWidget {
-  final SurahViewInfoModel surahViewInfoModel;
-  final int ayahNumber;
+  final int? surahNumber;
+  final int? ayahNumber;
+  final NotesModel? previousData;
   const TakeNotePage({
     super.key,
-    required this.surahViewInfoModel,
-    required this.ayahNumber,
+    this.surahNumber,
+    this.ayahNumber,
+    this.previousData,
   });
 
   @override
@@ -24,7 +27,14 @@ class TakeNotePage extends StatefulWidget {
 }
 
 class _TakeNotePageState extends State<TakeNotePage> {
-  final QuillController _controller = QuillController.basic();
+  late final QuillController _controller = widget.previousData == null
+      ? QuillController.basic()
+      : QuillController(
+          document: Document.fromJson(
+            jsonDecode(widget.previousData!.noteDelta),
+          ),
+          selection: const TextSelection.collapsed(offset: 0),
+        );
   @override
   void dispose() {
     _controller.dispose();
@@ -37,7 +47,9 @@ class _TakeNotePageState extends State<TakeNotePage> {
       appBar: AppBar(
         titleSpacing: 5,
         title: Text(
-          "Note for ${widget.surahViewInfoModel.surahNameSimple} ( ${widget.ayahNumber + 1} )",
+          widget.surahNumber != null
+              ? "${allChaptersInfo[widget.surahNumber! - 1]["name_simple"]} ( ${(widget.ayahNumber ?? 0) + 1} )"
+              : "",
           style: TextStyle(fontSize: 16),
         ),
         actions: [
@@ -56,18 +68,22 @@ class _TakeNotePageState extends State<TakeNotePage> {
                   jsonEncode(_controller.document.toDelta().toJson());
               int timeStamp = DateTime.now().millisecondsSinceEpoch;
               NotesModel notesModel = NotesModel(
-                dateTimestamp: timeStamp,
+                dateTimestamp: widget.previousData?.dateTimestamp ?? timeStamp,
                 noteDelta: noteDelta,
-                surahNumber: widget.surahViewInfoModel.surahNumber,
+                surahNumber: widget.surahNumber,
                 ayahNumber: widget.ayahNumber,
               );
-              await Hive.box("notes_db").put(ID.unique(), notesModel.toJson());
+              await Hive.box("notes_db").put(
+                  widget.previousData == null
+                      ? timeStamp.toString()
+                      : widget.previousData!.dateTimestamp.toString(),
+                  notesModel.toJson());
               Get.back();
             },
             icon: const Icon(
               Icons.done,
             ),
-            label: Text("Save"),
+            label: Text(widget.previousData == null ? "Save" : "Update"),
           ),
         ],
       ),

@@ -12,7 +12,7 @@ import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/info_view/info_view.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/models/surah_view_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/tafsir_view/tafsir_view.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/take_note/take_note_page.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/notes/take_note_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/language_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -657,7 +657,7 @@ SizedBox getPopUpMenu(
         } else if (value == "note") {
           Get.to(
             () => TakeNotePage(
-              surahViewInfoModel: surahInfo!,
+              surahNumber: surahInfo!.surahNumber,
               ayahNumber: currentAyahIndex,
             ),
           );
