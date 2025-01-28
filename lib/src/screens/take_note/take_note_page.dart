@@ -1,9 +1,14 @@
-import 'dart:developer';
+import 'dart:convert';
 
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/models/surah_view_info_model.dart';
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
-import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:toastification/toastification.dart';
+
+import 'models/notes_model.dart';
 
 class TakeNotePage extends StatefulWidget {
   final SurahViewInfoModel surahViewInfoModel;
@@ -37,7 +42,28 @@ class _TakeNotePageState extends State<TakeNotePage> {
         ),
         actions: [
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () async {
+              if (_controller.document.toPlainText().isEmpty) {
+                toastification.show(
+                  context: context,
+                  title: const Text("Note can't be empty"),
+                  type: ToastificationType.info,
+                  autoCloseDuration: const Duration(seconds: 2),
+                );
+                return;
+              }
+              String noteDelta =
+                  jsonEncode(_controller.document.toDelta().toJson());
+              int timeStamp = DateTime.now().millisecondsSinceEpoch;
+              NotesModel notesModel = NotesModel(
+                dateTimestamp: timeStamp,
+                noteDelta: noteDelta,
+                surahNumber: widget.surahViewInfoModel.surahNumber,
+                ayahNumber: widget.ayahNumber,
+              );
+              await Hive.box("notes_db").put(ID.unique(), notesModel.toJson());
+              Get.back();
+            },
             icon: const Icon(
               Icons.done,
             ),
