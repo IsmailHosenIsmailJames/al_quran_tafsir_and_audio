@@ -46,17 +46,11 @@ class _SettingsPageState extends State<SettingsPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
-              children: [
-                Icon(Icons.light_mode_rounded),
-                Gap(10),
-                Text(
-                  "Theme Brightness",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
+            Text(
+              "Theme Brightness",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            const Gap(5),
+            const Gap(7),
             Obx(
               () => DropdownButtonFormField<String>(
                 value: appThemeDataController.themeModeName.value,
@@ -114,15 +108,12 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            const Row(
-              children: [
-                Icon(FluentIcons.text_font_16_filled),
-                Gap(10),
-                Text(
-                  "Quran Font Size",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
+            Text(
+              "Quran Font Size",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
             Obx(
               () => Row(
@@ -173,15 +164,45 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            const Row(
-              children: [
-                Icon(FluentIcons.text_font_16_filled),
-                Gap(10),
-                Text(
-                  "Translation Font Size",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+            Text(
+              "Quran Script Type",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            Gap(10),
+            Obx(
+              () => DropdownButtonFormField<String>(
+                value: universalController.quranScriptTypeGetx.value,
+                onChanged: (value) {
+                  universalController.quranScriptTypeGetx.value = value!;
+                  Hive.box("user_db").put("quranScriptType", value);
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
                 ),
-              ],
+                isExpanded: true,
+                items: List.generate(
+                  quranScriptTypeList.length,
+                  (index) => DropdownMenuItem(
+                    value: quranScriptTypeList[index],
+                    child: Text(
+                      quranScriptTypeList[index]
+                          .capitalizeFirst
+                          .replaceAll("_", " "),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const Gap(15),
+            Text(
+              "Translation Font Size",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
             Obx(
               () => Row(
@@ -229,17 +250,12 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            const Row(
-              children: [
-                Icon(
-                  Icons.cached_rounded,
-                ),
-                Gap(10),
-                Text(
-                  "Audio Cached",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
+            Text(
+              "Audio Cached",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
             const Gap(5),
             Container(
