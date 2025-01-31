@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/add_new_ayah.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:toastification/toastification.dart';
@@ -39,16 +42,24 @@ class _TakeNotePageState extends State<TakeNotePage> {
     super.dispose();
   }
 
+  List<String> ayahsListKey = [];
+
+  @override
+  void initState() {
+    if (widget.ayahNumber != null && widget.surahNumber != null) {
+      ayahsListKey.add("${widget.surahNumber}:${widget.ayahNumber! + 1}");
+    }
+    ayahsListKey.addAll(widget.previousData?.ayahsKey ?? []);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 5,
         title: Text(
-          widget.surahNumber != null
-              ? "${allChaptersInfo[widget.surahNumber! - 1]["name_simple"]} ( ${(widget.ayahNumber ?? 0) + 1} )"
-              : "",
-          style: TextStyle(fontSize: 16),
+          "Take Note",
         ),
         actions: [
           ElevatedButton.icon(
@@ -64,18 +75,15 @@ class _TakeNotePageState extends State<TakeNotePage> {
               }
               String noteDelta =
                   jsonEncode(_controller.document.toDelta().toJson());
-              int timeStamp = DateTime.now().millisecondsSinceEpoch;
+              int timeStamp = widget.previousData?.dateTimestamp ??
+                  DateTime.now().millisecondsSinceEpoch;
               NotesModel notesModel = NotesModel(
-                dateTimestamp: widget.previousData?.dateTimestamp ?? timeStamp,
+                dateTimestamp: timeStamp,
                 noteDelta: noteDelta,
-                surahNumber: widget.surahNumber,
-                ayahNumber: widget.ayahNumber,
+                ayahsKey: ayahsListKey,
               );
-              await Hive.box("notes_db").put(
-                  widget.previousData == null
-                      ? timeStamp.toString()
-                      : widget.previousData!.dateTimestamp.toString(),
-                  notesModel.toJson());
+              await Hive.box("notes_db")
+                  .put(timeStamp.toString(), notesModel.toJson());
               Get.back();
             },
             icon: const Icon(
@@ -88,8 +96,93 @@ class _TakeNotePageState extends State<TakeNotePage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(5.0),
-          child: Column(
+          child: ListView(
             children: [
+              Row(
+                children: [
+                  Gap(8),
+                  Text(
+                    "Ayahs",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Spacer(),
+                  SizedBox(
+                    height: 30,
+                    child: OutlinedButton.icon(
+                      style: TextButton.styleFrom(
+                          padding: EdgeInsets.only(right: 10, left: 5)),
+                      onPressed: () async {
+                        final res = await Get.to(
+                          () => AddNewAyahForCollection(),
+                        );
+                        if (res != null && res is String) {
+                          ayahsListKey.add(res);
+                        }
+                        setState(() {});
+                      },
+                      icon: Icon(Icons.add),
+                      label: Text("Add"),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.grey.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: ayahsListKey.isEmpty
+                    ? const Text("No ayahs selected")
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: ayahsListKey.map(
+                          (ayahKey) {
+                            QuranSurahInfoModel surahInfoModel =
+                                QuranSurahInfoModel.fromMap(allChaptersInfo[
+                                    int.parse(ayahKey.split(":")[0]) - 1]);
+                            return Row(
+                              children: [
+                                Text(
+                                  "${surahInfoModel.nameSimple} - ${ayahKey.split(":")[1]}",
+                                ),
+                                Spacer(),
+                                SizedBox(
+                                  height: 30,
+                                  child: IconButton(
+                                    onPressed: () {
+                                      ayahsListKey.remove(ayahKey);
+                                      setState(() {});
+                                    },
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                      size: 19,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ).toList(),
+                      ),
+              ),
+              Gap(10),
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Text(
+                  "Notes",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -165,18 +258,18 @@ class _TakeNotePageState extends State<TakeNotePage> {
                   ],
                 ),
               ),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey.withValues(alpha: 0.5),
-                    ),
-                    borderRadius: BorderRadius.circular(7),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey.withValues(alpha: 0.5),
                   ),
-                  padding: EdgeInsets.all(5),
-                  child: QuillEditor.basic(
-                    controller: _controller,
-                    config: const QuillEditorConfig(),
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                padding: EdgeInsets.all(5),
+                child: QuillEditor.basic(
+                  controller: _controller,
+                  config: const QuillEditorConfig(
+                    minHeight: 200,
                   ),
                 ),
               ),

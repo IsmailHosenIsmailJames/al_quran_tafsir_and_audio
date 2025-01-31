@@ -1,6 +1,8 @@
 {
     "date_timestamp": 1090895876597,
     "note_delta" : "Any Json note_delta",
-    "surah_number" : 1,
-    "ayah_number" : 1
+    "ayahsKey" : [
+        "1:1",
+        "1:2"
+    ]
 }
