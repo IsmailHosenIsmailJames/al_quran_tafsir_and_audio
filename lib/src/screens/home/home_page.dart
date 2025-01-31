@@ -7,7 +7,6 @@ import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dar
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../../core/audio/controller/audio_controller.dart';
 import '../../core/audio/play_quran_audio.dart';
@@ -63,90 +62,65 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: MyAppDrawer(pageController: pageController),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            PageView(
-              onPageChanged: (value) {
-                setState(() {
-                  selectedBottomNavIndex = value;
-                });
-              },
-              controller: pageController,
-              children: [
-                const QuranTab(),
-                AudioTab(tabController: pageController),
-                CollectionTab(
-                  tabController: pageController,
-                ),
-                const ProfileTab(),
-              ],
-            ),
-            Obx(
-              () => Container(
-                child: (audioController.isPlaying.value == true ||
-                        audioController.isReadyToControl.value == true)
-                    ? WidgetAudioController(
-                        showSurahNumber: false,
-                        showQuranAyahMode: true,
-                        surahNumber: audioController.currentPlayingAyah.value,
-                      )
-                    : null,
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.all(5.0),
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(
-                color: Colors.grey.withValues(alpha: 0.3),
-              ),
-            ),
-          ),
-          child: GNav(
-            selectedIndex: selectedBottomNavIndex,
-            rippleColor: Colors.grey.withValues(alpha: 0.2),
-            hoverColor: Colors.grey.withValues(alpha: 0.1),
-            haptic: true,
-            tabBorderRadius: 15,
-            curve: Curves.easeInOut,
-            duration: const Duration(milliseconds: 200),
-            gap: 3,
-            activeColor: Colors.white,
-            iconSize: 24,
-            tabBackgroundColor: Colors.green.shade700,
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-            tabs: [
-              GButton(
-                icon: FluentIcons.book_24_filled,
-                text: 'Quran',
-                borderRadius: BorderRadius.circular(30),
-              ),
-              GButton(
-                icon: Icons.audiotrack_rounded,
-                text: 'Recitation',
-                borderRadius: BorderRadius.circular(30),
-              ),
-              GButton(
-                icon: Icons.collections_bookmark_rounded,
-                text: 'Collection',
-                borderRadius: BorderRadius.circular(30),
-              ),
-              GButton(
-                icon: FluentIcons.person_24_filled,
-                text: 'Profile',
-                borderRadius: BorderRadius.circular(30),
-              )
-            ],
-            onTabChange: (value) {
-              pageController.jumpToPage(value);
+      body: Stack(
+        children: [
+          PageView(
+            onPageChanged: (value) {
+              setState(() {
+                selectedBottomNavIndex = value;
+              });
             },
+            controller: pageController,
+            children: [
+              const QuranTab(),
+              AudioTab(tabController: pageController),
+              CollectionTab(
+                tabController: pageController,
+              ),
+              const ProfileTab(),
+            ],
           ),
-        ),
+          Obx(
+            () => Container(
+              child: (audioController.isPlaying.value == true ||
+                      audioController.isReadyToControl.value == true)
+                  ? WidgetAudioController(
+                      showSurahNumber: false,
+                      showQuranAyahMode: true,
+                      surahNumber: audioController.currentPlayingAyah.value,
+                    )
+                  : null,
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedBottomNavIndex,
+        onTap: (value) {
+          pageController.jumpToPage(value);
+        },
+        selectedItemColor: Colors.green.shade600,
+        unselectedItemColor: Colors.white,
+        backgroundColor: Colors.green.shade700,
+        elevation: 0,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(FluentIcons.book_24_filled),
+            label: 'Quran',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.audiotrack_rounded),
+            label: 'Recitation',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FluentIcons.collections_24_filled),
+            label: 'Collection',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FluentIcons.person_24_filled),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
