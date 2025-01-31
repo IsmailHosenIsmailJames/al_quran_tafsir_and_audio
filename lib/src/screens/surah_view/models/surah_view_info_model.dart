@@ -49,24 +49,24 @@ class SurahViewInfoModel {
 
   factory SurahViewInfoModel.fromMap(Map<String, dynamic> json) =>
       SurahViewInfoModel(
-        surahNumber: json["surahNumber"],
-        start: json["start"],
-        end: json["end"],
-        ayahCount: json["ayahCount"],
-        surahNameArabic: json["surahNameArabic"],
-        surahNameSimple: json["surahNameSimple"],
-        revelationPlace: json["revelationPlace"],
-        isStartWithBismillah: json["isStartWithBismillah"],
+        surahNumber: json['surahNumber'],
+        start: json['start'],
+        end: json['end'],
+        ayahCount: json['ayahCount'],
+        surahNameArabic: json['surahNameArabic'],
+        surahNameSimple: json['surahNameSimple'],
+        revelationPlace: json['revelationPlace'],
+        isStartWithBismillah: json['isStartWithBismillah'],
       );
 
   Map<String, dynamic> toMap() => {
-        "surahNumber": surahNumber,
-        "start": start,
-        "end": end,
-        "ayahCount": ayahCount,
-        "surahNameArabic": surahNameArabic,
-        "surahNameSimple": surahNameSimple,
-        "revelationPlace": revelationPlace,
-        "isStartWithBismillah": isStartWithBismillah,
+        'surahNumber': surahNumber,
+        'start': start,
+        'end': end,
+        'ayahCount': ayahCount,
+        'surahNameArabic': surahNameArabic,
+        'surahNameSimple': surahNameSimple,
+        'revelationPlace': revelationPlace,
+        'isStartWithBismillah': isStartWithBismillah,
       };
 }

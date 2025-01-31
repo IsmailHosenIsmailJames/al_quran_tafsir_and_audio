@@ -10,18 +10,18 @@ class DeveloperPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("About Developer"),
+        title: const Text('About Developer'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         children: [
-          Gap(15),
+          const Gap(15),
           Container(
             height: 150,
             width: 150,
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/dev/99122172.jpeg"),
+              image: const DecorationImage(
+                image: AssetImage('assets/dev/99122172.jpeg'),
               ),
               shape: BoxShape.circle,
               boxShadow: [
@@ -33,111 +33,111 @@ class DeveloperPage extends StatelessWidget {
               ],
             ),
           ),
-          Gap(20),
-          Center(
+          const Gap(20),
+          const Center(
             child: Text(
-              "Ismail Hossain",
+              'Ismail Hossain',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          Text(
-            "I am programmer who try to learn new things everyday. Focused on Full Stack Cross Platform supported Application development using flutter. I also love to play with IOT",
+          const Text(
+            'I am programmer who try to learn new things everyday. Focused on Full Stack Cross Platform supported Application development using flutter. I also love to play with IOT',
             textAlign: TextAlign.center,
           ),
-          Gap(20),
+          const Gap(20),
           ListTile(
-            contentPadding: EdgeInsets.only(left: 40, right: 40),
-            leading: Icon(
+            contentPadding: const EdgeInsets.only(left: 40, right: 40),
+            leading: const Icon(
               SimpleIcons.github,
             ),
-            title: Text(
-              "Github",
+            title: const Text(
+              'Github',
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.link,
             ),
             onTap: () => launchUrl(
               Uri.parse(
-                "https://github.com/IsmailHosenIsmailJames",
+                'https://github.com/IsmailHosenIsmailJames',
               ),
               mode: LaunchMode.externalApplication,
             ),
           ),
           ListTile(
-            contentPadding: EdgeInsets.only(left: 40, right: 40),
+            contentPadding: const EdgeInsets.only(left: 40, right: 40),
             leading: Icon(
               SimpleIcons.linkedin,
               color: Colors.blue.shade700,
             ),
-            title: Text(
-              "LinkedIn",
+            title: const Text(
+              'LinkedIn',
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.link,
             ),
             onTap: () => launchUrl(
               Uri.parse(
-                "https://www.linkedin.com/in/ismail-hosen-james-3756a4211/",
+                'https://www.linkedin.com/in/ismail-hosen-james-3756a4211/',
               ),
               mode: LaunchMode.externalApplication,
             ),
           ),
           ListTile(
-            contentPadding: EdgeInsets.only(left: 40, right: 40),
-            leading: Icon(
+            contentPadding: const EdgeInsets.only(left: 40, right: 40),
+            leading: const Icon(
               SimpleIcons.facebook,
               color: Colors.blue,
             ),
-            title: Text(
-              "Facebook",
+            title: const Text(
+              'Facebook',
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.link,
             ),
             onTap: () => launchUrl(
               Uri.parse(
-                "https://www.facebook.com/IsmailHossainJames",
+                'https://www.facebook.com/IsmailHossainJames',
               ),
               mode: LaunchMode.externalApplication,
             ),
           ),
           ListTile(
-            contentPadding: EdgeInsets.only(left: 40, right: 40),
-            leading: Icon(
+            contentPadding: const EdgeInsets.only(left: 40, right: 40),
+            leading: const Icon(
               SimpleIcons.twitter,
               color: Colors.blue,
             ),
-            title: Text(
-              "Twitter",
+            title: const Text(
+              'Twitter',
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.link,
             ),
             onTap: () => launchUrl(
               Uri.parse(
-                "https://x.com/MDIsmailHo3357/",
+                'https://x.com/MDIsmailHo3357/',
               ),
               mode: LaunchMode.externalApplication,
             ),
           ),
           ListTile(
-            contentPadding: EdgeInsets.only(left: 40, right: 40),
-            leading: Icon(
+            contentPadding: const EdgeInsets.only(left: 40, right: 40),
+            leading: const Icon(
               SimpleIcons.gmail,
               color: Colors.red,
             ),
-            title: Text(
-              "Email",
+            title: const Text(
+              'Email',
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.link,
             ),
             onTap: () => launchUrl(
               Uri.parse(
-                "mailto:md.ismailhosenismailjames@gmail.com",
+                'mailto:md.ismailhosenismailjames@gmail.com',
               ),
             ),
           ),

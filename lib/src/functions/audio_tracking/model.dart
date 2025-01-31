@@ -34,16 +34,16 @@ class TrackingAudioModel {
 
   factory TrackingAudioModel.fromMap(Map<String, dynamic> json) =>
       TrackingAudioModel(
-        surahNumber: json["surahNumber"],
-        playedAyah: Set<int>.from(json["playedAyah"]),
-        totalPlayedDurationInSeconds: json["totalPlayedDurationInSeconds"],
-        lastReciterId: json["lastReciterID"],
+        surahNumber: json['surahNumber'],
+        playedAyah: Set<int>.from(json['playedAyah']),
+        totalPlayedDurationInSeconds: json['totalPlayedDurationInSeconds'],
+        lastReciterId: json['lastReciterID'],
       );
 
   Map<String, dynamic> toMap() => {
-        "surahNumber": surahNumber,
-        "playedAyah": playedAyah.toList(),
-        "totalPlayedDurationInSeconds": totalPlayedDurationInSeconds,
-        "lastReciterID": lastReciterId,
+        'surahNumber': surahNumber,
+        'playedAyah': playedAyah.toList(),
+        'totalPlayedDurationInSeconds': totalPlayedDurationInSeconds,
+        'lastReciterID': lastReciterId,
       };
 }

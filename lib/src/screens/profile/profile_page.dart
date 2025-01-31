@@ -46,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return const Center(
-                child: Text("Error"),
+                child: Text('Error'),
               );
             } else {
               User? user = snapshot.data;
@@ -58,7 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     const Padding(
                       padding: EdgeInsets.all(20),
                       child: Text(
-                        "Get the best experience by logging in ->",
+                        'Get the best experience by logging in ->',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        "You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.",
+                        'You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
@@ -120,11 +120,11 @@ class _ProfilePageState extends State<ProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
-                "Audio History",
+                'Audio History',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                "Listened ${formatDuration(Duration(seconds: getTotalDurationInSeconds()))}",
+                'Listened ${formatDuration(Duration(seconds: getTotalDurationInSeconds()))}',
                 style: const TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
@@ -145,64 +145,64 @@ class _ProfilePageState extends State<ProfilePage> {
                     itemBuilder: (context) {
                       return [
                         PopupMenuItem(
-                          value: "surahIncreasing",
+                          value: 'surahIncreasing',
                           child: Text(
-                            "Sort by increasing Surah Number",
+                            'Sort by increasing Surah Number',
                             style: TextStyle(
-                              color: sortBy == "surahIncreasing"
+                              color: sortBy == 'surahIncreasing'
                                   ? Colors.green
                                   : null,
                             ),
                           ),
                         ),
                         PopupMenuItem(
-                          value: "surahDecreasing",
+                          value: 'surahDecreasing',
                           child: Text(
-                            "Sort by decreasing Surah Number",
+                            'Sort by decreasing Surah Number',
                             style: TextStyle(
-                              color: sortBy == "surahDecreasing"
+                              color: sortBy == 'surahDecreasing'
                                   ? Colors.green
                                   : null,
                             ),
                           ),
                         ),
                         PopupMenuItem(
-                          value: "increasing",
+                          value: 'increasing',
                           child: Text(
-                            "Sort by increasing surah duration",
+                            'Sort by increasing surah duration',
                             style: TextStyle(
                               color:
-                                  sortBy == "increasing" ? Colors.green : null,
+                                  sortBy == 'increasing' ? Colors.green : null,
                             ),
                           ),
                         ),
                         PopupMenuItem(
-                          value: "decreasing",
+                          value: 'decreasing',
                           child: Text(
-                            "Sort by decreasing surah duration",
+                            'Sort by decreasing surah duration',
                             style: TextStyle(
                               color:
-                                  sortBy == "decreasing" ? Colors.green : null,
+                                  sortBy == 'decreasing' ? Colors.green : null,
                             ),
                           ),
                         ),
                         PopupMenuItem(
-                          value: "increasingListened",
+                          value: 'increasingListened',
                           child: Text(
-                            "Sort by increasing listened duration",
+                            'Sort by increasing listened duration',
                             style: TextStyle(
-                              color: sortBy == "increasingListened"
+                              color: sortBy == 'increasingListened'
                                   ? Colors.green
                                   : null,
                             ),
                           ),
                         ),
                         PopupMenuItem(
-                          value: "decreasingListened",
+                          value: 'decreasingListened',
                           child: Text(
-                            "Sort by decreasing listened duration",
+                            'Sort by decreasing listened duration',
                             style: TextStyle(
-                              color: sortBy == "decreasingListened"
+                              color: sortBy == 'decreasingListened'
                                   ? Colors.green
                                   : null,
                             ),
@@ -251,7 +251,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  String sortBy = "surahIncreasing";
+  String sortBy = 'surahIncreasing';
 
   Padding getAudioHistoryOfSurahs(TrackingAudioModel currentTrackingModel,
       bool didNotPlayed, BuildContext context, bool isDone) {
@@ -278,8 +278,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Text(
                     allChaptersInfo[currentTrackingModel.surahNumber]
-                            ["name_simple"] ??
-                        "",
+                            ['name_simple'] ??
+                        '',
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -295,7 +295,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         )
                       : Text(
-                          "Listened: ${formatDuration(Duration(seconds: currentTrackingModel.totalPlayedDurationInSeconds))} | Played ${currentTrackingModel.playedAyah.length} / ${ayahCount[currentTrackingModel.surahNumber]} ayahs",
+                          'Listened: ${formatDuration(Duration(seconds: currentTrackingModel.totalPlayedDurationInSeconds))} | Played ${currentTrackingModel.playedAyah.length} / ${ayahCount[currentTrackingModel.surahNumber]} ayahs',
                           style: const TextStyle(
                             fontSize: 10,
                             color: Colors.grey,
@@ -352,7 +352,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   List<TrackingAudioModel> getAudioTrackingModelList() {
     List<TrackingAudioModel> toReturn = [];
-    final box = Hive.box("audio_track");
+    final box = Hive.box('audio_track');
     for (int key = 0; key < 114; key++) {
       final value = box.get(key);
       TrackingAudioModel? model = value != null
@@ -369,26 +369,26 @@ class _ProfilePageState extends State<ProfilePage> {
       toReturn.add(model);
     }
 
-    if (sortBy == "surahIncreasing") {
+    if (sortBy == 'surahIncreasing') {
       return toReturn;
-    } else if (sortBy == "surahDecreasing") {
+    } else if (sortBy == 'surahDecreasing') {
       return toReturn.reversed.toList();
-    } else if (sortBy == "increasing") {
+    } else if (sortBy == 'increasing') {
       toReturn.sort((a, b) => ayahCount[a.surahNumber].compareTo(
             ayahCount[b.surahNumber],
           ));
       return toReturn;
-    } else if (sortBy == "decreasing") {
+    } else if (sortBy == 'decreasing') {
       toReturn.sort((a, b) => ayahCount[b.surahNumber].compareTo(
             ayahCount[a.surahNumber],
           ));
       return toReturn;
-    } else if (sortBy == "increasingListened") {
+    } else if (sortBy == 'increasingListened') {
       toReturn.sort((a, b) => a.totalPlayedDurationInSeconds.compareTo(
             b.totalPlayedDurationInSeconds,
           ));
       return toReturn;
-    } else if (sortBy == "decreasingListened") {
+    } else if (sortBy == 'decreasingListened') {
       toReturn.sort((a, b) => b.totalPlayedDurationInSeconds.compareTo(
             a.totalPlayedDurationInSeconds,
           ));
@@ -407,7 +407,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   String formatDuration(Duration duration) {
-    return "${duration.inHours}:${duration.inMinutes % 60}:${duration.inSeconds % 60}";
+    return '${duration.inHours}:${duration.inMinutes % 60}:${duration.inSeconds % 60}';
   }
 
   Widget getUserUI(User user) {
@@ -421,7 +421,7 @@ class _ProfilePageState extends State<ProfilePage> {
             rawStringOfAllPlaylist.add(element.toJson());
           }
           String? cloudPlayListString = Hive.box('cloud_play_list')
-              .get("all_playlist", defaultValue: null);
+              .get('all_playlist', defaultValue: null);
           bool isBackedUp =
               cloudPlayListString == jsonEncode(rawStringOfAllPlaylist);
           return Column(
@@ -450,7 +450,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           const Gap(5),
                           Text(
-                            "ID: ${user.$id}",
+                            'ID: ${user.$id}',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall
@@ -466,9 +466,9 @@ class _ProfilePageState extends State<ProfilePage> {
               Text(
                 (!isBackedUp)
                     ? cloudPlayListString?.isEmpty == true
-                        ? "Your Playlists need to backup."
-                        : "Backup changes to cloud"
-                    : "Your Playlists are up to date",
+                        ? 'Your Playlists need to backup.'
+                        : 'Backup changes to cloud'
+                    : 'Your Playlists are up to date',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -489,15 +489,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       if (error == null) {
                         toastification.show(
                           context: context,
-                          title: const Text("Successful"),
-                          description: const Text("Backup process successful"),
+                          title: const Text('Successful'),
+                          description: const Text('Backup process successful'),
                           type: ToastificationType.success,
                           autoCloseDuration: const Duration(seconds: 3),
                         );
                       } else {
                         toastification.show(
                           context: context,
-                          title: const Text("Error"),
+                          title: const Text('Error'),
                           description: Text(error),
                           type: ToastificationType.error,
                           autoCloseDuration: const Duration(seconds: 5),
@@ -507,8 +507,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     icon: const Icon(Icons.backup_rounded),
                     label: Text(
                       cloudPlayListString?.isEmpty == true
-                          ? "Backup Now"
-                          : "Backup Changes",
+                          ? 'Backup Now'
+                          : 'Backup Changes',
                     ),
                   ),
                 ),

@@ -43,14 +43,14 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
 
   @override
   Widget build(BuildContext context) {
-    String nextButtonText = "Next".tr;
+    String nextButtonText = 'Next'.tr;
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: [
             Text(
-              "Al Quran".tr,
+              'Al Quran'.tr,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -60,10 +60,10 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
               onPressed: () {
                 launchUrl(
                   Uri.parse(
-                      "https://www.freeprivacypolicy.com/live/d8c08904-a100-4f0b-94d8-13d86a8c8605"),
+                      'https://www.freeprivacypolicy.com/live/d8c08904-a100-4f0b-94d8-13d86a8c8605'),
                 );
               },
-              child: Text("Privacy Policy".tr),
+              child: Text('Privacy Policy'.tr),
             ),
           ],
         ),
@@ -85,8 +85,8 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
               alignment: const Alignment(0, 1),
               child: GetX<AppThemeData>(
                 builder: (controller) {
-                  bool isDark = controller.themeModeName.value == "dark" ||
-                      (controller.themeModeName.value == "system" &&
+                  bool isDark = controller.themeModeName.value == 'dark' ||
+                      (controller.themeModeName.value == 'system' &&
                           Theme.of(context).brightness == Brightness.dark);
                   return Container(
                     height: 40,
@@ -120,13 +120,13 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   : null,
                               child: Row(
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.arrow_back_outlined,
                                     size: 15,
                                   ),
                                   const Gap(5),
                                   Text(
-                                    "previous".tr,
+                                    'previous'.tr,
                                     style: textTheme.bodyMedium!.copyWith(
                                       color: pageIndex != 0
                                           ? Colors.green
@@ -161,7 +161,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                 if (pageIndex == 0) {
                                   if (infoController.appLanCode.value.isEmpty) {
                                     showTwoestedMessage(
-                                      "Please Select Quran Translation Language",
+                                      'Please Select Quran Translation Language',
                                       ToastificationType.info,
                                     );
                                     return;
@@ -170,7 +170,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   if (infoController
                                       .translationLanguage.value.isEmpty) {
                                     showTwoestedMessage(
-                                      "Please select a language for app",
+                                      'Please select a language for app',
                                       ToastificationType.info,
                                     );
 
@@ -180,7 +180,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   if (infoController.bookNameIndex.value ==
                                       -1) {
                                     showTwoestedMessage(
-                                      "Please Select Quran Translation Book",
+                                      'Please Select Quran Translation Book',
                                       ToastificationType.info,
                                     );
                                     return;
@@ -189,7 +189,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                 if (pageIndex == 4) {
                                   if (infoController.tafsirIndex.value == -1) {
                                     showTwoestedMessage(
-                                      "Please Select Quran Tafsir Language",
+                                      'Please Select Quran Tafsir Language',
                                       ToastificationType.info,
                                     );
                                     return;
@@ -198,7 +198,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   if (infoController.tafsirBookIndex.value ==
                                       -1) {
                                     showTwoestedMessage(
-                                      "Please Select Quran Tafsir Book",
+                                      'Please Select Quran Tafsir Book',
                                       ToastificationType.info,
                                     );
                                     return;
@@ -212,15 +212,15 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                       infoController.translationLanguage.value
                                           .isNotEmpty) {
                                     Map<String, String> info = {
-                                      "translation_language": infoController
+                                      'translation_language': infoController
                                           .translationLanguage.value,
-                                      "translation_book_ID": infoController
+                                      'translation_book_ID': infoController
                                           .bookIDTranslation.value,
-                                      "tafsir_language":
+                                      'tafsir_language':
                                           infoController.tafsirLanguage.value,
-                                      "tafsir_book_ID":
+                                      'tafsir_book_ID':
                                           infoController.tafsirBookID.value,
-                                      "selected_reciter": infoController
+                                      'selected_reciter': infoController
                                           .selectedReciter.value
                                           .toJson(),
                                     };
@@ -229,16 +229,16 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                           selection: info,
                                         ));
 
-                                    final box = await Hive.openBox("user_db");
-                                    await box.put("selection_info", info);
+                                    final box = await Hive.openBox('user_db');
+                                    await box.put('selection_info', info);
                                     await box.put(
-                                        "default_reciter",
+                                        'default_reciter',
                                         infoController.selectedReciter
                                             .toJson());
-                                    log("message");
+                                    log('message');
                                   } else {
                                     showTwoestedMessage(
-                                      "Please select a default reciter",
+                                      'Please select a default reciter',
                                       ToastificationType.info,
                                     );
                                   }
@@ -253,7 +253,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                 children: [
                                   Text(
                                     pageIndex == 0
-                                        ? "Setup".tr
+                                        ? 'Setup'.tr
                                         : nextButtonText,
                                     style: const TextStyle(
                                       color: Colors.green,

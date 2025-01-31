@@ -25,11 +25,11 @@ class MyAppDrawer extends StatelessWidget {
 
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.only(bottom: 50),
+        padding: const EdgeInsets.only(bottom: 50),
         children: [
           Container(
             height: 165,
-            padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             child: Stack(
               children: [
                 Center(
@@ -39,8 +39,8 @@ class MyAppDrawer extends StatelessWidget {
                     width: 120,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      image: DecorationImage(
-                        image: AssetImage("assets/img/QuranLogo.png"),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/img/QuranLogo.png'),
                       ),
                       boxShadow: [
                         BoxShadow(
@@ -60,7 +60,7 @@ class MyAppDrawer extends StatelessWidget {
                       future: PackageInfo.fromPlatform(),
                       builder: (context, snapshot) {
                         return Text(
-                          "v${snapshot.data?.version}",
+                          'v${snapshot.data?.version}',
                           style: TextStyle(
                             fontSize: 10,
                             color: Colors.grey.shade600,
@@ -88,20 +88,20 @@ class MyAppDrawer extends StatelessWidget {
               ],
             ),
           ),
-          Gap(20),
+          const Gap(20),
           ListTile(
             minTileHeight: 45,
             onTap: () {
               Navigator.pop(context);
-              Get.off(() => HomePage());
+              Get.off(() => const HomePage());
             },
             leading: Icon(
               FluentIcons.home_24_filled,
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "Home",
+            title: const Text(
+              'Home',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -112,7 +112,7 @@ class MyAppDrawer extends StatelessWidget {
             minTileHeight: 45,
             onTap: () {
               Get.to(
-                () => AddNewAyahForCollection(
+                () => const AddNewAyahForCollection(
                   isJumpToAyah: true,
                 ),
               );
@@ -122,8 +122,8 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "Jump to Ayah",
+            title: const Text(
+              'Jump to Ayah',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -136,7 +136,7 @@ class MyAppDrawer extends StatelessWidget {
               universalController.collectionTabIndex.value = 2;
               pageController.animateToPage(
                 2,
-                duration: Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 400),
                 curve: Curves.easeIn,
               );
               Navigator.pop(context);
@@ -146,8 +146,8 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "Notes",
+            title: const Text(
+              'Notes',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -158,15 +158,15 @@ class MyAppDrawer extends StatelessWidget {
             minTileHeight: 45,
             onTap: () {
               Navigator.pop(context);
-              Get.to(() => OthersPlatform());
+              Get.to(() => const OthersPlatform());
             },
             leading: Icon(
               Icons.laptop_windows_rounded,
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "Others Platforms",
+            title: const Text(
+              'Others Platforms',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -177,7 +177,7 @@ class MyAppDrawer extends StatelessWidget {
             minTileHeight: 45,
             onTap: () {
               Get.to(
-                () => AboutAppPage(),
+                () => const AboutAppPage(),
               );
             },
             leading: Icon(
@@ -185,8 +185,8 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "About App",
+            title: const Text(
+              'About App',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -212,8 +212,8 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "Give Feedback",
+            title: const Text(
+              'Give Feedback',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -234,8 +234,8 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "Rate App",
+            title: const Text(
+              'Rate App',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -248,7 +248,7 @@ class MyAppDrawer extends StatelessWidget {
               Navigator.pop(context);
               launchUrl(
                 Uri.parse(
-                    "https://www.freeprivacypolicy.com/live/d8c08904-a100-4f0b-94d8-13d86a8c8605"),
+                    'https://www.freeprivacypolicy.com/live/d8c08904-a100-4f0b-94d8-13d86a8c8605'),
               );
             },
             leading: Icon(
@@ -256,8 +256,8 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "Privacy Policy",
+            title: const Text(
+              'Privacy Policy',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -277,8 +277,8 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "Share App",
+            title: const Text(
+              'Share App',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -290,15 +290,15 @@ class MyAppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               // Show My Developed all apps
-              Get.to(() => MyDevelopedApps());
+              Get.to(() => const MyDevelopedApps());
             },
             leading: Icon(
               Icons.more_horiz,
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "My Apps",
+            title: const Text(
+              'My Apps',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -308,15 +308,15 @@ class MyAppDrawer extends StatelessWidget {
           ListTile(
             minTileHeight: 45,
             onTap: () {
-              Get.to(() => DeveloperPage());
+              Get.to(() => const DeveloperPage());
             },
             leading: Icon(
               Icons.handyman_outlined,
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: Text(
-              "About Developer",
+            title: const Text(
+              'About Developer',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

@@ -13,8 +13,8 @@ import '../../screens/home/controller/model/play_list_model.dart';
 class AuthController extends GetxController {
   Rx<User?> loggedInUser = Rx<User?>(null);
 
-  String databaseID = "6778271900148ad93326";
-  String collectionID = "all_play_list";
+  String databaseID = '6778271900148ad93326';
+  String collectionID = 'all_play_list';
 
   @override
   void onInit() {
@@ -51,20 +51,20 @@ class AuthController extends GetxController {
         documentId: id,
       );
       return response.then((value) async {
-        if (value.data["all_playlist_data"] != null) {
-          await Hive.box("cloud_play_list").put(
-            "all_playlist",
-            value.data["all_playlist_data"],
+        if (value.data['all_playlist_data'] != null) {
+          await Hive.box('cloud_play_list').put(
+            'all_playlist',
+            value.data['all_playlist_data'],
           );
           List<String> rawPlayList =
-              List<String>.from(jsonDecode(value.data["all_playlist_data"]));
+              List<String>.from(jsonDecode(value.data['all_playlist_data']));
           for (var rawPlayList in rawPlayList) {
             final decodeSinglePlayList = AllPlayListModel.fromJson(rawPlayList);
             List<String> playList = [];
             for (var playListModel in decodeSinglePlayList.playList) {
               playList.add(playListModel.toJson());
             }
-            await Hive.box("play_list").put(
+            await Hive.box('play_list').put(
               decodeSinglePlayList.name,
               playList,
             );

@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Al Quran"),
+        title: const Text('Al Quran'),
         actions: [
           IconButton(
             onPressed: () {
@@ -40,8 +40,8 @@ class _HomePageState extends State<HomePage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7),
                     ),
-                    insetPadding: EdgeInsets.all(10),
-                    child: SizedBox(
+                    insetPadding: const EdgeInsets.all(10),
+                    child: const SizedBox(
                       width: double.infinity,
                       height: 200,
                     ),
@@ -49,16 +49,16 @@ class _HomePageState extends State<HomePage> {
                 },
               );
             },
-            icon: Icon(
+            icon: const Icon(
               FluentIcons.search_24_filled,
             ),
           ),
           IconButton(
             onPressed: () async {
-              await Get.to(() => SettingsPage());
+              await Get.to(() => const SettingsPage());
               setState(() {});
             },
-            icon: Icon(FluentIcons.settings_24_filled),
+            icon: const Icon(FluentIcons.settings_24_filled),
           ),
         ],
       ),
@@ -74,12 +74,12 @@ class _HomePageState extends State<HomePage> {
               },
               controller: pageController,
               children: [
-                QuranTab(),
+                const QuranTab(),
                 AudioTab(tabController: pageController),
                 CollectionTab(
                   tabController: pageController,
                 ),
-                ProfileTab(),
+                const ProfileTab(),
               ],
             ),
             Obx(
@@ -114,12 +114,12 @@ class _HomePageState extends State<HomePage> {
             haptic: true,
             tabBorderRadius: 15,
             curve: Curves.easeInOut,
-            duration: Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 200),
             gap: 3,
             activeColor: Colors.white,
             iconSize: 24,
             tabBackgroundColor: Colors.green.shade700,
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             tabs: [
               GButton(
                 icon: FluentIcons.book_24_filled,

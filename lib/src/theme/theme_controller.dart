@@ -4,43 +4,43 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 bool isLoggedIn = false;
-String quranScriptType = "uthmani_tajweed";
+String quranScriptType = 'uthmani_tajweed';
 
 class AppThemeData extends GetxController {
   RxString themeModeName = 'system'.obs;
   RxBool isDark = true.obs;
 
   void initTheme() async {
-    final accountBox = Hive.box("user_db");
+    final accountBox = Hive.box('user_db');
 
     isLoggedIn =
-        accountBox.get("email") != "" && accountBox.get("email") != null;
-    final infoBox = Hive.box("user_db");
+        accountBox.get('email') != '' && accountBox.get('email') != null;
+    final infoBox = Hive.box('user_db');
     final fonSize = Get.put(UniversalController());
 
     fonSize.fontSizeArabic.value =
-        infoBox.get("fontSizeArabic", defaultValue: 24.0);
+        infoBox.get('fontSizeArabic', defaultValue: 24.0);
     fonSize.fontSizeTranslation.value =
-        infoBox.get("fontSizeTranslation", defaultValue: 15.0);
+        infoBox.get('fontSizeTranslation', defaultValue: 15.0);
     quranScriptType =
-        infoBox.get("quranScriptType", defaultValue: "uthmani_tajweed");
+        infoBox.get('quranScriptType', defaultValue: 'uthmani_tajweed');
     fonSize.quranScriptTypeGetx.value =
-        infoBox.get("quranScriptType", defaultValue: "uthmani_tajweed");
+        infoBox.get('quranScriptType', defaultValue: 'uthmani_tajweed');
 
-    final themePrefer = await Hive.openBox("user_db");
+    final themePrefer = await Hive.openBox('user_db');
     final String? userTheme = themePrefer.get('theme_preference');
     if (userTheme != null) {
       if (userTheme == 'light') {
         isDark.value = false;
         Get.changeThemeMode(ThemeMode.light);
         themeModeName.value = 'light';
-        await themePrefer.put("theme_preference", themeModeName.value);
+        await themePrefer.put('theme_preference', themeModeName.value);
       } else if (userTheme == 'dark') {
         isDark.value = true;
 
         Get.changeThemeMode(ThemeMode.dark);
         themeModeName.value = 'dark';
-        await themePrefer.put("theme_preference", themeModeName.value);
+        await themePrefer.put('theme_preference', themeModeName.value);
       } else if (userTheme == 'system') {
         Get.changeThemeMode(ThemeMode.system);
         themeModeName.value = 'system';
@@ -53,7 +53,7 @@ class AppThemeData extends GetxController {
   }
 
   void setTheme(String themeToChange) async {
-    final themePrefer = await Hive.openBox("user_db");
+    final themePrefer = await Hive.openBox('user_db');
     if (themeToChange == 'light') {
       isDark.value = false;
 

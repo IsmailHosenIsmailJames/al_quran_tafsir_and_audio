@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 
 Future<int> justAudioCache() async {
   final path = await getApplicationCacheDirectory();
-  String cachePath = join(path.path, "just_audio_cache", "remote");
+  String cachePath = join(path.path, 'just_audio_cache', 'remote');
   int size = await getCacheSize(Directory(cachePath));
   return size;
 }
@@ -24,7 +24,7 @@ Future<int> getCacheSize(Directory cacheDir) async {
         totalSize += file.lengthSync();
       }
     });
-    log("all $i");
+    log('all $i');
   }
 
   return totalSize;
@@ -32,7 +32,7 @@ Future<int> getCacheSize(Directory cacheDir) async {
 
 Future<int?> justSingleAudioCache(String name) async {
   final path = await getApplicationCacheDirectory();
-  String cachePath = join(path.path, "just_audio_cache", "remote", "$name.mp3");
+  String cachePath = join(path.path, 'just_audio_cache', 'remote', '$name.mp3');
   File f = File(cachePath);
   if (await f.exists()) {
     return await f.length();
@@ -42,9 +42,9 @@ Future<int?> justSingleAudioCache(String name) async {
 }
 
 String formatBytes(int bytes, [int decimals = 2]) {
-  if (bytes <= 0) return "0 B";
-  const suffixes = ["B", "KB", "MB", "GB", "TB"];
+  if (bytes <= 0) return '0 B';
+  const suffixes = ['B', 'KB', 'MB', 'GB', 'TB'];
   int i = (math.log(bytes) / math.log(1024)).floor();
   double size = bytes / math.pow(1024, i);
-  return "${size.toStringAsFixed(decimals)} ${suffixes[i]}";
+  return '${size.toStringAsFixed(decimals)} ${suffixes[i]}';
 }

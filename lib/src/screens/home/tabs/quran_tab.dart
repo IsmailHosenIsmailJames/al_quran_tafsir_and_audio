@@ -50,7 +50,7 @@ class _QuranTabState extends State<QuranTab> {
                         foregroundColor: quranTabIndex == 0
                             ? Colors.white
                             : Colors.green.shade700,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(30),
                             bottomRight: Radius.circular(30),
@@ -61,12 +61,12 @@ class _QuranTabState extends State<QuranTab> {
                         quranTabIndex = 0;
                         pageController.animateToPage(
                           0,
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.easeIn,
                         );
                       },
-                      child: Text(
-                        "Surah",
+                      child: const Text(
+                        'Surah',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -83,7 +83,7 @@ class _QuranTabState extends State<QuranTab> {
                         foregroundColor: quranTabIndex == 1
                             ? Colors.white
                             : Colors.green.shade700,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
                             bottomLeft: Radius.circular(30),
@@ -94,12 +94,12 @@ class _QuranTabState extends State<QuranTab> {
                         quranTabIndex = 1;
                         pageController.animateToPage(
                           1,
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.easeIn,
                         );
                       },
-                      child: Text(
-                        "Juz",
+                      child: const Text(
+                        'Juz',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -118,7 +118,7 @@ class _QuranTabState extends State<QuranTab> {
               universalController.quranTabIndex.value = value,
           children: [
             ListView.builder(
-              padding: EdgeInsets.only(bottom: 100, top: 5),
+              padding: const EdgeInsets.only(bottom: 100, top: 5),
               itemCount: 114,
               itemBuilder: (context, index) {
                 QuranSurahInfoModel quranSurahInfoModel =
@@ -126,7 +126,7 @@ class _QuranTabState extends State<QuranTab> {
                 return Container(
                   height: 50,
                   width: double.infinity,
-                  margin: EdgeInsets.only(left: 10, right: 10, top: 5),
+                  margin: const EdgeInsets.only(left: 10, right: 10, top: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(7),
                     color: Colors.grey.withValues(alpha: 0.1),
@@ -157,7 +157,7 @@ class _QuranTabState extends State<QuranTab> {
                       );
                     },
                     style: TextButton.styleFrom(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(7),
                       ),
@@ -167,35 +167,35 @@ class _QuranTabState extends State<QuranTab> {
                       children: [
                         CircleAvatar(
                           child: Text(
-                            "${index + 1}",
-                            style: TextStyle(
+                            '${index + 1}',
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        Gap(10),
+                        const Gap(10),
                         Text(
                           quranSurahInfoModel.nameSimple,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
                               quranSurahInfoModel.nameArabic,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
-                              "${quranSurahInfoModel.versesCount} ayahs",
+                              '${quranSurahInfoModel.versesCount} ayahs',
                               style: TextStyle(
                                 fontSize: 12,
                                 color: Colors.grey.shade600,
@@ -210,7 +210,7 @@ class _QuranTabState extends State<QuranTab> {
               },
             ),
             ListView.builder(
-              padding: EdgeInsets.only(bottom: 100),
+              padding: const EdgeInsets.only(bottom: 100),
               itemCount: 30,
               itemBuilder: (context, index) {
                 JuzInfoModel juzInfoModel =
@@ -220,14 +220,14 @@ class _QuranTabState extends State<QuranTab> {
                     Container(
                       height: 55,
                       width: double.infinity,
-                      margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+                      margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         color: Colors.grey.withValues(alpha: 0.2),
                       ),
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(7),
                           ),
@@ -241,30 +241,30 @@ class _QuranTabState extends State<QuranTab> {
                           children: [
                             CircleAvatar(
                               child: Text(
-                                "${juzInfoModel.juzNumber}",
-                                style: TextStyle(
+                                '${juzInfoModel.juzNumber}',
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                            Gap(10),
+                            const Gap(10),
                             getJuzName(
                               juzInfoModel,
-                              TextStyle(
+                              const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "${surahCountInJuz(juzInfoModel)} surahs",
+                                  '${surahCountInJuz(juzInfoModel)} surahs',
                                 ),
                                 Text(
-                                  "${getAyahCountJuz(juzInfoModel)} ayahs",
+                                  '${getAyahCountJuz(juzInfoModel)} ayahs',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Colors.grey.shade600,
@@ -281,11 +281,11 @@ class _QuranTabState extends State<QuranTab> {
                           ? (60 * juzInfoModel.verseMapping.length).toDouble() +
                               20
                           : 0,
-                      duration: Duration(milliseconds: 300),
-                      margin: EdgeInsets.only(left: 18, right: 18),
-                      padding: EdgeInsets.all(10),
+                      duration: const Duration(milliseconds: 300),
+                      margin: const EdgeInsets.only(left: 18, right: 18),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(7),
                           bottomRight: Radius.circular(7),
                         ),
@@ -298,8 +298,8 @@ class _QuranTabState extends State<QuranTab> {
                             final key =
                                 juzInfoModel.verseMapping.keys.toList()[index];
                             String value = juzInfoModel.verseMapping[key]!;
-                            int start = int.parse(value.split("-")[0]);
-                            int end = int.parse(value.split("-")[1]);
+                            int start = int.parse(value.split('-')[0]);
+                            int end = int.parse(value.split('-')[1]);
                             int surahNumber = int.parse(key) - 1;
 
                             QuranSurahInfoModel quranSurahInfoModel =
@@ -309,7 +309,7 @@ class _QuranTabState extends State<QuranTab> {
 
                             return Container(
                               height: 55,
-                              margin: EdgeInsets.all(2.5),
+                              margin: const EdgeInsets.all(2.5),
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(7),
@@ -319,7 +319,7 @@ class _QuranTabState extends State<QuranTab> {
                               ),
                               child: TextButton(
                                 style: TextButton.styleFrom(
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(7),
                                   ),
@@ -362,18 +362,18 @@ class _QuranTabState extends State<QuranTab> {
                                       children: [
                                         Text(
                                           quranSurahInfoModel.nameSimple,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        Gap(5),
+                                        const Gap(5),
                                         if (ayahCount[int.parse(key) - 1] !=
                                             ((end - start) + 1))
-                                          Text("( $value )")
+                                          Text('( $value )')
                                       ],
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -382,13 +382,13 @@ class _QuranTabState extends State<QuranTab> {
                                       children: [
                                         Text(
                                           quranSurahInfoModel.nameArabic,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         Text(
-                                          "${(end - start) + 1} ayahs",
+                                          '${(end - start) + 1} ayahs',
                                           style: TextStyle(
                                             fontSize: 12,
                                             color: Colors.grey.shade600,
@@ -432,9 +432,9 @@ Widget getJuzName(JuzInfoModel juzInfoModel, TextStyle textStyle) {
   } else {
     return Row(children: [
       Text(firstSurahInfo.nameSimple, style: textStyle),
-      Gap(2),
-      Text(" - "),
-      Gap(2),
+      const Gap(2),
+      const Text(' - '),
+      const Gap(2),
       Text(
         lastSurahInfo.nameSimple,
         style: textStyle,

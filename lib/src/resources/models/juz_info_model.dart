@@ -40,22 +40,22 @@ class JuzInfoModel {
   String toJson() => json.encode(toMap());
 
   factory JuzInfoModel.fromMap(Map<String, dynamic> json) => JuzInfoModel(
-        id: json["id"],
-        juzNumber: json["juz_number"],
-        verseMapping: Map.from(json["verse_mapping"])
+        id: json['id'],
+        juzNumber: json['juz_number'],
+        verseMapping: Map.from(json['verse_mapping'])
             .map((k, v) => MapEntry<String, String>(k, v)),
-        firstVerseId: json["first_verse_id"],
-        lastVerseId: json["last_verse_id"],
-        versesCount: json["verses_count"],
+        firstVerseId: json['first_verse_id'],
+        lastVerseId: json['last_verse_id'],
+        versesCount: json['verses_count'],
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id,
-        "juz_number": juzNumber,
-        "verse_mapping": Map.from(verseMapping)
+        'id': id,
+        'juz_number': juzNumber,
+        'verse_mapping': Map.from(verseMapping)
             .map((k, v) => MapEntry<String, dynamic>(k, v)),
-        "first_verse_id": firstVerseId,
-        "last_verse_id": lastVerseId,
-        "verses_count": versesCount,
+        'first_verse_id': firstVerseId,
+        'last_verse_id': lastVerseId,
+        'verses_count': versesCount,
       };
 }

@@ -26,7 +26,7 @@ void audioTracking() {
   int currentPlayingSurah = audioController.currentSurahNumber.value;
   ReciterInfoModel currentReciterModel =
       audioController.currentReciterModel.value;
-  final box = Hive.box("audio_track");
+  final box = Hive.box('audio_track');
   if (trackingAudioModel == null) {
     // try to retrieve form db
     Map? previousData = box.get(currentPlayingSurah);

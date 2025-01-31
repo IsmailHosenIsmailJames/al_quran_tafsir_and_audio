@@ -25,8 +25,8 @@ class TafsirView extends StatelessWidget {
       appBar: showAppBar
           ? AppBar(
               title: Text(surahName != null
-                  ? "$surahName ( ${ayahNumber + 1} )"
-                  : "Tafsir"),
+                  ? '$surahName ( ${ayahNumber + 1} )'
+                  : 'Tafsir'),
             )
           : null,
       body: FutureBuilder(
@@ -38,7 +38,7 @@ class TafsirView extends StatelessWidget {
                 controller: scrollController,
                 interactive: true,
                 child: SingleChildScrollView(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   controller: scrollController,
                   child: HtmlWidget(
                     snapshot.data!,
@@ -56,7 +56,7 @@ class TafsirView extends StatelessWidget {
           } else {
             return const Center(
               child: Text(
-                "No Tafsir Found",
+                'No Tafsir Found',
                 style: TextStyle(color: Colors.red),
               ),
             );
@@ -68,7 +68,7 @@ class TafsirView extends StatelessWidget {
 }
 
 Future<String> getTafsirText(String tafsirBookID, int ayahNumber) async {
-  final box = Hive.box("tafsir_db");
-  String compressedText = box.get("$tafsirBookID/$ayahNumber");
+  final box = Hive.box('tafsir_db');
+  String compressedText = box.get('$tafsirBookID/$ayahNumber');
   return decompressStringWithGZip2(compressedText);
 }

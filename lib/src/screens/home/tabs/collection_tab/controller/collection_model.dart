@@ -49,25 +49,25 @@ class CollectionInfoModel {
 
   factory CollectionInfoModel.fromMap(Map<String, dynamic> json) =>
       CollectionInfoModel(
-        id: json["id"],
-        isPublicResources: json["is_public_resources"],
-        name: json["name"],
-        description: json["description"],
-        ayahs: List<String>.from(json["ayahs"].map((x) => x)),
-        createdBy: json["created_by"],
-        createdAt: json["created_at"],
-        peopleAdded: json["people_added"],
+        id: json['id'],
+        isPublicResources: json['is_public_resources'],
+        name: json['name'],
+        description: json['description'],
+        ayahs: List<String>.from(json['ayahs'].map((x) => x)),
+        createdBy: json['created_by'],
+        createdAt: json['created_at'],
+        peopleAdded: json['people_added'],
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id,
-        "is_public_resources": isPublicResources,
-        "name": name,
-        "description": description,
-        "ayahs":
+        'id': id,
+        'is_public_resources': isPublicResources,
+        'name': name,
+        'description': description,
+        'ayahs':
             ayahs == null ? null : List<dynamic>.from(ayahs!.map((x) => x)),
-        "created_by": createdBy,
-        "created_at": createdAt,
-        "people_added": peopleAdded,
+        'created_by': createdBy,
+        'created_at': createdAt,
+        'people_added': peopleAdded,
       };
 }

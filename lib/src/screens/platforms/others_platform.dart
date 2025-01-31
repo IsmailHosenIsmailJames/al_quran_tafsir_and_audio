@@ -11,7 +11,7 @@ class OthersPlatform extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Others Platforms".tr),
+        title: Text('Others Platforms'.tr),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -27,23 +27,23 @@ class OthersPlatform extends StatelessWidget {
                       children: [
                         TextSpan(
                           text:
-                              "We are happy to say now Al Quran Tafsir and Audio ",
+                              'We are happy to say now Al Quran Tafsir and Audio ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         TextSpan(
-                          text: "app also support on ",
+                          text: 'app also support on ',
                         ),
                         TextSpan(
-                          text: "Windows, Linux & Web. ",
+                          text: 'Windows, Linux & Web. ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         TextSpan(
                           text:
-                              "All these platform have both mobile view and desktop view depends on your app window width. If you have Computer, then Make sure that you have installed our Al Quran Tafsir & Audio application.",
+                              'All these platform have both mobile view and desktop view depends on your app window width. If you have Computer, then Make sure that you have installed our Al Quran Tafsir & Audio application.',
                         ),
                       ],
                     ),
@@ -56,7 +56,7 @@ class OthersPlatform extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      "Get Windows installer here:",
+                      'Get Windows installer here:',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -73,13 +73,13 @@ class OthersPlatform extends StatelessWidget {
                     ),
                     onPressed: () {
                       launchUrl(Uri.parse(
-                          "https://github.com/IsmailHosenIsmailJames/al_bayan_quran/releases/tag/Windows"));
+                          'https://github.com/IsmailHosenIsmailJames/al_bayan_quran/releases/tag/Windows'));
                     },
                     icon: const Icon(SimpleIcons.windows),
                     label: const Row(
                       children: [
                         Text(
-                          "Windows",
+                          'Windows',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -94,7 +94,7 @@ class OthersPlatform extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      "Get Linux build here:",
+                      'Get Linux build here:',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -111,13 +111,13 @@ class OthersPlatform extends StatelessWidget {
                     ),
                     onPressed: () {
                       launchUrl(Uri.parse(
-                          "https://github.com/IsmailHosenIsmailJames/al_bayan_quran/releases/tag/Linux"));
+                          'https://github.com/IsmailHosenIsmailJames/al_bayan_quran/releases/tag/Linux'));
                     },
                     icon: const Icon(SimpleIcons.linux),
                     label: const Row(
                       children: [
                         Text(
-                          "Linux",
+                          'Linux',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -132,7 +132,7 @@ class OthersPlatform extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      "Go to our Web App:",
+                      'Go to our Web App:',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -148,13 +148,13 @@ class OthersPlatform extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      launchUrl(Uri.parse("https://alquranwithaudio.web.app/"));
+                      launchUrl(Uri.parse('https://alquranwithaudio.web.app/'));
                     },
                     icon: const Icon(Icons.web),
                     label: const Row(
                       children: [
                         Text(
-                          "Web",
+                          'Web',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,

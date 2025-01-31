@@ -68,7 +68,7 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
         defaultTransition: Transition.leftToRight,
         themeMode: ThemeMode.system,
         locale: Get.deviceLocale,
-        fallbackLocale: const ui.Locale("en"),
+        fallbackLocale: const ui.Locale('en'),
         translationsKeys: AppTranslation.translationsKeys,
         onInit: () async {
           final appTheme = Get.put(AppThemeData());
@@ -76,8 +76,8 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
           Get.put(AudioController());
 
           final languageController = Get.put(LanguageController());
-          final prefBox = Hive.box("user_db");
-          String? languageCode = prefBox.get("app_lan", defaultValue: null);
+          final prefBox = Hive.box('user_db');
+          String? languageCode = prefBox.get('app_lan', defaultValue: null);
           if (languageCode == null) {
             languageCode ??= Get.locale?.languageCode;
             infoController.appLanCode.value = languageCode ?? '';

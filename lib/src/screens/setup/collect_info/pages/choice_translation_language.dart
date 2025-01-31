@@ -43,14 +43,14 @@ class _TranslationLanguageState extends State<TranslationLanguage> {
 
   final translationLanguageController = Get.put(InfoController());
 
-  String searchText = "";
+  String searchText = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Translation of Quran".tr,
+          'Translation of Quran'.tr,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         actions: [
@@ -69,7 +69,7 @@ class _TranslationLanguageState extends State<TranslationLanguage> {
                 );
               },
               child: const Text(
-                "NEXT",
+                'NEXT',
                 style: TextStyle(
                   color: Colors.green,
                   fontSize: 20,
@@ -138,7 +138,7 @@ class _TranslationLanguageState extends State<TranslationLanguage> {
                         children: [
                           Text(
                             nativeName.keys.contains(language[index])
-                                ? nativeName[language[index]] ?? ""
+                                ? nativeName[language[index]] ?? ''
                                 : language[index],
                             style: TextStyle(
                               fontSize: 14,

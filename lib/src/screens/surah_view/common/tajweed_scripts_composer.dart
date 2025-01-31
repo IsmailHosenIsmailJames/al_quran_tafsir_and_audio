@@ -7,18 +7,18 @@ List<InlineSpan> getTajweedTexSpan(String ayah,
   List<InlineSpan> spanText = [];
   for (int i = 0; i < tajweed.length; i++) {
     Map<String, String?> taz = tajweed[i];
-    String word = taz['word'] ?? "";
-    String className = taz['class'] ?? "null";
-    String tag = taz['tag'] ?? "null";
-    if (className == 'null' || tag == "null") {
+    String word = taz['word'] ?? '';
+    String className = taz['class'] ?? 'null';
+    String tag = taz['tag'] ?? 'null';
+    if (className == 'null' || tag == 'null') {
       spanText.add(
         TextSpan(text: word),
       );
     } else {
-      if (className == "end" && hideEnd != true) {
+      if (className == 'end' && hideEnd != true) {
         spanText.add(
           TextSpan(
-            text: "۝$word ",
+            text: '۝$word ',
           ),
         );
       } else {
@@ -42,38 +42,38 @@ List<InlineSpan> getTajweedTexSpan(String ayah,
 }
 
 String startAyahBismillah(String scriptType) {
-  final scriptBox = Hive.box("quran_db");
-  return scriptBox.get("$scriptType/1", defaultValue: "");
+  final scriptBox = Hive.box('quran_db');
+  return scriptBox.get('$scriptType/1', defaultValue: '');
 }
 
 Map<String, Color> colorsForTajweed = {
-  "ham_wasl": const Color.fromARGB(200, 145, 145, 145),
-  "laam_shamsiyah": const Color.fromARGB(200, 149, 149, 255),
-  "madda_normal": const Color.fromARGB(255, 200, 0, 255),
-  "madda_permissible": const Color.fromARGB(255, 246, 123, 255),
-  "madda_necessary": const Color.fromARGB(200, 255, 0, 238),
-  "idgham_wo_ghunnah": const Color.fromARGB(255, 72, 142, 255),
-  "ghunnah": const Color.fromARGB(255, 11, 169, 22),
-  "slnt": const Color.fromARGB(200, 114, 114, 114),
-  "qalaqah": const Color.fromARGB(255, 155, 212, 91),
-  "ikhafa": const Color.fromARGB(255, 255, 140, 32),
-  "madda_obligatory": const Color.fromARGB(255, 192, 90, 165),
-  "idgham_ghunnah": const Color.fromARGB(255, 0, 79, 216),
+  'ham_wasl': const Color.fromARGB(200, 145, 145, 145),
+  'laam_shamsiyah': const Color.fromARGB(200, 149, 149, 255),
+  'madda_normal': const Color.fromARGB(255, 200, 0, 255),
+  'madda_permissible': const Color.fromARGB(255, 246, 123, 255),
+  'madda_necessary': const Color.fromARGB(200, 255, 0, 238),
+  'idgham_wo_ghunnah': const Color.fromARGB(255, 72, 142, 255),
+  'ghunnah': const Color.fromARGB(255, 11, 169, 22),
+  'slnt': const Color.fromARGB(200, 114, 114, 114),
+  'qalaqah': const Color.fromARGB(255, 155, 212, 91),
+  'ikhafa': const Color.fromARGB(255, 255, 140, 32),
+  'madda_obligatory': const Color.fromARGB(255, 192, 90, 165),
+  'idgham_ghunnah': const Color.fromARGB(255, 0, 79, 216),
 };
 
 Map<String, String> detailsOfTazwed = {
-  "ham_wasl": "",
-  "laam_shamsiyah": "",
-  "madda_normal": "",
-  "madda_permissible": "",
-  "madda_necessary": "",
-  "idgham_wo_ghunnah": "",
-  "ghunnah": "",
-  "slnt": "",
-  "qalaqah": "",
-  "ikhafa": "",
-  "madda_obligatory": "",
-  "idgham_ghunnah": "",
+  'ham_wasl': '',
+  'laam_shamsiyah': '',
+  'madda_normal': '',
+  'madda_permissible': '',
+  'madda_necessary': '',
+  'idgham_wo_ghunnah': '',
+  'ghunnah': '',
+  'slnt': '',
+  'qalaqah': '',
+  'ikhafa': '',
+  'madda_obligatory': '',
+  'idgham_ghunnah': '',
 };
 
 List<Map<String, String?>> extractWordsGetTazweeds(String text) {
@@ -85,9 +85,9 @@ List<Map<String, String?>> extractWordsGetTazweeds(String text) {
     List<Map<String, String?>> tem = getTagAndWord(word);
     if (tem.isEmpty) {
       tajweed.add({
-        "tag": "null",
-        "class": "null",
-        "word": word,
+        'tag': 'null',
+        'class': 'null',
+        'word': word,
       });
     } else {
       tajweed.add(tem[0]);
@@ -104,9 +104,9 @@ List<Map<String, String?>> getTagAndWord(String word) {
   final matches = regex.allMatches(word);
   final result = matches
       .map((match) => {
-            "tag": match.namedGroup('tag'),
-            "class": match.namedGroup('class'),
-            "word": match.namedGroup('word'),
+            'tag': match.namedGroup('tag'),
+            'class': match.namedGroup('class'),
+            'word': match.namedGroup('word'),
           })
       .toList();
   return result;

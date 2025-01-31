@@ -26,7 +26,7 @@ class Intro extends StatelessWidget {
               ],
               image: const DecorationImage(
                 image: AssetImage(
-                  "assets/img/QuranLogo.png",
+                  'assets/img/QuranLogo.png',
                 ),
               ),
             ),
@@ -36,7 +36,7 @@ class Intro extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10, right: 10),
           alignment: Alignment.center,
           child: Text(
-            "intro_text".tr,
+            'intro_text'.tr,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodySmall,
           ),
@@ -49,21 +49,21 @@ class Intro extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text("Data collected from :"),
+              const Text('Data collected from :'),
               TextButton(
                 onPressed: () {
-                  launchUrl(Uri.parse("https://quran.com/"),
+                  launchUrl(Uri.parse('https://quran.com/'),
                       mode: LaunchMode.externalApplication);
                 },
-                child: const Text("quran.com"),
+                child: const Text('quran.com'),
               ),
-              const Text("and"),
+              const Text('and'),
               TextButton(
                   onPressed: () {
-                    launchUrl(Uri.parse("https://everyayah.com/"),
+                    launchUrl(Uri.parse('https://everyayah.com/'),
                         mode: LaunchMode.externalApplication);
                   },
-                  child: const Text("everyayah.com")),
+                  child: const Text('everyayah.com')),
             ],
           ),
         ),

@@ -49,7 +49,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Tafsir Books of Quran".tr,
+          'Tafsir Books of Quran'.tr,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         actions: [
@@ -62,15 +62,15 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                         String tafsirBookID = infoController.tafsirBookID.value;
                         debugPrint(tafsirBookID);
                         // return;
-                        final dataBox = Hive.box("data");
-                        final infoBox = Hive.box("user_db");
+                        final dataBox = Hive.box('data');
+                        final infoBox = Hive.box('user_db');
                         if (tafsirBookID ==
-                            infoBox.get("info")['tafsir_book_ID']) {
+                            infoBox.get('info')['tafsir_book_ID']) {
                           showDialog(
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: const Text("Wrong Selection"),
+                                title: const Text('Wrong Selection'),
                                 content: const Text(
                                     "Your selection can't matched with the previous selection."),
                                 actions: [
@@ -78,7 +78,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: const Text("OK"),
+                                    child: const Text('OK'),
                                   ),
                                 ],
                               );
@@ -87,7 +87,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                           return;
                         }
 
-                        dataBox.put("tafsir", false);
+                        dataBox.put('tafsir', false);
                         setState(() {
                           downloading = true;
                         });
@@ -96,10 +96,10 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                           int.parse(infoController.tafsirBookID.value.trim()),
                         );
 
-                        final tafsirDB = Hive.box("tafsir_db");
+                        final tafsirDB = Hive.box('tafsir_db');
 
                         if (!tafsirDB.keys.contains(
-                            "${infoController.tafsirBookID.value}/1")) {
+                            '${infoController.tafsirBookID.value}/1')) {
                           final response = await get(Uri.parse(url),
                               headers: {'Content-type': 'text/plain'});
                           if (response.statusCode == 200) {
@@ -112,21 +112,21 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                                 List<String>.from(jsonDecode(decodedText));
                             for (int i = 0; i < decodedJson.length; i++) {
                               await tafsirDB.put(
-                                  "${infoController.tafsirBookID.value}/$i",
+                                  '${infoController.tafsirBookID.value}/$i',
                                   compressStringWithGZip2(decodedJson[i]));
                             }
-                            final info = infoBox.get("selection_info",
+                            final info = infoBox.get('selection_info',
                                 defaultValue: false);
                             info['tafsir_book_ID'] = tafsirBookID;
                             info['tafsir_language'] =
                                 infoController.tafsirLanguage.value;
-                            infoBox.put("selection_info", info);
+                            infoBox.put('selection_info', info);
 
                             Get.offAll(() => const HomePage());
                             toastification.show(
                               context: context,
-                              title: Text(
-                                "Successful",
+                              title: const Text(
+                                'Successful',
                               ),
                               type: ToastificationType.success,
                               autoCloseDuration: const Duration(seconds: 2),
@@ -140,7 +140,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                       color: Colors.green,
                     ),
                     label: const Text(
-                      "Done",
+                      'Done',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.green,

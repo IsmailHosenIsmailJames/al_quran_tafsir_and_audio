@@ -27,12 +27,12 @@ class ReciterInfoModel {
 
   factory ReciterInfoModel.fromMap(Map<String, dynamic> json) =>
       ReciterInfoModel(
-        link: json["link"],
-        name: json["name"],
+        link: json['link'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toMap() => {
-        "link": link,
-        "name": name,
+        'link': link,
+        'name': name,
       };
 }

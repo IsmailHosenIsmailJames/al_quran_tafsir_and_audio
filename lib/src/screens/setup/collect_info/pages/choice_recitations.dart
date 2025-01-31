@@ -80,31 +80,31 @@ class _RecitationChoiceState extends State<RecitationChoice> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Choice Recitation",
+          'Choice Recitation',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         actions: [
           TextButton.icon(
             onPressed: () {
               Map<String, String> info = {
-                "translation_language":
+                'translation_language':
                     infoController.translationLanguage.value,
-                "translation_book_ID": infoController.bookIDTranslation.value,
-                "tafsir_language": infoController.tafsirLanguage.value,
-                "tafsir_book_ID": infoController.tafsirBookID.value,
-                "selected_reciter":
+                'translation_book_ID': infoController.bookIDTranslation.value,
+                'tafsir_language': infoController.tafsirLanguage.value,
+                'tafsir_book_ID': infoController.tafsirBookID.value,
+                'selected_reciter':
                     audioController.currentReciterModel.value.toJson(),
               };
-              Hive.box("user_db").put("selection_info", info);
+              Hive.box('user_db').put('selection_info', info);
               toastification.show(
                 context: context,
-                title: Text("Saved"),
+                title: const Text('Saved'),
                 type: ToastificationType.success,
               );
               Get.back(result: audioController.currentReciterModel.value);
             },
-            icon: Icon(Icons.done),
-            label: Text("Change"),
+            icon: const Icon(Icons.done),
+            label: const Text('Change'),
           ),
         ],
       ),
@@ -126,7 +126,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
               Container(
                 height: 40,
                 width: double.infinity,
-                margin: EdgeInsets.all(5),
+                margin: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.grey.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(1000),
@@ -142,8 +142,8 @@ class _RecitationChoiceState extends State<RecitationChoice> {
                                 selectedTabForAudioSource = 0;
                                 loadRecitationsData();
                               },
-                              child: Text(
-                                "everyayah.com",
+                              child: const Text(
+                                'everyayah.com',
                               ),
                             )
                           : ElevatedButton(
@@ -151,8 +151,8 @@ class _RecitationChoiceState extends State<RecitationChoice> {
                                 selectedTabForAudioSource = 0;
                                 loadRecitationsData();
                               },
-                              child: Text(
-                                "everyayah.com",
+                              child: const Text(
+                                'everyayah.com',
                               ),
                             ),
                     ),
@@ -164,8 +164,8 @@ class _RecitationChoiceState extends State<RecitationChoice> {
                                 selectedTabForAudioSource = 1;
                                 loadRecitationsData();
                               },
-                              child: Text(
-                                "quran.com",
+                              child: const Text(
+                                'quran.com',
                               ),
                             )
                           : ElevatedButton(
@@ -173,8 +173,8 @@ class _RecitationChoiceState extends State<RecitationChoice> {
                                 selectedTabForAudioSource = 1;
                                 loadRecitationsData();
                               },
-                              child: Text(
-                                "quran.com",
+                              child: const Text(
+                                'quran.com',
                               ),
                             ),
                     ),
@@ -219,7 +219,7 @@ class _RecitationChoiceState extends State<RecitationChoice> {
                       showQuranAyahMode: true,
                       surahNumber: audioController.currentPlayingAyah.value,
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ),
           ),
         ],

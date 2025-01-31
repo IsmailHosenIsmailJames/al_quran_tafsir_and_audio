@@ -4,8 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 class UniversalController extends GetxController {
   RxDouble fontSizeArabic = 24.0.obs;
   RxDouble fontSizeTranslation = 15.0.obs;
-  RxString quranScriptTypeGetx = Hive.box("user_db")
-      .get("quranScriptType", defaultValue: "uthmani_tajweed")
+  RxString quranScriptTypeGetx = Hive.box('user_db')
+      .get('quranScriptType', defaultValue: 'uthmani_tajweed')
       .toString()
       .obs;
   RxInt surahViewTabIndex = 0.obs;
@@ -14,9 +14,9 @@ class UniversalController extends GetxController {
 }
 
 List<String> quranScriptTypeList = [
-  "indopak",
-  "uthmani_tajweed",
-  "uthmani",
-  "uthmani_simple",
-  "imlaei",
+  'indopak',
+  'uthmani_tajweed',
+  'uthmani',
+  'uthmani_simple',
+  'imlaei',
 ];

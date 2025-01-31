@@ -43,7 +43,7 @@ class _SurahViewState extends State<SurahView> {
   InfoController infoController = Get.find();
   UniversalController universalController = Get.find();
   LanguageController languageController = Get.find();
-  String translationBookName = "";
+  String translationBookName = '';
   late int totalAyah = widget.surahInfo.ayahCount;
   late int initialAyahID = widget.surahInfo.start;
 
@@ -79,10 +79,10 @@ class _SurahViewState extends State<SurahView> {
         actions: [
           IconButton(
             onPressed: () async {
-              await Get.to(() => SettingsPage());
+              await Get.to(() => const SettingsPage());
               setState(() {});
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.settings_rounded,
               size: 18,
             ),
@@ -120,7 +120,7 @@ class _SurahViewState extends State<SurahView> {
                               universalController.surahViewTabIndex.value == 0
                                   ? Colors.white
                                   : Colors.green.shade700,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(30),
                               bottomRight: Radius.circular(30),
@@ -131,14 +131,14 @@ class _SurahViewState extends State<SurahView> {
                           universalController.surahViewTabIndex.value = 0;
                           pageController.jumpToPage(0);
                         },
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(Icons.translate),
                             Gap(10),
                             Text(
-                              "Translation",
+                              'Translation',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -163,7 +163,7 @@ class _SurahViewState extends State<SurahView> {
                               universalController.surahViewTabIndex.value == 1
                                   ? Colors.white
                                   : Colors.green.shade700,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(30),
                               bottomLeft: Radius.circular(30),
@@ -174,14 +174,14 @@ class _SurahViewState extends State<SurahView> {
                           universalController.surahViewTabIndex.value = 1;
                           pageController.jumpToPage(1);
                         },
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(Icons.book),
                             Gap(10),
                             Text(
-                              "Reading",
+                              'Reading',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -231,30 +231,30 @@ class _SurahViewState extends State<SurahView> {
       controller: tab2ScrollController,
       interactive: true,
       thickness: 10,
-      radius: Radius.circular(10),
+      radius: const Radius.circular(10),
       child: ListView.builder(
         controller: tab2ScrollController,
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           bottom: 100,
         ),
         itemCount: (totalAyah / 10).ceil(),
         itemBuilder: (context, index) {
           int start = initialAyahID + (index * 10);
           int end = start + 10;
-          String ayah10 = "";
+          String ayah10 = '';
           for (int i = start; i < end; i++) {
-            ayah10 += Hive.box("quran_db").get(
-                "${universalController.quranScriptTypeGetx.value}/$i",
-                defaultValue: "");
+            ayah10 += Hive.box('quran_db').get(
+                '${universalController.quranScriptTypeGetx.value}/$i',
+                defaultValue: '');
           }
 
           return Column(
             children: [
               if (index == 0) getInfoHeaderWidget(),
-              if (widget.surahInfo.isStartWithBismillah != true) Gap(10),
+              if (widget.surahInfo.isStartWithBismillah != true) const Gap(10),
               if (widget.surahInfo.isStartWithBismillah == true && index == 0)
                 Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Obx(
                     () => Text.rich(
                       TextSpan(
@@ -297,10 +297,10 @@ class _SurahViewState extends State<SurahView> {
       controller: tab1ScrollController,
       interactive: true,
       thickness: 10,
-      radius: Radius.circular(10),
+      radius: const Radius.circular(10),
       child: ListView.builder(
         controller: tab1ScrollController,
-        padding: EdgeInsets.only(bottom: 100),
+        padding: const EdgeInsets.only(bottom: 100),
         itemCount: totalAyah,
         itemBuilder: (context, index) {
           int currentAyahIndex = initialAyahID + index;
@@ -311,7 +311,7 @@ class _SurahViewState extends State<SurahView> {
                 getInfoHeaderWidget(),
                 if (widget.surahInfo.isStartWithBismillah == true)
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Obx(
                       () => Text.rich(
                         TextSpan(
@@ -358,8 +358,8 @@ class _SurahViewState extends State<SurahView> {
 
   Container getInfoHeaderWidget() {
     return Container(
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       height: 110,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -374,22 +374,22 @@ class _SurahViewState extends State<SurahView> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  widget.surahInfo.revelationPlace.capitalizeFirst == "makkah"
-                      ? "assets/img/makkah.jpg"
-                      : "assets/img/madina.jpeg",
+                  widget.surahInfo.revelationPlace.capitalizeFirst == 'makkah'
+                      ? 'assets/img/makkah.jpg'
+                      : 'assets/img/madina.jpeg',
                 ),
                 fit: BoxFit.fill,
               ),
               borderRadius: BorderRadius.circular(5),
             ),
           ),
-          Gap(10),
+          const Gap(10),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Surah Name",
+                'Surah Name',
                 style: TextStyle(
                   fontSize: 10,
                   fontWeight: FontWeight.bold,
@@ -397,14 +397,14 @@ class _SurahViewState extends State<SurahView> {
                 ),
               ),
               Text(
-                "${widget.surahInfo.surahNameSimple.capitalizeFirst} ( ${widget.surahInfo.surahNameArabic} )",
-                style: TextStyle(
+                '${widget.surahInfo.surahNameSimple.capitalizeFirst} ( ${widget.surahInfo.surahNameArabic} )',
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                "Revelation Place",
+                'Revelation Place',
                 style: TextStyle(
                   fontSize: 10,
                   fontWeight: FontWeight.bold,
@@ -413,14 +413,14 @@ class _SurahViewState extends State<SurahView> {
               ),
               Text(
                 "${widget.surahInfo.revelationPlace.capitalizeFirst} (${widget.surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -435,20 +435,20 @@ class _SurahViewState extends State<SurahView> {
                   ),
                   onPressed: () {
                     String url =
-                        "https://api.quran.com/api/v4/chapters/${widget.surahInfo.surahNumber}/info";
+                        'https://api.quran.com/api/v4/chapters/${widget.surahInfo.surahNumber}/info';
                     String languageName =
                         languageController.selectedLanguage.value;
                     log(languageName);
                     Get.to(
                       () => InfoViewOfSurah(
                         surahName:
-                            "${widget.surahInfo.surahNameSimple} ( ${widget.surahInfo.surahNameArabic} )",
+                            '${widget.surahInfo.surahNameSimple} ( ${widget.surahInfo.surahNameArabic} )',
                         infoURL: url,
                         languageName: languageName,
                       ),
                     );
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     FluentIcons.info_24_filled,
                   ),
                 ),
@@ -480,13 +480,13 @@ Container buildAyahWidget({
   required String translationBookName,
   bool showAyahNumber = true,
 }) {
-  final collectionBox = Hive.box("collections_db");
-  String ayahKey = "${surahInfo?.surahNumber}:${index + 1}";
+  final collectionBox = Hive.box('collections_db');
+  String ayahKey = '${surahInfo?.surahNumber}:${index + 1}';
   return Container(
     key: key,
     width: double.infinity,
-    margin: EdgeInsets.all(5),
-    padding: EdgeInsets.all(5),
+    margin: const EdgeInsets.all(5),
+    padding: const EdgeInsets.all(5),
     decoration: BoxDecoration(
       color: Colors.grey.withValues(
         alpha: 0.1,
@@ -502,7 +502,7 @@ Container buildAyahWidget({
               if (showAyahNumber)
                 Container(
                   height: 30,
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       color: Colors.green.shade700.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(5)),
@@ -510,7 +510,7 @@ Container buildAyahWidget({
                     (((ayahStartFrom ?? 1) - 1) + (index + 1)).toString(),
                   ),
                 ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 height: 30,
@@ -522,22 +522,22 @@ Container buildAyahWidget({
                   indexOfAyahInSurah: index,
                 ),
               ),
-              Gap(10),
+              const Gap(10),
               getPopUpMenu(currentAyahIndex, infoController,
                   universalController, surahInfo, collectionBox, ayahKey),
             ],
           ),
         ),
-        Gap(10),
+        const Gap(10),
         Align(
           alignment: Alignment.topRight,
           child: Obx(
             () => Text.rich(
               TextSpan(
                 children: getTajweedTexSpan(
-                  Hive.box("quran_db").get(
-                    "uthmani_tajweed/${currentAyahIndex + 1}",
-                    defaultValue: "",
+                  Hive.box('quran_db').get(
+                    'uthmani_tajweed/${currentAyahIndex + 1}',
+                    defaultValue: '',
                   ),
                 ),
               ),
@@ -549,25 +549,25 @@ Container buildAyahWidget({
             ),
           ),
         ),
-        Divider(),
+        const Divider(),
         Align(
           alignment: Alignment.topLeft,
           child: Text(
-            "Translation book :\n$translationBookName",
+            'Translation book :\n$translationBookName',
             style: TextStyle(
               fontSize: 12,
               color: Colors.grey.shade500,
             ),
           ),
         ),
-        Gap(5),
+        const Gap(5),
         Align(
           alignment: Alignment.topLeft,
           child: Obx(
             () => Text(
-              Hive.box("translation_db").get(
-                "${infoController.bookIDTranslation.value}/$currentAyahIndex",
-                defaultValue: "",
+              Hive.box('translation_db').get(
+                '${infoController.bookIDTranslation.value}/$currentAyahIndex',
+                defaultValue: '',
               ),
               style: TextStyle(
                 fontSize: universalController.fontSizeTranslation.value,
@@ -597,7 +597,7 @@ SizedBox getPopUpMenu(
         iconSize: 18,
       ),
       onSelected: (value) async {
-        if (value == "tafsir") {
+        if (value == 'tafsir') {
           Get.to(
             () => TafsirView(
               ayahNumber: currentAyahIndex,
@@ -606,55 +606,55 @@ SizedBox getPopUpMenu(
               surahName: surahInfo?.surahNameSimple,
             ),
           );
-        } else if (value == "bookmark" || value == "favorite") {
+        } else if (value == 'bookmark' || value == 'favorite') {
           CollectionInfoModel? collectionInfoModel =
               getCollectionData(collectionBox, value);
           if (collectionInfoModel?.ayahs?.contains(ayahKey) ?? false) {
             collectionInfoModel?.ayahs!.remove(ayahKey);
             toastification.show(
-                title: Text("Removed from ${value.capitalizeFirst}"),
+                title: Text('Removed from ${value.capitalizeFirst}'),
                 autoCloseDuration: const Duration(seconds: 2),
                 type: ToastificationType.success);
           } else {
             collectionInfoModel?.ayahs!.add(ayahKey);
             toastification.show(
-                title: Text("Added to ${value.capitalizeFirst}"),
+                title: Text('Added to ${value.capitalizeFirst}'),
                 autoCloseDuration: const Duration(seconds: 2),
                 type: ToastificationType.success);
           }
           if (collectionInfoModel != null) {
             collectionBox.put(value, collectionInfoModel.toJson());
           }
-        } else if (value == "add_to_group") {
+        } else if (value == 'add_to_group') {
           showAddToCollectGroupDialog(collectionBox, ayahKey);
-        } else if (value.contains("share")) {
-          String text = Hive.box("quran_db")
+        } else if (value.contains('share')) {
+          String text = Hive.box('quran_db')
               .get(
-                "uthmani_simple/${currentAyahIndex + 1}",
-                defaultValue: "",
+                'uthmani_simple/${currentAyahIndex + 1}',
+                defaultValue: '',
               )
               .toString();
 
-          String trans = Hive.box("translation_db").get(
-            "${infoController.bookIDTranslation.value}/$currentAyahIndex",
-            defaultValue: "",
+          String trans = Hive.box('translation_db').get(
+            '${infoController.bookIDTranslation.value}/$currentAyahIndex',
+            defaultValue: '',
           );
           String subject =
               "${surahInfo?.surahNameSimple ?? ""} ( ${surahInfo?.surahNameArabic ?? ""} ) - ${currentAyahIndex + 1}";
-          if (value == "share") {
+          if (value == 'share') {
             Share.share(
-              "$text\nTranslation:\n$trans\n\n$subject",
+              '$text\nTranslation:\n$trans\n\n$subject',
               subject: subject,
             );
           } else {
             String tafsir = await getTafsirText(
                 infoController.tafsirBookID.value, currentAyahIndex);
             Share.share(
-              "$text\nTranslation:\n$trans\nTafsir:\n$tafsir\n\n$subject",
+              '$text\nTranslation:\n$trans\nTafsir:\n$tafsir\n\n$subject',
               subject: subject,
             );
           }
-        } else if (value == "note") {
+        } else if (value == 'note') {
           Get.to(
             () => TakeNotePage(
               surahNumber: surahInfo!.surahNumber,
@@ -665,107 +665,107 @@ SizedBox getPopUpMenu(
       },
       itemBuilder: (context) {
         return [
-          PopupMenuItem(
-            value: "tafsir",
+          const PopupMenuItem(
+            value: 'tafsir',
             child: ListTile(
               minTileHeight: 50,
               leading: Icon(FluentIcons.book_24_filled),
               title: Text(
-                "Tafsir",
+                'Tafsir',
               ),
             ),
           ),
-          PopupMenuItem(
-            value: "note",
+          const PopupMenuItem(
+            value: 'note',
             child: ListTile(
               minTileHeight: 50,
               leading: Icon(
                 FluentIcons.notepad_24_filled,
               ),
               title: Text(
-                "Take Note",
+                'Take Note',
               ),
             ),
           ),
           PopupMenuItem(
-            value: "bookmark",
+            value: 'bookmark',
             child: ListTile(
               minTileHeight: 50,
               leading: Icon(
-                getCollectionData(collectionBox, "bookmark")
+                getCollectionData(collectionBox, 'bookmark')
                             ?.ayahs!
                             .contains(ayahKey) ??
                         false
                     ? Icons.bookmark_added_rounded
                     : Icons.bookmark_rounded,
-                color: getCollectionData(collectionBox, "bookmark")
+                color: getCollectionData(collectionBox, 'bookmark')
                             ?.ayahs!
                             .contains(ayahKey) ??
                         false
                     ? Colors.green
                     : Colors.grey.withValues(alpha: 0.5),
               ),
-              title: Text(
-                "Bookmark",
+              title: const Text(
+                'Bookmark',
               ),
             ),
           ),
           PopupMenuItem(
-            value: "favorite",
+            value: 'favorite',
             child: ListTile(
               minTileHeight: 50,
               leading: Icon(
-                getCollectionData(collectionBox, "favorite")
+                getCollectionData(collectionBox, 'favorite')
                             ?.ayahs!
                             .contains(ayahKey) ??
                         false
                     ? Icons.favorite_rounded
                     : Icons.favorite_border_rounded,
-                color: getCollectionData(collectionBox, "favorite")
+                color: getCollectionData(collectionBox, 'favorite')
                             ?.ayahs!
                             .contains(ayahKey) ??
                         false
                     ? Colors.green
                     : Colors.grey.withValues(alpha: 0.5),
               ),
-              title: Text(
-                "Favorite",
+              title: const Text(
+                'Favorite',
               ),
             ),
           ),
-          PopupMenuItem(
-            value: "add_to_group",
+          const PopupMenuItem(
+            value: 'add_to_group',
             child: ListTile(
               minTileHeight: 50,
               leading: Icon(
                 Icons.add_rounded,
               ),
               title: Text(
-                "Add to group",
+                'Add to group',
               ),
             ),
           ),
-          PopupMenuItem(
-            value: "share",
+          const PopupMenuItem(
+            value: 'share',
             child: ListTile(
               minTileHeight: 50,
               leading: Icon(
                 Icons.share,
               ),
               title: Text(
-                "Share",
+                'Share',
               ),
             ),
           ),
-          PopupMenuItem(
-            value: "share_with_tafsir",
+          const PopupMenuItem(
+            value: 'share_with_tafsir',
             child: ListTile(
               minTileHeight: 50,
               leading: Icon(
                 Icons.share,
               ),
               title: Text(
-                "Share With Tafsir",
+                'Share With Tafsir',
               ),
             ),
           ),
@@ -788,15 +788,15 @@ Future<dynamic> showAddToCollectGroupDialog(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                "Add to Group",
+              const Text(
+                'Add to Group',
                 style: TextStyle(fontSize: 20),
               ),
-              Divider(),
+              const Divider(),
               if (collectionBox.keys.isEmpty)
-                Center(
+                const Center(
                   child: Text(
-                    "There are no existing groups\n Please create one",
+                    'There are no existing groups\n Please create one',
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -813,7 +813,7 @@ Future<dynamic> showAddToCollectGroupDialog(
                             false) {
                           toastification.show(
                               title: Text(
-                                "Already exists in ${value.capitalizeFirst}",
+                                'Already exists in ${value.capitalizeFirst}',
                               ),
                               autoCloseDuration: const Duration(seconds: 2),
                               type: ToastificationType.success);
@@ -821,7 +821,7 @@ Future<dynamic> showAddToCollectGroupDialog(
                         } else {
                           collectionInfoModel?.ayahs!.add(ayahKey);
                           toastification.show(
-                              title: Text("Added to ${value.capitalizeFirst}"),
+                              title: Text('Added to ${value.capitalizeFirst}'),
                               autoCloseDuration: const Duration(seconds: 2),
                               type: ToastificationType.success);
                         }

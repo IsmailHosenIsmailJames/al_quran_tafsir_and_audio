@@ -7,7 +7,7 @@ import '../resources/quran_com/all_recitations.dart';
 import '../resources/recitation_info_model.dart';
 
 class AudioController extends GetxController {
-  static final box = Hive.box("user_db");
+  static final box = Hive.box('user_db');
   RxInt currentSurahNumber = (-1).obs;
   RxInt currentReciterIndex = (0).obs;
   RxInt currentPlayListIndex = (0).obs;
@@ -18,7 +18,7 @@ class AudioController extends GetxController {
   RxInt currentPlayingAyah = (0).obs;
   Rx<ReciterInfoModel> currentReciterModel = ReciterInfoModel.fromJson(
     box.get(
-      "default_reciter",
+      'default_reciter',
       defaultValue: jsonEncode(recitationsListOfQuranCom[0]),
     ),
   ).obs;

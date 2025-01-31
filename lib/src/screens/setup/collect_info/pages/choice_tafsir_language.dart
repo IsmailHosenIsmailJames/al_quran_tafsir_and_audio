@@ -63,7 +63,7 @@ class _TafsirLanguageState extends State<TafsirLanguage> {
                 );
               },
               child: const Text(
-                "NEXT",
+                'NEXT',
                 style: TextStyle(
                   color: Colors.green,
                   fontSize: 20,
@@ -81,8 +81,8 @@ class _TafsirLanguageState extends State<TafsirLanguage> {
         itemBuilder: (context, index) {
           String? nativeSpelling;
           for (var element in used20LanguageMap) {
-            element["English"] == language[index]
-                ? nativeSpelling = element["Native"]
+            element['English'] == language[index]
+                ? nativeSpelling = element['Native']
                 : null;
           }
           nativeSpelling ??= language[index];

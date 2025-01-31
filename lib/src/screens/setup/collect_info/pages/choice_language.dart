@@ -26,7 +26,7 @@ class _SelectLanguageState extends State<ChoiceLanguage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Select a language for app".tr,
+          'Select a language for app'.tr,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
@@ -51,10 +51,10 @@ class _SelectLanguageState extends State<ChoiceLanguage> {
                 ),
               ),
               onPressed: () {
-                String languageCode = used20LanguageMap[index]["Code"]!;
+                String languageCode = used20LanguageMap[index]['Code']!;
                 languageController.changeLanguage = languageCode;
-                final box = Hive.box("user_db");
-                box.put("app_lan", languageCode);
+                final box = Hive.box('user_db');
+                box.put('app_lan', languageCode);
                 infoController.appLanCode.value = languageCode;
               },
               child: Obx(

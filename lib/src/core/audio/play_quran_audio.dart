@@ -30,7 +30,7 @@ class ManageQuranAudio {
   /// [reciter] - (Optional) A specific reciter's information; defaults to the current recitation model if not provided.
   /// [mediaItem] - (Optional) A media item to set as the tag for the audio.
   static Future<void> startListening() async {
-    log("Listening to audio stream");
+    log('Listening to audio stream');
     audioPlayer.durationStream.listen((event) {
       if (event != null) {
         int sec = event.inSeconds;
@@ -152,7 +152,7 @@ class ManageQuranAudio {
   ///
   /// https://everyayah.com/data/Abdul_Basit_Murattal_64kbps/001.mp3
   static String makeAudioUrl(ReciterInfoModel reciter, String surahID) {
-    return "${reciter.link}/$surahID.mp3";
+    return '${reciter.link}/$surahID.mp3';
   }
 
   /// Retrieves the currently selected reciter from the 'info' box in hive.

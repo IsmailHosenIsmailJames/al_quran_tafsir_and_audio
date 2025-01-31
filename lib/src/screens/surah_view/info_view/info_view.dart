@@ -26,43 +26,43 @@ class InfoViewOfSurah extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: get(Uri.parse("$infoURL?language=$languageName")),
+        future: get(Uri.parse('$infoURL?language=$languageName')),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             Map data =
                 Map.from(jsonDecode(snapshot.data!.body))['chapter_info'];
-            String languageName = data["language_name"];
-            String shortText = data["short_text"];
-            String text = data["text"];
+            String languageName = data['language_name'];
+            String shortText = data['short_text'];
+            String text = data['text'];
 
             return SingleChildScrollView(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
                       Text(
-                        "Language Name : ",
+                        'Language Name : ',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey.shade500,
                         ),
                       ),
-                      Gap(5),
+                      const Gap(5),
                       Text(
                         languageName.capitalizeFirst,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
-                  Gap(10),
+                  const Gap(10),
                   Text(
-                    "Summary : ",
+                    'Summary : ',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -70,9 +70,9 @@ class InfoViewOfSurah extends StatelessWidget {
                     ),
                   ),
                   Text(shortText),
-                  Gap(15),
+                  const Gap(15),
                   Text(
-                    "Details : ",
+                    'Details : ',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class InfoViewOfSurah extends StatelessWidget {
           } else {
             return const Center(
               child: Text(
-                "Something went wrong, Please check your internet connection",
+                'Something went wrong, Please check your internet connection',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.red),
               ),

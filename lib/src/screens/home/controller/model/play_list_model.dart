@@ -26,13 +26,13 @@ class PlayListModel {
   String toJson() => json.encode(toMap());
 
   factory PlayListModel.fromMap(Map<String, dynamic> json) => PlayListModel(
-        surahNumber: json["surahNumber"],
-        reciter: ReciterInfoModel.fromMap(json["reciter"]),
+        surahNumber: json['surahNumber'],
+        reciter: ReciterInfoModel.fromMap(json['reciter']),
       );
 
   Map<String, dynamic> toMap() => {
-        "surahNumber": surahNumber,
-        "reciter": reciter.toMap(),
+        'surahNumber': surahNumber,
+        'reciter': reciter.toMap(),
       };
 }
 
@@ -62,12 +62,12 @@ class AllPlayListModel {
   factory AllPlayListModel.fromMap(Map<String, dynamic> json) =>
       AllPlayListModel(
         playList: List<PlayListModel>.from(
-            json["playList"].map((x) => PlayListModel.fromMap(x))),
-        name: json["name"],
+            json['playList'].map((x) => PlayListModel.fromMap(x))),
+        name: json['name'],
       );
 
   Map<String, dynamic> toMap() => {
-        "playList": List<dynamic>.from(playList.map((x) => x.toMap())),
-        "name": name,
+        'playList': List<dynamic>.from(playList.map((x) => x.toMap())),
+        'name': name,
       };
 }

@@ -65,7 +65,7 @@ class _CollectionTabState extends State<CollectionTab> {
                   allPlayList.isEmpty
                       ? getEmptyPlaylistView(context)
                       : getPlayListView(allPlayList),
-                  AllNotes(),
+                  const AllNotes(),
                 ],
               ),
             );
@@ -104,7 +104,7 @@ class _CollectionTabState extends State<CollectionTab> {
                     iconColor: collectionTabIndex == 0
                         ? Colors.white
                         : Colors.green.shade700,
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),
                         bottomRight: Radius.circular(30),
@@ -115,18 +115,18 @@ class _CollectionTabState extends State<CollectionTab> {
                     collectionTabIndex = 0;
                     pageController.animateTo(
                       0,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeIn,
                     );
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(FluentIcons.bookmark_24_filled),
                       Gap(5),
                       Text(
-                        "Groups",
+                        'Groups',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -157,18 +157,18 @@ class _CollectionTabState extends State<CollectionTab> {
                     collectionTabIndex = 1;
                     pageController.animateToPage(
                       1,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeIn,
                     );
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(Icons.playlist_play_rounded),
                       Gap(5),
                       Text(
-                        "Playlist",
+                        'Playlist',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -191,7 +191,7 @@ class _CollectionTabState extends State<CollectionTab> {
                     iconColor: collectionTabIndex == 2
                         ? Colors.white
                         : Colors.green.shade700,
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         bottomLeft: Radius.circular(30),
@@ -202,18 +202,18 @@ class _CollectionTabState extends State<CollectionTab> {
                     collectionTabIndex = 3;
                     pageController.animateToPage(
                       2,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeIn,
                     );
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(FluentIcons.notepad_24_filled),
                       Gap(5),
                       Text(
-                        "Notes",
+                        'Notes',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -235,14 +235,14 @@ class _CollectionTabState extends State<CollectionTab> {
       children: <Widget>[
             Row(
               children: [
-                Text("Total PlayList: ${allPlayList.length}"),
+                Text('Total PlayList: ${allPlayList.length}'),
                 const Spacer(),
                 SizedBox(
                   height: 25,
                   child: ElevatedButton.icon(
                     onPressed: createANewPlayList,
                     icon: const Icon(Icons.add),
-                    label: const Text("Create New PlayList"),
+                    label: const Text('Create New PlayList'),
                   ),
                 ),
               ],
@@ -268,14 +268,14 @@ class _CollectionTabState extends State<CollectionTab> {
             width: 75,
             child: Obx(
               () {
-                bool isDark = themeController.themeModeName.value == "dark" ||
-                    (themeController.themeModeName.value == "system" &&
+                bool isDark = themeController.themeModeName.value == 'dark' ||
+                    (themeController.themeModeName.value == 'system' &&
                         MediaQuery.of(context).platformBrightness ==
                             Brightness.dark);
 
                 return Image(
                   image: const AssetImage(
-                    "assets/empty-folder.png",
+                    'assets/empty-folder.png',
                   ),
                   color: isDark ? Colors.white : Colors.black,
                 );
@@ -283,13 +283,13 @@ class _CollectionTabState extends State<CollectionTab> {
             ),
           ),
           const Gap(10),
-          const Text("No PlayList found"),
+          const Text('No PlayList found'),
           const Gap(10),
           ElevatedButton.icon(
             onPressed: createANewPlayList,
             icon: const Icon(Icons.add),
             label: const Text(
-              "Create PlayList",
+              'Create PlayList',
             ),
           ),
         ],
@@ -299,7 +299,7 @@ class _CollectionTabState extends State<CollectionTab> {
 
   ListView getGroupsTab() {
     return ListView.builder(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 5,
         left: 5,
         right: 5,
@@ -322,13 +322,13 @@ class _CollectionTabState extends State<CollectionTab> {
                     );
                     setState(() {});
                   },
-                  child: Text("Create New Group"),
+                  child: const Text('Create New Group'),
                 ),
               ),
               if (collectionController.collectionList.isEmpty)
                 Gap(MediaQuery.of(context).size.height * 0.3),
               if (collectionController.collectionList.isEmpty)
-                const Text("No groups found"),
+                const Text('No groups found'),
             ],
           );
         }
@@ -336,8 +336,8 @@ class _CollectionTabState extends State<CollectionTab> {
             collectionController.collectionList[index - 1];
         List<String> ayahKey = currentCollection.ayahs ?? [];
         return Container(
-          padding: EdgeInsets.all(5),
-          margin: EdgeInsets.only(bottom: 8),
+          padding: const EdgeInsets.all(5),
+          margin: const EdgeInsets.only(bottom: 8),
           decoration: BoxDecoration(
             color: Colors.grey.withValues(alpha: 0.1),
             border: Border.all(
@@ -352,7 +352,7 @@ class _CollectionTabState extends State<CollectionTab> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.grey.withValues(alpha: 0.1),
@@ -362,41 +362,41 @@ class _CollectionTabState extends State<CollectionTab> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Name",
+                    const Text(
+                      'Name',
                       style: TextStyle(
                         color: Colors.grey,
                       ),
                     ),
                     Text(
                       currentCollection.name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    if (currentCollection.description != null) Gap(7),
+                    if (currentCollection.description != null) const Gap(7),
                     if (currentCollection.description != null)
-                      Text("Description",
+                      const Text('Description',
                           style: TextStyle(
                             color: Colors.grey,
                           )),
                     if (currentCollection.description != null)
                       Text(
                         currentCollection.description!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12,
                         ),
                       ),
-                    Gap(10),
+                    const Gap(10),
                   ],
                 ),
               ),
-              Gap(7),
-              Text(
-                "Ayahs",
+              const Gap(7),
+              const Text(
+                'Ayahs',
                 style: TextStyle(color: Colors.grey),
               ),
-              Gap(5),
+              const Gap(5),
               Container(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.grey.withValues(alpha: 0.1),
@@ -404,8 +404,8 @@ class _CollectionTabState extends State<CollectionTab> {
                 ),
                 child: Column(
                   children: List.generate(ayahKey.length, (i) {
-                    int surahNumber = int.parse(ayahKey[i].split(":")[i]);
-                    int ayahNumber = int.parse(ayahKey[i].split(":")[1]);
+                    int surahNumber = int.parse(ayahKey[i].split(':')[i]);
+                    int ayahNumber = int.parse(ayahKey[i].split(':')[1]);
                     return GestureDetector(
                       onTap: () {
                         Get.to(
@@ -413,7 +413,7 @@ class _CollectionTabState extends State<CollectionTab> {
                             selectedAyahNumber: ayahNumber,
                             selectedSurahNumber: surahNumber,
                             surahName: allChaptersInfo[surahNumber]
-                                ["name_simple"],
+                                ['name_simple'],
                           ),
                         );
                       },
@@ -423,15 +423,15 @@ class _CollectionTabState extends State<CollectionTab> {
                             padding: const EdgeInsets.all(2.0),
                             child: CircleAvatar(
                               radius: 15,
-                              child: FittedBox(child: Text("${i + 1}")),
+                              child: FittedBox(child: Text('${i + 1}')),
                             ),
                           ),
-                          Gap(10),
+                          const Gap(10),
                           Text(
                             "${surahNumber + 1}. ${allChaptersInfo[surahNumber]["name_simple"]} ( ${ayahNumber + 1} )",
                           ),
-                          Spacer(),
-                          Icon(
+                          const Spacer(),
+                          const Icon(
                             Icons.arrow_forward,
                             size: 16,
                           ),
@@ -448,7 +448,7 @@ class _CollectionTabState extends State<CollectionTab> {
                   children: [
                     IconButton(
                       style: IconButton.styleFrom(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                       ),
                       onPressed: () async {
                         collectionController.editingCollection.value =
@@ -461,31 +461,31 @@ class _CollectionTabState extends State<CollectionTab> {
                         );
                         setState(() {});
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.edit,
                         color: Colors.green,
                       ),
                     ),
-                    Gap(10),
+                    const Gap(10),
                     IconButton(
                       style: IconButton.styleFrom(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                       ),
                       onPressed: () {
                         showDialog(
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: Text("Are you sure?"),
+                              title: const Text('Are you sure?'),
                               content:
-                                  Text("Once deleted, it can't be recovered"),
+                                  const Text("Once deleted, it can't be recovered"),
                               actions: [
                                 TextButton.icon(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  icon: Icon(Icons.close),
-                                  label: Text("Cancel"),
+                                  icon: const Icon(Icons.close),
+                                  label: const Text('Cancel'),
                                 ),
                                 ElevatedButton.icon(
                                   style: ElevatedButton.styleFrom(
@@ -494,26 +494,26 @@ class _CollectionTabState extends State<CollectionTab> {
                                   onPressed: () {
                                     collectionController.collectionList
                                         .removeAt(index - 1);
-                                    Hive.box("collections_db").delete(
+                                    Hive.box('collections_db').delete(
                                       currentCollection.id,
                                     );
                                     Navigator.pop(context);
                                     setState(() {});
                                     toastification.show(
                                       context: context,
-                                      title: Text("Deleted"),
+                                      title: const Text('Deleted'),
                                       type: ToastificationType.success,
                                     );
                                   },
-                                  icon: Icon(Icons.delete),
-                                  label: Text("Delete"),
+                                  icon: const Icon(Icons.delete),
+                                  label: const Text('Delete'),
                                 )
                               ],
                             );
                           },
                         );
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.delete,
                         color: Colors.red,
                       ),
@@ -569,9 +569,9 @@ class _CollectionTabState extends State<CollectionTab> {
                       ),
                       Row(
                         children: [
-                          const Text("Total: "),
+                          const Text('Total: '),
                           Text(
-                            "${currentPlayList.length}",
+                            '${currentPlayList.length}',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
@@ -598,7 +598,7 @@ class _CollectionTabState extends State<CollectionTab> {
                           widget.tabController.jumpToPage(1);
                           toastification.show(
                             context: context,
-                            title: const Text("Under Development"),
+                            title: const Text('Under Development'),
                             autoCloseDuration: const Duration(seconds: 2),
                           );
                         },
@@ -606,7 +606,7 @@ class _CollectionTabState extends State<CollectionTab> {
                           children: [
                             Icon(Icons.add, color: Colors.green),
                             Gap(7),
-                            Text("Add New "),
+                            Text('Add New '),
                           ],
                         ),
                       ),
@@ -621,20 +621,20 @@ class _CollectionTabState extends State<CollectionTab> {
                           children: [
                             Icon(Icons.edit, color: Colors.green),
                             Gap(7),
-                            Text("Edit Name"),
+                            Text('Edit Name'),
                           ],
                         ),
                       ),
                       PopupMenuItem(
                         onTap: () async {
                           try {
-                            Hive.box("play_list").delete(playListKey);
+                            Hive.box('play_list').delete(playListKey);
 
                             homePageController.reloadPlayList();
 
                             toastification.show(
                               context: context,
-                              title: const Text("Deleted"),
+                              title: const Text('Deleted'),
                               autoCloseDuration: const Duration(seconds: 2),
                             );
                           } catch (e) {
@@ -645,7 +645,7 @@ class _CollectionTabState extends State<CollectionTab> {
                           children: [
                             Icon(Icons.delete, color: Colors.red),
                             Gap(7),
-                            Text("Delete Playlist"),
+                            Text('Delete Playlist'),
                           ],
                         ),
                       ),
@@ -675,7 +675,7 @@ class _CollectionTabState extends State<CollectionTab> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
-                  "Name of the PlayList",
+                  'Name of the PlayList',
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -695,14 +695,14 @@ class _CollectionTabState extends State<CollectionTab> {
                   child: TextFormField(
                     controller: nameController,
                     decoration: const InputDecoration(
-                      hintText: "Enter the name of the PlayList",
+                      hintText: 'Enter the name of the PlayList',
                       border: InputBorder.none,
                     ),
                     autofocus: true,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Please enter the name of the PlayList";
+                        return 'Please enter the name of the PlayList';
                       } else {
                         return null;
                       }
@@ -720,7 +720,7 @@ class _CollectionTabState extends State<CollectionTab> {
                           toastification.show(
                             context: context,
                             title: const Text(
-                                "PlayList already exists or name is not allowed"),
+                                'PlayList already exists or name is not allowed'),
                             type: ToastificationType.error,
                             autoCloseDuration: const Duration(seconds: 2),
                           );
@@ -728,7 +728,7 @@ class _CollectionTabState extends State<CollectionTab> {
                           try {
                             List<PlayListModel> allPlayList = homePageController
                                 .allPlaylistInDB.value[index].playList;
-                            await Hive.box("play_list").delete(playlistKey);
+                            await Hive.box('play_list').delete(playlistKey);
                             List<String> rawData = [];
                             for (var e in allPlayList) {
                               rawData.add(e.toJson());
@@ -739,7 +739,7 @@ class _CollectionTabState extends State<CollectionTab> {
                             Navigator.pop(context);
                             toastification.show(
                               context: context,
-                              title: const Text("Saved changes"),
+                              title: const Text('Saved changes'),
                               autoCloseDuration: const Duration(seconds: 2),
                             );
                           } catch (e) {
@@ -750,7 +750,7 @@ class _CollectionTabState extends State<CollectionTab> {
                         toastification.show(
                           context: context,
                           title:
-                              const Text("Empty PlayList name is not allowed"),
+                              const Text('Empty PlayList name is not allowed'),
                           type: ToastificationType.error,
                           autoCloseDuration: const Duration(seconds: 2),
                         );
@@ -758,7 +758,7 @@ class _CollectionTabState extends State<CollectionTab> {
                     },
                     icon: const Icon(Icons.done),
                     label: const Text(
-                      "Save Changes",
+                      'Save Changes',
                     ),
                   ),
                 ),
@@ -809,13 +809,13 @@ class _CollectionTabState extends State<CollectionTab> {
                                 Text(
                                   allChaptersInfo[playListModel.surahNumber]
                                           ['name_simple'] ??
-                                      "",
+                                      '',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 12),
                                 ),
                                 Text(
-                                  "Total Ayah: ${ayahCount[playListModel.surahNumber]}",
+                                  'Total Ayah: ${ayahCount[playListModel.surahNumber]}',
                                   style: const TextStyle(fontSize: 12),
                                 ),
                               ],
@@ -851,7 +851,7 @@ class _CollectionTabState extends State<CollectionTab> {
                                         color: Colors.red,
                                       ),
                                       Gap(7),
-                                      Text("Delete"),
+                                      Text('Delete'),
                                     ],
                                   ),
                                 )
@@ -864,7 +864,7 @@ class _CollectionTabState extends State<CollectionTab> {
                   ),
                 )
               : const Center(
-                  child: Text("Empty PlayList"),
+                  child: Text('Empty PlayList'),
                 )
           : const SizedBox(),
     );
@@ -889,7 +889,7 @@ class _CollectionTabState extends State<CollectionTab> {
                     strokeWidth: 2,
                   )
                 : const Icon(Icons.play_arrow),
-        tooltip: "Play",
+        tooltip: 'Play',
         style: IconButton.styleFrom(
           side: const BorderSide(),
           padding: EdgeInsets.zero,
@@ -953,8 +953,8 @@ class _CollectionTabState extends State<CollectionTab> {
       context: context,
       builder: (context) {
         final playListController = TextEditingController();
-        bool isDark = themeController.themeModeName.value == "dark" ||
-            (themeController.themeModeName.value == "system" &&
+        bool isDark = themeController.themeModeName.value == 'dark' ||
+            (themeController.themeModeName.value == 'system' &&
                 MediaQuery.of(context).platformBrightness == Brightness.dark);
 
         return Dialog(
@@ -969,7 +969,7 @@ class _CollectionTabState extends State<CollectionTab> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
-                  "Name of the PlayList",
+                  'Name of the PlayList',
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -989,14 +989,14 @@ class _CollectionTabState extends State<CollectionTab> {
                   child: TextFormField(
                     controller: playListController,
                     decoration: const InputDecoration(
-                      hintText: "Enter the name of the PlayList",
+                      hintText: 'Enter the name of the PlayList',
                       border: InputBorder.none,
                     ),
                     autofocus: true,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Please enter the name of the PlayList";
+                        return 'Please enter the name of the PlayList';
                       } else {
                         return null;
                       }
@@ -1014,7 +1014,7 @@ class _CollectionTabState extends State<CollectionTab> {
                           toastification.show(
                             context: context,
                             title: const Text(
-                                "PlayList already exists or name is not allowed"),
+                                'PlayList already exists or name is not allowed'),
                             type: ToastificationType.error,
                             autoCloseDuration: const Duration(seconds: 2),
                           );
@@ -1029,7 +1029,7 @@ class _CollectionTabState extends State<CollectionTab> {
                         toastification.show(
                           context: context,
                           title:
-                              const Text("Empty PlayList name is not allowed"),
+                              const Text('Empty PlayList name is not allowed'),
                           type: ToastificationType.error,
                           autoCloseDuration: const Duration(seconds: 2),
                         );
@@ -1037,7 +1037,7 @@ class _CollectionTabState extends State<CollectionTab> {
                     },
                     icon: const Icon(Icons.add),
                     label: const Text(
-                      "Create PlayList",
+                      'Create PlayList',
                     ),
                   ),
                 ),

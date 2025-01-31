@@ -21,22 +21,22 @@ class AllNotes extends StatefulWidget {
 }
 
 class _AllNotesState extends State<AllNotes> {
-  final notesDB = Hive.box("notes_db");
+  final notesDB = Hive.box('notes_db');
   @override
   Widget build(BuildContext context) {
     if (notesDB.isEmpty) {
       return Column(
         children: [
-          Gap(10),
+          const Gap(10),
           getAddNewNotesButton(),
           Gap(MediaQuery.of(context).size.height * 0.3),
-          Center(child: Text("No notes found")),
+          const Center(child: Text('No notes found')),
         ],
       );
     }
     return Column(
       children: [
-        Gap(10),
+        const Gap(10),
         getAddNewNotesButton(),
         Expanded(
           child: ListView.builder(
@@ -54,8 +54,8 @@ class _AllNotesState extends State<AllNotes> {
               );
               return Container(
                 height: 250 + notesModel.ayahsKey.length * 20,
-                padding: EdgeInsets.all(5),
-                margin: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
+                margin: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
                   color: Colors.grey.withValues(
@@ -78,14 +78,14 @@ class _AllNotesState extends State<AllNotes> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Ayahs:",
+        const Text(
+          'Ayahs:',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
         ),
-        Gap(8),
+        const Gap(8),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,27 +95,27 @@ class _AllNotesState extends State<AllNotes> {
               String ayahKey = notesModel.ayahsKey[index];
               QuranSurahInfoModel? quranSurahInfoModel =
                   QuranSurahInfoModel.fromMap(
-                      allChaptersInfo[int.parse(ayahKey.split(":")[0])]);
+                      allChaptersInfo[int.parse(ayahKey.split(':')[0])]);
               return Text(
                 "${quranSurahInfoModel.nameSimple}, Ayah: ${(notesModel.ayahsKey[index].split(":")[1])} ",
               );
             },
           ),
         ),
-        Divider(),
-        Text(
-          "Note:",
+        const Divider(),
+        const Text(
+          'Note:',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
         ),
-        Gap(8),
+        const Gap(8),
         Expanded(
           child: Scrollbar(
             child: QuillEditor.basic(
               controller: controller,
-              config: QuillEditorConfig(
+              config: const QuillEditorConfig(
                 checkBoxReadOnly: true,
               ),
             ),
@@ -133,7 +133,7 @@ class _AllNotesState extends State<AllNotes> {
                 );
                 setState(() {});
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.edit,
                 color: Colors.green,
               ),
@@ -143,7 +143,7 @@ class _AllNotesState extends State<AllNotes> {
                 context: context,
                 builder: (context) => getDeleteAlertPopup(index, context),
               ),
-              icon: Icon(
+              icon: const Icon(
                 Icons.delete,
                 color: Colors.red,
               ),
@@ -156,9 +156,9 @@ class _AllNotesState extends State<AllNotes> {
 
   AlertDialog getDeleteAlertPopup(int index, BuildContext context) {
     return AlertDialog(
-      insetPadding: EdgeInsets.all(10),
-      title: Text("Are you sure?"),
-      content: Text("Once deleted, it can't be recovered"),
+      insetPadding: const EdgeInsets.all(10),
+      title: const Text('Are you sure?'),
+      content: const Text("Once deleted, it can't be recovered"),
       actions: [
         TextButton(
           onPressed: () {
@@ -166,12 +166,12 @@ class _AllNotesState extends State<AllNotes> {
             Navigator.pop(context);
             setState(() {});
             showTwoestedMessage(
-              "Deleted successfully",
+              'Deleted successfully',
               ToastificationType.success,
             );
           },
-          child: Text(
-            "Yes",
+          child: const Text(
+            'Yes',
             style: TextStyle(
               color: Colors.red,
             ),
@@ -179,7 +179,7 @@ class _AllNotesState extends State<AllNotes> {
         ),
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text("No"),
+          child: const Text('No'),
         ),
       ],
     );
@@ -191,12 +191,12 @@ class _AllNotesState extends State<AllNotes> {
       child: ElevatedButton.icon(
         onPressed: () async {
           await Get.to(
-            () => TakeNotePage(),
+            () => const TakeNotePage(),
           );
           setState(() {});
         },
-        icon: Icon(Icons.add),
-        label: Text("Add New Note"),
+        icon: const Icon(Icons.add),
+        label: const Text('Add New Note'),
       ),
     );
   }

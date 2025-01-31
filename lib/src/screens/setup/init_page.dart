@@ -19,19 +19,19 @@ class _InitPageState extends State<InitPage> {
   Widget build(BuildContext context) {
     InfoController infoController = Get.find();
 
-    final userBox = Hive.box("user_db");
-    final selection = userBox.get("selection_info", defaultValue: null);
+    final userBox = Hive.box('user_db');
+    final selection = userBox.get('selection_info', defaultValue: null);
     if (selection == null) {
       return const CollectInfoPage(pageNumber: 0);
     }
 
     infoController.translationLanguage.value =
-        selection["translation_language"];
-    infoController.bookIDTranslation.value = selection["translation_book_ID"];
-    infoController.tafsirLanguage.value = selection["tafsir_language"];
-    infoController.tafsirBookID.value = selection["tafsir_book_ID"];
+        selection['translation_language'];
+    infoController.bookIDTranslation.value = selection['translation_book_ID'];
+    infoController.tafsirLanguage.value = selection['tafsir_language'];
+    infoController.tafsirBookID.value = selection['tafsir_book_ID'];
     infoController.selectedReciter.value =
-        ReciterInfoModel.fromJson(selection["selected_reciter"]);
+        ReciterInfoModel.fromJson(selection['selected_reciter']);
     if (!(Hive.box('quran_db').keys.isNotEmpty &&
         Hive.box('translation_db').keys.isNotEmpty &&
         Hive.box('tafsir_db').keys.isNotEmpty)) {

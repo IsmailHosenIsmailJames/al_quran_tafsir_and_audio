@@ -28,14 +28,14 @@ class NotesModel {
   String toJson() => json.encode(toMap());
 
   factory NotesModel.fromMap(Map<String, dynamic> json) => NotesModel(
-        dateTimestamp: json["date_timestamp"],
-        noteDelta: json["note_delta"],
-        ayahsKey: List<String>.from(json["ayahsKey"].map((x) => x)),
+        dateTimestamp: json['date_timestamp'],
+        noteDelta: json['note_delta'],
+        ayahsKey: List<String>.from(json['ayahsKey'].map((x) => x)),
       );
 
   Map<String, dynamic> toMap() => {
-        "date_timestamp": dateTimestamp,
-        "note_delta": noteDelta,
-        "ayahsKey": List<dynamic>.from(ayahsKey.map((x) => x)),
+        'date_timestamp': dateTimestamp,
+        'note_delta': noteDelta,
+        'ayahsKey': List<dynamic>.from(ayahsKey.map((x) => x)),
       };
 }

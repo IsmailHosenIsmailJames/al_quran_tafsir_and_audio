@@ -39,52 +39,52 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Create New Collection"),
+        title: const Text('Create New Collection'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         children: [
-          Gap(10),
-          Text(
-            "Collection Name",
+          const Gap(10),
+          const Text(
+            'Collection Name',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
           ),
-          Gap(7),
+          const Gap(7),
           TextFormField(
             controller: nameController,
             decoration:
-                InputDecoration(hintText: "Type collection name here..."),
+                const InputDecoration(hintText: 'Type collection name here...'),
             maxLength: 100,
           ),
-          Gap(10),
-          Text(
-            "Description",
+          const Gap(10),
+          const Text(
+            'Description',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
           ),
-          Gap(7),
+          const Gap(7),
           TextFormField(
             controller: descriptionController,
-            decoration: InputDecoration(hintText: "Type description here..."),
+            decoration: const InputDecoration(hintText: 'Type description here...'),
             maxLength: 5000,
           ),
-          Gap(10),
-          Text(
-            "Ayahs",
+          const Gap(10),
+          const Text(
+            'Ayahs',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
           ),
-          Gap(7),
+          const Gap(7),
           Container(
-            padding: EdgeInsets.all(7),
-            margin: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(7),
+            margin: const EdgeInsets.all(5),
             decoration: BoxDecoration(
               color: Colors.grey.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(7),
@@ -92,9 +92,9 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
             child: Column(
               children: <Widget>[
                     if (editingCollection.ayahs?.isNotEmpty != true)
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: const Text("No Ayahs Added"),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('No Ayahs Added'),
                       ),
                   ] +
                   List<Widget>.generate(
@@ -106,15 +106,15 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                             padding: const EdgeInsets.all(2.0),
                             child: CircleAvatar(
                               radius: 15,
-                              child: FittedBox(child: Text("${index + 1}")),
+                              child: FittedBox(child: Text('${index + 1}')),
                             ),
                           ),
-                          Gap(10),
+                          const Gap(10),
                           Text(
                             "${int.parse(editingCollection.ayahs![index].split(":")[0]) + 1}. ${allChaptersInfo[int.parse(editingCollection.ayahs![index].split(":")[0])]["name_simple"]} ( ${editingCollection.ayahs![index].split(":")[1]} )",
                           ),
-                          Gap(15),
-                          Spacer(),
+                          const Gap(15),
+                          const Spacer(),
                           SizedBox(
                             width: 40,
                             height: 30,
@@ -128,7 +128,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                                 iconSize: 18,
                                 padding: EdgeInsets.zero,
                               ),
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.delete,
                                 color: Colors.red,
                               ),
@@ -139,18 +139,18 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                     },
                   ) +
                   <Widget>[
-                    Gap(15),
+                    const Gap(15),
                     Container(
                       height: 30,
                       width: double.infinity,
                       margin: const EdgeInsets.all(8.0),
                       child: OutlinedButton.icon(
                         style: OutlinedButton.styleFrom(
-                          padding: EdgeInsets.only(left: 15, right: 15),
+                          padding: const EdgeInsets.only(left: 15, right: 15),
                         ),
                         onPressed: () async {
                           dynamic result = await Get.to(
-                            () => AddNewAyahForCollection(),
+                            () => const AddNewAyahForCollection(),
                           );
                           if (result.runtimeType == String) {
                             setState(() {
@@ -159,26 +159,26 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                             });
                             toastification.show(
                               context: context,
-                              title: const Text("Ayah Added"),
+                              title: const Text('Ayah Added'),
                               autoCloseDuration: const Duration(seconds: 2),
                               type: ToastificationType.success,
                             );
                           }
                         },
-                        icon: Icon(Icons.add),
-                        label: const Text("Add New Ayah"),
+                        icon: const Icon(Icons.add),
+                        label: const Text('Add New Ayah'),
                       ),
                     ),
                   ],
             ),
           ),
-          Gap(10),
+          const Gap(10),
           ElevatedButton.icon(
             onPressed: () async {
               if (nameController.text.isEmpty) {
                 toastification.show(
                   context: context,
-                  title: const Text("Collection name is required"),
+                  title: const Text('Collection name is required'),
                   autoCloseDuration: const Duration(seconds: 2),
                   type: ToastificationType.error,
                 );
@@ -186,18 +186,18 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
               } else if (editingCollection.ayahs?.isNotEmpty != true) {
                 toastification.show(
                   context: context,
-                  title: const Text("No Ayahs Added"),
+                  title: const Text('No Ayahs Added'),
                   autoCloseDuration: const Duration(seconds: 2),
                   type: ToastificationType.error,
                 );
               } else {
-                final box = Hive.box("collections_db");
+                final box = Hive.box('collections_db');
                 String name = nameController.text.trim();
                 String description = descriptionController.text.trim();
                 if (box.containsKey(name)) {
                   toastification.show(
                     context: context,
-                    title: const Text("Collection name already exists"),
+                    title: const Text('Collection name already exists'),
                     autoCloseDuration: const Duration(seconds: 2),
                     type: ToastificationType.error,
                   );
@@ -218,8 +218,8 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                   toastification.show(
                     context: context,
                     title: Text(widget.previousData == null
-                        ? "Collection Created"
-                        : "Saved Changes"),
+                        ? 'Collection Created'
+                        : 'Saved Changes'),
                     autoCloseDuration: const Duration(seconds: 2),
                     type: ToastificationType.success,
                   );
@@ -227,10 +227,10 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                 }
               }
             },
-            icon: Icon(Icons.done),
+            icon: const Icon(Icons.done),
             label: Text(widget.previousData == null
-                ? "Create Collection"
-                : "Save Changes"),
+                ? 'Create Collection'
+                : 'Save Changes'),
           ),
         ],
       ),

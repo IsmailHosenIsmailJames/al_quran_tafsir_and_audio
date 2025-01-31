@@ -9,14 +9,14 @@ class CollectionController extends GetxController {
       Rx<CollectionInfoModel>(CollectionInfoModel(
     id: ID.unique(),
     isPublicResources: false,
-    name: "",
+    name: '',
   ));
 
   @override
   void onInit() {
-    Hive.box("collections_db").keys.forEach((key) {
+    Hive.box('collections_db').keys.forEach((key) {
       CollectionInfoModel collectionInfoModel =
-          CollectionInfoModel.fromJson(Hive.box("collections_db").get(key));
+          CollectionInfoModel.fromJson(Hive.box('collections_db').get(key));
       collectionList.add(collectionInfoModel);
     });
     super.onInit();

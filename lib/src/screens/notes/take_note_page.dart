@@ -47,7 +47,7 @@ class _TakeNotePageState extends State<TakeNotePage> {
   @override
   void initState() {
     if (widget.ayahNumber != null && widget.surahNumber != null) {
-      ayahsListKey.add("${widget.surahNumber}:${widget.ayahNumber! + 1}");
+      ayahsListKey.add('${widget.surahNumber}:${widget.ayahNumber! + 1}');
     }
     ayahsListKey.addAll(widget.previousData?.ayahsKey ?? []);
     super.initState();
@@ -58,8 +58,8 @@ class _TakeNotePageState extends State<TakeNotePage> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 5,
-        title: Text(
-          "Take Note",
+        title: const Text(
+          'Take Note',
         ),
         actions: [
           ElevatedButton.icon(
@@ -82,14 +82,14 @@ class _TakeNotePageState extends State<TakeNotePage> {
                 noteDelta: noteDelta,
                 ayahsKey: ayahsListKey,
               );
-              await Hive.box("notes_db")
+              await Hive.box('notes_db')
                   .put(timeStamp.toString(), notesModel.toJson());
               Get.back();
             },
             icon: const Icon(
               Icons.done,
             ),
-            label: Text(widget.previousData == null ? "Save" : "Update"),
+            label: Text(widget.previousData == null ? 'Save' : 'Update'),
           ),
         ],
       ),
@@ -100,44 +100,44 @@ class _TakeNotePageState extends State<TakeNotePage> {
             children: [
               Row(
                 children: [
-                  Gap(8),
-                  Text(
-                    "Ayahs",
+                  const Gap(8),
+                  const Text(
+                    'Ayahs',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   SizedBox(
                     height: 30,
                     child: OutlinedButton.icon(
                       style: TextButton.styleFrom(
-                          padding: EdgeInsets.only(right: 10, left: 5)),
+                          padding: const EdgeInsets.only(right: 10, left: 5)),
                       onPressed: () async {
                         final res = await Get.to(
-                          () => AddNewAyahForCollection(),
+                          () => const AddNewAyahForCollection(),
                         );
                         if (res != null && res is String) {
                           ayahsListKey.add(res);
                         }
                         setState(() {});
                       },
-                      icon: Icon(Icons.add),
-                      label: Text("Add"),
+                      icon: const Icon(Icons.add),
+                      label: const Text('Add'),
                     ),
                   ),
                 ],
               ),
               Container(
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: Colors.grey.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(7),
                 ),
                 child: ayahsListKey.isEmpty
-                    ? const Text("No ayahs selected")
+                    ? const Text('No ayahs selected')
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,13 +145,13 @@ class _TakeNotePageState extends State<TakeNotePage> {
                           (ayahKey) {
                             QuranSurahInfoModel surahInfoModel =
                                 QuranSurahInfoModel.fromMap(allChaptersInfo[
-                                    int.parse(ayahKey.split(":")[0]) - 1]);
+                                    int.parse(ayahKey.split(':')[0]) - 1]);
                             return Row(
                               children: [
                                 Text(
                                   "${surahInfoModel.nameSimple} - ${ayahKey.split(":")[1]}",
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 SizedBox(
                                   height: 30,
                                   child: IconButton(
@@ -159,7 +159,7 @@ class _TakeNotePageState extends State<TakeNotePage> {
                                       ayahsListKey.remove(ayahKey);
                                       setState(() {});
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.delete,
                                       color: Colors.red,
                                       size: 19,
@@ -172,11 +172,11 @@ class _TakeNotePageState extends State<TakeNotePage> {
                         ).toList(),
                       ),
               ),
-              Gap(10),
-              Padding(
-                padding: const EdgeInsets.only(left: 8),
+              const Gap(10),
+              const Padding(
+                padding: EdgeInsets.only(left: 8),
                 child: Text(
-                  "Notes",
+                  'Notes',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -265,7 +265,7 @@ class _TakeNotePageState extends State<TakeNotePage> {
                   ),
                   borderRadius: BorderRadius.circular(7),
                 ),
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: QuillEditor.basic(
                   controller: _controller,
                   config: const QuillEditorConfig(

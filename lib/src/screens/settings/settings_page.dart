@@ -36,7 +36,7 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Icon(FluentIcons.settings_24_regular),
             Gap(10),
-            Text("Settings"),
+            Text('Settings'),
           ],
         ),
       ),
@@ -46,8 +46,8 @@ class _SettingsPageState extends State<SettingsPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Theme Brightness",
+            const Text(
+              'Theme Brightness',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             const Gap(7),
@@ -63,7 +63,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 isExpanded: true,
                 items: [
                   const DropdownMenuItem(
-                    value: "system",
+                    value: 'system',
                     child: Row(
                       children: [
                         Gap(10),
@@ -72,12 +72,12 @@ class _SettingsPageState extends State<SettingsPage> {
                           size: 18,
                         ),
                         Gap(10),
-                        Text("System default"),
+                        Text('System default'),
                       ],
                     ),
                   ),
                   const DropdownMenuItem(
-                    value: "dark",
+                    value: 'dark',
                     child: Row(
                       children: [
                         Gap(10),
@@ -86,12 +86,12 @@ class _SettingsPageState extends State<SettingsPage> {
                           size: 18,
                         ),
                         Gap(10),
-                        Text("Dark"),
+                        Text('Dark'),
                       ],
                     ),
                   ),
                   const DropdownMenuItem(
-                    value: "light",
+                    value: 'light',
                     child: Row(
                       children: [
                         Gap(10),
@@ -100,7 +100,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           size: 18,
                         ),
                         Gap(10),
-                        Text("Light"),
+                        Text('Light'),
                       ],
                     ),
                   ),
@@ -108,8 +108,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            Text(
-              "Quran Font Size",
+            const Text(
+              'Quran Font Size',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -126,7 +126,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       divisions: 40,
                       onChanged: (value) {
                         universalController.fontSizeArabic.value = value;
-                        Hive.box("user_db").put("fontSizeArabic", value);
+                        Hive.box('user_db').put('fontSizeArabic', value);
                       },
                     ),
                   ),
@@ -152,7 +152,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   TextSpan(
                     children: getTajweedTexSpan(
                       startAyahBismillah(
-                        "uthmani_tajweed",
+                        'uthmani_tajweed',
                       ),
                     ),
                   ),
@@ -164,20 +164,20 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            Text(
-              "Quran Script Type",
+            const Text(
+              'Quran Script Type',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
             ),
-            Gap(10),
+            const Gap(10),
             Obx(
               () => DropdownButtonFormField<String>(
                 value: universalController.quranScriptTypeGetx.value,
                 onChanged: (value) {
                   universalController.quranScriptTypeGetx.value = value!;
-                  Hive.box("user_db").put("quranScriptType", value);
+                  Hive.box('user_db').put('quranScriptType', value);
                 },
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -190,15 +190,15 @@ class _SettingsPageState extends State<SettingsPage> {
                     child: Text(
                       quranScriptTypeList[index]
                           .capitalizeFirst
-                          .replaceAll("_", " "),
+                          .replaceAll('_', ' '),
                     ),
                   ),
                 ),
               ),
             ),
             const Gap(15),
-            Text(
-              "Translation Font Size",
+            const Text(
+              'Translation Font Size',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -215,7 +215,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       divisions: 40,
                       onChanged: (value) {
                         universalController.fontSizeTranslation.value = value;
-                        Hive.box("user_db").put("fontSizeTranslation", value);
+                        Hive.box('user_db').put('fontSizeTranslation', value);
                       },
                     ),
                   ),
@@ -238,9 +238,9 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               child: Obx(
                 () => Text(
-                  Hive.box("translation_db").get(
-                    "${infoController.bookIDTranslation.value}/0",
-                    defaultValue: "",
+                  Hive.box('translation_db').get(
+                    '${infoController.bookIDTranslation.value}/0',
+                    defaultValue: '',
                   ),
                   style: TextStyle(
                     fontSize: universalController.fontSizeTranslation.value,
@@ -250,8 +250,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            Text(
-              "Audio Cached",
+            const Text(
+              'Audio Cached',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -281,16 +281,16 @@ class _SettingsPageState extends State<SettingsPage> {
 
                     return getListOfCacheWidget(keys, data);
                   } else if (snapshot.hasError) {
-                    return Center(
+                    return const Center(
                       child: Text(
-                        "Cache Not Found",
+                        'Cache Not Found',
                       ),
                     );
                   } else if (snapshot.connectionState ==
                       ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  return SizedBox();
+                  return const SizedBox();
                 },
               ),
             ),
@@ -307,7 +307,7 @@ class _SettingsPageState extends State<SettingsPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(width: 100, child: Text("Cache Size")),
+            const SizedBox(width: 100, child: Text('Cache Size')),
             SizedBox(
               width: 100,
               child: FutureBuilder<int>(
@@ -316,7 +316,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const CircularProgressIndicator();
                   } else if (snapshot.hasError) {
-                    return Text("Error: ${snapshot.error}");
+                    return Text('Error: ${snapshot.error}');
                   } else {
                     return Text(formatBytes(snapshot.data ?? 0));
                   }
@@ -334,12 +334,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     // ignore: avoid_function_literals_in_foreach_calls
                     for (var element in value!) {
                       await File(element['path']).delete();
-                      log(element['path'], name: "deleted");
+                      log(element['path'], name: 'deleted');
                     }
                   }
                   setState(() {});
                 },
-                child: const Text("Clean"),
+                child: const Text('Clean'),
               ),
             ),
           ],
@@ -348,8 +348,8 @@ class _SettingsPageState extends State<SettingsPage> {
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(width: 100, child: Text("Last Modified")),
-            SizedBox(width: 100, child: Text("Cache Size")),
+            SizedBox(width: 100, child: Text('Last Modified')),
+            SizedBox(width: 100, child: Text('Cache Size')),
             Gap(100),
           ],
         ),
@@ -380,11 +380,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       onPressed: () async {
                         for (var element in current) {
                           await File(element['path']).delete();
-                          log(element['path'], name: "deleted");
+                          log(element['path'], name: 'deleted');
                         }
                         setState(() {});
                       },
-                      child: const Text("Clean"),
+                      child: const Text('Clean'),
                     ),
                   ),
                 ),
@@ -401,7 +401,7 @@ Future<Map<String, List<Map<String, dynamic>>>>
     getCategorizedCacheFilesWithSize() async {
   Map<String, List<Map<String, dynamic>>> categorizedFiles = {};
   final cacheDir = Directory(
-      join((await getTemporaryDirectory()).path, "just_audio_cache", "remote"));
+      join((await getTemporaryDirectory()).path, 'just_audio_cache', 'remote'));
   final files = cacheDir
       .listSync()
       .whereType<File>(); // List all files in the cache directory
@@ -430,37 +430,37 @@ Future<Map<String, List<Map<String, dynamic>>>>
 }
 
 String getTheTimeKey(int distanceInDay) {
-  String timeKey = "";
+  String timeKey = '';
   if (distanceInDay > 365) {
-    timeKey = "1 Year ago";
+    timeKey = '1 Year ago';
   } else if (distanceInDay > 182) {
-    timeKey = "6 Months ago";
+    timeKey = '6 Months ago';
   } else if (distanceInDay > 91) {
-    timeKey = "3 Months ago";
+    timeKey = '3 Months ago';
   } else if (distanceInDay > 60) {
-    timeKey = "2 Months ago";
+    timeKey = '2 Months ago';
   } else if (distanceInDay > 30) {
-    timeKey = "1 Month ago";
+    timeKey = '1 Month ago';
   } else if (distanceInDay > 21) {
-    timeKey = "3 Weeks ag0";
+    timeKey = '3 Weeks ag0';
   } else if (distanceInDay > 14) {
-    timeKey = "2 Weeks ago";
+    timeKey = '2 Weeks ago';
   } else if (distanceInDay > 7) {
-    timeKey = "1 Weeks ago";
+    timeKey = '1 Weeks ago';
   } else if (distanceInDay > 6) {
-    timeKey = "6 Days ago";
+    timeKey = '6 Days ago';
   } else if (distanceInDay > 5) {
-    timeKey = "5 Days ago";
+    timeKey = '5 Days ago';
   } else if (distanceInDay > 4) {
-    timeKey = "4 Days ago";
+    timeKey = '4 Days ago';
   } else if (distanceInDay > 3) {
-    timeKey = "3 Days ago";
+    timeKey = '3 Days ago';
   } else if (distanceInDay > 2) {
-    timeKey = "2 Days ago";
+    timeKey = '2 Days ago';
   } else if (distanceInDay > 1) {
-    timeKey = "1 Day ago";
+    timeKey = '1 Day ago';
   } else {
-    timeKey = "Today";
+    timeKey = 'Today';
   }
   return timeKey;
 }

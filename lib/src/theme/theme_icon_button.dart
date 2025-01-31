@@ -11,14 +11,14 @@ Widget themeIconButton = GetX<AppThemeData>(
       ),
     ),
     color: Colors.green.shade600,
-    tooltip: "Change Theme",
+    tooltip: 'Change Theme',
     onPressed: () {
-      if (controller.themeModeName.value == "dark") {
-        controller.setTheme("light");
-      } else if (controller.themeModeName.value == "light") {
-        controller.setTheme("system");
+      if (controller.themeModeName.value == 'dark') {
+        controller.setTheme('light');
+      } else if (controller.themeModeName.value == 'light') {
+        controller.setTheme('system');
       } else {
-        controller.setTheme("dark");
+        controller.setTheme('dark');
       }
     },
     icon: controller.themeModeName.value == 'dark'

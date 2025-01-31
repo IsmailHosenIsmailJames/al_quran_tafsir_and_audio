@@ -16,15 +16,15 @@ Future<void> main() async {
     androidNotificationChannelName: 'Quran Audio',
     androidNotificationOngoing: true,
   );
-  await Hive.initFlutter("al_quran");
-  await Hive.openBox("user_db");
-  await Hive.openBox("quran_db");
-  await Hive.openBox("translation_db");
-  await Hive.openBox("tafsir_db");
-  await Hive.openBox("play_list");
-  await Hive.openBox("cloud_play_list");
-  await Hive.openBox("collections_db");
-  await Hive.openBox("audio_track");
-  await Hive.openBox("notes_db");
-  runApp(AlQuranTafsirAndAudio());
+  await Hive.initFlutter('al_quran');
+  await Hive.openBox('user_db');
+  await Hive.openBox('quran_db');
+  await Hive.openBox('translation_db');
+  await Hive.openBox('tafsir_db');
+  await Hive.openBox('play_list');
+  await Hive.openBox('cloud_play_list');
+  await Hive.openBox('collections_db');
+  await Hive.openBox('audio_track');
+  await Hive.openBox('notes_db');
+  runApp(const AlQuranTafsirAndAudio());
 }

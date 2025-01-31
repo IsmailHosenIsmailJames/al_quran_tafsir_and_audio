@@ -15,14 +15,14 @@ class AboutAppPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Gap(20),
+            const Gap(20),
             Center(
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(1000),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage(
-                        "assets/img/QuranLogo.png",
+                        'assets/img/QuranLogo.png',
                       ),
                     ),
                     boxShadow: [
@@ -36,7 +36,7 @@ class AboutAppPage extends StatelessWidget {
                 width: 150,
               ),
             ),
-            Gap(20),
+            const Gap(20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -47,17 +47,17 @@ class AboutAppPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Center(
-                  child: const Text(
+                const Center(
+                  child: Text(
                     'A Cross Platform Al Quran application with Translation, Tafsir, and Audio functionalities.',
                     textAlign: TextAlign.center,
                   ),
                 ),
               ],
             ),
-            Divider(),
+            const Divider(),
             Text(
-              "Note: Quran, Tafsir & Audio are collected from quran.com & everyayah.com",
+              'Note: Quran, Tafsir & Audio are collected from quran.com & everyayah.com',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     backgroundColor: Colors.red.withValues(
@@ -65,7 +65,7 @@ class AboutAppPage extends StatelessWidget {
                     ),
                   ),
             ),
-            Divider(),
+            const Divider(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -180,7 +180,7 @@ class AboutAppPage extends StatelessWidget {
                 )
               ],
             ),
-            Divider(),
+            const Divider(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -239,7 +239,7 @@ class AboutAppPage extends StatelessWidget {
                 ),
               ],
             ),
-            Divider(),
+            const Divider(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

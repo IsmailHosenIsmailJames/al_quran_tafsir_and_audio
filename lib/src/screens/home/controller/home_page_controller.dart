@@ -13,7 +13,7 @@ class HomePageController extends GetxController {
   RxBool selectForPlaylistMode = false.obs;
   RxList<PlayListModel> selectedForPlaylist = <PlayListModel>[].obs;
   RxList<AllPlayListModel> allPlaylistInDB = <AllPlayListModel>[].obs;
-  RxString nameOfEditingPlaylist = "".obs;
+  RxString nameOfEditingPlaylist = ''.obs;
 
   @override
   void onInit() {
@@ -52,7 +52,7 @@ class HomePageController extends GetxController {
     for (var playListModel in selectedForPlaylist) {
       playList.add(playListModel.toJson());
     }
-    await Hive.box("play_list").put(
+    await Hive.box('play_list').put(
       nameOfEditingPlaylist.value,
       playList,
     );
@@ -62,7 +62,7 @@ class HomePageController extends GetxController {
 
   void reloadPlayList() {
     allPlaylistInDB.clear();
-    final infoBox = Hive.box("play_list");
+    final infoBox = Hive.box('play_list');
     for (var key in infoBox.keys) {
       List playList = infoBox.get(key);
       List<PlayListModel> playListModels = [];
@@ -92,20 +92,20 @@ class HomePageController extends GetxController {
             collectionId: authController.collectionID,
             documentId: id,
             data: {
-              "all_playlist_data": rawJson,
+              'all_playlist_data': rawJson,
             },
           );
-          await Hive.box("cloud_play_list").put("all_playlist", rawJson);
+          await Hive.box('cloud_play_list').put('all_playlist', rawJson);
         } else {
           await db.createDocument(
             databaseId: authController.databaseID,
             collectionId: authController.collectionID,
             documentId: id,
             data: {
-              "all_playlist_data": rawJson,
+              'all_playlist_data': rawJson,
             },
           );
-          await Hive.box("cloud_play_list").put("all_playlist", rawJson);
+          await Hive.box('cloud_play_list').put('all_playlist', rawJson);
         }
       } on AppwriteException catch (e) {
         return e.message;

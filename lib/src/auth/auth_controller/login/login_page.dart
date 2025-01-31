@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    log(authController.loggedInUser.value?.email.toString() ?? "");
+    log(authController.loggedInUser.value?.email.toString() ?? '');
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -40,16 +40,16 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const Gap(20),
                   const Text(
-                    "Welcome to\nAl Quran Tafsir and Audio",
+                    'Welcome to\nAl Quran Tafsir and Audio',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Gap(5),
-                  const Text("Get the best experience by logging in"),
+                  const Gap(5),
+                  const Text('Get the best experience by logging in'),
                   Text(
-                    "You can save your favorite groups, playlists, notes and history to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.",
+                    'You can save your favorite groups, playlists, notes and history to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.grey.shade600,
@@ -57,32 +57,32 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const Gap(20),
                   const Text(
-                    "Email",
+                    'Email',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextFormField(
                     controller: emailController,
                     decoration: const InputDecoration(
-                      hintText: "type your email...",
+                      hintText: 'type your email...',
                     ),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
-                      if (EmailValidator.validate(value ?? "")) {
+                      if (EmailValidator.validate(value ?? '')) {
                         return null;
                       } else {
-                        return "Please enter a valid email";
+                        return 'Please enter a valid email';
                       }
                     },
                   ),
                   const Gap(10),
                   const Text(
-                    "Password",
+                    'Password',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextFormField(
                     controller: passwordController,
                     decoration: const InputDecoration(
-                      hintText: "type your password...",
+                      hintText: 'type your password...',
                     ),
                     obscureText: true,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (value!.length >= 6) {
                         return null;
                       } else {
-                        return "Password must be at least 6 characters";
+                        return 'Password must be at least 6 characters';
                       }
                     },
                   ),
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (error != null) {
                           toastification.show(
                             context: context,
-                            title: const Text("Login unsuccessful"),
+                            title: const Text('Login unsuccessful'),
                             description: Text(error),
                             type: ToastificationType.error,
                             autoCloseDuration: const Duration(seconds: 5),
@@ -125,9 +125,9 @@ class _LoginPageState extends State<LoginPage> {
                         } else {
                           toastification.show(
                             context: context,
-                            title: const Text("Login successful"),
+                            title: const Text('Login successful'),
                             description:
-                                const Text("You have successfully logged in"),
+                                const Text('You have successfully logged in'),
                             type: ToastificationType.success,
                             autoCloseDuration: const Duration(seconds: 3),
                           );
@@ -135,19 +135,19 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       },
                       child: isLoggingAsync
-                          ? Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: const CircularProgressIndicator(
+                          ? const Padding(
+                              padding: EdgeInsets.all(3.0),
+                              child: CircularProgressIndicator(
                                 color: Colors.white,
                               ),
                             )
-                          : const Text("Login"),
+                          : const Text('Login'),
                     ),
                   ),
                   const Gap(5),
                   Center(
                       child: Text(
-                    "Or",
+                    'Or',
                     style: TextStyle(color: Colors.grey.shade600),
                   )),
                   const Gap(5),
@@ -173,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (error != null) {
                           toastification.show(
                             context: context,
-                            title: const Text("Signup unsuccessful"),
+                            title: const Text('Signup unsuccessful'),
                             description: Text(error),
                             type: ToastificationType.error,
                             autoCloseDuration: const Duration(seconds: 5),
@@ -181,9 +181,9 @@ class _LoginPageState extends State<LoginPage> {
                         } else {
                           toastification.show(
                             context: context,
-                            title: const Text("Signup successful"),
+                            title: const Text('Signup successful'),
                             description:
-                                const Text("You have successfully signed up"),
+                                const Text('You have successfully signed up'),
                             type: ToastificationType.success,
                             autoCloseDuration: const Duration(seconds: 3),
                           );
@@ -191,13 +191,13 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       },
                       child: isSigningAsync
-                          ? Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: const CircularProgressIndicator(
+                          ? const Padding(
+                              padding: EdgeInsets.all(3.0),
+                              child: CircularProgressIndicator(
                                 color: Colors.white,
                               ),
                             )
-                          : const Text("Sign Up"),
+                          : const Text('Sign Up'),
                     ),
                   ),
                 ],

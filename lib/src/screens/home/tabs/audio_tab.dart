@@ -29,8 +29,8 @@ class _AudioTabState extends State<AudioTab> {
   final UniversalController universalController = Get.find();
   final AppThemeData themeController = Get.find<AppThemeData>();
   final ScrollController scrollController = ScrollController();
-  final userDB = Hive.box("user_db");
-  final quranDB = Hive.box("quran_db");
+  final userDB = Hive.box('user_db');
+  final quranDB = Hive.box('quran_db');
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class _AudioTabState extends State<AudioTab> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Text(
-                    "Reciter",
+                    'Reciter',
                     style: TextStyle(
                       fontSize: 14,
                     ),
@@ -103,7 +103,7 @@ class _AudioTabState extends State<AudioTab> {
                           }
                         }
                       },
-                      child: const Text("Change"),
+                      child: const Text('Change'),
                     ),
                   ),
                 ],
@@ -137,7 +137,7 @@ class _AudioTabState extends State<AudioTab> {
                         children: [
                           Row(
                             children: [
-                              const Text("Adding to"),
+                              const Text('Adding to'),
                               const Gap(5),
                               Text(
                                 homePageController.nameOfEditingPlaylist.value,
@@ -153,7 +153,7 @@ class _AudioTabState extends State<AudioTab> {
                             child: Row(
                               children: [
                                 Text(
-                                    "Selected: ${homePageController.selectedForPlaylist.length}"),
+                                    'Selected: ${homePageController.selectedForPlaylist.length}'),
                                 const Spacer(),
                                 const Gap(5),
                                 OutlinedButton.icon(
@@ -168,7 +168,7 @@ class _AudioTabState extends State<AudioTab> {
                                         .clear();
                                   },
                                   icon: const Icon(Icons.close),
-                                  label: const Text("Cancel"),
+                                  label: const Text('Cancel'),
                                 ),
                                 const Gap(5),
                                 ElevatedButton.icon(
@@ -176,7 +176,7 @@ class _AudioTabState extends State<AudioTab> {
                                     addSelectedDataToPlayList(context);
                                   },
                                   icon: const Icon(Icons.done),
-                                  label: const Text("Done"),
+                                  label: const Text('Done'),
                                 ),
                               ],
                             ),
@@ -231,7 +231,7 @@ class _AudioTabState extends State<AudioTab> {
                             children: [
                               Text(
                                 ("${index + 1}. ${allChaptersInfo[index]['name_simple'] ?? ""}")
-                                    .replaceAll("-", " "),
+                                    .replaceAll('-', ' '),
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               Text(
@@ -347,8 +347,8 @@ class _AudioTabState extends State<AudioTab> {
                         listOfAyahsSpanText.addAll(
                           getTajweedTexSpan(
                             quranDB.get(
-                              "uthmani_tajweed/${ayahStart + currentAyahNumber}",
-                              defaultValue: "",
+                              'uthmani_tajweed/${ayahStart + currentAyahNumber}',
+                              defaultValue: '',
                             ),
                           ),
                         );
@@ -371,7 +371,7 @@ class _AudioTabState extends State<AudioTab> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.close)),
+                        icon: const Icon(Icons.close)),
                   )
                 ],
               );
@@ -388,7 +388,7 @@ class _AudioTabState extends State<AudioTab> {
     widget.tabController.jumpToPage(2);
     toastification.show(
       context: context,
-      title: const Text("Added to Playlist"),
+      title: const Text('Added to Playlist'),
       autoCloseDuration: const Duration(seconds: 2),
       type: ToastificationType.success,
     );
@@ -399,7 +399,7 @@ class _AudioTabState extends State<AudioTab> {
     final box = Hive.box('play_list');
     List<PlayListModel> favoriteListModel = [];
     List<String> favoriteList =
-        List<String>.from(box.get("Favorite", defaultValue: []));
+        List<String>.from(box.get('Favorite', defaultValue: []));
     bool isExitsInFavorite = false;
 
     for (String favorite in favoriteList) {
@@ -415,12 +415,12 @@ class _AudioTabState extends State<AudioTab> {
     return PopupMenuButton(
       borderRadius: BorderRadius.circular(7),
       onSelected: (value) async {
-        if (value == "Favorite") {
+        if (value == 'Favorite') {
           await addOrRemoveFavorite(
               favoriteListModel, isExitsInFavorite, currentPlayModel, context);
-        } else if (value == "Playlist") {
+        } else if (value == 'Playlist') {
           List<String> playListName =
-              List<String>.from(Hive.box("play_list").keys.toList());
+              List<String>.from(Hive.box('play_list').keys.toList());
           await showDialog(
             context: context,
             builder: (context) {
@@ -433,7 +433,7 @@ class _AudioTabState extends State<AudioTab> {
                     children: [
                       const Gap(10),
                       const Text(
-                        "Add to",
+                        'Add to',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -465,7 +465,7 @@ class _AudioTabState extends State<AudioTab> {
                                 if (isAlreadyExits) {
                                   toastification.show(
                                     context: context,
-                                    title: const Text("Already Exits"),
+                                    title: const Text('Already Exits'),
                                     type: ToastificationType.info,
                                     autoCloseDuration:
                                         const Duration(seconds: 2),
@@ -480,7 +480,7 @@ class _AudioTabState extends State<AudioTab> {
                                   toastification.show(
                                     context: context,
                                     title: Text(
-                                      "Successfully added to ${playListName[index]}",
+                                      'Successfully added to ${playListName[index]}',
                                     ),
                                     autoCloseDuration:
                                         const Duration(seconds: 3),
@@ -507,7 +507,7 @@ class _AudioTabState extends State<AudioTab> {
       itemBuilder: (context) {
         return [
           PopupMenuItem(
-            value: "Favorite",
+            value: 'Favorite',
             child: Row(
               children: [
                 Icon(
@@ -521,12 +521,12 @@ class _AudioTabState extends State<AudioTab> {
             ),
           ),
           const PopupMenuItem(
-            value: "Playlist",
+            value: 'Playlist',
             child: Row(
               children: [
                 Icon(Icons.playlist_add_rounded),
                 Gap(7),
-                Text("Add to Playlist"),
+                Text('Add to Playlist'),
               ],
             ),
           ),
@@ -554,7 +554,7 @@ class _AudioTabState extends State<AudioTab> {
       bool isExitsInFavorite,
       PlayListModel currentPlayModel,
       BuildContext context) async {
-    homePageController.nameOfEditingPlaylist.value = "Favorite";
+    homePageController.nameOfEditingPlaylist.value = 'Favorite';
     homePageController.selectedForPlaylist.value = favoriteListModel;
     if (isExitsInFavorite) {
       homePageController.selectedForPlaylist.removeWhere((element) =>
@@ -579,7 +579,7 @@ class _AudioTabState extends State<AudioTab> {
   }
 
   List<PlayListModel> getPlayList(String playListName) {
-    final box = Hive.box("play_list");
+    final box = Hive.box('play_list');
     List<PlayListModel> playlistModels = [];
     List<String> rawPlayModelsList =
         List<String>.from(box.get(playListName, defaultValue: []));
@@ -621,7 +621,7 @@ Widget getPlayButton(
 
         return IconButton(
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             iconColor: Colors.green.shade600,
           ),
           onPressed: () {
@@ -691,7 +691,7 @@ Widget getPlayButton(
                         strokeWidth: 2,
                       ),
                     )
-                  : Icon(
+                  : const Icon(
                       Icons.play_arrow_rounded,
                     ),
         );
@@ -703,7 +703,7 @@ Widget getPlayButton(
           foregroundColor: Colors.white,
           padding: EdgeInsets.zero,
         ),
-        tooltip: "Play or Pause",
+        tooltip: 'Play or Pause',
         icon: (isPlaying)
             ? const Icon(Icons.pause_rounded)
             : (isLoading)

@@ -50,7 +50,7 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Translation Book".tr,
+          'Translation Book'.tr,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         ),
         actions: [
@@ -60,17 +60,17 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                 : TextButton.icon(
                     onPressed: () async {
                       if (infoController.translationLanguage.value.isNotEmpty) {
-                        final dataBox = Hive.box("data");
-                        final infoBox = Hive.box("user_db");
+                        final dataBox = Hive.box('data');
+                        final infoBox = Hive.box('user_db');
                         String bookTranslationID =
                             infoController.bookIDTranslation.value;
                         if (bookTranslationID ==
-                            infoBox.get("info")['translation_book_ID']) {
+                            infoBox.get('info')['translation_book_ID']) {
                           showDialog(
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: const Text("Wrong Selection"),
+                                title: const Text('Wrong Selection'),
                                 content: const Text(
                                     "Your selection can't matched with the previous selection."),
                                 actions: [
@@ -78,7 +78,7 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: const Text("OK"),
+                                    child: const Text('OK'),
                                   )
                                 ],
                               );
@@ -87,16 +87,16 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                           return;
                         }
 
-                        dataBox.put("translation", false);
+                        dataBox.put('translation', false);
                         setState(() {
                           downloading = true;
                         });
 
-                        final translationDB = Hive.box("translation_db");
+                        final translationDB = Hive.box('translation_db');
                         String translationBookID =
                             infoController.bookIDTranslation.value;
                         if (translationDB.keys
-                            .contains("$translationBookID/1")) {
+                            .contains('$translationBookID/1')) {
                         } else {
                           String url = getURLusingTranslationID(
                               int.parse(translationBookID.trim()));
@@ -111,23 +111,23 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                                 List<String>.from(jsonDecode(decodedText));
                             for (int i = 0; i < decodedJson.length; i++) {
                               await translationDB.put(
-                                  "$translationBookID/$i", decodedJson[i]);
+                                  '$translationBookID/$i', decodedJson[i]);
                             }
                           }
                         }
 
                         final info =
-                            infoBox.get("selection_info", defaultValue: false);
+                            infoBox.get('selection_info', defaultValue: false);
                         info['translation_book_ID'] =
                             bookTranslationID.toString();
                         info['translation_language'] =
                             infoController.translationLanguage.value;
-                        infoBox.put("selection_info", info);
+                        infoBox.put('selection_info', info);
 
                         Get.offAll(() => const HomePage());
                         toastification.show(
                           context: context,
-                          title: Text("Successful"),
+                          title: const Text('Successful'),
                           type: ToastificationType.success,
                           autoCloseDuration: const Duration(seconds: 2),
                         );
@@ -136,13 +136,13 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text("Select a Book First"),
+                              title: const Text('Select a Book First'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: const Text("OK"),
+                                  child: const Text('OK'),
                                 ),
                               ],
                             );
@@ -155,7 +155,7 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                       color: Colors.green,
                     ),
                     label: const Text(
-                      "Done",
+                      'Done',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.green,

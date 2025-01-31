@@ -50,8 +50,8 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
   AudioController audioController = ManageQuranAudio.audioController;
   final themeController = Get.put(AppThemeData());
 
-  final userDB = Hive.box("user_db");
-  final quranDB = Hive.box("quran_db");
+  final userDB = Hive.box('user_db');
+  final quranDB = Hive.box('quran_db');
 
   ScrollController scrollController = ScrollController();
 
@@ -69,8 +69,8 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
       builder: (context, value) {
         return Obx(
           () {
-            bool isDark = (themeController.themeModeName.value == "dark" ||
-                (themeController.themeModeName.value == "system" &&
+            bool isDark = (themeController.themeModeName.value == 'dark' ||
+                (themeController.themeModeName.value == 'system' &&
                     MediaQuery.of(context).platformBrightness ==
                         Brightness.dark));
             Color colorToApply = isDark ? Colors.white : Colors.grey.shade900;
@@ -179,8 +179,8 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
             listOfAyahsSpanText.addAll(
               getTajweedTexSpan(
                 quranDB.get(
-                  "uthmani_tajweed/${ayahStart + currentAyahNumber}",
-                  defaultValue: "",
+                  'uthmani_tajweed/${ayahStart + currentAyahNumber}',
+                  defaultValue: '',
                 ),
               ),
             );
@@ -234,7 +234,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
               ManageQuranAudio.audioPlayer.seek(duration);
             },
           ),
-          Gap(5),
+          const Gap(5),
           Row(
             children: [
               SizedBox(
@@ -256,7 +256,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                     value: audioController.currentPlayingAyah.value.toDouble(),
                     onChanged: (value) {
                       ManageQuranAudio.audioPlayer
-                          .seek(Duration(seconds: 0), index: value.toInt());
+                          .seek(const Duration(seconds: 0), index: value.toInt());
                     },
                     max: audioController.totalAyah.value.toDouble() - 1,
                     min: 0,
@@ -279,7 +279,7 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
               ),
             ],
           ),
-          Gap(5),
+          const Gap(5),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -471,10 +471,10 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                     ),
                     onPressed: () async {
                       await ManageQuranAudio.audioPlayer.stop();
-                      await Future.delayed(Duration(milliseconds: 200));
+                      await Future.delayed(const Duration(milliseconds: 200));
                       audioController.isReadyToControl.value = false;
                     },
-                    icon: Icon(Icons.close_rounded),
+                    icon: const Icon(Icons.close_rounded),
                   ),
                 ),
               ],

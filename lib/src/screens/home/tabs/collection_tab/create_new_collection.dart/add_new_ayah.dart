@@ -39,9 +39,9 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
     return Scaffold(
       appBar: AppBar(
         title: surahName == null
-            ? Text("Select Ayah")
+            ? const Text('Select Ayah')
             : Text(
-                "$surahName ${(selectedSurahNumber ?? 0) + 1}:${(selectedAyahNumber ?? 0) + 1} "),
+                '$surahName ${(selectedSurahNumber ?? 0) + 1}:${(selectedAyahNumber ?? 0) + 1} '),
         actions: [
           if (selectedSurahNumber != null &&
               selectedAyahNumber != null &&
@@ -51,11 +51,11 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
               child: ElevatedButton.icon(
                   onPressed: () {
                     Get.back(
-                      result: "$selectedSurahNumber:$selectedAyahNumber",
+                      result: '$selectedSurahNumber:$selectedAyahNumber',
                     );
                   },
-                  icon: Icon(Icons.add),
-                  label: Text("Add")),
+                  icon: const Icon(Icons.add),
+                  label: const Text('Add')),
             )
         ],
       ),
@@ -68,19 +68,19 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
               padding: const EdgeInsets.all(10.0),
               child: DropdownButtonFormField(
                 value: selectedSurahNumber,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Select Surah",
+                  hintText: 'Select Surah',
                 ),
                 menuMaxHeight: MediaQuery.of(context).size.height * 0.5,
                 items: List.generate(
                   114,
                   (index) {
-                    String surahName = allChaptersInfo[index]["name_simple"];
+                    String surahName = allChaptersInfo[index]['name_simple'];
                     return DropdownMenuItem(
                       value: index,
                       child: Text(
-                        "${index + 1}. $surahName",
+                        '${index + 1}. $surahName',
                       ),
                     );
                   },
@@ -92,7 +92,7 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
 
                   setState(() {
                     selectedSurahNumber = value;
-                    surahName = allChaptersInfo[value!]["name_simple"];
+                    surahName = allChaptersInfo[value!]['name_simple'];
                   });
                 },
               ),
@@ -102,9 +102,9 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
                 padding: const EdgeInsets.all(10.0),
                 child: DropdownButtonFormField(
                   value: selectedAyahNumber,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "Select Ayah Number",
+                    hintText: 'Select Ayah Number',
                   ),
                   menuMaxHeight: MediaQuery.of(context).size.height * 0.5,
                   items: List.generate(
@@ -113,7 +113,7 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
                       return DropdownMenuItem(
                         value: index,
                         child: Text(
-                          "${index + 1}",
+                          '${index + 1}',
                         ),
                       );
                     },
@@ -139,12 +139,12 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
                   showAyahNumber: false,
                 ),
               ),
-            Gap(15),
+            const Gap(15),
             if (selectedSurahNumber != null && selectedAyahNumber != null)
-              Padding(
-                padding: const EdgeInsets.all(10.0),
+              const Padding(
+                padding: EdgeInsets.all(10.0),
                 child: Text(
-                  "Tafsir",
+                  'Tafsir',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),
@@ -157,8 +157,8 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
                     alpha: 0.2,
                   ),
                 ),
-                padding: EdgeInsets.all(7),
-                margin: EdgeInsets.all(7),
+                padding: const EdgeInsets.all(7),
+                margin: const EdgeInsets.all(7),
                 child: TafsirView(
                   ayahNumber: ayahStartFormSurah(selectedSurahNumber!) +
                       selectedAyahNumber!,
@@ -176,12 +176,12 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
 String getTranslationBookName(InfoController infoController) {
   log(infoController.bookIDTranslation.value);
   for (Map translation in allTranslationLanguage) {
-    if (translation["id"] ==
+    if (translation['id'] ==
         int.parse(infoController.bookIDTranslation.value)) {
       return "${translation["name"]} by ${translation["author_name"]}";
     }
   }
-  return "";
+  return '';
 }
 
 int ayahStartFormSurah(int surahNumber) {
