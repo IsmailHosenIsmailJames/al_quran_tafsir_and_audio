@@ -308,19 +308,28 @@ class _CollectionTabState extends State<CollectionTab> {
       itemCount: collectionController.collectionList.length + 1,
       itemBuilder: (context, index) {
         if (index == 0) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 5),
-            child: OutlinedButton(
-              onPressed: () async {
-                await Get.to(
-                  () => const CreateNewCollectionPage(
-                    previousData: null,
-                  ),
-                );
-                setState(() {});
-              },
-              child: Text("Create New Group"),
-            ),
+          return Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(top: 10, bottom: 5),
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () async {
+                    await Get.to(
+                      () => const CreateNewCollectionPage(
+                        previousData: null,
+                      ),
+                    );
+                    setState(() {});
+                  },
+                  child: Text("Create New Group"),
+                ),
+              ),
+              if (collectionController.collectionList.isEmpty)
+                Gap(MediaQuery.of(context).size.height * 0.3),
+              if (collectionController.collectionList.isEmpty)
+                const Text("No groups found"),
+            ],
           );
         }
         CollectionInfoModel currentCollection =
