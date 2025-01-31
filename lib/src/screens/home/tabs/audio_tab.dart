@@ -356,6 +356,7 @@ class _AudioTabState extends State<AudioTab> {
 
                       return Text.rich(
                         TextSpan(children: listOfAyahsSpanText),
+                        textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontSize: universalController.fontSizeArabic.value,
                         ),
