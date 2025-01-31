@@ -63,117 +63,123 @@ class _AllNotesState extends State<AllNotes> {
                   ),
                 ),
                 width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Ayahs:",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Gap(8),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: List.generate(
-                        notesModel.ayahsKey.length,
-                        (index) {
-                          String ayahKey = notesModel.ayahsKey[index];
-                          QuranSurahInfoModel? quranSurahInfoModel =
-                              QuranSurahInfoModel.fromMap(allChaptersInfo[
-                                  int.parse(ayahKey.split(":")[0])]);
-                          return Text(
-                            "${quranSurahInfoModel.nameSimple}, Ayah: ${(notesModel.ayahsKey[index].split(":")[1])} ",
-                          );
-                        },
-                      ),
-                    ),
-                    Divider(),
-                    Text(
-                      "Note:",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Gap(8),
-                    Expanded(
-                      child: Scrollbar(
-                        child: QuillEditor.basic(
-                          controller: controller,
-                          config: QuillEditorConfig(
-                            checkBoxReadOnly: true,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () async {
-                            await Get.to(
-                              () => TakeNotePage(
-                                previousData: notesModel,
-                              ),
-                            );
-                            setState(() {});
-                          },
-                          icon: Icon(
-                            Icons.edit,
-                            color: Colors.green,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                insetPadding: EdgeInsets.all(10),
-                                title: Text("Are you sure?"),
-                                content:
-                                    Text("Once deleted, it can't be recovered"),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      notesDB.deleteAt(index);
-                                      Navigator.pop(context);
-                                      setState(() {});
-                                      showTwoestedMessage(
-                                        "Deleted successfully",
-                                        ToastificationType.success,
-                                      );
-                                    },
-                                    child: Text(
-                                      "Yes",
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: Text("No"),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.red,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                child: getNotesWidget(notesModel, controller, context, index),
               );
             },
           ),
+        ),
+      ],
+    );
+  }
+
+  Column getNotesWidget(NotesModel notesModel, QuillController controller,
+      BuildContext context, int index) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Ayahs:",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+        Gap(8),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: List.generate(
+            notesModel.ayahsKey.length,
+            (index) {
+              String ayahKey = notesModel.ayahsKey[index];
+              QuranSurahInfoModel? quranSurahInfoModel =
+                  QuranSurahInfoModel.fromMap(
+                      allChaptersInfo[int.parse(ayahKey.split(":")[0])]);
+              return Text(
+                "${quranSurahInfoModel.nameSimple}, Ayah: ${(notesModel.ayahsKey[index].split(":")[1])} ",
+              );
+            },
+          ),
+        ),
+        Divider(),
+        Text(
+          "Note:",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+        Gap(8),
+        Expanded(
+          child: Scrollbar(
+            child: QuillEditor.basic(
+              controller: controller,
+              config: QuillEditorConfig(
+                checkBoxReadOnly: true,
+              ),
+            ),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            IconButton(
+              onPressed: () async {
+                await Get.to(
+                  () => TakeNotePage(
+                    previousData: notesModel,
+                  ),
+                );
+                setState(() {});
+              },
+              icon: Icon(
+                Icons.edit,
+                color: Colors.green,
+              ),
+            ),
+            IconButton(
+              onPressed: () => showDialog(
+                context: context,
+                builder: (context) => getDeleteAlertPopup(index, context),
+              ),
+              icon: Icon(
+                Icons.delete,
+                color: Colors.red,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  AlertDialog getDeleteAlertPopup(int index, BuildContext context) {
+    return AlertDialog(
+      insetPadding: EdgeInsets.all(10),
+      title: Text("Are you sure?"),
+      content: Text("Once deleted, it can't be recovered"),
+      actions: [
+        TextButton(
+          onPressed: () {
+            notesDB.deleteAt(index);
+            Navigator.pop(context);
+            setState(() {});
+            showTwoestedMessage(
+              "Deleted successfully",
+              ToastificationType.success,
+            );
+          },
+          child: Text(
+            "Yes",
+            style: TextStyle(
+              color: Colors.red,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text("No"),
         ),
       ],
     );
