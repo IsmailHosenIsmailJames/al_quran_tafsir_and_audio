@@ -63,7 +63,7 @@ class _TafsirLanguageState extends State<TafsirLanguage> {
                 );
               },
               child: const Text(
-                'NEXT',
+                'Next',
                 style: TextStyle(
                   color: Colors.green,
                   fontSize: 20,

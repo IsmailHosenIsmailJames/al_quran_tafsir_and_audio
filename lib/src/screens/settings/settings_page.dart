@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tafsir_language.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_translation_language.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
@@ -43,6 +44,18 @@ class _SettingsPageState extends State<SettingsPage> {
         translationLanguage = translation['language_name'];
       }
     }
+
+    String tafsirBookName = '';
+    String tafsirWriter = '';
+    String tafsirLanguage = '';
+    for (Map tafsir in allTafsir) {
+      if ("${tafsir['id']}" == infoController.tafsirBookID.value) {
+        tafsirBookName = '${tafsir['name']}';
+        tafsirWriter = tafsir['author_name'];
+        tafsirLanguage = tafsir['language_name'];
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Row(
@@ -291,11 +304,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       Text(
                         translationBookName,
-                        style: const TextStyle(fontSize: 14),
+                        style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),
                       Text(
-                        'Translator',
+                        'Author',
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
@@ -317,8 +330,76 @@ class _SettingsPageState extends State<SettingsPage> {
                   TextButton(
                     onPressed: () async {
                       await Get.to(
-                        () => TranslationLanguage(
+                        () => const TranslationLanguage(
                           showNextButtonOnAppBar: true,
+                        ),
+                      );
+                      setState(() {});
+                    },
+                    child: const Text(
+                      'Change',
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const Gap(15),
+            const Text(
+              'Tafsir Book',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            const Gap(10),
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+                color: Colors.grey.withValues(alpha: 0.1),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Book Name',
+                        style: TextStyle(color: Colors.grey.shade400),
+                      ),
+                      Text(
+                        tafsirBookName,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      const Gap(5),
+                      Text(
+                        'Author',
+                        style: TextStyle(color: Colors.grey.shade400),
+                      ),
+                      Text(
+                        tafsirWriter,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      const Gap(5),
+                      Text(
+                        'Language',
+                        style: TextStyle(color: Colors.grey.shade400),
+                      ),
+                      Text(
+                        tafsirLanguage.capitalizeFirst,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () async {
+                      await Get.to(
+                        () => const TafsirLanguage(
+                          showAppBarNextButton: true,
                         ),
                       );
                       setState(() {});

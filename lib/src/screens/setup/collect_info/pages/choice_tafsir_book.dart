@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/files/functions.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -55,17 +54,19 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
         actions: [
           if (widget.showDownloadOnAppbar == true)
             downloading
-                ? const CircularProgressIndicator()
+                ? const Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: CircularProgressIndicator(),
+                  )
                 : TextButton.icon(
                     onPressed: () async {
                       if (infoController.tafsirBookIndex.value != -1) {
                         String tafsirBookID = infoController.tafsirBookID.value;
                         debugPrint(tafsirBookID);
                         // return;
-                        final dataBox = Hive.box('data');
                         final infoBox = Hive.box('user_db');
                         if (tafsirBookID ==
-                            infoBox.get('info')['tafsir_book_ID']) {
+                            infoBox.get('selection_info')['tafsir_book_ID']) {
                           showDialog(
                             context: context,
                             builder: (context) {
@@ -87,7 +88,6 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                           return;
                         }
 
-                        dataBox.put('tafsir', false);
                         setState(() {
                           downloading = true;
                         });
@@ -105,7 +105,8 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                           if (response.statusCode == 200) {
                             String text = response.body;
 
-                            String decodedText = decompressStringWithGZip(text);
+                            String decodedText =
+                                decompressServerDataWithBZip2(text);
 
                             List<String> decodedJson =
                                 List<String>.from(jsonDecode(decodedText));
@@ -121,7 +122,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                                 infoController.tafsirLanguage.value;
                             infoBox.put('selection_info', info);
 
-                            Get.offAll(() => const HomePage());
+                            Get.back();
                             toastification.show(
                               context: context,
                               title: const Text(
