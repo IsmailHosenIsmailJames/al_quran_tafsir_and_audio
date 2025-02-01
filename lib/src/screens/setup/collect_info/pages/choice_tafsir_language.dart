@@ -86,36 +86,41 @@ class _TafsirLanguageState extends State<TafsirLanguage> {
                 : null;
           }
           nativeSpelling ??= language[index];
-          return TextButton(
-            style: TextButton.styleFrom(
-              padding:
-                  const EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-              backgroundColor: Colors.green.shade400.withOpacity(0.1),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(7),
+          return Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green.shade400.withOpacity(0.1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7),
+                ),
               ),
-            ),
-            onPressed: () {
-              int value = index;
-              tafsirLanguage.tafsirIndex.value = value;
-              tafsirLanguage.tafsirLanguage.value = language[value];
-            },
-            child: Obx(
-              () => Row(
-                children: [
-                  Text(nativeSpelling ?? language[index],
-                      style: const TextStyle(fontSize: 14)),
-                  const Spacer(),
-                  if (tafsirLanguage.tafsirIndex.value == index)
-                    const CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Colors.green,
-                      child: Icon(
-                        Icons.done,
-                        color: Colors.white,
-                      ),
-                    ),
-                ],
+              onPressed: () {
+                int value = index;
+                tafsirLanguage.tafsirIndex.value = value;
+                tafsirLanguage.tafsirLanguage.value = language[value];
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 10, right: 10, bottom: 10, top: 10),
+                child: Obx(
+                  () => Row(
+                    children: [
+                      Text(nativeSpelling ?? language[index],
+                          style: const TextStyle(fontSize: 14)),
+                      const Spacer(),
+                      if (tafsirLanguage.tafsirIndex.value == index)
+                        const CircleAvatar(
+                          radius: 15,
+                          backgroundColor: Colors.green,
+                          child: Icon(
+                            Icons.done,
+                            color: Colors.white,
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               ),
             ),
           );

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/widget_audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/audio_tracting.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/audio_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
@@ -10,7 +11,6 @@ import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dar
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/common/tajweed_scripts_composer.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/info_view/info_view.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/models/surah_view_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/tafsir_view/tafsir_view.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/notes/take_note_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/language_controller.dart';
@@ -24,15 +24,15 @@ import 'package:toastification/toastification.dart';
 
 class SurahView extends StatefulWidget {
   final int? jumpToAyah;
-  final int? ayahStartFrom;
-  final String titleToShow;
-  final SurahViewInfoModel surahInfo;
+  final String? titleToShow;
+  final int ayahStart;
+  final int ayahEnd;
   const SurahView({
     super.key,
-    required this.surahInfo,
     this.jumpToAyah,
     required this.titleToShow,
-    required this.ayahStartFrom,
+    required this.ayahStart,
+    required this.ayahEnd,
   });
 
   @override
@@ -44,8 +44,7 @@ class _SurahViewState extends State<SurahView> {
   UniversalController universalController = Get.find();
   LanguageController languageController = Get.find();
   String translationBookName = '';
-  late int totalAyah = widget.surahInfo.ayahCount;
-  late int initialAyahID = widget.surahInfo.start;
+  late int totalAyah = widget.ayahEnd - widget.ayahStart;
 
   ScrollController tab1ScrollController = ScrollController();
   ScrollController tab2ScrollController = ScrollController();
@@ -63,8 +62,7 @@ class _SurahViewState extends State<SurahView> {
             "${translation['name']} by ${translation['author_name']}";
       }
     }
-    int ayahCount = widget.surahInfo.ayahCount;
-    for (int i = 0; i < ayahCount; i++) {
+    for (int i = 0; i < totalAyah; i++) {
       items.add(GlobalKey());
     }
     super.initState();
@@ -75,7 +73,7 @@ class _SurahViewState extends State<SurahView> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.titleToShow),
+        title: Text(widget.titleToShow ?? 'Surah View'),
         actions: [
           IconButton(
             onPressed: () async {
@@ -203,8 +201,10 @@ class _SurahViewState extends State<SurahView> {
                 onPageChanged: (value) =>
                     {universalController.surahViewTabIndex.value = value},
                 children: [
-                  getViewWithTranslation(),
-                  getViewWithOutTranslation()
+                  getViewWithTranslation(
+                      widget.ayahStart, widget.ayahEnd, tab1ScrollController),
+                  getViewWithOutTranslation(
+                      widget.ayahStart, widget.ayahEnd, tab2ScrollController),
                 ],
               ),
               Obx(
@@ -226,7 +226,39 @@ class _SurahViewState extends State<SurahView> {
     );
   }
 
-  Widget getViewWithOutTranslation() {
+  List<List<int>> divideAyahsByParts(initialAyahID, endAyahID) {
+    List<List<int>> toReturn = [];
+    List<int> listToInsert = [];
+    for (int i = initialAyahID; i < endAyahID; i++) {
+      int surahNumber = getSurahNumberFormAyahID(i);
+      QuranSurahInfoModel surahInfo =
+          QuranSurahInfoModel.fromMap(allChaptersInfo[surahNumber - 1]);
+      int ayahNumberInSurah = getAyahNumberInSurah(i, surahInfo);
+      if (ayahNumberInSurah == 0) {
+        if (listToInsert.isNotEmpty) {
+          toReturn.add(listToInsert.toSet().toList());
+        }
+        listToInsert.clear();
+      } else {
+        if (ayahNumberInSurah % 10 == 0) {
+          if (listToInsert.isNotEmpty) {
+            toReturn.add(listToInsert.toSet().toList());
+          }
+          listToInsert.clear();
+        }
+      }
+      listToInsert.add(i);
+    }
+    if (listToInsert.isNotEmpty) {
+      toReturn.add(listToInsert);
+    }
+    return toReturn;
+  }
+
+  Widget getViewWithOutTranslation(
+      int initialAyahID, int endAyahID, ScrollController tab2ScrollController) {
+    List<List<int>> divination = divideAyahsByParts(initialAyahID, endAyahID);
+
     return Scrollbar(
       controller: tab2ScrollController,
       interactive: true,
@@ -236,23 +268,33 @@ class _SurahViewState extends State<SurahView> {
         controller: tab2ScrollController,
         padding: const EdgeInsets.only(
           bottom: 100,
+          left: 5,
+          right: 5,
         ),
-        itemCount: (totalAyah / 10).ceil(),
+        itemCount: divination.length,
         itemBuilder: (context, index) {
-          int start = initialAyahID + (index * 10);
-          int end = start + 10;
+          List<int> currentAyahs = divination[index];
+          int currentAyahIndex = currentAyahs[0];
+          int surahNumber = getSurahNumberFormAyahID(currentAyahIndex);
+          QuranSurahInfoModel surahInfo =
+              QuranSurahInfoModel.fromMap(allChaptersInfo[surahNumber - 1]);
+          int ayahNumberInSurah =
+              getAyahNumberInSurah(currentAyahIndex, surahInfo);
+
           String ayah10 = '';
-          for (int i = start; i < end; i++) {
+          for (int i in currentAyahs) {
             ayah10 += Hive.box('quran_db').get(
-                '${universalController.quranScriptTypeGetx.value}/$i',
+                '${universalController.quranScriptTypeGetx.value}/${i + 1}',
                 defaultValue: '');
           }
 
           return Column(
             children: [
-              if (index == 0) getInfoHeaderWidget(),
-              if (widget.surahInfo.isStartWithBismillah != true) const Gap(10),
-              if (widget.surahInfo.isStartWithBismillah == true && index == 0)
+              if (ayahNumberInSurah == 0) const Gap(15),
+              if (ayahNumberInSurah == 0)
+                getInfoHeaderWidget(surahInfo, languageController),
+              if (surahInfo.bismillahPre != true) const Gap(10),
+              if (surahInfo.bismillahPre == true && index == 0)
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Obx(
@@ -292,7 +334,8 @@ class _SurahViewState extends State<SurahView> {
     );
   }
 
-  Widget getViewWithTranslation() {
+  Widget getViewWithTranslation(
+      int initialAyahID, int endAyahID, ScrollController tab1ScrollController) {
     return Scrollbar(
       controller: tab1ScrollController,
       interactive: true,
@@ -304,12 +347,18 @@ class _SurahViewState extends State<SurahView> {
         itemCount: totalAyah,
         itemBuilder: (context, index) {
           int currentAyahIndex = initialAyahID + index;
+          int surahNumber = getSurahNumberFormAyahID(currentAyahIndex);
+          QuranSurahInfoModel surahInfo =
+              QuranSurahInfoModel.fromMap(allChaptersInfo[surahNumber - 1]);
+          int ayahNumberInSurah =
+              getAyahNumberInSurah(currentAyahIndex, surahInfo);
 
-          if (index == 0) {
+          if (ayahNumberInSurah == 0) {
             return Column(
               children: [
-                getInfoHeaderWidget(),
-                if (widget.surahInfo.isStartWithBismillah == true)
+                const Gap(10),
+                getInfoHeaderWidget(surahInfo, languageController),
+                if (surahInfo.bismillahPre == true)
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Obx(
@@ -332,8 +381,8 @@ class _SurahViewState extends State<SurahView> {
                   index: index,
                   currentAyahIndex: currentAyahIndex,
                   infoController: infoController,
-                  ayahStartFrom: widget.ayahStartFrom,
-                  surahInfo: widget.surahInfo,
+                  ayahStartFrom: ayahNumberInSurah,
+                  surahInfo: surahInfo,
                   translationBookName: translationBookName,
                   universalController: universalController,
                 ),
@@ -345,8 +394,8 @@ class _SurahViewState extends State<SurahView> {
               index: index,
               currentAyahIndex: currentAyahIndex,
               infoController: infoController,
-              ayahStartFrom: widget.ayahStartFrom,
-              surahInfo: widget.surahInfo,
+              ayahStartFrom: ayahNumberInSurah,
+              surahInfo: surahInfo,
               translationBookName: translationBookName,
               universalController: universalController,
             );
@@ -355,118 +404,141 @@ class _SurahViewState extends State<SurahView> {
       ),
     );
   }
+}
 
-  Container getInfoHeaderWidget() {
-    return Container(
-      margin: const EdgeInsets.all(5),
-      padding: const EdgeInsets.all(5),
-      height: 110,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7),
-        color: Colors.green.shade700.withValues(alpha: 0.1),
-      ),
-      child: Row(
-        children: [
-          Container(
-            height: 100,
-            width: 100,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  widget.surahInfo.revelationPlace.capitalizeFirst == 'makkah'
-                      ? 'assets/img/makkah.jpg'
-                      : 'assets/img/madina.jpeg',
-                ),
-                fit: BoxFit.fill,
-              ),
-              borderRadius: BorderRadius.circular(5),
-            ),
-          ),
-          const Gap(10),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Surah Name',
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade500,
-                ),
-              ),
-              Text(
-                '${widget.surahInfo.surahNameSimple.capitalizeFirst} ( ${widget.surahInfo.surahNameArabic} )',
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'Revelation Place',
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade500,
-                ),
-              ),
-              Text(
-                "${widget.surahInfo.revelationPlace.capitalizeFirst} (${widget.surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          const Spacer(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(
-                width: 35,
-                height: 35,
-                child: IconButton(
-                  style: IconButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    backgroundColor: Colors.green.shade700,
-                    foregroundColor: Colors.white,
-                  ),
-                  onPressed: () {
-                    String url =
-                        'https://api.quran.com/api/v4/chapters/${widget.surahInfo.surahNumber}/info';
-                    String languageName =
-                        languageController.selectedLanguage.value;
-                    log(languageName);
-                    Get.to(
-                      () => InfoViewOfSurah(
-                        surahName:
-                            '${widget.surahInfo.surahNameSimple} ( ${widget.surahInfo.surahNameArabic} )',
-                        infoURL: url,
-                        languageName: languageName,
-                      ),
-                    );
-                  },
-                  icon: const Icon(
-                    FluentIcons.info_24_filled,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 35,
-                width: 35,
-                child: getPlayButton(
-                  widget.surahInfo.surahNumber - 1,
-                  audioController,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+int getSurahNumberFormAyahID(int ayahID) {
+  int totalAyah = 0;
+  int surahNumber = 1;
+  for (int i = 0; i < ayahCount.length; i++) {
+    totalAyah += ayahCount[i];
+    if (totalAyah > ayahID) {
+      surahNumber = i + 1;
+      break;
+    }
   }
+  return surahNumber;
+}
+
+int getAyahNumberInSurah(int ayahID, QuranSurahInfoModel surahInfo) {
+  int lastSumOfAyah = 0;
+  for (int i = 0; i < surahInfo.id; i++) {
+    lastSumOfAyah += ayahCount[i];
+  }
+  int toReturn = lastSumOfAyah - ayahID;
+  return surahInfo.versesCount - toReturn;
+}
+
+Container getInfoHeaderWidget(
+    QuranSurahInfoModel surahInfo, LanguageController languageController) {
+  return Container(
+    margin: const EdgeInsets.all(5),
+    padding: const EdgeInsets.all(5),
+    height: 110,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(7),
+      color: Colors.green.shade700.withValues(alpha: 0.1),
+    ),
+    child: Row(
+      children: [
+        Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                surahInfo.revelationPlace.capitalizeFirst == 'makkah'
+                    ? 'assets/img/makkah.jpg'
+                    : 'assets/img/madina.jpeg',
+              ),
+              fit: BoxFit.fill,
+            ),
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+        const Gap(10),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Surah Name',
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey.shade500,
+              ),
+            ),
+            Text(
+              '${surahInfo.nameSimple.capitalizeFirst} ( ${surahInfo.nameArabic} )',
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Revelation Place',
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey.shade500,
+              ),
+            ),
+            Text(
+              "${surahInfo.revelationPlace.capitalizeFirst} (${surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        const Spacer(),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              width: 35,
+              height: 35,
+              child: IconButton(
+                style: IconButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  backgroundColor: Colors.green.shade700,
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () {
+                  String url =
+                      'https://api.quran.com/api/v4/chapters/${surahInfo.id}/info';
+                  String languageName =
+                      languageController.selectedLanguage.value;
+                  log(languageName);
+                  Get.to(
+                    () => InfoViewOfSurah(
+                      surahName:
+                          '${surahInfo.nameSimple} ( ${surahInfo.nameArabic} )',
+                      infoURL: url,
+                      languageName: languageName,
+                    ),
+                  );
+                },
+                icon: const Icon(
+                  FluentIcons.info_24_filled,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 35,
+              width: 35,
+              child: getPlayButton(
+                surahInfo.id - 1,
+                audioController,
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
 }
 
 Container buildAyahWidget({
@@ -474,14 +546,14 @@ Container buildAyahWidget({
   required int index,
   required int currentAyahIndex,
   required InfoController infoController,
-  int? ayahStartFrom,
+  required int ayahStartFrom,
   required UniversalController universalController,
-  SurahViewInfoModel? surahInfo,
+  QuranSurahInfoModel? surahInfo,
   required String translationBookName,
   bool showAyahNumber = true,
 }) {
   final collectionBox = Hive.box('collections_db');
-  String ayahKey = '${surahInfo?.surahNumber}:${index + 1}';
+  String ayahKey = '${surahInfo?.id}:${index + 1}';
   return Container(
     key: key,
     width: double.infinity,
@@ -507,7 +579,7 @@ Container buildAyahWidget({
                       color: Colors.green.shade700.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(5)),
                   child: Text(
-                    (((ayahStartFrom ?? 1) - 1) + (index + 1)).toString(),
+                    (ayahStartFrom + 1).toString(),
                   ),
                 ),
               const Spacer(),
@@ -518,7 +590,7 @@ Container buildAyahWidget({
                   currentAyahIndex,
                   audioController,
                   relatedWithAyah: true,
-                  surahNumber: (surahInfo?.surahNumber ?? 1) - 1,
+                  surahNumber: (surahInfo?.id ?? 1) - 1,
                   indexOfAyahInSurah: index,
                 ),
               ),
@@ -584,7 +656,7 @@ SizedBox getPopUpMenu(
     int currentAyahIndex,
     InfoController infoController,
     UniversalController universalController,
-    SurahViewInfoModel? surahInfo,
+    QuranSurahInfoModel? surahInfo,
     Box<dynamic> collectionBox,
     String ayahKey) {
   return SizedBox(
@@ -603,7 +675,7 @@ SizedBox getPopUpMenu(
               ayahNumber: currentAyahIndex,
               tafsirBookID: infoController.tafsirBookID.value,
               fontSize: universalController.fontSizeTranslation.value,
-              surahName: surahInfo?.surahNameSimple,
+              surahName: surahInfo?.nameSimple,
             ),
           );
         } else if (value == 'bookmark' || value == 'favorite') {
@@ -640,7 +712,7 @@ SizedBox getPopUpMenu(
             defaultValue: '',
           );
           String subject =
-              "${surahInfo?.surahNameSimple ?? ""} ( ${surahInfo?.surahNameArabic ?? ""} ) - ${currentAyahIndex + 1}";
+              "${surahInfo?.nameSimple ?? ""} ( ${surahInfo?.nameArabic ?? ""} ) - ${currentAyahIndex + 1}";
           if (value == 'share') {
             Share.share(
               '$text\nTranslation:\n$trans\n\n$subject',
@@ -657,7 +729,7 @@ SizedBox getPopUpMenu(
         } else if (value == 'note') {
           Get.to(
             () => TakeNotePage(
-              surahNumber: surahInfo!.surahNumber,
+              surahNumber: surahInfo!.id,
               ayahNumber: currentAyahIndex,
             ),
           );

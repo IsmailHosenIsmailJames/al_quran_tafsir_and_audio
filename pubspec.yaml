@@ -14,8 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   just_audio: ^0.9.42
   just_audio_background: ^0.0.1-beta.14
-  media_kit_libs_windows_audio: ^1.0.9
-  media_kit_libs_linux: ^1.1.3
+  just_audio_mpv: any
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   dart_appwrite: ^12.1.0

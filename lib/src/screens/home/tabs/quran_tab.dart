@@ -2,7 +2,6 @@ import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_re
 import 'package:al_quran_tafsir_and_audio/src/resources/models/juz_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/models/surah_view_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/surah_view/surah_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -181,20 +180,9 @@ class _QuranTabState extends State<QuranTab> {
                           }
                           Get.to(
                             () => SurahView(
-                              ayahStartFrom: 1,
-                              surahInfo: SurahViewInfoModel(
-                                surahNumber: quranSurahInfoModel.id,
-                                start: start,
-                                end: quranSurahInfoModel.versesCount,
-                                ayahCount: quranSurahInfoModel.versesCount,
-                                surahNameArabic: quranSurahInfoModel.nameArabic,
-                                surahNameSimple: quranSurahInfoModel.nameSimple,
-                                revelationPlace:
-                                    quranSurahInfoModel.revelationPlace,
-                                isStartWithBismillah:
-                                    quranSurahInfoModel.bismillahPre,
-                              ),
+                              ayahStart: start,
                               titleToShow: quranSurahInfoModel.nameSimple,
+                              ayahEnd: start + quranSurahInfoModel.versesCount,
                             ),
                           );
                         },
@@ -349,7 +337,7 @@ class _QuranTabState extends State<QuranTab> {
                                 final key = juzInfoModel.verseMapping.keys
                                     .toList()[index];
                                 String value = juzInfoModel.verseMapping[key]!;
-                                int start = int.parse(value.split('-')[0]);
+                                int start = int.parse(value.split('-')[0]) - 1;
                                 int end = int.parse(value.split('-')[1]);
                                 int surahNumber = int.parse(key) - 1;
 
@@ -376,34 +364,16 @@ class _QuranTabState extends State<QuranTab> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      int startAyahNumber = 0;
+                                      int startAyahOfSurah = 0;
                                       for (int x = 0; x < surahNumber; x++) {
-                                        startAyahNumber += ayahCount[x];
+                                        startAyahOfSurah += ayahCount[x];
                                       }
                                       Get.to(
                                         () => SurahView(
-                                          ayahStartFrom: start,
-                                          surahInfo: SurahViewInfoModel(
-                                              surahNumber:
-                                                  quranSurahInfoModel.id,
-                                              start:
-                                                  startAyahNumber + start - 1,
-                                              end: startAyahNumber + end - 1,
-                                              ayahCount: (end - start) + 1,
-                                              surahNameArabic:
-                                                  quranSurahInfoModel
-                                                      .nameArabic,
-                                              surahNameSimple:
-                                                  quranSurahInfoModel
-                                                      .nameSimple,
-                                              revelationPlace:
-                                                  quranSurahInfoModel
-                                                      .revelationPlace,
-                                              isStartWithBismillah:
-                                                  quranSurahInfoModel
-                                                      .bismillahPre),
+                                          ayahStart: startAyahOfSurah + start,
                                           titleToShow:
                                               quranSurahInfoModel.nameSimple,
+                                          ayahEnd: startAyahOfSurah + end,
                                         ),
                                       );
                                     },
@@ -472,6 +442,7 @@ class _QuranTabState extends State<QuranTab> {
                 thickness: 7,
                 radius: const Radius.circular(10),
                 child: ListView.builder(
+                  padding: const EdgeInsets.only(bottom: 100),
                   controller: scrollControllerTab3,
                   itemCount: pagesInfo.length,
                   itemBuilder: (context, index) {
@@ -490,27 +461,10 @@ class _QuranTabState extends State<QuranTab> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          int start = 0;
-                          for (int i = 0; i < index; i++) {
-                            start += ayahCount[i];
-                          }
                           Get.to(
                             () => SurahView(
-                              ayahStartFrom: pagesInfo[index]['s'],
-                              surahInfo: SurahViewInfoModel(
-                                surahNumber: quranSurahInfoModel.id,
-                                start: pagesInfo[index]['s']!,
-                                end: pagesInfo[index]['e']!,
-                                ayahCount: pagesInfo[index]['e']! -
-                                    pagesInfo[index]['s']! +
-                                    1,
-                                surahNameArabic: quranSurahInfoModel.nameArabic,
-                                surahNameSimple: quranSurahInfoModel.nameSimple,
-                                revelationPlace:
-                                    quranSurahInfoModel.revelationPlace,
-                                isStartWithBismillah:
-                                    quranSurahInfoModel.bismillahPre,
-                              ),
+                              ayahStart: pagesInfo[index]['s']! - 1,
+                              ayahEnd: pagesInfo[index]['e']!,
                               titleToShow: quranSurahInfoModel.nameSimple,
                             ),
                           );
