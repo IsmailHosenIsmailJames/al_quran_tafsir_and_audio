@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/files/functions.dart';
-import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/controller/getx_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,8 +12,8 @@ import 'package:toastification/toastification.dart';
 import '../../info_controller/info_controller_getx.dart';
 
 class ChoiceTranslationBook extends StatefulWidget {
-  final bool? showDownloadOnAppbar;
-  const ChoiceTranslationBook({super.key, this.showDownloadOnAppbar});
+  final bool? showDownloadOnAppBar;
+  const ChoiceTranslationBook({super.key, this.showDownloadOnAppBar});
 
   @override
   State<ChoiceTranslationBook> createState() => _ChoiceTranslationStateBook();
@@ -54,18 +53,21 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         ),
         actions: [
-          if (widget.showDownloadOnAppbar == true)
+          if (widget.showDownloadOnAppBar == true)
             downloading
-                ? const CircularProgressIndicator()
-                : TextButton.icon(
+                ? const Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: CircularProgressIndicator(),
+                  )
+                : OutlinedButton.icon(
                     onPressed: () async {
                       if (infoController.translationLanguage.value.isNotEmpty) {
-                        final dataBox = Hive.box('data');
                         final infoBox = Hive.box('user_db');
                         String bookTranslationID =
                             infoController.bookIDTranslation.value;
                         if (bookTranslationID ==
-                            infoBox.get('info')['translation_book_ID']) {
+                            infoBox
+                                .get('selection_info')['translation_book_ID']) {
                           showDialog(
                             context: context,
                             builder: (context) {
@@ -87,7 +89,6 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                           return;
                         }
 
-                        dataBox.put('translation', false);
                         setState(() {
                           downloading = true;
                         });
@@ -106,7 +107,7 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                           if (response.statusCode == 200) {
                             String text = response.body;
                             String decodedText =
-                                decompressStringWithGZip2(text);
+                                decompressServerDataWithBZip2(text);
                             List<String> decodedJson =
                                 List<String>.from(jsonDecode(decodedText));
                             for (int i = 0; i < decodedJson.length; i++) {
@@ -124,7 +125,7 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                             infoController.translationLanguage.value;
                         infoBox.put('selection_info', info);
 
-                        Get.offAll(() => const HomePage());
+                        Get.back();
                         toastification.show(
                           context: context,
                           title: const Text('Successful'),
@@ -152,14 +153,9 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                     },
                     icon: const Icon(
                       Icons.done,
-                      color: Colors.green,
                     ),
                     label: const Text(
                       'Done',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.green,
-                      ),
                     ),
                   ),
         ],

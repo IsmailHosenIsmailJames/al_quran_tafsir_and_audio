@@ -105,15 +105,14 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                           if (response.statusCode == 200) {
                             String text = response.body;
 
-                            String decodedText =
-                                decompressStringWithGZip2(text);
+                            String decodedText = decompressStringWithGZip(text);
 
                             List<String> decodedJson =
                                 List<String>.from(jsonDecode(decodedText));
                             for (int i = 0; i < decodedJson.length; i++) {
                               await tafsirDB.put(
                                   '${infoController.tafsirBookID.value}/$i',
-                                  compressStringWithGZip2(decodedJson[i]));
+                                  compressStringWithGZip(decodedJson[i]));
                             }
                             final info = infoBox.get('selection_info',
                                 defaultValue: false);

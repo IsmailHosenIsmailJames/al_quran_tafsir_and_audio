@@ -106,7 +106,7 @@ class _DownloadDataState extends State<DownloadData> {
           await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
       if (response.statusCode == 200) {
         String text = response.body;
-        String decodedText = decompressServerDataWithGZip2(text);
+        String decodedText = decompressServerDataWithBZip2(text);
         List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
         for (int i = 0; i < decodedJson.length; i++) {
           await translationDB.put('$translationBookID/$i', decodedJson[i]);
@@ -145,7 +145,7 @@ class _DownloadDataState extends State<DownloadData> {
           processState = 'Processing tafsir...';
         });
 
-        String decodedText = decompressServerDataWithGZip2(text);
+        String decodedText = decompressServerDataWithBZip2(text);
         log('Decompressed Time : ${DateTime.now().difference(now).inMilliseconds}');
         now = DateTime.now();
         setState(() {
@@ -156,7 +156,7 @@ class _DownloadDataState extends State<DownloadData> {
         now = DateTime.now();
         for (int i = 0; i < decodedJson.length; i++) {
           await tafsirDB.put('${infoController.tafsirBookID.value}/$i',
-              compressStringWithGZip2(decodedJson[i]));
+              compressStringWithGZip(decodedJson[i]));
         }
         log('json decode Time : ${DateTime.now().difference(now).inMilliseconds}');
         now = DateTime.now();

@@ -55,7 +55,7 @@ class _TranslationLanguageState extends State<TranslationLanguage> {
         ),
         actions: [
           if (widget.showNextButtonOnAppBar == true)
-            TextButton(
+            OutlinedButton.icon(
               onPressed: () {
                 translationLanguageController.bookNameIndex.value = -1;
                 Navigator.pop(context);
@@ -63,19 +63,14 @@ class _TranslationLanguageState extends State<TranslationLanguage> {
                   context: context,
                   builder: (context) {
                     return const ChoiceTranslationBook(
-                      showDownloadOnAppbar: true,
+                      showDownloadOnAppBar: true,
                     );
                   },
                 );
               },
-              child: const Text(
-                'NEXT',
-                style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              iconAlignment: IconAlignment.end,
+              icon: const Icon(Icons.arrow_forward, size: 18),
+              label: const Text('Next'),
             )
         ],
       ),

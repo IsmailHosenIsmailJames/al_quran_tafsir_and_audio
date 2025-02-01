@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_translation_language.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -14,6 +15,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../../core/audio/controller/audio_controller.dart';
 import '../../functions/get_cached_file_size_of_audio.dart';
+import '../../resources/api_response/some_api_response.dart';
 import '../surah_view/common/tajweed_scripts_composer.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -28,8 +30,19 @@ class _SettingsPageState extends State<SettingsPage> {
   final appThemeDataController = Get.find<AppThemeData>();
   final universalController = Get.find<UniversalController>();
   final InfoController infoController = Get.find<InfoController>();
+
   @override
   Widget build(BuildContext context) {
+    String translationBookName = '';
+    String translationWriter = '';
+    String translationLanguage = '';
+    for (Map translation in allTranslationLanguage) {
+      if ("${translation['id']}" == infoController.bookIDTranslation.value) {
+        translationBookName = '${translation['name']}';
+        translationWriter = translation['author_name'];
+        translationLanguage = translation['language_name'];
+      }
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Row(
@@ -247,6 +260,74 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   textDirection: TextDirection.rtl,
                 ),
+              ),
+            ),
+            const Gap(15),
+            const Text(
+              'Translation Book',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            const Gap(10),
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+                color: Colors.grey.withValues(alpha: 0.1),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Book Name',
+                        style: TextStyle(color: Colors.grey.shade400),
+                      ),
+                      Text(
+                        translationBookName,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      const Gap(5),
+                      Text(
+                        'Translator',
+                        style: TextStyle(color: Colors.grey.shade400),
+                      ),
+                      Text(
+                        translationWriter,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      const Gap(5),
+                      Text(
+                        'Language',
+                        style: TextStyle(color: Colors.grey.shade400),
+                      ),
+                      Text(
+                        translationLanguage.capitalizeFirst,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () async {
+                      await Get.to(
+                        () => TranslationLanguage(
+                          showNextButtonOnAppBar: true,
+                        ),
+                      );
+                      setState(() {});
+                    },
+                    child: const Text(
+                      'Change',
+                    ),
+                  )
+                ],
               ),
             ),
             const Gap(15),
