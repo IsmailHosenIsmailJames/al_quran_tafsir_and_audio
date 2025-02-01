@@ -35,16 +35,7 @@ class _HomePageState extends State<HomePage> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return Dialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    insetPadding: const EdgeInsets.all(10),
-                    child: const SizedBox(
-                      width: double.infinity,
-                      height: 200,
-                    ),
-                  );
+                  return getSearchWidgetPopup();
                 },
               );
             },
@@ -121,6 +112,19 @@ class _HomePageState extends State<HomePage> {
             label: 'Profile',
           ),
         ],
+      ),
+    );
+  }
+
+  Dialog getSearchWidgetPopup() {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(7),
+      ),
+      insetPadding: const EdgeInsets.all(10),
+      child: const SizedBox(
+        width: double.infinity,
+        height: 200,
       ),
     );
   }

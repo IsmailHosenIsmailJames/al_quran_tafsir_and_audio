@@ -212,6 +212,7 @@ class _AudioTabState extends State<AudioTab> {
                   },
                   child: Card(
                     elevation: 0,
+                    color: Colors.grey.withValues(alpha: 0.1),
                     margin: const EdgeInsets.only(bottom: 5),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(7)),
