@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import '../../core/audio/controller/audio_controller.dart';
 import '../../core/audio/play_quran_audio.dart';
 import '../../core/audio/widget_audio_controller.dart';
+import '../../theme/theme_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,9 +24,13 @@ class _HomePageState extends State<HomePage> {
   PageController pageController = PageController();
   int selectedBottomNavIndex = 0;
   AudioController audioController = ManageQuranAudio.audioController;
+  AppThemeData themeController = Get.put(AppThemeData());
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = (themeController.themeModeName.value == 'dark' ||
+        (themeController.themeModeName.value == 'system' &&
+            MediaQuery.of(context).platformBrightness == Brightness.dark));
     return Scaffold(
       appBar: AppBar(
         title: const Text('Al Quran'),
@@ -91,7 +96,7 @@ class _HomePageState extends State<HomePage> {
           pageController.jumpToPage(value);
         },
         selectedItemColor: Colors.green.shade600,
-        unselectedItemColor: Colors.white,
+        unselectedItemColor: isDark ? Colors.white : Colors.grey.shade700,
         backgroundColor: Colors.green.shade700,
         elevation: 0,
         items: const [
