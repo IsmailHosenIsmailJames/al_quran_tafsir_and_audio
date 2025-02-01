@@ -17,6 +17,7 @@ import 'package:al_quran_tafsir_and_audio/src/screens/notes/take_note_page.dart'
 import 'package:al_quran_tafsir_and_audio/src/translations/language_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -437,7 +438,7 @@ Container getInfoHeaderWidget(
   return Container(
     margin: const EdgeInsets.all(5),
     padding: const EdgeInsets.all(5),
-    height: 150,
+    height: 140,
     width: double.infinity,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(7),
@@ -446,8 +447,8 @@ Container getInfoHeaderWidget(
     child: Row(
       children: [
         Container(
-          height: 140,
-          width: 140,
+          height: 120,
+          width: 120,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
@@ -468,7 +469,7 @@ Container getInfoHeaderWidget(
             Text(
               'Surah Name',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey.shade500,
               ),
@@ -476,15 +477,15 @@ Container getInfoHeaderWidget(
             Text(
               '${surahInfo.nameSimple.capitalizeFirst} ( ${surahInfo.nameArabic} )',
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Gap(5),
+            const Gap(3),
             Text(
               'Revelation Place',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey.shade500,
               ),
@@ -492,21 +493,25 @@ Container getInfoHeaderWidget(
             Text(
               "${surahInfo.revelationPlace.capitalizeFirst} (${surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Gap(5),
+            const Gap(3),
             Text(
               'Translation book',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey.shade500,
               ),
             ),
             Text(
-              safeSubString(translationBookName, 30),
+              safeSubString(translationBookName, 25),
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const Gap(5),
           ],
@@ -642,12 +647,13 @@ Container buildAyahWidget({
         Align(
           alignment: Alignment.topLeft,
           child: Obx(
-            () => Text(
+            () => HtmlWidget(
               Hive.box('translation_db').get(
                 '${infoController.bookIDTranslation.value}/$currentAyahIndex',
                 defaultValue: '',
               ),
-              style: TextStyle(
+              buildAsync: false,
+              textStyle: TextStyle(
                 fontSize: universalController.fontSizeTranslation.value,
               ),
             ),

@@ -49,6 +49,7 @@ dependencies:
   flutter_quill: ^11.0.0-dev.21
   flutter_localizations:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
