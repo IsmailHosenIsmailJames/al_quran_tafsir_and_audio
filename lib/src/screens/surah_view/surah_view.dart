@@ -625,7 +625,7 @@ Container buildAyahWidget({
               TextSpan(
                 children: getTajweedTexSpan(
                   Hive.box('quran_db').get(
-                    'uthmani_tajweed/${currentAyahIndex + 1}',
+                    '${universalController.quranScriptTypeGetx.value}/${currentAyahIndex + 1}',
                     defaultValue: '',
                   ),
                 ),

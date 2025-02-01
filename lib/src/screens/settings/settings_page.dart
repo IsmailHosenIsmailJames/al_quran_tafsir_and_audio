@@ -109,6 +109,39 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             const Gap(15),
             const Text(
+              'Quran Script Type',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            const Gap(10),
+            Obx(
+              () => DropdownButtonFormField<String>(
+                value: universalController.quranScriptTypeGetx.value,
+                onChanged: (value) {
+                  universalController.quranScriptTypeGetx.value = value!;
+                  Hive.box('user_db').put('quranScriptType', value);
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                ),
+                isExpanded: true,
+                items: List.generate(
+                  quranScriptTypeList.length,
+                  (index) => DropdownMenuItem(
+                    value: quranScriptTypeList[index],
+                    child: Text(
+                      quranScriptTypeList[index]
+                          .capitalizeFirst
+                          .replaceAll('_', ' '),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const Gap(15),
+            const Text(
               'Quran Font Size',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -152,7 +185,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   TextSpan(
                     children: getTajweedTexSpan(
                       startAyahBismillah(
-                        'uthmani_tajweed',
+                        universalController.quranScriptTypeGetx.value,
                       ),
                     ),
                   ),
@@ -160,39 +193,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     fontSize: universalController.fontSizeArabic.value,
                   ),
                   textDirection: TextDirection.rtl,
-                ),
-              ),
-            ),
-            const Gap(15),
-            const Text(
-              'Quran Script Type',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-            const Gap(10),
-            Obx(
-              () => DropdownButtonFormField<String>(
-                value: universalController.quranScriptTypeGetx.value,
-                onChanged: (value) {
-                  universalController.quranScriptTypeGetx.value = value!;
-                  Hive.box('user_db').put('quranScriptType', value);
-                },
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                ),
-                isExpanded: true,
-                items: List.generate(
-                  quranScriptTypeList.length,
-                  (index) => DropdownMenuItem(
-                    value: quranScriptTypeList[index],
-                    child: Text(
-                      quranScriptTypeList[index]
-                          .capitalizeFirst
-                          .replaceAll('_', ' '),
-                    ),
-                  ),
                 ),
               ),
             ),
