@@ -133,7 +133,6 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
                       selectedAyahNumber!,
                   infoController: infoController,
                   universalController: universalController,
-                  translationBookName: getTranslationBookName(infoController),
                   index: selectedAyahNumber!,
                   ayahStartFrom: ayahStartFormSurah(selectedSurahNumber!),
                   showAyahNumber: false,

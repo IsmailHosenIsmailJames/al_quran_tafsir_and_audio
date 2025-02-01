@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/core/audio/widget_audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/audio_tracting.dart';
+import 'package:al_quran_tafsir_and_audio/src/functions/safe_substring.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
@@ -292,7 +293,8 @@ class _SurahViewState extends State<SurahView> {
             children: [
               if (ayahNumberInSurah == 0) const Gap(15),
               if (ayahNumberInSurah == 0)
-                getInfoHeaderWidget(surahInfo, languageController),
+                getInfoHeaderWidget(
+                    surahInfo, languageController, translationBookName),
               if (surahInfo.bismillahPre != true) const Gap(10),
               if (surahInfo.bismillahPre == true && index == 0)
                 Padding(
@@ -357,7 +359,8 @@ class _SurahViewState extends State<SurahView> {
             return Column(
               children: [
                 const Gap(10),
-                getInfoHeaderWidget(surahInfo, languageController),
+                getInfoHeaderWidget(
+                    surahInfo, languageController, translationBookName),
                 if (surahInfo.bismillahPre == true)
                   Padding(
                     padding: const EdgeInsets.all(10),
@@ -383,7 +386,6 @@ class _SurahViewState extends State<SurahView> {
                   infoController: infoController,
                   ayahStartFrom: ayahNumberInSurah,
                   surahInfo: surahInfo,
-                  translationBookName: translationBookName,
                   universalController: universalController,
                 ),
               ],
@@ -396,7 +398,6 @@ class _SurahViewState extends State<SurahView> {
               infoController: infoController,
               ayahStartFrom: ayahNumberInSurah,
               surahInfo: surahInfo,
-              translationBookName: translationBookName,
               universalController: universalController,
             );
           }
@@ -429,11 +430,14 @@ int getAyahNumberInSurah(int ayahID, QuranSurahInfoModel surahInfo) {
 }
 
 Container getInfoHeaderWidget(
-    QuranSurahInfoModel surahInfo, LanguageController languageController) {
+  QuranSurahInfoModel surahInfo,
+  LanguageController languageController,
+  String translationBookName,
+) {
   return Container(
     margin: const EdgeInsets.all(5),
     padding: const EdgeInsets.all(5),
-    height: 110,
+    height: 150,
     width: double.infinity,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(7),
@@ -442,8 +446,8 @@ Container getInfoHeaderWidget(
     child: Row(
       children: [
         Container(
-          height: 100,
-          width: 100,
+          height: 140,
+          width: 140,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
@@ -464,7 +468,7 @@ Container getInfoHeaderWidget(
             Text(
               'Surah Name',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey.shade500,
               ),
@@ -476,10 +480,11 @@ Container getInfoHeaderWidget(
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const Gap(5),
             Text(
               'Revelation Place',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey.shade500,
               ),
@@ -491,6 +496,19 @@ Container getInfoHeaderWidget(
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const Gap(5),
+            Text(
+              'Translation book',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey.shade500,
+              ),
+            ),
+            Text(
+              safeSubString(translationBookName, 30),
+            ),
+            const Gap(5),
           ],
         ),
         const Spacer(),
@@ -549,7 +567,6 @@ Container buildAyahWidget({
   required int ayahStartFrom,
   required UniversalController universalController,
   QuranSurahInfoModel? surahInfo,
-  required String translationBookName,
   bool showAyahNumber = true,
 }) {
   final collectionBox = Hive.box('collections_db');
@@ -624,17 +641,6 @@ Container buildAyahWidget({
         const Divider(),
         Align(
           alignment: Alignment.topLeft,
-          child: Text(
-            'Translation book :\n$translationBookName',
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey.shade500,
-            ),
-          ),
-        ),
-        const Gap(5),
-        Align(
-          alignment: Alignment.topLeft,
           child: Obx(
             () => Text(
               Hive.box('translation_db').get(
@@ -647,6 +653,7 @@ Container buildAyahWidget({
             ),
           ),
         ),
+        const Gap(5)
       ],
     ),
   );
