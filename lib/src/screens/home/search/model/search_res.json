@@ -1,0 +1,370 @@
+{
+    "query": "Quran",
+    "total_results": 249,
+    "current_page": 1,
+    "total_pages": 25,
+    "results": [
+        {
+            "verse_key": "38:1",
+            "verse_id": 3971,
+            "text": " صٓ ۚ وَٱلْقُرْءَانِ ذِى ٱلذِّكْرِ",
+            "highlighted": null,
+            "words": [
+                {
+                    "char_type": "word",
+                    "text": "صٓۚ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "وَٱلۡقُرۡءَانِ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ذِي"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ٱلذِّكۡرِ"
+                },
+                {
+                    "char_type": "end",
+                    "text": "١"
+                }
+            ],
+            "translations": [
+                {
+                    "text": "Sâd.\r\n[These letters (Sâd etc.) are one of the miracles of the <em>Quran</em> and none but Allah (Alone) knows their meanings]. By the <em>Quran</em> full of reminding.",
+                    "resource_id": 203,
+                    "name": "Al-Hilali & Khan",
+                    "language_name": "english"
+                },
+                {
+                    "text": "Sad By the <em>Quran</em> with its reminding . . .!",
+                    "resource_id": 85,
+                    "name": "M.A.S. Abdel Haleem",
+                    "language_name": "english"
+                }
+            ]
+        },
+        {
+            "verse_key": "6:25",
+            "verse_id": 814,
+            "text": "وَمِنْهُم مَّن يَسْتَمِعُ إِلَيْكَ ۖ وَجَعَلْنَا عَلَىٰ قُلُوبِهِمْ أَكِنَّةً أَن يَفْقَهُوهُ وَفِىٓ ءَاذَانِهِمْ وَقْرًا ۚ وَإِن يَرَوْا۟ كُلَّ ءَايَةٍ لَّا يُؤْمِنُوا۟ بِهَا ۚ حَتَّىٰٓ إِذَا جَآءُوكَ يُجَـٰدِلُونَكَ يَقُولُ ٱلَّذِينَ كَفَرُوٓا۟ إِنْ هَـٰذَآ إِلَّآ أَسَـٰطِيرُ ٱلْأَوَّلِينَ",
+            "highlighted": null,
+            "words": [
+                {
+                    "char_type": "word",
+                    "text": "وَمِنۡهُم"
+                },
+                {
+                    "char_type": "word",
+                    "text": "مَّن"
+                },
+                {
+                    "char_type": "word",
+                    "text": "يَسۡتَمِعُ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "إِلَيۡكَۖ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "وَجَعَلۡنَا"
+                },
+                {
+                    "char_type": "word",
+                    "text": "عَلَىٰ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "قُلُوبِهِمۡ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "أَكِنَّةً"
+                },
+                {
+                    "char_type": "word",
+                    "text": "أَن"
+                },
+                {
+                    "char_type": "word",
+                    "text": "يَفۡقَهُوهُ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "وَفِيٓ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ءَاذَانِهِمۡ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "وَقۡرٗاۚ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "وَإِن"
+                },
+                {
+                    "char_type": "word",
+                    "text": "يَرَوۡاْ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "كُلَّ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ءَايَةٖ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "لَّا"
+                },
+                {
+                    "char_type": "word",
+                    "text": "يُؤۡمِنُواْ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "بِهَاۖ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "حَتَّىٰٓ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "إِذَا"
+                },
+                {
+                    "char_type": "word",
+                    "text": "جَآءُوكَ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "يُجَٰدِلُونَكَ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "يَقُولُ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ٱلَّذِينَ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "كَفَرُوٓاْ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "إِنۡ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "هَٰذَآ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "إِلَّآ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "أَسَٰطِيرُ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ٱلۡأَوَّلِينَ"
+                },
+                {
+                    "char_type": "end",
+                    "text": "٢٥"
+                }
+            ],
+            "translations": [
+                {
+                    "text": "There are some of them who ˹pretend to˺ listen to your recitation ˹of the <em>Quran</em>˺, but We have cast veils over their hearts—leaving them unable to comprehend it—and deafness in their ears. Even if they were to see every sign, they still would not believe in them. The disbelievers would ˹even˺ come to argue with you, saying, “This ˹<em>Quran</em>˺ is nothing but ancient fables!”",
+                    "resource_id": 131,
+                    "name": "Dr. Mustafa Khattab, The Clear Quran",
+                    "language_name": "english"
+                }
+            ]
+        },
+        {
+            "verse_key": "36:2",
+            "verse_id": 3707,
+            "text": "وَٱلْقُرْءَانِ ٱلْحَكِيمِ",
+            "highlighted": null,
+            "words": [
+                {
+                    "char_type": "word",
+                    "text": "وَٱلۡقُرۡءَانِ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ٱلۡحَكِيمِ"
+                },
+                {
+                    "char_type": "end",
+                    "text": "٢"
+                }
+            ],
+            "translations": [
+                {
+                    "text": "By the wise <em>Quran</em>,",
+                    "resource_id": 85,
+                    "name": "M.A.S. Abdel Haleem",
+                    "language_name": "english"
+                },
+                {
+                    "text": "By the <em>Quran</em>, rich in wisdom!",
+                    "resource_id": 131,
+                    "name": "Dr. Mustafa Khattab, The Clear Quran",
+                    "language_name": "english"
+                }
+            ]
+        },
+        {
+            "verse_key": "15:91",
+            "verse_id": 1893,
+            "text": "ٱلَّذِينَ جَعَلُوا۟ ٱلْقُرْءَانَ عِضِينَ",
+            "highlighted": null,
+            "words": [
+                {
+                    "char_type": "word",
+                    "text": "ٱلَّذِينَ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "جَعَلُواْ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ٱلۡقُرۡءَانَ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "عِضِينَ"
+                },
+                {
+                    "char_type": "end",
+                    "text": "٩١"
+                }
+            ],
+            "translations": [
+                {
+                    "text": "and abuse the <em>Quran</em>––",
+                    "resource_id": 85,
+                    "name": "M.A.S. Abdel Haleem",
+                    "language_name": "english"
+                }
+            ]
+        },
+        {
+            "verse_key": "55:2",
+            "verse_id": 4903,
+            "text": "عَلَّمَ ٱلْقُرْءَانَ",
+            "highlighted": null,
+            "words": [
+                {
+                    "char_type": "word",
+                    "text": "عَلَّمَ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "ٱلۡقُرۡءَانَ"
+                },
+                {
+                    "char_type": "end",
+                    "text": "٢"
+                }
+            ],
+            "translations": [
+                {
+                    "text": "taught the <em>Quran</em>,",
+                    "resource_id": 131,
+                    "name": "Dr. Mustafa Khattab, The Clear Quran",
+                    "language_name": "english"
+                },
+                {
+                    "text": "who taught the <em>Quran</em>.",
+                    "resource_id": 85,
+                    "name": "M.A.S. Abdel Haleem",
+                    "language_name": "english"
+                }
+            ]
+        },
+        {
+            "verse_key": "85:21",
+            "verse_id": 5930,
+            "text": "بَلْ هُوَ قُرْءَانٌ مَّجِيدٌ",
+            "highlighted": null,
+            "words": [
+                {
+                    "char_type": "word",
+                    "text": "بَلۡ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "هُوَ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "قُرۡءَانٞ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "مَّجِيدٞ"
+                },
+                {
+                    "char_type": "end",
+                    "text": "٢١"
+                }
+            ],
+            "translations": [
+                {
+                    "text": "In fact, this is a glorious <em>Quran</em>,",
+                    "resource_id": 131,
+                    "name": "Dr. Mustafa Khattab, The Clear Quran",
+                    "language_name": "english"
+                }
+            ]
+        },
+        {
+            "verse_key": "56:77",
+            "verse_id": 5056,
+            "text": "إِنَّهُۥ لَقُرْءَانٌ كَرِيمٌ",
+            "highlighted": null,
+            "words": [
+                {
+                    "char_type": "word",
+                    "text": "إِنَّهُۥ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "لَقُرۡءَانٞ"
+                },
+                {
+                    "char_type": "word",
+                    "text": "كَرِيمٞ"
+                },
+                {
+                    "char_type": "end",
+                    "text": "٧٧"
+                }
+            ],
+            "translations": [
+                {
+                    "text": "that this is truly a noble <em>Quran</em>,",
+                    "resource_id": 85,
+                    "name": "M.A.S. Abdel Haleem",
+                    "language_name": "english"
+                }
+            ]
+        }
+    ]
+}
