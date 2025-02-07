@@ -29,89 +29,73 @@ class _ProfilePageState extends State<ProfilePage> {
   final HomePageController homePageController = Get.put(HomePageController());
   bool backUpAsync = false;
 
-  Future<User?> loggedInUser() async {
-    if (authController.loggedInUser.value == null) {
-      return await authController.getUser();
-    } else {
-      return authController.loggedInUser.value;
-    }
+  @override
+  void initState() {
+    authController.loggedInUser();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        FutureBuilder(
-          future: loggedInUser(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return const Center(
-                child: Text('Error'),
-              );
-            } else {
-              User? user = snapshot.data;
-              if (user == null) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        'Get the best experience by logging in ->',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+        authController.loggedInUser.value == null
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      'Get the best experience by logging in ->',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        'You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey.shade600,
-                        ),
-                        textAlign: TextAlign.center,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey.shade600,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await Get.to(() => const LoginPage());
-                            setState(() {});
-                          },
-                          iconAlignment: IconAlignment.end,
-                          child: const Row(
-                            children: [
-                              Spacer(),
-                              Text(
-                                'Login',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          await Get.to(() => const LoginPage());
+                          setState(() {});
+                        },
+                        iconAlignment: IconAlignment.end,
+                        child: const Row(
+                          children: [
+                            Spacer(),
+                            Text(
+                              'Login',
+                              style: TextStyle(
+                                fontSize: 16,
                               ),
-                              Spacer(),
-                              Icon(Icons.fast_forward_rounded),
-                            ],
-                          ),
+                            ),
+                            Spacer(),
+                            Icon(Icons.fast_forward_rounded),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                );
-              } else {
-                return getUserUI(user);
-              }
-            }
-          },
-        ),
+                  ),
+                ],
+              )
+            : getUserUI(authController.loggedInUser.value!),
         const Gap(15),
         Padding(
           padding: const EdgeInsets.all(5.0),
@@ -239,7 +223,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         currentTrackingModel.totalPlayedDurationInSeconds ==
                                 0 &&
                             currentTrackingModel.playedAyah.isEmpty;
-                    return getAudioHistoryOfSurahs(
+                    return getAudioHistoryOfSurah(
                         currentTrackingModel, didNotPlayed, context, isDone);
                   },
                 ),
@@ -253,7 +237,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   String sortBy = 'surahIncreasing';
 
-  Padding getAudioHistoryOfSurahs(TrackingAudioModel currentTrackingModel,
+  Padding getAudioHistoryOfSurah(TrackingAudioModel currentTrackingModel,
       bool didNotPlayed, BuildContext context, bool isDone) {
     return Padding(
       padding: const EdgeInsets.all(5),
@@ -456,62 +440,97 @@ class _ProfilePageState extends State<ProfilePage> {
                                 .bodySmall
                                 ?.copyWith(color: Colors.grey.shade400),
                           ),
+                          SizedBox(
+                            height: 30,
+                            child: TextButton.icon(
+                              style: TextButton.styleFrom(
+                                padding: const EdgeInsets.only(right: 100),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(7),
+                                ),
+                              ),
+                              onPressed: () async {
+                                await authController.logout();
+                                toastification.show(
+                                  context: context,
+                                  title: const Text('Successful'),
+                                  description: const Text('Logout successful'),
+                                  type: ToastificationType.success,
+                                  autoCloseDuration: const Duration(seconds: 3),
+                                );
+                                setState(() {});
+                              },
+                              icon: const Icon(Icons.logout_rounded),
+                              label: const Text('logout'),
+                            ),
+                          ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
               const Gap(10),
-              Text(
-                (!isBackedUp)
-                    ? cloudPlayListString?.isEmpty == true
-                        ? 'Your Playlists need to backup.'
-                        : 'Backup changes to cloud'
-                    : 'Your Playlists are up to date',
-                style: const TextStyle(
+              const Text(
+                'Backup changes to cloud',
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const Gap(10),
-              if (!isBackedUp && allPlaylist.isNotEmpty)
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton.icon(
-                    onPressed: () async {
-                      setState(() {
-                        backUpAsync = true;
-                      });
-                      String? error = await homePageController.backupPlayList();
-                      setState(() {
-                        backUpAsync = false;
-                      });
-                      if (error == null) {
-                        toastification.show(
-                          context: context,
-                          title: const Text('Successful'),
-                          description: const Text('Backup process successful'),
-                          type: ToastificationType.success,
-                          autoCloseDuration: const Duration(seconds: 3),
-                        );
-                      } else {
-                        toastification.show(
-                          context: context,
-                          title: const Text('Error'),
-                          description: Text(error),
-                          type: ToastificationType.error,
-                          autoCloseDuration: const Duration(seconds: 5),
-                        );
-                      }
-                    },
-                    icon: const Icon(Icons.backup_rounded),
-                    label: Text(
-                      cloudPlayListString?.isEmpty == true
-                          ? 'Backup Now'
-                          : 'Backup Changes',
-                    ),
-                  ),
+              ListTile(
+                leading: const Icon(
+                  Icons.playlist_play_rounded,
                 ),
+                contentPadding: const EdgeInsets.all(5),
+                horizontalTitleGap: 5,
+                title: const Text('Click to Backup Playlists'),
+                trailing: backUpAsync
+                    ? const CircularProgressIndicator(strokeWidth: 3)
+                    : isBackedUp
+                        ? const Icon(
+                            Icons.check_circle,
+                            color: Colors.green,
+                          )
+                        : const Icon(
+                            Icons.backup,
+                            color: Colors.green,
+                          ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                tileColor: Colors.grey.withValues(alpha: 0.2),
+                onTap: () async {
+                  if (isBackedUp) {
+                    return;
+                  }
+                  setState(() {
+                    backUpAsync = true;
+                  });
+                  String? error =
+                      await audioController.backupPlayList(allPlaylist);
+                  setState(() {
+                    backUpAsync = false;
+                  });
+                  if (error == null) {
+                    toastification.show(
+                      context: context,
+                      title: const Text('Successful'),
+                      description: const Text('Backup process successful'),
+                      type: ToastificationType.success,
+                      autoCloseDuration: const Duration(seconds: 3),
+                    );
+                  } else {
+                    toastification.show(
+                      context: context,
+                      title: const Text('Found issue'),
+                      description: Text(error),
+                      type: ToastificationType.error,
+                      autoCloseDuration: const Duration(seconds: 5),
+                    );
+                  }
+                },
+              ),
               const Gap(20),
             ],
           );

@@ -1,3 +1,4 @@
+import 'package:al_quran_tafsir_and_audio/src/auth/auth_controller/auth_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/init_page.dart';
@@ -74,7 +75,8 @@ class AlQuranTafsirAndAudio extends StatelessWidget {
           final appTheme = Get.put(AppThemeData());
           final infoController = Get.put(InfoController());
           Get.put(AudioController());
-
+          final authController = Get.put(AuthController());
+          authController.loggedInUser();
           final languageController = Get.put(LanguageController());
           final prefBox = Hive.box('user_db');
           String? languageCode = prefBox.get('app_lan', defaultValue: null);
