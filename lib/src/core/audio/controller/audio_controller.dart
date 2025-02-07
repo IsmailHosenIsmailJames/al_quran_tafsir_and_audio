@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:al_quran_tafsir_and_audio/src/auth/auth_controller/auth_controller.dart';
 import 'package:appwrite/appwrite.dart';
-import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -42,7 +41,7 @@ class AudioController extends GetxController {
   Future<String?> backupPlayList(List<AllPlayListModel> allPlaylistInDB) async {
     try {
       if (allPlaylistInDB.isEmpty) {
-        return 'Playlist is empty';
+        return 'No PlayList found';
       }
 
       List<String> rawPlaylistData = [];
@@ -58,7 +57,7 @@ class AudioController extends GetxController {
         if (Hive.box('cloud_play_list').keys.isNotEmpty) {
           await db.updateDocument(
             databaseId: authController.databaseID,
-            collectionId: authController.collectionID,
+            collectionId: authController.collectionIDPlayList,
             documentId: id,
             data: {
               'all_playlist_data': rawJson,
@@ -68,7 +67,7 @@ class AudioController extends GetxController {
         } else {
           await db.createDocument(
             databaseId: authController.databaseID,
-            collectionId: authController.collectionID,
+            collectionId: authController.collectionIDPlayList,
             documentId: id,
             data: {
               'all_playlist_data': rawJson,

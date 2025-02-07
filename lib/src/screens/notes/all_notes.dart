@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:al_quran_tafsir_and_audio/src/core/show_twoested_message.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/notes/controller/notes_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/notes/models/notes_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/notes/take_note_page.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,18 @@ class AllNotes extends StatefulWidget {
 }
 
 class _AllNotesState extends State<AllNotes> {
+  final NotesController notesController = Get.put(NotesController());
   final notesDB = Hive.box('notes_db');
+
+  @override
+  void initState() {
+    notesController.onInit();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (notesDB.isEmpty) {
+    if (notesController.notes.isEmpty) {
       return Column(
         children: [
           const Gap(10),
@@ -40,10 +49,9 @@ class _AllNotesState extends State<AllNotes> {
         getAddNewNotesButton(),
         Expanded(
           child: ListView.builder(
-            itemCount: notesDB.length,
+            itemCount: notesController.notes.length,
             itemBuilder: (context, index) {
-              final note = notesDB.getAt(index);
-              NotesModel notesModel = NotesModel.fromJson(note!);
+              NotesModel notesModel = notesController.notes[index];
 
               QuillController controller = QuillController(
                 document: Document.fromJson(
@@ -97,7 +105,7 @@ class _AllNotesState extends State<AllNotes> {
                   QuranSurahInfoModel.fromMap(
                       allChaptersInfo[int.parse(ayahKey.split(':')[0])]);
               return Text(
-                "${quranSurahInfoModel.nameSimple}, Ayah: ${(notesModel.ayahsKey[index].split(":")[1])} ",
+                "${quranSurahInfoModel.nameSimple}, Ayah: ${int.parse(notesModel.ayahsKey[index].split(":")[1]) + 1} ",
               );
             },
           ),
@@ -131,6 +139,7 @@ class _AllNotesState extends State<AllNotes> {
                     previousData: notesModel,
                   ),
                 );
+                notesController.onInit();
                 setState(() {});
               },
               icon: const Icon(
@@ -164,6 +173,8 @@ class _AllNotesState extends State<AllNotes> {
           onPressed: () {
             notesDB.deleteAt(index);
             Navigator.pop(context);
+            notesController.onInit();
+
             setState(() {});
             showTwoestedMessage(
               'Deleted successfully',
@@ -193,6 +204,7 @@ class _AllNotesState extends State<AllNotes> {
           await Get.to(
             () => const TakeNotePage(),
           );
+          notesController.onInit();
           setState(() {});
         },
         icon: const Icon(Icons.add),

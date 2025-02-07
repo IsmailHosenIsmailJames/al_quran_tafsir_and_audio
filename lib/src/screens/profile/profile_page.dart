@@ -5,7 +5,9 @@ import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_contro
 import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/model.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/home_page_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/notes/controller/notes_controller.dart';
 import 'package:appwrite/models.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -15,6 +17,7 @@ import 'package:toastification/toastification.dart';
 import '../../auth/auth_controller/auth_controller.dart';
 import '../../auth/auth_controller/login/login_page.dart';
 import '../../functions/safe_substring.dart';
+import '../home/tabs/collection_tab/controller/collection_controller.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -27,7 +30,9 @@ class _ProfilePageState extends State<ProfilePage> {
   AuthController authController = Get.put(AuthController());
   final AudioController audioController = Get.find<AudioController>();
   final HomePageController homePageController = Get.put(HomePageController());
-  bool backUpAsync = false;
+  bool backUpAsyncPlaylist = false;
+  bool backUpAsyncGroup = false;
+  bool backUpAsyncNote = false;
 
   @override
   void initState() {
@@ -406,8 +411,32 @@ class _ProfilePageState extends State<ProfilePage> {
           }
           String? cloudPlayListString = Hive.box('cloud_play_list')
               .get('all_playlist', defaultValue: null);
-          bool isBackedUp =
+          bool isBackedUpPlaylist =
               cloudPlayListString == jsonEncode(rawStringOfAllPlaylist);
+
+          // Notes
+          String? cloudNoteString =
+              Hive.box('cloud_notes_db').get('all_notes', defaultValue: null);
+          NotesController notesController = Get.put(NotesController());
+
+          List<String> rawStringOfNotes = [];
+          for (var element in notesController.notes.value) {
+            rawStringOfNotes.add(element.toJson());
+          }
+          bool isBackedUpNote = cloudNoteString == jsonEncode(rawStringOfNotes);
+
+          // Collections
+
+          String? cloudCollectionString = Hive.box('cloud_collections_db')
+              .get('all_collections', defaultValue: null);
+          CollectionController collectionController =
+              Get.put(CollectionController());
+          List<String> rawStringOfCollection = [];
+          for (var element in collectionController.collectionList.value) {
+            rawStringOfCollection.add(element.toJson());
+          }
+          bool isBackedUpCollection =
+              cloudCollectionString == jsonEncode(rawStringOfCollection);
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -479,15 +508,16 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const Gap(10),
               ListTile(
+                minTileHeight: 50,
                 leading: const Icon(
                   Icons.playlist_play_rounded,
                 ),
                 contentPadding: const EdgeInsets.all(5),
                 horizontalTitleGap: 5,
                 title: const Text('Click to Backup Playlists'),
-                trailing: backUpAsync
+                trailing: backUpAsyncPlaylist
                     ? const CircularProgressIndicator(strokeWidth: 3)
-                    : isBackedUp
+                    : isBackedUpPlaylist
                         ? const Icon(
                             Icons.check_circle,
                             color: Colors.green,
@@ -501,16 +531,16 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 tileColor: Colors.grey.withValues(alpha: 0.2),
                 onTap: () async {
-                  if (isBackedUp) {
+                  if (isBackedUpCollection) {
                     return;
                   }
                   setState(() {
-                    backUpAsync = true;
+                    backUpAsyncPlaylist = true;
                   });
                   String? error =
                       await audioController.backupPlayList(allPlaylist);
                   setState(() {
-                    backUpAsync = false;
+                    backUpAsyncPlaylist = false;
                   });
                   if (error == null) {
                     toastification.show(
@@ -531,7 +561,122 @@ class _ProfilePageState extends State<ProfilePage> {
                   }
                 },
               ),
-              const Gap(20),
+              const Gap(10),
+              ListTile(
+                minTileHeight: 50,
+                leading: const Icon(
+                  Icons.bookmark_rounded,
+                ),
+                contentPadding: const EdgeInsets.all(5),
+                horizontalTitleGap: 5,
+                title: const Text('Click to Backup Groups'),
+                trailing: backUpAsyncGroup
+                    ? const CircularProgressIndicator(strokeWidth: 3)
+                    : isBackedUpCollection
+                        ? const Icon(
+                            Icons.check_circle,
+                            color: Colors.green,
+                          )
+                        : const Icon(
+                            Icons.backup,
+                            color: Colors.green,
+                          ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                tileColor: Colors.grey.withValues(alpha: 0.2),
+                onTap: () async {
+                  if (isBackedUpCollection) {
+                    return;
+                  }
+                  setState(() {
+                    backUpAsyncGroup = true;
+                  });
+                  CollectionController collectionController =
+                      Get.put(CollectionController());
+
+                  String? error = await homePageController
+                      .backupGroups(collectionController.collectionList.value);
+                  setState(() {
+                    backUpAsyncGroup = false;
+                  });
+                  if (error == null) {
+                    toastification.show(
+                      context: context,
+                      title: const Text('Successful'),
+                      description: const Text('Backup process successful'),
+                      type: ToastificationType.success,
+                      autoCloseDuration: const Duration(seconds: 3),
+                    );
+                  } else {
+                    toastification.show(
+                      context: context,
+                      title: const Text('Found issue'),
+                      description: Text(error),
+                      type: ToastificationType.error,
+                      autoCloseDuration: const Duration(seconds: 5),
+                    );
+                  }
+                },
+              ),
+              const Gap(10),
+              ListTile(
+                minTileHeight: 50,
+                leading: const Icon(
+                  FluentIcons.notepad_24_filled,
+                ),
+                contentPadding: const EdgeInsets.all(5),
+                horizontalTitleGap: 5,
+                title: const Text('Click to Backup Notes'),
+                trailing: backUpAsyncNote
+                    ? const CircularProgressIndicator(strokeWidth: 3)
+                    : isBackedUpNote
+                        ? const Icon(
+                            Icons.check_circle,
+                            color: Colors.green,
+                          )
+                        : const Icon(
+                            Icons.backup,
+                            color: Colors.green,
+                          ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                tileColor: Colors.grey.withValues(alpha: 0.2),
+                onTap: () async {
+                  if (isBackedUpNote) {
+                    return;
+                  }
+                  setState(() {
+                    backUpAsyncNote = true;
+                  });
+
+                  NotesController notesController = Get.put(NotesController());
+                  notesController.onInit();
+                  String? error = await homePageController
+                      .backupNote(notesController.notes.value);
+                  setState(() {
+                    backUpAsyncNote = false;
+                  });
+                  if (error == null) {
+                    toastification.show(
+                      context: context,
+                      title: const Text('Successful'),
+                      description: const Text('Backup process successful'),
+                      type: ToastificationType.success,
+                      autoCloseDuration: const Duration(seconds: 3),
+                    );
+                  } else {
+                    toastification.show(
+                      context: context,
+                      title: const Text('Found issue'),
+                      description: Text(error),
+                      type: ToastificationType.error,
+                      autoCloseDuration: const Duration(seconds: 5),
+                    );
+                  }
+                },
+              ),
             ],
           );
         },

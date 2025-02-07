@@ -1,4 +1,11 @@
+import 'dart:convert';
+
+import 'package:al_quran_tafsir_and_audio/src/api/appwrite/config.dart';
+import 'package:al_quran_tafsir_and_audio/src/auth/auth_controller/auth_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/model/play_list_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/notes/models/notes_model.dart';
+import 'package:appwrite/appwrite.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -66,6 +73,100 @@ class HomePageController extends GetxController {
       }
       allPlaylistInDB
           .add(AllPlayListModel(playList: playListModels, name: key));
+    }
+  }
+
+  Future<String?> backupNote(List<NotesModel> notes) async {
+    try {
+      if (notes.isEmpty) {
+        return 'No notes found';
+      }
+
+      List<String> rawPlaylistData = [];
+      for (var playList in notes) {
+        rawPlaylistData.add(playList.toJson());
+      }
+      String rawJson = jsonEncode(rawPlaylistData);
+      final db = Databases(AppWriteConfig.client);
+
+      try {
+        final AuthController authController = Get.find<AuthController>();
+        String id = authController.loggedInUser.value!.$id;
+        if (Hive.box('cloud_notes_db').keys.isNotEmpty) {
+          await db.updateDocument(
+            databaseId: authController.databaseID,
+            collectionId: authController.collectionIDNotes,
+            documentId: id,
+            data: {
+              'notes': rawJson,
+            },
+          );
+          await Hive.box('cloud_notes_db').put('all_notes', rawJson);
+        } else {
+          await db.createDocument(
+            databaseId: authController.databaseID,
+            collectionId: authController.collectionIDNotes,
+            documentId: id,
+            data: {
+              'notes': rawJson,
+            },
+          );
+          await Hive.box('cloud_notes_db').put('all_notes', rawJson);
+        }
+      } on AppwriteException catch (e) {
+        return e.message;
+      }
+      return null;
+    } catch (e) {
+      return e.toString();
+    }
+  }
+
+  Future<String?> backupGroups(List<CollectionInfoModel> groups) async {
+    try {
+      if (groups.isEmpty) {
+        return 'No groups found';
+      }
+
+      List<String> rawGroupsData = [];
+      for (var playList in groups) {
+        rawGroupsData.add(playList.toJson());
+      }
+      String rawJson = jsonEncode(rawGroupsData);
+      final db = Databases(AppWriteConfig.client);
+
+      try {
+        final AuthController authController = Get.find<AuthController>();
+        String id = authController.loggedInUser.value!.$id;
+        if (Hive.box('cloud_collections_db').keys.isNotEmpty) {
+          await db.updateDocument(
+            databaseId: authController.databaseID,
+            collectionId: authController.collectionIDCollections,
+            documentId: id,
+            data: {
+              'collections': rawJson,
+            },
+          );
+          await Hive.box('cloud_collections_db')
+              .put('all_collections', rawJson);
+        } else {
+          await db.createDocument(
+            databaseId: authController.databaseID,
+            collectionId: authController.collectionIDCollections,
+            documentId: id,
+            data: {
+              'collections': rawJson,
+            },
+          );
+          await Hive.box('cloud_collections_db')
+              .put('all_collections', rawJson);
+        }
+      } on AppwriteException catch (e) {
+        return e.message;
+      }
+      return null;
+    } catch (e) {
+      return e.toString();
     }
   }
 }

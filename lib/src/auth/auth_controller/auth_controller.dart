@@ -14,7 +14,9 @@ class AuthController extends GetxController {
   Rx<User?> loggedInUser = Rx<User?>(null);
 
   String databaseID = '678670ae00193586bc94';
-  String collectionID = 'all_play_list';
+  String collectionIDPlayList = 'all_play_list';
+  String collectionIDNotes = '67a64d200021350650b6';
+  String collectionIDCollections = '67a64d2e00215c5aaec0';
 
   @override
   void onInit() {
@@ -47,7 +49,7 @@ class AuthController extends GetxController {
       final AuthController authController = Get.find<AuthController>();
       final response = await Databases(AppWriteConfig.client).getDocument(
         databaseId: authController.databaseID,
-        collectionId: authController.collectionID,
+        collectionId: authController.collectionIDPlayList,
         documentId: id,
       );
 

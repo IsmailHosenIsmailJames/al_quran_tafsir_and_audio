@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class CollectionController extends GetxController {
-  List<CollectionInfoModel> collectionList = [];
+  RxList<CollectionInfoModel> collectionList = <CollectionInfoModel>[].obs;
   Rx<CollectionInfoModel> editingCollection =
       Rx<CollectionInfoModel>(CollectionInfoModel(
     id: ID.unique(),

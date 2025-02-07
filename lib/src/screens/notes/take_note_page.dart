@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/create_new_collection.dart/add_new_ayah.dart';
@@ -143,13 +144,14 @@ class _TakeNotePageState extends State<TakeNotePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: ayahsListKey.map(
                           (ayahKey) {
+                            log(ayahKey);
                             QuranSurahInfoModel surahInfoModel =
                                 QuranSurahInfoModel.fromMap(allChaptersInfo[
-                                    int.parse(ayahKey.split(':')[0]) - 1]);
+                                    int.parse(ayahKey.split(':')[0])]);
                             return Row(
                               children: [
                                 Text(
-                                  "${surahInfoModel.nameSimple} - ${ayahKey.split(":")[1]}",
+                                  "${surahInfoModel.nameSimple} - ${int.parse(ayahKey.split(":")[1]) + 1}",
                                 ),
                                 const Spacer(),
                                 SizedBox(
