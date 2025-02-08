@@ -88,27 +88,27 @@ List<String> used20LanguageList = [
   'Italian',
 ];
 
-Map<String, String> processingTafsirTranslations = {
-  'chinese': '处理经注',
-  'hindi': 'तफ़सीर संसाधित हो रहा है',
-  'english': 'Processing tafsir',
-  'spanish': 'Procesando tafsir',
-  'arabic': 'معالجة التفسير',
-  'bengali': 'তাফসীর প্রক্রিয়া করা হচ্ছে',
-  'portuguese': 'A processar tafsir',
-  'russian': 'Обработка тафсира',
-  'japanese': 'タفسィールを処理中',
-  'punjabi': 'تفسیر پروسیس کیتی جا رہی اے',
-  'german': 'Tafsir wird verarbeitet',
-  'french': 'Tafsir en cours de traitement',
-  'indonesian': 'Memproses tafsir',
-  'urdu': 'تفسیر پروسیس ہو رہی ہے',
-  'swahili': 'Inachakata tafsir',
-  'korean': '타프시르 처리 중',
-  'turkish': 'Tefsir işleniyor',
-  'vietnamese': 'Đang xử lý tafsir',
-  'tamil': 'தஃப்சீர் செயலாக்கப்படுகின்றது',
-  'italian': 'Tafsir in elaborazione',
+Map<String, String> historyTrackingPlaylistFeatureTranslations = {
+  'chinese': '历史记录跟踪与播放列表功能',
+  'hindi': 'इतिहास ट्रैकिंग और प्लेलिस्ट सुविधा',
+  'english': 'History Tracking & Playlist Feature',
+  'spanish': 'Seguimiento del historial y función de lista de reproducción',
+  'arabic': 'تتبع التاريخ وميزة قائمة التشغيل',
+  'bengali': 'ইতিহাস ট্র্যাকিং এবং প্লেলিস্ট বৈশিষ্ট্য',
+  'portuguese': 'Rastreamento de Histórico e Recurso de Playlist',
+  'russian': 'Отслеживание истории и функция плейлистов',
+  'japanese': '履歴追跡とプレイリスト機能',
+  'punjabi': 'تریخ ٹریکنگ تے پلے لسٹ فیچر',
+  'german': 'Verlaufsverfolgung & Playlist-Funktion',
+  'french': 'Suivi de l\'historique et fonctionnalité de playlist',
+  'indonesian': 'Pelacakan Riwayat & Fitur Daftar Putar',
+  'urdu': 'تاریخ سے باخبر رہنا اور پلے لسٹ فیچر',
+  'swahili': 'Ufuatiliaji wa Historia na Kipengele cha Orodha ya Kucheza',
+  'korean': '기록 추적 및 재생 목록 기능',
+  'turkish': 'Geçmiş Takibi ve Oynatma Listesi Özelliği',
+  'vietnamese': 'Theo dõi lịch sử & Tính năng danh sách phát',
+  'tamil': 'வரலாற்று கண்காணிப்பு & பிளேலிஸ்ட் அம்சம்',
+  'italian': 'Tracciamento della cronologia e funzione playlist',
 };
 
 Map<String, String> chinese = {
@@ -137,6 +137,12 @@ Map<String, String> chinese = {
   'Failed to download tafsir': '经注下载失败',
   'Progress': '进度',
   'Processing tafsir': '处理经注',
+  'Full Quran with 65+ Translations': '完整古兰经，含 65 种以上翻译',
+  '12 Tafsir Books in 6 Languages': '6 种语言的 12 本经注书',
+  '40+ Recitations & Quran Audio Book': '40多个朗诵版本和古兰经有声书',
+  'Rich Notes, Bookmarks & Collections': '丰富笔记、书签和收藏集',
+  'Cloud Backup & Sync': '云备份与同步',
+  'History Tracking & Playlist Feature': '历史记录跟踪与播放列表功能',
   //
 };
 Map<String, String> hindi = {
@@ -168,6 +174,12 @@ Map<String, String> hindi = {
   'Failed to download tafsir': 'तफ़सीर डाउनलोड करने में विफल',
   'Progress': 'प्रगति',
   'Processing tafsir': 'तफ़सीर संसाधित हो रहा है',
+  'Full Quran with 65+ Translations': '65+ अनुवादों के साथ पूर्ण कुरान',
+  '12 Tafsir Books in 6 Languages': '6 भाषाओं में 12 तफ़सीर पुस्तकें',
+  '40+ Recitations & Quran Audio Book': '40+ पाठ और कुरान ऑडियो बुक',
+  'Rich Notes, Bookmarks & Collections': 'रिच नोट्स, बुकमार्क और संग्रह',
+  'Cloud Backup & Sync': 'क्लाउड बैकअप और सिंक',
+  'History Tracking & Playlist Feature': 'इतिहास ट्रैकिंग और प्लेलिस्ट सुविधा',
   //
 };
 Map<String, String> english = {
@@ -198,6 +210,12 @@ Map<String, String> english = {
   'Failed to download tafsir': 'Failed to download tafsir',
   'Progress': 'Progress',
   'Processing tafsir': 'Processing tafsir',
+  'Full Quran with 65+ Translations': 'Full Quran with 65+ Translations',
+  '12 Tafsir Books in 6 Languages': '12 Tafsir Books in 6 Languages',
+  '40+ Recitations & Quran Audio Book': '40+ Recitations & Quran Audio Book',
+  'Rich Notes, Bookmarks & Collections': 'Rich Notes, Bookmarks & Collections',
+  'Cloud Backup & Sync': 'Cloud Backup & Sync',
+  'History Tracking & Playlist Feature': 'History Tracking & Playlist Feature',
   //
 };
 Map<String, String> spanish = {
@@ -233,6 +251,16 @@ Map<String, String> spanish = {
   'Failed to download tafsir': 'Error al descargar el tafsir',
   'Progress': 'Progreso',
   'Processing tafsir': 'Procesando tafsir',
+  'Full Quran with 65+ Translations':
+      'Corán completo con más de 65 traducciones',
+  '12 Tafsir Books in 6 Languages': '12 Libros de Tafsir en 6 idiomas',
+  '40+ Recitations & Quran Audio Book':
+      'Más de 40 recitaciones y audiolibro del Corán',
+  'Rich Notes, Bookmarks & Collections':
+      'Notas enriquecidas, Marcadores y Colecciones',
+  'Cloud Backup & Sync': 'Copia de seguridad y sincronización en la nube',
+  'History Tracking & Playlist Feature':
+      'Seguimiento del historial y función de lista de reproducción',
   //
 };
 Map<String, String> arabic = {
@@ -261,6 +289,13 @@ Map<String, String> arabic = {
   'Failed to download tafsir': 'فشل تنزيل التفسير',
   'Progress': 'التقدم',
   'Processing tafsir': 'معالجة التفسير',
+  'Full Quran with 65+ Translations':
+      'القرآن الكريم كاملاً مع أكثر من 65 ترجمة',
+  '12 Tafsir Books in 6 Languages': '12 كتاب تفسير بـ 6 لغات',
+  '40+ Recitations & Quran Audio Book': '40+ تلاوة وكتاب القرآن الصوتي',
+  'Rich Notes, Bookmarks & Collections': 'ملاحظات غنية وإشارات مرجعية ومجموعات',
+  'Cloud Backup & Sync': 'النسخ الاحتياطي السحابي والمزامنة',
+  'History Tracking & Playlist Feature': 'تتبع التاريخ وميزة قائمة التشغيل',
   //
 };
 Map<String, String> bengali = {
@@ -296,6 +331,13 @@ Map<String, String> bengali = {
   'Failed to download tafsir': 'তাফসীর ডাউনলোড করতে ব্যর্থ হয়েছে',
   'Progress': 'অগ্রগতি',
   'Processing tafsir': 'তাফসীর প্রক্রিয়া করা হচ্ছে',
+  'Full Quran with 65+ Translations': '65+ অনুবাদ সহ সম্পূর্ণ কুরআন',
+  '12 Tafsir Books in 6 Languages': '6টি ভাষায় 12টি তাফসীর বই',
+  '40+ Recitations & Quran Audio Book': '40+ আবৃত্তি ও কুরআন অডিও বই',
+  'Rich Notes, Bookmarks & Collections': 'রিচ নোট, বুকমার্ক এবং সংগ্রহ',
+  'Cloud Backup & Sync': 'ক্লাউড ব্যাকআপ ও সিঙ্ক',
+  'History Tracking & Playlist Feature':
+      'ইতিহাস ট্র্যাকিং এবং প্লেলিস্ট বৈশিষ্ট্য',
   //
 };
 Map<String, String> portuguese = {
@@ -330,6 +372,15 @@ Map<String, String> portuguese = {
   'Failed to download tafsir': 'Falha ao baixar o tafsir',
   'Progress': 'Progresso',
   'Processing tafsir': 'A processar tafsir',
+  'Full Quran with 65+ Translations':
+      'Alcorão Completo com mais de 65 Traduções',
+  '12 Tafsir Books in 6 Languages': '12 Livros de Tafsir em 6 idiomas',
+  '40+ Recitations & Quran Audio Book':
+      'Mais de 40 recitações e audiolivro do Corão',
+  'Rich Notes, Bookmarks & Collections': 'Notas Ricas, Marcadores e Coleções',
+  'Cloud Backup & Sync': 'Backup e Sincronização na Nuvem',
+  'History Tracking & Playlist Feature':
+      'Rastreamento de Histórico e Recurso de Playlist',
   //
 };
 Map<String, String> russian = {
@@ -363,6 +414,14 @@ Map<String, String> russian = {
   'Failed to download tafsir': 'Не удалось загрузить тафсир',
   'Progress': 'Прогресс',
   'Processing tafsir': 'Обработка тафсира',
+  'Full Quran with 65+ Translations': 'Полный Коран с 65+ переводами',
+  '12 Tafsir Books in 6 Languages': '12 книг тафсиров на 6 языках',
+  '40+ Recitations & Quran Audio Book': '40+ чтений и аудиокнига Корана',
+  'Rich Notes, Bookmarks & Collections':
+      'Расширенные заметки, Закладки и Коллекции',
+  'Cloud Backup & Sync': 'Облачное резервное копирование и синхронизация',
+  'History Tracking & Playlist Feature':
+      'Отслеживание истории и функция плейлистов',
   //
 };
 Map<String, String> japanese = {
@@ -391,6 +450,12 @@ Map<String, String> japanese = {
   'Failed to download tafsir': 'タفسィールのダウンロードに失敗しました',
   'Progress': '進捗',
   'Processing tafsir': 'タفسィールを処理中',
+  'Full Quran with 65+ Translations': '65以上の翻訳付きフルコーラン',
+  '12 Tafsir Books in 6 Languages': '6言語の12のタفسィール（解釈）書',
+  '40+ Recitations & Quran Audio Book': '40以上の朗読とコーランオーディオブック',
+  'Rich Notes, Bookmarks & Collections': 'リッチノート、ブックマーク、コレクション',
+  'Cloud Backup & Sync': 'クラウドバックアップと同期',
+  'History Tracking & Playlist Feature': '履歴追跡とプレイリスト機能',
   //
 };
 Map<String, String> punjabi = {
@@ -420,6 +485,12 @@ Map<String, String> punjabi = {
   'Failed to download tafsir': 'تفسیر ڈاؤن لوڈ کرن وچ ناکام رہیا',
   'Progress': 'ترقی',
   'Processing tafsir': 'تفسیر پروسیس کیتی جا رہی اے',
+  'Full Quran with 65+ Translations': '65+ ترجمیاں دے نال مکمل قرآن',
+  '12 Tafsir Books in 6 Languages': '6 بولیاں وچ 12 تفسیر کتاباں',
+  '40+ Recitations & Quran Audio Book': '40+ تلاوتاں تے قرآن آڈیو کتاب',
+  'Rich Notes, Bookmarks & Collections': 'رچ نوٹس، بُک مارکس تے مجموعے',
+  'Cloud Backup & Sync': 'کلاؤڈ بیک اپ تے سنک',
+  'History Tracking & Playlist Feature': 'تریخ ٹریکنگ تے پلے لسٹ فیچر',
   //
 };
 Map<String, String> german = {
@@ -455,6 +526,15 @@ Map<String, String> german = {
   'Failed to download tafsir': 'Tafsir konnte nicht heruntergeladen werden',
   'Progress': 'Fortschritt',
   'Processing tafsir': 'Tafsir wird verarbeitet',
+  'Full Quran with 65+ Translations':
+      'Vollständiger Koran mit über 65 Übersetzungen',
+  '12 Tafsir Books in 6 Languages': '12 Tafsir-Bücher in 6 Sprachen',
+  '40+ Recitations & Quran Audio Book': '40+ Rezitationen & Koran-Hörbuch',
+  'Rich Notes, Bookmarks & Collections':
+      'Umfangreiche Notizen, Lesezeichen & Sammlungen',
+  'Cloud Backup & Sync': 'Cloud-Backup & Synchronisierung',
+  'History Tracking & Playlist Feature':
+      'Verlaufsverfolgung & Playlist-Funktion',
   //
 };
 Map<String, String> french = {
@@ -490,6 +570,16 @@ Map<String, String> french = {
   'Failed to download tafsir': 'Échec du téléchargement du tafsir',
   'Progress': 'Progrès',
   'Processing tafsir': 'Tafsir en cours de traitement',
+  'Full Quran with 65+ Translations':
+      'Coran complet avec plus de 65 traductions',
+  '12 Tafsir Books in 6 Languages': '12 Livres de Tafsir en 6 langues',
+  '40+ Recitations & Quran Audio Book':
+      'Plus de 40 récitations et livre audio du Coran',
+  'Rich Notes, Bookmarks & Collections':
+      'Notes enrichies, Signets & Collections',
+  'Cloud Backup & Sync': 'Sauvegarde et synchronisation cloud',
+  'History Tracking & Playlist Feature':
+      'Suivi de l\'historique et fonctionnalité de playlist',
   //
 };
 Map<String, String> indonesian = {
@@ -519,6 +609,14 @@ Map<String, String> indonesian = {
   'Failed to download tafsir': 'Gagal mengunduh tafsir',
   'Progress': 'Progres',
   'Processing tafsir': 'Memproses tafsir',
+  'Full Quran with 65+ Translations':
+      'Al-Qur\'an Lengkap dengan 65+ Terjemahan',
+  '12 Tafsir Books in 6 Languages': '12 Buku Tafsir dalam 6 Bahasa',
+  '40+ Recitations & Quran Audio Book': '40+ Bacaan & Buku Audio Quran',
+  'Rich Notes, Bookmarks & Collections': 'Catatan Kaya, Markah Buku & Koleksi',
+  'Cloud Backup & Sync': 'Backup & Sinkronisasi Cloud',
+  'History Tracking & Playlist Feature':
+      'Pelacakan Riwayat & Fitur Daftar Putar',
   //
 };
 Map<String, String> urdu = {
@@ -551,6 +649,12 @@ Map<String, String> urdu = {
   'Failed to download tafsir': 'تفسیر ڈاؤن لوڈ کرنے میں ناکام',
   'Progress': 'پیش رفت',
   'Processing tafsir': 'تفسیر پروسیس ہو رہی ہے',
+  'Full Quran with 65+ Translations': '65+ تراجم کے ساتھ مکمل قرآن',
+  '12 Tafsir Books in 6 Languages': '6 زبانوں میں 12 تفسیر کتب',
+  '40+ Recitations & Quran Audio Book': '40+ تلاوتیں اور قرآن آڈیو کتاب',
+  'Rich Notes, Bookmarks & Collections': 'رچ نوٹس، بُک مارکس اور مجموعے',
+  'Cloud Backup & Sync': 'کلاؤڈ بیک اپ اور سنک',
+  'History Tracking & Playlist Feature': 'تاریخ سے باخبر رہنا اور پلے لسٹ فیچر',
   //
 };
 Map<String, String> swahili = {
@@ -583,6 +687,13 @@ Map<String, String> swahili = {
   'Failed to download tafsir': 'Imeshindwa kupakua tafsir',
   'Progress': 'Maendeleo',
   'Processing tafsir': 'Inachakata tafsir',
+  'Full Quran with 65+ Translations': 'Quran Kamili na Tafsiri 65+',
+  '12 Tafsir Books in 6 Languages': 'Vitabu 12 vya Tafsir katika Lugha 6',
+  '40+ Recitations & Quran Audio Book': 'Usomaji 40+ na Kitabu Sauti cha Quran',
+  'Rich Notes, Bookmarks & Collections': 'Vidokezo Bora, Alamisho na Makusanyo',
+  'Cloud Backup & Sync': 'Hifadhi Nakala na Usawazishaji Wingu',
+  'History Tracking & Playlist Feature':
+      'Ufuatiliaji wa Historia na Kipengele cha Orodha ya Kucheza',
   //
 };
 Map<String, String> korean = {
@@ -611,6 +722,12 @@ Map<String, String> korean = {
   'Failed to download tafsir': '타프시르 다운로드 실패',
   'Progress': '진행',
   'Processing tafsir': '타프시르 처리 중',
+  'Full Quran with 65+ Translations': '65개 이상의 번역본이 포함된 완전한 쿠란',
+  '12 Tafsir Books in 6 Languages': '6개 언어로 된 12권의 타프시르 책',
+  '40+ Recitations & Quran Audio Book': '40개 이상의 암송 및 쿠란 오디오북',
+  'Rich Notes, Bookmarks & Collections': '풍부한 메모, 북마크 및 컬렉션',
+  'Cloud Backup & Sync': '클라우드 백업 및 동기화',
+  'History Tracking & Playlist Feature': '기록 추적 및 재생 목록 기능',
   //
 };
 Map<String, String> turkish = {
@@ -640,6 +757,14 @@ Map<String, String> turkish = {
   'Failed to download tafsir': 'Tefsir indirilemedi',
   'Progress': 'İlerleme',
   'Processing tafsir': 'Tefsir işleniyor',
+  'Full Quran with 65+ Translations': '65+ Tercümeli Tam Kur\'an',
+  '12 Tafsir Books in 6 Languages': '6 Dilde 12 Tefsir Kitabı',
+  '40+ Recitations & Quran Audio Book': '40+ Tilavet ve Kur\'an Sesli Kitabı',
+  'Rich Notes, Bookmarks & Collections':
+      'Zengin Notlar, Yer İmleri ve Koleksiyonlar',
+  'Cloud Backup & Sync': 'Bulut Yedekleme ve Senkronizasyon',
+  'History Tracking & Playlist Feature':
+      'Geçmiş Takibi ve Oynatma Listesi Özelliği',
   //
 };
 Map<String, String> vietnamese = {
@@ -671,6 +796,14 @@ Map<String, String> vietnamese = {
   'Failed to download tafsir': 'Tải xuống tafsir không thành công',
   'Progress': 'Tiến độ',
   'Processing tafsir': 'Đang xử lý tafsir',
+  'Full Quran with 65+ Translations': 'Toàn bộ Kinh Quran với hơn 65 bản dịch',
+  '12 Tafsir Books in 6 Languages': '12 Sách Tafsir bằng 6 Ngôn ngữ',
+  '40+ Recitations & Quran Audio Book': 'Hơn 40 Ngâm thơ & Sách nói Quran',
+  'Rich Notes, Bookmarks & Collections':
+      'Ghi chú phong phú, Dấu trang & Bộ sưu tập',
+  'Cloud Backup & Sync': 'Sao lưu & Đồng bộ đám mây',
+  'History Tracking & Playlist Feature':
+      'Theo dõi lịch sử & Tính năng danh sách phát',
   //
 };
 Map<String, String> tamil = {
@@ -705,6 +838,15 @@ Map<String, String> tamil = {
   'Failed to download tafsir': 'தஃப்சீர் பதிவிறக்கம் செய்ய முடியவில்லை',
   'Progress': 'முன்னேற்றம்',
   'Processing tafsir': 'தஃப்சீர் செயலாக்கப்படுகின்றது',
+  'Full Quran with 65+ Translations': '65+ மொழிபெயர்ப்புகளுடன் முழு குர்ஆன்',
+  '12 Tafsir Books in 6 Languages': '6 மொழிகளில் 12 தஃப்சீர் புத்தகங்கள்',
+  '40+ Recitations & Quran Audio Book':
+      '40+ ஓதுதல்கள் & குர்ஆன் ஆடியோ புத்தகம்',
+  'Rich Notes, Bookmarks & Collections':
+      'சிறப்பான குறிப்புகள், புக்மார்க்குகள் & தொகுப்புகள்',
+  'Cloud Backup & Sync': 'கிளவுட் காப்புப்பிரதி & ஒத்திசைவு',
+  'History Tracking & Playlist Feature':
+      'வரலாற்று கண்காணிப்பு & பிளேலிஸ்ட் அம்சம்',
   //
 };
 Map<String, String> italian = {
@@ -740,5 +882,13 @@ Map<String, String> italian = {
   'Failed to download tafsir': 'Download del Tafsir fallito',
   'Progress': 'Progresso',
   'Processing tafsir': 'Tafsir in elaborazione',
+  'Full Quran with 65+ Translations': 'Corano completo con oltre 65 traduzioni',
+  '12 Tafsir Books in 6 Languages': '12 Libri di Tafsir in 6 lingue',
+  '40+ Recitations & Quran Audio Book':
+      'Oltre 40 recitazioni e audiolibro del Corano',
+  'Rich Notes, Bookmarks & Collections': 'Note ricche, Segnalibri e Raccolte',
+  'Cloud Backup & Sync': 'Backup e sincronizzazione cloud',
+  'History Tracking & Playlist Feature':
+      'Tracciamento della cronologia e funzione playlist',
   //
 };

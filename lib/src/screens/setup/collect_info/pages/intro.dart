@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -8,6 +9,14 @@ class Intro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> points = [
+      '📖 ${'Full Quran with 65+ Translations'.tr}',
+      '📚 ${'12 Tafsir Books in 6 Languages'.tr}',
+      '🎧 ${'40+ Recitations & Quran Audio Book'.tr}',
+      '📝 ${'Rich Notes, Bookmarks & Collections'.tr}',
+      '🔄 ${'Cloud Backup & Sync'.tr}',
+      '📌 ${'History Tracking & Playlist Feature'.tr}',
+    ];
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -33,14 +42,31 @@ class Intro extends StatelessWidget {
           ),
         ),
         Container(
-          padding: const EdgeInsets.only(left: 10, right: 10),
-          alignment: Alignment.center,
-          child: Text(
-            'intro_text'.tr,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-        ),
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            alignment: Alignment.center,
+            child: Column(
+              children: List.generate(
+                points.length,
+                (index) {
+                  return Row(
+                    children: [
+                      const Icon(
+                        Icons.check,
+                        color: Colors.green,
+                        size: 18,
+                      ),
+                      const Gap(5),
+                      Text(
+                        points[index],
+                        style: const TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            )),
         MediaQuery(
           data: MediaQuery.of(context).copyWith(
             textScaler: const TextScaler.linear(0.7),
