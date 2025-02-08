@@ -126,7 +126,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   ),
                                   const Gap(5),
                                   Text(
-                                    'previous'.tr,
+                                    'Previous'.tr,
                                     style: textTheme.bodyMedium!.copyWith(
                                       color: pageIndex != 0
                                           ? Colors.green
@@ -161,7 +161,8 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                 if (pageIndex == 0) {
                                   if (infoController.appLanCode.value.isEmpty) {
                                     showTwoestedMessage(
-                                      'Please Select Quran Translation Language',
+                                      'Please Select Quran Translation Language'
+                                          .tr,
                                       ToastificationType.info,
                                     );
                                     return;
@@ -170,7 +171,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   if (infoController
                                       .translationLanguage.value.isEmpty) {
                                     showTwoestedMessage(
-                                      'Please select a language for app',
+                                      'Please select a language for app'.tr,
                                       ToastificationType.info,
                                     );
 
@@ -180,7 +181,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   if (infoController.bookNameIndex.value ==
                                       -1) {
                                     showTwoestedMessage(
-                                      'Please Select Quran Translation Book',
+                                      'Please Select Quran Translation Book'.tr,
                                       ToastificationType.info,
                                     );
                                     return;
@@ -189,7 +190,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                 if (pageIndex == 4) {
                                   if (infoController.tafsirIndex.value == -1) {
                                     showTwoestedMessage(
-                                      'Please Select Quran Tafsir Language',
+                                      'Please Select Quran Tafsir Language'.tr,
                                       ToastificationType.info,
                                     );
                                     return;
@@ -198,7 +199,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   if (infoController.tafsirBookIndex.value ==
                                       -1) {
                                     showTwoestedMessage(
-                                      'Please Select Quran Tafsir Book',
+                                      'Please Select Quran Tafsir Book'.tr,
                                       ToastificationType.info,
                                     );
                                     return;
@@ -238,7 +239,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                     log('message');
                                   } else {
                                     showTwoestedMessage(
-                                      'Please select a default reciter',
+                                      'Please select a default reciter'.tr,
                                       ToastificationType.info,
                                     );
                                   }

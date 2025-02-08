@@ -22,7 +22,7 @@ class DownloadData extends StatefulWidget {
 
 class _DownloadDataState extends State<DownloadData> {
   double progressValue = 0.0;
-  String processState = 'Downloading...';
+  String processState = '${'Downloading'.tr}...';
   String errorText = '';
 
   InfoController infoController = Get.find();
@@ -43,7 +43,7 @@ class _DownloadDataState extends State<DownloadData> {
 
   Future<void> downloadData() async {
     setState(() {
-      processState = 'Getting Quran...';
+      processState = '${'Getting Quran'.tr}...';
     });
     final quranDB = Hive.box('quran_db');
     List<String> listOfQuranScript = [
@@ -85,7 +85,7 @@ class _DownloadDataState extends State<DownloadData> {
     // skip chapter info. Because it support multi language
 
     setState(() {
-      processState = 'Getting translation...';
+      processState = '${'Downloading Translation'.tr}...';
     });
 
     // download translation
@@ -125,7 +125,7 @@ class _DownloadDataState extends State<DownloadData> {
 
     // get tafsir
     setState(() {
-      processState = 'Getting tafsir...';
+      processState = '${'Downloading Tafsir'.tr}...';
     });
     final tafsirDB = Hive.box('tafsir_db');
 
@@ -142,7 +142,7 @@ class _DownloadDataState extends State<DownloadData> {
         log('Substring Time : ${DateTime.now().difference(now).inMilliseconds}');
         now = DateTime.now();
         setState(() {
-          processState = 'Processing tafsir...';
+          processState = '${'Processing tafsir'.tr}...';
         });
 
         String decodedText = decompressServerDataWithBZip2(text);
@@ -171,7 +171,7 @@ class _DownloadDataState extends State<DownloadData> {
 
     setState(() {
       progressValue = 1.0;
-      processState = 'All Completed';
+      processState = 'All Completed'.tr;
     });
     await Future.delayed(const Duration(seconds: 1));
     Get.offAll(
@@ -204,7 +204,7 @@ class _DownloadDataState extends State<DownloadData> {
             const SizedBox(
               height: 10,
             ),
-            Text('Progress : ${(progressValue * 100).toInt()}%'),
+            Text('${'Progress'.tr} : ${(progressValue * 100).toInt()}%'),
             Text(
               errorText,
               style: const TextStyle(color: Colors.red),

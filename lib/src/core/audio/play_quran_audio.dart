@@ -5,7 +5,6 @@ import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_contro
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/quran_com/all_recitations.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/recitation_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
-import 'package:al_quran_tafsir_and_audio/src/translations/map_of_translation.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:just_audio/just_audio.dart';

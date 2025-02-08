@@ -49,7 +49,7 @@ class Intro extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text('Data collected from :'),
+              Text('Data collected from'.tr),
               TextButton(
                 onPressed: () {
                   launchUrl(Uri.parse('https://quran.com/'),
@@ -57,7 +57,7 @@ class Intro extends StatelessWidget {
                 },
                 child: const Text('quran.com'),
               ),
-              const Text('and'),
+              Text('and'.tr),
               TextButton(
                   onPressed: () {
                     launchUrl(Uri.parse('https://everyayah.com/'),

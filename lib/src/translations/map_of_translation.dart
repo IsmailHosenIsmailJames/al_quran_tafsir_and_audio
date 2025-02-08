@@ -1,25 +1,25 @@
 abstract class AppTranslation {
   static Map<String, Map<String, String>> translationsKeys = {
-    'zh': zh,
-    'hi': hi,
-    'en': en,
-    'es': es,
-    'ar': ar,
-    'bn': bn,
-    'pt': pt,
-    'ru': ru,
-    'ja': ja,
-    'pa': pa,
-    'de': de,
-    'fr': fr,
-    'id': id,
-    'ur': ur,
-    'sw': sw,
-    'ko': ko,
-    'tr': tr,
-    'vi': vi,
-    'ta': ta,
-    'it': it,
+    'zh': chinese,
+    'hi': hindi,
+    'en': english,
+    'es': spanish,
+    'ar': arabic,
+    'bn': bengali,
+    'pt': portuguese,
+    'ru': russian,
+    'ja': japanese,
+    'pa': punjabi,
+    'de': german,
+    'fr': french,
+    'id': indonesian,
+    'ur': urdu,
+    'sw': swahili,
+    'ko': korean,
+    'tr': turkish,
+    'vi': vietnamese,
+    'ta': tamil,
+    'it': italian,
   };
 }
 
@@ -88,797 +88,657 @@ List<String> used20LanguageList = [
   'Italian',
 ];
 
-Map<String, String> zh = {
-  'Translation of Quran': '古兰经翻译', 'Select a language for app': '为应用选择一种语言',
-  'Privacy Policy': '隐私政策',
-  'Previous': '上一个',
-  'Setup': '设置',
-  'Next': '下一个',
-  'Al Quran': '古兰经',
-  'introText':
-      '集成了翻译的多功能古兰经应用，支持69种语言和180多本翻译书籍，6种语言的塔夫西尔，30本塔夫西尔书籍和35位以上的古兰经诵读者的诵读',
-  'We collected all data form this website': '我们从这个网站收集了所有数据',
-  'Translation Book': '翻译书籍',
-  'Choice Recitation': '选择朗读',
-  "Select language for Quran's Tafsir": '选择古兰经的塔夫西尔语言',
-  'Tafsir Books of Quran': '古兰经的塔夫西尔书籍',
-  'Choice your favorite Reciter of Quran': '选择您最喜欢的古兰经朗读者',
-  'intro_text':
-      '多合一的古兰经应用程序，支持69种语言翻译和180多种翻译书籍，6种语言的塔夫西尔和30多本塔夫西尔书籍，以及古兰经朗诵者的朗诵',
-  'previous': '上一个',
-  'Surah': '蘇拉',
-  'Juzs': '章节',
-  'LogIn': '登录',
-  'Home': '首页',
-  'Favorite': '收藏',
-  'Book Mark': '书签',
-  'Notes': '笔记',
-  'Settings': '设置',
-  'Others Platforms': '其他平台',
-  'loginReason': '您需要登录以使用更多功能。例如，您可以将笔记保存到云端并在任何地方访问它们。',
-  'Audio': '音频',
-  'Profile': '个人资料',
-  'All Reciters List': '所有诵读者列表',
-  'No Book Mark Found': '未找到书签',
-  'Empty': '空',
-
-//
+Map<String, String> processingTafsirTranslations = {
+  'chinese': '处理经注',
+  'hindi': 'तफ़सीर संसाधित हो रहा है',
+  'english': 'Processing tafsir',
+  'spanish': 'Procesando tafsir',
+  'arabic': 'معالجة التفسير',
+  'bengali': 'তাফসীর প্রক্রিয়া করা হচ্ছে',
+  'portuguese': 'A processar tafsir',
+  'russian': 'Обработка тафсира',
+  'japanese': 'タفسィールを処理中',
+  'punjabi': 'تفسیر پروسیس کیتی جا رہی اے',
+  'german': 'Tafsir wird verarbeitet',
+  'french': 'Tafsir en cours de traitement',
+  'indonesian': 'Memproses tafsir',
+  'urdu': 'تفسیر پروسیس ہو رہی ہے',
+  'swahili': 'Inachakata tafsir',
+  'korean': '타프시르 처리 중',
+  'turkish': 'Tefsir işleniyor',
+  'vietnamese': 'Đang xử lý tafsir',
+  'tamil': 'தஃப்சீர் செயலாக்கப்படுகின்றது',
+  'italian': 'Tafsir in elaborazione',
 };
-Map<String, String> hi = {
-  'Translation of Quran': 'क़ुरान का अनुवाद',
-  'Select a language for app': 'ऐप के लिए एक भाषा चुनें',
-  'Privacy Policy': 'गोपनीयता नीति',
+
+Map<String, String> chinese = {
+  'Al Quran': '古兰经', 'Privacy Policy': '隐私政策',
+  'Select a language for app': '选择应用语言',
+  'Previous': '上一步',
+  'Setup': '设置',
+  'Data collected from': '数据来自',
+  'and': '和',
+  'Next': '下一步',
+  'Translation of Quran': '古兰经翻译',
+  'Translation Book': '译本',
+  "Select language for Quran's Tafsir": '选择古兰经注释的语言',
+  'Please Select Quran Translation Language': '请选择古兰经翻译语言',
+  'Please select a language for app': '请选择应用语言',
+  'Please Select Quran Translation Book': '请选择古兰经译本',
+  'Please Select Quran Tafsir Language': '请选择古兰经注释语言',
+  'Please Select Quran Tafsir Book': '请选择古兰经注释书',
+  'Please select a default reciter': '请选择默认朗诵者',
+  'Downloading': '下载中',
+  'Getting Quran': '获取下载的古兰经',
+  'Downloading Translation': '下载翻译',
+  'Downloading Tafsir': '下载经注',
+  'All Completed': '全部完成',
+  'Failed to download translation': '翻译下载失败',
+  'Failed to download tafsir': '经注下载失败',
+  'Progress': '进度',
+  'Processing tafsir': '处理经注',
+  //
+};
+Map<String, String> hindi = {
+  'Al Quran': 'अल कुरान', 'Privacy Policy': 'गोपनीयता नीति',
+  'Select a language for app': 'ऐप के लिए भाषा चुनें',
   'Previous': 'पिछला',
   'Setup': 'सेटअप',
+  'Data collected from': 'से डेटा एकत्र किया गया',
+  'and': 'और',
   'Next': 'अगला',
-  'Al Quran': 'अल कुरान',
-  'introText':
-      '69 भाषाओं और 180+ अनुवाद पुस्तकों के साथ ऑल इन वन अल-क़ुरान ऐप, 6 भाषाओं में तफ़्सीर और 30 तफ़्सीर पुस्तकों के साथ, 35+ क़ुरान पाठकों की तिलावत',
-  'We collected all data form this website':
-      'हमने इस वेबसाइट से सभी डेटा एकत्र किया',
+  'Translation of Quran': 'कुरान का अनुवाद',
   'Translation Book': 'अनुवाद पुस्तक',
-  'Choice Recitation': 'चयन पाठ',
-  "Select language for Quran's Tafsir": 'कुरान की तफ्सीर के लिए भाषा चुनें',
-  'Tafsir Books of Quran': 'कुरान की तफ्सीर की किताबें',
-  'Choice your favorite Reciter of Quran':
-      'कुरान के अपने पसंदीदा पाठक का चयन करें',
-  'intro_text':
-      'सभी एक में अल कुरान ऐप 69 भाषाओं में अनुवाद और 180+ अनुवाद पुस्तकों, 6 भाषाओं में तफ़सीर और 30+ तफ़सीर पुस्तकों और कुरान पाठक के पाठ के साथ',
-  'previous': 'पिछला',
-  'Surah': 'सूरा',
-  'Juzs': 'जूज़',
-  'LogIn': 'लॉगिन',
-  'Home': 'मुख्य पृष्ठ',
-  'Favorite': 'पसंदीदा',
-  'Book Mark': 'बुकमार्क',
-  'Notes': 'नोट्स',
-  'Settings': 'सेटिंग्स',
-  'Others Platforms': 'अन्य प्लेटफॉर्म',
-  'loginReason':
-      'अधिक सुविधाओं के लिए आपको लॉगिन करना होगा। उदाहरण के लिए, आप अपने नोट्स को क्लाउड में सहेज सकते हैं और उन्हें किसी भी स्थान से एक्सेस कर सकते हैं।',
-  'Audio': 'ऑडियो',
-  'Profile': 'प्रोफ़ाइल',
-  'All Reciters List': 'सभी क़ारियों की सूची',
-  'No Book Mark Found': 'कोई बुकमार्क नहीं मिला',
-  'Empty': 'खाली',
-
-//
+  "Select language for Quran's Tafsir":
+      'कुरान की तफ़सीर के लिए भाषा का चयन करें',
+  'Please Select Quran Translation Language':
+      'कृपया कुरान अनुवाद भाषा का चयन करें',
+  'Please select a language for app': 'कृपया ऐप के लिए भाषा चुनें',
+  'Please Select Quran Translation Book':
+      'कृपया कुरान अनुवाद पुस्तक का चयन करें',
+  'Please Select Quran Tafsir Language': 'कृपया कुरान तफ़सीर भाषा का चयन करें',
+  'Please Select Quran Tafsir Book': 'कृपया कुरान तफ़सीर पुस्तक का चयन करें',
+  'Please select a default reciter': 'कृपया एक डिफ़ॉल्ट पाठ करनेवाला चुनें',
+  'Downloading': 'डाउनलोड हो रहा है',
+  'Getting Quran': 'कुरान डाउनलोड हो रहा है',
+  'Downloading Translation': 'अनुवाद डाउनलोड हो रहा है',
+  'Downloading Tafsir': 'तफ़सीर डाउनलोड हो रही है',
+  'All Completed': 'सब पूरा हो गया',
+  'Failed to download translation': 'अनुवाद डाउनलोड करने में विफल',
+  'Failed to download tafsir': 'तफ़सीर डाउनलोड करने में विफल',
+  'Progress': 'प्रगति',
+  'Processing tafsir': 'तफ़सीर संसाधित हो रहा है',
+  //
 };
-Map<String, String> en = {
-  'Translation of Quran': 'Translation of Quran',
-  'Select a language for app': 'Select a language for app',
-  'Privacy Policy': 'Privacy Policy',
+Map<String, String> english = {
+  'Al Quran': 'Al-Quran', 'Privacy Policy': 'Privacy Policy',
+  'Select a language for app': 'Select app language',
   'Previous': 'Previous',
   'Setup': 'Setup',
+  'Data collected from': 'Data collected from',
+  'and': 'and',
   'Next': 'Next',
-  'Al Quran': 'Al Quran',
-  'introText':
-      "All in one Al Quran App with Translation in 69 languages & 180+ translation books, Tefsir in 6 languages with 30 tafsir books 35+ & Quran reciter's recitation",
-  'We collected all data form this website':
-      'We collected all data from this website',
+  'Translation of Quran': 'Translation of Quran',
   'Translation Book': 'Translation Book',
-  'Choice Recitation': 'Choice Recitation',
-  "Select language for Quran's Tafsir": "Select language for Quran's Tafsir",
-  'Tafsir Books of Quran': 'Tafsir Books of Quran',
-  'Choice your favorite Reciter of Quran':
-      'Choose your favorite Reciter of Quran',
-  'intro_text':
-      "All-in-one Al Quran App with Translation in 69 languages & 180+ translation books, Tafsir in 6 languages with 30+ Tafsir books & Quran reciter's recitation",
-  'previous': 'Previous',
-  'Surah': 'Surah',
-  'Juzs': 'Juzs',
-  'LogIn': 'Login',
-  'Home': 'Home',
-  'Favorite': 'Favorite',
-  'Book Mark': 'Bookmark',
-  'Notes': 'Notes',
-  'Settings': 'Settings',
-  'Others Platforms': 'Other Platforms',
-  'loginReason':
-      'You Need to login for more Features. For Example, you can save your notes in cloud and access it from any places.',
-  'Audio': 'Audio',
-  'Profile': 'Profile',
-  'All Reciters List': 'All Reciters List',
-  'No Book Mark Found': 'No Book Mark Found',
-  'Empty': 'Empty',
-
-//
+  "Select language for Quran's Tafsir": 'Select language for Quran\'s Tafsir',
+  'Please Select Quran Translation Language':
+      'Please Select Quran Translation Language',
+  'Please select a language for app': 'Please select a language for app',
+  'Please Select Quran Translation Book':
+      'Please Select Quran Translation Book',
+  'Please Select Quran Tafsir Language': 'Please Select Quran Tafsir Language',
+  'Please Select Quran Tafsir Book': 'Please Select Quran Tafsir Book',
+  'Please select a default reciter': 'Please select a default reciter',
+  'Downloading': 'Downloading',
+  'Getting Quran': 'Downloading Quran data',
+  'Downloading Translation': 'Downloading Translation',
+  'Downloading Tafsir': 'Downloading Tafsir',
+  'All Completed': 'All Completed',
+  'Failed to download translation': 'Failed to download translation',
+  'Failed to download tafsir': 'Failed to download tafsir',
+  'Progress': 'Progress',
+  'Processing tafsir': 'Processing tafsir',
+  //
 };
-Map<String, String> es = {
-  'Translation of Quran': 'Traducción del Corán',
-  'Select a language for app': 'Seleccione un idioma para la aplicación',
-  'Privacy Policy': 'Política de privacidad',
+Map<String, String> spanish = {
+  'Al Quran': 'El Corán', 'Privacy Policy': 'Política de privacidad',
+  'Select a language for app': 'Selecciona un idioma para la aplicación',
   'Previous': 'Anterior',
   'Setup': 'Configuración',
+  'Data collected from': 'Datos recogidos de',
+  'and': 'y',
   'Next': 'Siguiente',
-  'Al Quran': 'El Corán',
-  'introText':
-      'Aplicación todo en uno del Corán con traducción en 69 idiomas y más de 180 libros de traducción, Tafsir en 6 idiomas con 30 libros de tafsir y la recitación de más de 35 recitadores del Corán',
-  'We collected all data form this website':
-      'Hemos recolectado todos los datos de este sitio web',
-  'Translation Book': 'Libro de traducción',
-  'Choice Recitation': 'Recitación elegida',
+  'Translation of Quran': 'Traducción del Corán',
+  'Translation Book': 'Libro de traducciones',
   "Select language for Quran's Tafsir":
-      'Seleccione el idioma para el Tafsir del Corán',
-  'Tafsir Books of Quran': 'Libros de Tafsir del Corán',
-  'Choice your favorite Reciter of Quran':
-      'Elija su recitador favorito del Corán',
-  'intro_text':
-      'Aplicación Al Corán todo en uno con traducción en 69 idiomas y más de 180 libros de traducción, Tafsir en 6 idiomas con más de 30 libros de Tafsir y recitación del recitador del Corán',
-  'previous': 'Anterior',
-  'Surah': 'Sura',
-  'Juzs': 'Partes',
-  'LogIn': 'Iniciar sesión',
-  'Home': 'Inicio',
-  'Favorite': 'Favorito',
-  'Book Mark': 'Marcadores',
-  'Notes': 'Notas',
-  'Settings': 'Ajustes',
-  'Others Platforms': 'Otras Plataformas',
-  'loginReason':
-      'Necesitas iniciar sesión para más funciones. Por ejemplo, puedes guardar tus notas en la nube y acceder a ellas desde cualquier lugar.',
-  'Audio': 'Audio',
-  'Profile': 'Perfil',
-  'All Reciters List': 'Lista de Todos los Recitadores',
-  'No Book Mark Found': 'No se Encontraron Marcadores',
-  'Empty': 'Vacío',
-
-//
+      'Selecciona el idioma para el Tafsir del Corán',
+  'Please Select Quran Translation Language':
+      'Por favor, seleccione el idioma de traducción del Corán',
+  'Please select a language for app':
+      'Por favor, selecciona un idioma para la aplicación',
+  'Please Select Quran Translation Book':
+      'Por favor, seleccione el libro de traducción del Corán',
+  'Please Select Quran Tafsir Language':
+      'Por favor, seleccione el idioma del Tafsir del Corán',
+  'Please Select Quran Tafsir Book':
+      'Por favor, seleccione el libro de Tafsir del Corán',
+  'Please select a default reciter':
+      'Por favor, seleccione un recitador predeterminado',
+  'Downloading': 'Descargando',
+  'Getting Quran': 'Descargando datos del Corán',
+  'Downloading Translation': 'Descargando traducción',
+  'Downloading Tafsir': 'Descargando Tafsir',
+  'All Completed': 'Todo completado',
+  'Failed to download translation': 'Error al descargar la traducción',
+  'Failed to download tafsir': 'Error al descargar el tafsir',
+  'Progress': 'Progreso',
+  'Processing tafsir': 'Procesando tafsir',
+  //
 };
-Map<String, String> ar = {
-  'Translation of Quran': 'ترجمة القرآن',
-  'Select a language for app': 'اختر لغة للتطبيق',
-  'Privacy Policy': 'سياسة الخصوصية',
+Map<String, String> arabic = {
+  'Al Quran': 'القرآن', 'Privacy Policy': 'سياسة الخصوصية',
+  'Select a language for app': 'اختر لغة التطبيق',
   'Previous': 'السابق',
   'Setup': 'إعداد',
+  'Data collected from': 'البيانات التي تم جمعها من',
+  'and': 'و',
   'Next': 'التالي',
-  'Al Quran': 'القرآن',
-  'introText':
-      'تطبيق شامل للقرآن الكريم مع ترجمة إلى 69 لغة و180+ كتاب ترجمة، تفسير بست لغات مع 30 كتاب تفسير وأكثر من 35 قارئاً يتلون القرآن',
-  'We collected all data form this website': 'جمعنا كل البيانات من هذا الموقع',
+  'Translation of Quran': 'ترجمة القرآن',
   'Translation Book': 'كتاب الترجمة',
-  'Choice Recitation': 'تلاوة مختارة',
-  "Select language for Quran's Tafsir": 'اختر اللغة لتفسير القرآن',
-  'Tafsir Books of Quran': 'كتب التفسير للقرآن',
-  'Choice your favorite Reciter of Quran': 'اختر قارئ القرآن المفضل لديك',
-  'intro_text':
-      'تطبيق القرآن الكريم الشامل مع ترجمة 69 لغة وأكثر من 180 كتاب ترجمة وتفسير بـ 6 لغات وأكثر من 30 كتاب تفسير وتلاوة قارئ القرآن الكريم',
-  'previous': 'السابق',
-  'Surah': 'سورة',
-  'Juzs': 'أجزاء',
-  'LogIn': 'تسجيل الدخول',
-  'Home': 'الرئيسية',
-  'Favorite': 'مفضل',
-  'Book Mark': 'إشارة مرجعية',
-  'Notes': 'ملاحظات',
-  'Settings': 'الإعدادات',
-  'Others Platforms': 'منصات أخرى',
-  'loginReason':
-      'تحتاج إلى تسجيل الدخول للحصول على المزيد من الميزات. على سبيل المثال، يمكنك حفظ ملاحظاتك في السحابة والوصول إليها من أي مكان.',
-  'Audio': 'صوت',
-  'Profile': 'الملف الشخصي',
-  'All Reciters List': 'قائمة جميع القراء',
-  'No Book Mark Found': 'لم يتم العثور على أي إشارة مرجعية',
-  'Empty': 'فارغ',
-
-//
+  "Select language for Quran's Tafsir": 'اختر لغة تفسير القرآن',
+  'Please Select Quran Translation Language': 'الرجاء تحديد لغة ترجمة القرآن',
+  'Please select a language for app': 'الرجاء تحديد لغة للتطبيق',
+  'Please Select Quran Translation Book': 'الرجاء تحديد كتاب ترجمة القرآن',
+  'Please Select Quran Tafsir Language': 'الرجاء تحديد لغة تفسير القرآن',
+  'Please Select Quran Tafsir Book': 'الرجاء تحديد كتاب تفسير القرآن',
+  'Please select a default reciter': 'الرجاء اختيار قارئ افتراضي',
+  'Downloading': 'جارٍ التنزيل',
+  'Getting Quran': 'جارٍ تنزيل بيانات القرآن',
+  'Downloading Translation': 'جارٍ تنزيل الترجمة',
+  'Downloading Tafsir': 'جارٍ تنزيل التفسير',
+  'All Completed': 'اكتمل كل شيء',
+  'Failed to download translation': 'فشل تنزيل الترجمة',
+  'Failed to download tafsir': 'فشل تنزيل التفسير',
+  'Progress': 'التقدم',
+  'Processing tafsir': 'معالجة التفسير',
+  //
 };
-Map<String, String> bn = {
-  'Translation of Quran': 'কুরআনের অনুবাদ',
-  'Select a language for app': 'অ্যাপের জন্য একটি ভাষা নির্বাচন করুন',
-  'Privacy Policy': 'গোপনীয়তা নীতি',
+Map<String, String> bengali = {
+  'Al Quran': 'আল কুরআন', 'Privacy Policy': 'গোপনীয়তা নীতি',
+  'Select a language for app': 'অ্যাপের জন্য ভাষা নির্বাচন করুন',
   'Previous': 'পূর্ববর্তী',
   'Setup': 'সেটআপ',
+  'Data collected from': 'ডেটা সংগ্রহ করা হয়েছে',
+  'and': 'এবং',
   'Next': 'পরবর্তী',
-  'Al Quran': 'আল কুরআন',
-  'introText':
-      'একটি অ্যাপে সমস্ত কিছুর সমন্বয়ে আল কুরআন, ৬৯টি ভাষায় অনুবাদ সহ ১৮০টিরও বেশি অনুবাদ গ্রন্থ, ৬টি ভাষায় তাফসীর এবং ৩০টি তাফসীর বই, ৩৫ জনেরও বেশি কুরআন তিলাওয়াতকারী',
-  'We collected all data form this website':
-      'আমরা এই ওয়েবসাইট থেকে সমস্ত তথ্য সংগ্রহ করেছি',
+  'Translation of Quran': 'কুরআনের অনুবাদ',
   'Translation Book': 'অনুবাদ বই',
-  'Choice Recitation': 'পছন্দসই পাঠ',
   "Select language for Quran's Tafsir":
       'কুরআনের তাফসীরের জন্য ভাষা নির্বাচন করুন',
-  'Tafsir Books of Quran': 'কুরআনের তাফসীরের বই',
-  'Choice your favorite Reciter of Quran':
-      'আপনার প্রিয় কুরআন পাঠক নির্বাচন করুন',
-  'intro_text':
-      'সবকিছু এক জায়গায় আল কুরআন অ্যাপ, 69টি ভাষায় অনুবাদ এবং 180+ অনুবাদ বই, 6টি ভাষায় তাফসীর এবং 30+ তাফসীর বই এবং কুরআন পাঠকের পাঠের সাথে',
-  'previous': 'পূর্ববর্তী',
-  'Surah': 'সূরা',
-  'Juzs': 'অংশ',
-  'LogIn': 'লগইন',
-  'Home': 'হোম',
-  'Favorite': 'প্রিয়',
-  'Book Mark': 'বুকমার্ক',
-  'Notes': 'নোট',
-  'Settings': 'সেটিংস',
-  'Others Platforms': 'অন্যান্য প্ল্যাটফর্ম',
-  'loginReason':
-      'আপনাকে আরও বৈশিষ্ট্যের জন্য লগইন করতে হবে। উদাহরণস্বরূপ, আপনি আপনার নোটগুলি ক্লাউডে সংরক্ষণ করতে পারেন এবং যে কোনও জায়গা থেকে অ্যাক্সেস করতে পারেন।',
-  'Audio': 'অডিও',
-  'Profile': 'প্রোফাইল',
-  'All Reciters List': 'সকল কিরাতকারের তালিকা',
-  'No Book Mark Found': 'কোন বুকমার্ক পাওয়া যায়নি',
-  'Empty': 'খালি',
-
-//
+  'Please Select Quran Translation Language':
+      'অনুগ্রহ করে কুরআনের অনুবাদের ভাষা নির্বাচন করুন',
+  'Please select a language for app':
+      'অনুগ্রহ করে অ্যাপের জন্য একটি ভাষা নির্বাচন করুন',
+  'Please Select Quran Translation Book':
+      'অনুগ্রহ করে কুরআনের অনুবাদ বই নির্বাচন করুন',
+  'Please Select Quran Tafsir Language':
+      'অনুগ্রহ করে কুরআনের তাফসীর ভাষা নির্বাচন করুন',
+  'Please Select Quran Tafsir Book':
+      'অনুগ্রহ করে কুরআনের তাফসীর বই নির্বাচন করুন',
+  'Please select a default reciter':
+      'অনুগ্রহ করে একটি ডিফল্ট আবৃত্তিকার নির্বাচন করুন',
+  'Downloading': 'ডাউনলোড হচ্ছে',
+  'Getting Quran': 'কুরআন ডাউনলোড হচ্ছে',
+  'Downloading Translation': 'অনুবাদ ডাউনলোড হচ্ছে',
+  'Downloading Tafsir': 'তাফসীর ডাউনলোড হচ্ছে',
+  'All Completed': 'সব সম্পন্ন হয়েছে',
+  'Failed to download translation': 'অনুবাদ ডাউনলোড করতে ব্যর্থ হয়েছে',
+  'Failed to download tafsir': 'তাফসীর ডাউনলোড করতে ব্যর্থ হয়েছে',
+  'Progress': 'অগ্রগতি',
+  'Processing tafsir': 'তাফসীর প্রক্রিয়া করা হচ্ছে',
+  //
 };
-Map<String, String> pt = {
-  'Translation of Quran': 'Tradução do Alcorão',
-  'Select a language for app': 'Selecione um idioma para o aplicativo',
-  'Privacy Policy': 'Política de Privacidade',
+Map<String, String> portuguese = {
+  'Al Quran': 'Alcorão', 'Privacy Policy': 'Política de Privacidade',
+  'Select a language for app': 'Selecione o idioma do aplicativo',
   'Previous': 'Anterior',
   'Setup': 'Configuração',
+  'Data collected from': 'Dados coletados de',
+  'and': 'e',
   'Next': 'Próximo',
-  'Al Quran': 'Alcorão',
-  'introText':
-      'Aplicativo Tudo em um Alcorão com Tradução em 69 idiomas e mais de 180 livros de tradução, Tafsir em 6 idiomas com 30 livros de tafsir e recitação de mais de 35 recitadores do Alcorão',
-  'We collected all data form this website':
-      'Coletamos todos os dados deste site',
-  'Translation Book': 'Livro de tradução',
-  'Choice Recitation': 'Recitação escolhida',
+  'Translation of Quran': 'Tradução do Alcorão',
+  'Translation Book': 'Livro de Tradução',
   "Select language for Quran's Tafsir":
       'Selecione o idioma para Tafsir do Alcorão',
-  'Tafsir Books of Quran': 'Livros de Tafsir do Alcorão',
-  'Choice your favorite Reciter of Quran':
-      'Escolha seu recitador favorito do Alcorão',
-  'intro_text':
-      'Aplicativo Alcorão tudo em um com tradução em 69 idiomas e mais de 180 livros de tradução, Tafsir em 6 idiomas com mais de 30 livros de Tafsir e recitação do recitador do Alcorão',
-  'previous': 'Anterior',
-  'Surah': 'Sura',
-  'Juzs': 'Partes',
-  'LogIn': 'Login',
-  'Home': 'Início',
-  'Favorite': 'Favorito',
-  'Book Mark': 'Marcador',
-  'Notes': 'Notas',
-  'Settings': 'Configurações',
-  'Others Platforms': 'Outras Plataformas',
-  'loginReason':
-      'Você precisa fazer login para mais recursos. Por exemplo, você pode salvar suas notas na nuvem e acessá-las de qualquer lugar.',
-  'Audio': 'Áudio',
-  'Profile': 'Perfil',
-  'All Reciters List': 'Lista de Todos os Recitadores',
-  'No Book Mark Found': 'Nenhum Marcador Encontrado',
-  'Empty': 'Vazio',
-
-//
+  'Please Select Quran Translation Language':
+      'Por favor, selecione o idioma de tradução do Alcorão',
+  'Please select a language for app':
+      'Por favor, selecione um idioma para o aplicativo',
+  'Please Select Quran Translation Book':
+      'Por favor, selecione o Livro de Tradução do Alcorão',
+  'Please Select Quran Tafsir Language':
+      'Por favor, selecione o idioma de Tafsir do Alcorão',
+  'Please Select Quran Tafsir Book':
+      'Por favor, selecione o Livro de Tafsir do Alcorão',
+  'Please select a default reciter': 'Por favor, selecione um recitador padrão',
+  'Downloading': 'A baixar',
+  'Getting Quran': 'A baixar dados do Corão',
+  'Downloading Translation': 'A baixar tradução',
+  'Downloading Tafsir': 'A baixar Tafsir',
+  'All Completed': 'Tudo Concluído',
+  'Failed to download translation': 'Falha ao baixar a tradução',
+  'Failed to download tafsir': 'Falha ao baixar o tafsir',
+  'Progress': 'Progresso',
+  'Processing tafsir': 'A processar tafsir',
+  //
 };
-Map<String, String> ru = {
-  'Translation of Quran': 'Перевод Корана',
-  'Select a language for app': 'Выберите язык для приложения',
-  'Privacy Policy': 'Политика конфиденциальности',
+Map<String, String> russian = {
+  'Al Quran': 'Коран', 'Privacy Policy': 'Политика конфиденциальности',
+  'Select a language for app': 'Выберите язык приложения',
   'Previous': 'Предыдущий',
   'Setup': 'Настройка',
-  'Next': 'Следующий',
-  'Al Quran': 'Коран',
-  'introText':
-      'Все в одном приложении Коран с переводом на 69 языков и более 180 книг переводов, Тафсир на 6 языках с 30 книгами тафсира и более 35 рецитаторов Корана',
-  'We collected all data form this website':
-      'Мы собрали все данные с этого сайта',
-  'Translation Book': 'Книга перевода',
-  'Choice Recitation': 'Выбор чтения',
+  'Data collected from': 'Данные, собранные из',
+  'and': 'и',
+  'Next': 'Далее',
+  'Translation of Quran': 'Перевод Корана',
+  'Translation Book': 'Книга переводов',
   "Select language for Quran's Tafsir": 'Выберите язык для Тафсира Корана',
-  'Tafsir Books of Quran': 'Книги Тафсира Корана',
-  'Choice your favorite Reciter of Quran':
-      'Выберите вашего любимого чтеца Корана',
-  'intro_text':
-      'Все в одном приложении Коран с переводом на 69 языков и более 180 книг переводов, Тафсир на 6 языках с более чем 30 книгами Тафсира и чтением Корана чтецом Корана',
-  'previous': 'Предыдущий',
-  'Surah': 'Сура',
-  'Juzs': 'Части',
-  'LogIn': 'Вход',
-  'Home': 'Главная',
-  'Favorite': 'Избранное',
-  'Book Mark': 'Закладка',
-  'Notes': 'Заметки',
-  'Settings': 'Настройки',
-  'Others Platforms': 'Другие Платформы',
-  'loginReason':
-      'Вам нужно войти в систему, чтобы получить больше функций. Например, вы можете сохранить свои заметки в облаке и получить к ним доступ из любого места.',
-  'Audio': 'Аудио',
-  'Profile': 'Профиль',
-  'All Reciters List': 'Список Всех Чтецов Корана',
-  'No Book Mark Found': 'Закладки не найдены',
-  'Empty': 'Пустой',
-
-//
+  'Please Select Quran Translation Language':
+      'Пожалуйста, выберите язык перевода Корана',
+  'Please select a language for app':
+      'Пожалуйста, выберите язык для приложения',
+  'Please Select Quran Translation Book':
+      'Пожалуйста, выберите книгу перевода Корана',
+  'Please Select Quran Tafsir Language':
+      'Пожалуйста, выберите язык Тафсира Корана',
+  'Please Select Quran Tafsir Book':
+      'Пожалуйста, выберите книгу Тафсира Корана',
+  'Please select a default reciter': 'Пожалуйста, выберите чтеца по умолчанию',
+  'Downloading': 'Загрузка',
+  'Getting Quran': 'Загрузка данных Корана',
+  'Downloading Translation': 'Загрузка перевода',
+  'Downloading Tafsir': 'Загрузка Тафсира',
+  'All Completed': 'Все завершено',
+  'Failed to download translation': 'Не удалось загрузить перевод',
+  'Failed to download tafsir': 'Не удалось загрузить тафсир',
+  'Progress': 'Прогресс',
+  'Processing tafsir': 'Обработка тафсира',
+  //
 };
-Map<String, String> ja = {
-  'Translation of Quran': 'コーランの翻訳',
-  'Select a language for app': 'アプリの言語を選択してください',
-  'Privacy Policy': 'プライバシーポリシー',
-  'Previous': '前',
+Map<String, String> japanese = {
+  'Al Quran': 'コーラン', 'Privacy Policy': 'プライバシーポリシー',
+  'Select a language for app': 'アプリの言語を選択',
+  'Previous': '前へ',
   'Setup': 'セットアップ',
-  'Next': '次',
-  'Al Quran': 'アル・コーラン',
-  'introText':
-      '69言語に対応した180以上の翻訳書籍、6言語でのタフスィール、30のタフスィール書籍、35人以上のクルアーン朗読者による朗読を含むオールインワンのクルアーンアプリ',
-  'We collected all data form this website': 'このウェブサイトからすべてのデータを収集しました',
+  'Data collected from': 'からのデータ収集',
+  'and': 'と',
+  'Next': '次へ',
+  'Translation of Quran': 'コーランの翻訳',
   'Translation Book': '翻訳書',
-  'Choice Recitation': '選択された朗読',
-  "Select language for Quran's Tafsir": 'コーランのタフスィールの言語を選択してください',
-  'Tafsir Books of Quran': 'コーランのタフスィール書籍',
-  'Choice your favorite Reciter of Quran': 'お気に入りのクルアーン朗読者を選んでください',
-  'intro_text':
-      'オールインワンのアル・クルアーンアプリ、69言語の翻訳と180以上の翻訳書籍、6言語のタフシールと30以上のタフシール書籍、およびクルアーン朗読者の朗読',
-  'previous': '前',
-  'Surah': 'スーラ',
-  'Juzs': '部分',
-  'LogIn': 'ログイン',
-  'Home': 'ホーム',
-  'Favorite': 'お気に入り',
-  'Book Mark': 'ブックマーク',
-  'Notes': 'ノート',
-  'Settings': '設定',
-  'Others Platforms': '他のプラットフォーム',
-  'loginReason':
-      'より多くの機能を利用するにはログインする必要があります。たとえば、ノートをクラウドに保存して、どこからでもアクセスできます。',
-  'Audio': 'オーディオ',
-  'Profile': 'プロフィール',
-  'All Reciters List': 'すべての暗唱者のリスト',
-  'No Book Mark Found': 'ブックマークが見つかりません',
-  'Empty': '空',
-
-//
+  "Select language for Quran's Tafsir": 'クルアーンのタفسィール（解釈）の言語を選択',
+  'Please Select Quran Translation Language': 'クルアーンの翻訳言語を選択してください',
+  'Please select a language for app': 'アプリの言語を選択してください',
+  'Please Select Quran Translation Book': 'クルアーンの翻訳書を選択してください',
+  'Please Select Quran Tafsir Language': 'クルアーンのタفسィール（解釈）の言語を選択してください',
+  'Please Select Quran Tafsir Book': 'クルアーンのタفسィール（解釈）書を選択してください',
+  'Please select a default reciter': 'デフォルトの朗読者を選択してください',
+  'Downloading': 'ダウンロード中',
+  'Getting Quran': 'コーランデータをダウンロード中',
+  'Downloading Translation': '翻訳をダウンロード中',
+  'Downloading Tafsir': 'タفسィールをダウンロード中',
+  'All Completed': 'すべて完了',
+  'Failed to download translation': '翻訳のダウンロードに失敗しました',
+  'Failed to download tafsir': 'タفسィールのダウンロードに失敗しました',
+  'Progress': '進捗',
+  'Processing tafsir': 'タفسィールを処理中',
+  //
 };
-Map<String, String> pa = {
-  'Translation of Quran': 'ਕੁਰਾਨ ਦਾ ਅਨੁਵਾਦ',
-  'Select a language for app': 'ਐਪ ਲਈ ਇਕ ਭਾਸ਼ਾ ਚੁਣੋ',
-  'Privacy Policy': 'ਗੋਪਨੀਯਤਾ ਨੀਤੀ',
+Map<String, String> punjabi = {
+  'Al Quran': 'ਅਲ ਕੁਰਾਨ', 'Privacy Policy': 'ਪਰਾਈਵੇਸੀ ਪਾਲਿਸੀ',
+  'Select a language for app': 'ਐਪ ਲਈ ਭਾਸ਼ਾ ਚੁਣੋ',
   'Previous': 'ਪਿਛਲਾ',
   'Setup': 'ਸੈਟਅੱਪ',
-  'Next': 'ਅਗਲਾ',
-  'Al Quran': 'ਅਲ ਕੁਰਾਨ',
-  'introText':
-      'ਸਭ ਕੁਝ ਇੱਕ ਅਲ ਕੁਰਾਨ ਐਪ ਵਿੱਚ 69 ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਅਨੁਵਾਦ ਅਤੇ 180+ ਅਨੁਵਾਦ ਪੁਸਤਕਾਂ ਨਾਲ, 6 ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਤਫ਼ਸੀਰ 30 ਤਫ਼ਸੀਰ ਪੁਸਤਕਾਂ ਨਾਲ, 35+ ਤੋਂ ਵੱਧ ਕੁਰਾਨ ਪਾਠਕਾਂ ਦੀ ਤਿਲਾਵਤ',
-  'We collected all data form this website':
-      'ਅਸੀਂ ਇਸ ਵੈੱਬਸਾਈਟ ਤੋਂ ਸਾਰੇ ਡਾਟਾ ਇਕੱਠਾ ਕੀਤਾ ਹੈ',
-  'Translation Book': 'ਅਨੁਵਾਦ ਕਿਤਾਬ',
-  'Choice Recitation': 'ਚੋਣ ਪਾਠ',
-  "Select language for Quran's Tafsir": 'ਕੁਰਾਨ ਦੀ ਤਫ਼ਸੀਰ ਲਈ ਭਾਸ਼ਾ ਚੁਣੋ',
-  'Tafsir Books of Quran': 'ਕੁਰਾਨ ਦੀ ਤਫ਼ਸੀਰ ਦੀਆਂ ਪੁਸਤਕਾਂ',
-  'Choice your favorite Reciter of Quran': 'ਆਪਣੇ ਮਨਪਸੰਦ ਕੁਰਾਨ ਪਾਠਕ ਦੀ ਚੋਣ ਕਰੋ',
-  'intro_text':
-      'ਸਾਰੇ ਇੱਕ ਵਿੱਚ ਅਲ ਕੁਰਾਨ ਐਪ 69 ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਅਨੁਵਾਦ ਅਤੇ 180+ ਅਨੁਵਾਦ ਕਿਤਾਬਾਂ, 6 ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਤਫ਼ਸੀਰ ਅਤੇ 30+ ਤਫ਼ਸੀਰ ਕਿਤਾਬਾਂ ਅਤੇ ਕੁਰਾਨ ਪਾਠਕ ਦੇ ਪਾਠ ਦੇ ਨਾਲ',
-  'previous': 'ਪਿਛਲਾ',
-  'Surah': 'ਸੂਰਾ',
-  'Juzs': 'ਹਿੱਸੇ',
-  'LogIn': 'ਲਾਗਇਨ',
-  'Home': 'ਮੁੱਖ ਪੰਨਾ',
-  'Favorite': 'ਪਸੰਦੀਦਾ',
-  'Book Mark': 'ਬੁੱਕਮਾਰਕ',
-  'Notes': 'ਨੋਟਸ',
-  'Settings': 'ਸੈਟਿੰਗਜ਼',
-  'Others Platforms': 'ਹੋਰ ਪਲੇਟਫਾਰਮ',
-  'loginReason':
-      'ਵਧੇਰੇ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਲਈ ਤੁਹਾਨੂੰ ਲੌਗਇਨ ਕਰਨ ਦੀ ਲੋੜ ਹੈ. ਉਦਾਹਰਣ ਲਈ, ਤੁਸੀਂ ਆਪਣੇ ਨੋਟਸ ਨੂੰ ਕਲਾਉਡ ਵਿੱਚ ਸੇਵ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਕਿਸੇ ਵੀ ਜਗ੍ਹਾ ਤੋਂ ਇਹਨਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੇ ਹੋ.',
-  'Audio': 'ਆਡੀਓ',
-  'Profile': 'ਪ੍ਰੋਫਾਈਲ',
-  'All Reciters List': 'ਸਾਰੇ ਕਾਰੀਆਂ ਦੀ ਸੂਚੀ',
-  'No Book Mark Found': 'ਕੋਈ ਬੁੱਕਮਾਰਕ ਨਹੀਂ ਮਿਲਿਆ',
-  'Empty': 'ਖਾਲੀ',
-
-//
+  'Data collected from': 'ਤੋਂ ਇਕੱਤਰ ਕੀਤਾ ਡਾਟਾ',
+  'and': 'ਅਤੇ',
+  'Next': 'ਅੱਗੇ',
+  'Translation of Quran': 'ਕੁਰਾਨ ਦਾ ਅਨੁਵਾਦ',
+  'Translation Book': 'ਅਨੁਵਾਦ ਪੁਸਤਕ',
+  "Select language for Quran's Tafsir": 'قرآن دی تفسیر لئی بولی چونو',
+  'Please Select Quran Translation Language':
+      'براہ کرم قرآن ترجمہ زبان منتخب کرو',
+  'Please select a language for app': 'براہ کرم ایپ لئی اک بولی چونو',
+  'Please Select Quran Translation Book': 'براہ کرم قرآن ترجمہ کتاب منتخب کرو',
+  'Please Select Quran Tafsir Language': 'براہ کرم قرآن تفسیر بولی منتخب کرو',
+  'Please Select Quran Tafsir Book': 'براہ کرم قرآن تفسیر کتاب منتخب کرو',
+  'Please select a default reciter': 'براہ کرم اک ڈیفالٹ قاری چونو',
+  'Downloading': 'ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ',
+  'Getting Quran': 'قرآن ڈیٹا ڈاؤن لوڈ کیتا جا رہیا اے',
+  'Downloading Translation': 'ترجمہ ڈاؤن لوڈ کیتا جا رہیا اے',
+  'Downloading Tafsir': 'تفسیر ڈاؤن لوڈ کیتی جا رہی اے',
+  'All Completed': 'سبھ مکمل ہو گیا',
+  'Failed to download translation': 'ترجمہ ڈاؤن لوڈ کرن وچ ناکام رہیا',
+  'Failed to download tafsir': 'تفسیر ڈاؤن لوڈ کرن وچ ناکام رہیا',
+  'Progress': 'ترقی',
+  'Processing tafsir': 'تفسیر پروسیس کیتی جا رہی اے',
+  //
 };
-Map<String, String> de = {
-  'Translation of Quran': 'Übersetzung des Korans',
-  'Select a language for app': 'Wählen Sie eine Sprache für die App',
-  'Privacy Policy': 'Datenschutz-Bestimmungen',
-  'Previous': 'Vorherige',
+Map<String, String> german = {
+  'Al Quran': 'Der Koran', 'Privacy Policy': 'Datenschutzrichtlinie',
+  'Select a language for app': 'App-Sprache auswählen',
+  'Previous': 'Zurück',
   'Setup': 'Einrichtung',
-  'Next': 'Nächste',
-  'Al Quran': 'Der Koran',
-  'introText':
-      'Alles-in-einem Al-Quran-App mit Übersetzung in 69 Sprachen & über 180 Übersetzungsbüchern, Tefsir in 6 Sprachen mit 30 Tefsir-Büchern, Rezitation von über 35 Quran-Rezitatoren',
-  'We collected all data form this website':
-      'Wir haben alle Daten von dieser Website gesammelt',
+  'Data collected from': 'Daten gesammelt von',
+  'and': 'und',
+  'Next': 'Weiter',
+  'Translation of Quran': 'Übersetzung des Korans',
   'Translation Book': 'Übersetzungsbuch',
-  'Choice Recitation': 'Auswahlrezitation',
-  "Select language for Quran's Tafsir":
-      'Sprache für Tafsir des Korans auswählen',
-  'Tafsir Books of Quran': 'Tafsir-Bücher des Korans',
-  'Choice your favorite Reciter of Quran':
-      'Wählen Sie Ihren bevorzugten Koranrezitator aus',
-  'intro_text':
-      'All-in-one Al Quran App mit Übersetzung in 69 Sprachen & 180+ Übersetzungsbüchern, Tafsir in 6 Sprachen mit 30+ Tafsir-Büchern & Koranleser-Rezitation',
-  'previous': 'Vorheriger',
-  'Surah': 'Sure',
-  'Juzs': 'Teile',
-  'LogIn': 'Anmelden',
-  'Home': 'Startseite',
-  'Favorite': 'Favorit',
-  'Book Mark': 'Lesezeichen',
-  'Notes': 'Notizen',
-  'Settings': 'Einstellungen',
-  'Others Platforms': 'Andere Plattformen',
-  'loginReason':
-      'Sie müssen sich anmelden, um weitere Funktionen nutzen zu können. Zum Beispiel können Sie Ihre Notizen in der Cloud speichern und von überall darauf zugreifen.',
-  'Audio': 'Audio',
-  'Profile': 'Profil',
-  'All Reciters List': 'Liste aller Rezitatoren',
-  'No Book Mark Found': 'Keine Lesezeichen gefunden',
-  'Empty': 'Leer',
-
-//
+  "Select language for Quran's Tafsir": 'Sprache für Koran-Tafsir auswählen',
+  'Please Select Quran Translation Language':
+      'Bitte wählen Sie die Sprache für die Koranübersetzung aus',
+  'Please select a language for app':
+      'Bitte wählen Sie eine Sprache für die App aus',
+  'Please Select Quran Translation Book':
+      'Bitte wählen Sie ein Koran-Übersetzungsbuch aus',
+  'Please Select Quran Tafsir Language':
+      'Bitte wählen Sie die Sprache für Koran-Tafsir aus',
+  'Please Select Quran Tafsir Book':
+      'Bitte wählen Sie ein Koran-Tafsir-Buch aus',
+  'Please select a default reciter':
+      'Bitte wählen Sie einen Standard-Rezitator aus',
+  'Downloading': 'Herunterladen',
+  'Getting Quran': 'Lade Koran-Daten herunter',
+  'Downloading Translation': 'Lade Übersetzung herunter',
+  'Downloading Tafsir': 'Lade Tafsir herunter',
+  'All Completed': 'Alles abgeschlossen',
+  'Failed to download translation':
+      'Übersetzung konnte nicht heruntergeladen werden',
+  'Failed to download tafsir': 'Tafsir konnte nicht heruntergeladen werden',
+  'Progress': 'Fortschritt',
+  'Processing tafsir': 'Tafsir wird verarbeitet',
+  //
 };
-Map<String, String> fr = {
-  'Translation of Quran': 'Traduction du Coran',
-  'Select a language for app': "Sélectionnez une langue pour l'application",
-  'Privacy Policy': 'Politique de confidentialité',
+Map<String, String> french = {
+  'Al Quran': 'Le Coran', 'Privacy Policy': 'Politique de confidentialité',
+  'Select a language for app': 'Choisir la langue de l\'application',
   'Previous': 'Précédent',
   'Setup': 'Configuration',
+  'Data collected from': 'Données recueillies auprès de',
+  'and': 'et',
   'Next': 'Suivant',
-  'Al Quran': 'Le Coran',
-  'introText':
-      'Application tout-en-un du Coran avec traduction en 69 langues et plus de 180 livres de traduction, Tafsir en 6 langues avec 30 livres de tafsir et récitation de plus de 35 récitants du Coran',
-  'We collected all data form this website':
-      'Nous avons collecté toutes les données de ce site Web',
-  'Translation Book': 'Livre de traduction',
-  'Choice Recitation': 'Récitation choisie',
+  'Translation of Quran': 'Traduction du Coran',
+  'Translation Book': 'Livre de traductions',
   "Select language for Quran's Tafsir":
-      'Sélectionnez la langue pour le Tafsir du Coran',
-  'Tafsir Books of Quran': 'Livres de Tafsir du Coran',
-  'Choice your favorite Reciter of Quran':
-      'Choisissez votre réciteur préféré du Coran',
-  'intro_text':
-      'Application Coran tout-en-un avec traduction en 69 langues et plus de 180 livres de traduction, Tafsir en 6 langues avec plus de 30 livres de Tafsir et récitation du récitant du Coran',
-  'previous': 'Précédent',
-  'Surah': 'Sourate',
-  'Juzs': 'Parties',
-  'LogIn': 'Connexion',
-  'Home': 'Accueil',
-  'Favorite': 'Favoris',
-  'Book Mark': 'Signet',
-  'Notes': 'Notes',
-  'Settings': 'Paramètres',
-  'Others Platforms': 'Autres Plateformes',
-  'loginReason':
-      "Vous devez vous connecter pour bénéficier de plus de fonctionnalités. Par exemple, vous pouvez enregistrer vos notes dans le cloud et y accéder depuis n'importe où.",
-  'Audio': 'Audio',
-  'Profile': 'Profil',
-  'All Reciters List': 'Liste de Tous les Réciteurs',
-  'No Book Mark Found': 'Aucun Signet Trouvé',
-  'Empty': 'Vide',
-
-//
+      'Sélectionner la langue pour le Tafsir du Coran',
+  'Please Select Quran Translation Language':
+      'Veuillez sélectionner la langue de traduction du Coran',
+  'Please select a language for app':
+      'Veuillez sélectionner une langue pour l\'application',
+  'Please Select Quran Translation Book':
+      'Veuillez sélectionner un livre de traduction du Coran',
+  'Please Select Quran Tafsir Language':
+      'Veuillez sélectionner la langue du Tafsir du Coran',
+  'Please Select Quran Tafsir Book':
+      'Veuillez sélectionner un livre de Tafsir du Coran',
+  'Please select a default reciter':
+      'Veuillez sélectionner un récitant par défaut',
+  'Downloading': 'Téléchargement en cours',
+  'Getting Quran': 'Téléchargement des données du Coran',
+  'Downloading Translation': 'Téléchargement de la traduction',
+  'Downloading Tafsir': 'Téléchargement du Tafsir',
+  'All Completed': 'Tout est terminé',
+  'Failed to download translation': 'Échec du téléchargement de la traduction',
+  'Failed to download tafsir': 'Échec du téléchargement du tafsir',
+  'Progress': 'Progrès',
+  'Processing tafsir': 'Tafsir en cours de traitement',
+  //
 };
-Map<String, String> id = {
-  'Translation of Quran': "Terjemahan Al-Qur'an",
-  'Select a language for app': 'Pilih bahasa untuk aplikasi',
-  'Privacy Policy': 'Kebijakan Privasi',
+Map<String, String> indonesian = {
+  'Al Quran': 'Al-Qur\'an', 'Privacy Policy': 'Kebijakan Privasi',
+  'Select a language for app': 'Pilih bahasa aplikasi',
   'Previous': 'Sebelumnya',
   'Setup': 'Pengaturan',
-  'Next': 'Berikutnya',
-  'Al Quran': "Al-Qur'an",
-  'introText':
-      "Aplikasi Al-Qur'an serba ada dengan Terjemahan dalam 69 bahasa & 180+ buku terjemahan, Tefsir dalam 6 bahasa dengan 30 buku tafsir & lebih dari 35 pembaca Al-Qur'an",
-  'We collected all data form this website':
-      'Kami mengumpulkan semua data dari situs web ini',
-  'Translation Book': 'Buku terjemahan',
-  'Choice Recitation': 'Pembacaan pilihan',
-  "Select language for Quran's Tafsir": "Pilih bahasa untuk Tafsir Al-Qur'an",
-  'Tafsir Books of Quran': "Buku Tafsir Al-Qur'an",
-  'Choice your favorite Reciter of Quran':
-      "Pilih pembaca Al-Qur'an favorit Anda",
-  'intro_text':
-      "Aplikasi Al-Qur'an All-in-one dengan Terjemahan dalam 69 bahasa & 180+ buku terjemahan, Tafsir dalam 6 bahasa dengan 30+ buku Tafsir & pembacaan Qari Al-Qur'an",
-  'previous': 'Sebelumnya',
-  'Surah': 'Surah',
-  'Juzs': 'Bagian',
-  'LogIn': 'Login',
-  'Home': 'Beranda',
-  'Favorite': 'Favorit',
-  'Book Mark': 'Bookmark',
-  'Notes': 'Catatan',
-  'Settings': 'Pengaturan',
-  'Others Platforms': 'Platform Lainnya',
-  'loginReason':
-      'Anda perlu login untuk fitur lebih lanjut. Misalnya, Anda dapat menyimpan catatan Anda di cloud dan mengaksesnya dari mana saja.',
-  'Audio': 'Audio',
-  'Profile': 'Profil',
-  'All Reciters List': 'Daftar Semua Qari',
-  'No Book Mark Found': 'Tidak Ditemukan Bookmark',
-  'Empty': 'Kosong',
-
-//
+  'Data collected from': 'Data yang dikumpulkan dari',
+  'and': 'dan',
+  'Next': 'Selanjutnya',
+  'Translation of Quran': 'Terjemahan Al-Qur\'an',
+  'Translation Book': 'Buku Terjemahan',
+  "Select language for Quran's Tafsir": 'Pilih bahasa untuk Tafsir Quran',
+  'Please Select Quran Translation Language':
+      'Silakan Pilih Bahasa Terjemahan Quran',
+  'Please select a language for app': 'Silakan pilih bahasa untuk aplikasi',
+  'Please Select Quran Translation Book': 'Silakan Pilih Buku Terjemahan Quran',
+  'Please Select Quran Tafsir Language': 'Silakan Pilih Bahasa Tafsir Quran',
+  'Please Select Quran Tafsir Book': 'Silakan Pilih Buku Tafsir Quran',
+  'Please select a default reciter': 'Silakan pilih qari умолчанию',
+  'Downloading': 'Mengunduh',
+  'Getting Quran': 'Mengunduh Data Quran',
+  'Downloading Translation': 'Mengunduh Terjemahan',
+  'Downloading Tafsir': 'Mengunduh Tafsir',
+  'All Completed': 'Semua Selesai',
+  'Failed to download translation': 'Gagal mengunduh terjemahan',
+  'Failed to download tafsir': 'Gagal mengunduh tafsir',
+  'Progress': 'Progres',
+  'Processing tafsir': 'Memproses tafsir',
+  //
 };
-Map<String, String> ur = {
-  'Translation of Quran': 'قرآن کا ترجمہ',
-  'Select a language for app': 'ایپ کے لیے ایک زبان منتخب کریں',
-  'Privacy Policy': 'رازداری کی پالیسی',
+Map<String, String> urdu = {
+  'Al Quran': 'القرآن', 'Privacy Policy': 'رازداری کی پالیسی',
+  'Select a language for app': 'ایپ کے لیے زبان منتخب کریں',
   'Previous': 'پچھلا',
   'Setup': 'سیٹ اپ',
+  'Data collected from': 'سے جمع کردہ ڈیٹا',
+  'and': 'اور',
   'Next': 'اگلا',
-  'Al Quran': 'القرآن',
-  'introText':
-      'ترجمہ کے ساتھ آل ان ون قرآن ایپ، 69 زبانوں میں 180+ ترجمہ کی کتابیں، 6 زبانوں میں تفسیر کے ساتھ 30 تفسیر کی کتابیں، اور 35+ قرآن کے قاریوں کی تلاوت',
-  'We collected all data form this website':
-      'ہم نے اس ویب سائٹ سے تمام ڈیٹا اکٹھا کر لیا ہے',
+  'Translation of Quran': 'قرآن کا ترجمہ',
   'Translation Book': 'ترجمہ کتاب',
-  'Choice Recitation': 'منتخب تلاوت',
   "Select language for Quran's Tafsir": 'قرآن کی تفسیر کے لیے زبان منتخب کریں',
-  'Tafsir Books of Quran': 'قرآن کی تفسیر کی کتابیں',
-  'Choice your favorite Reciter of Quran':
-      'اپنے پسندیدہ قرآن قاری کا انتخاب کریں',
-  'intro_text':
-      'القرآن الشامل في تطبيق واحد مع ترجمة 69 لغة وأكثر من 180 كتاب ترجمة وتفسير بـ 6 لغات وأكثر من 30 كتاب تفسير وتلاوة قارئ القرآن الكريم',
-  'previous': 'پچھلا',
-  'Surah': 'سورہ',
-  'Juzs': 'حصے',
-  'LogIn': 'لاگ ان',
-  'Home': 'گھر',
-  'Favorite': 'پسندیدہ',
-  'Book Mark': 'بک مارک',
-  'Notes': 'نوٹس',
-  'Settings': 'سیٹنگز',
-  'Others Platforms': 'دیگر پلیٹ فارم',
-  'loginReason':
-      'مزید خصوصیات کے لیے آپ کو لاگ ان کرنے کی ضرورت ہے۔ مثال کے طور پر، آپ اپنے نوٹس کو کلاؤڈ میں محفوظ کر سکتے ہیں اور ان تک کسی بھی جگہ سے رسائی حاصل کر سکتے ہیں۔',
-  'Audio': 'آڈیو',
-  'Profile': 'پروفائل',
-  'All Reciters List': 'تمام قاریوں کی فہرست',
-  'No Book Mark Found': 'کوئی بک مارک نہیں ملا',
-  'Empty': 'خالی',
-
-//
+  'Please Select Quran Translation Language':
+      'برائے مہربانی قرآن ترجمہ کی زبان منتخب کریں',
+  'Please select a language for app':
+      'برائے مہربانی ایپ کے لیے ایک زبان منتخب کریں',
+  'Please Select Quran Translation Book':
+      'برائے مہربانی قرآن ترجمہ کتاب منتخب کریں',
+  'Please Select Quran Tafsir Language':
+      'برائے مہربانی قرآن تفسیر کی زبان منتخب کریں',
+  'Please Select Quran Tafsir Book': 'برائے مہربانی قرآن تفسیر کتاب منتخب کریں',
+  'Please select a default reciter': 'برائے مہربانی ایک ڈیفالٹ قاری منتخب کریں',
+  'Downloading': 'ڈاؤن لوڈ ہو رہا ہے',
+  'Getting Quran': 'قرآن ڈیٹا ڈاؤن لوڈ ہو رہا ہے',
+  'Downloading Translation': 'ترجمہ ڈاؤن لوڈ ہو رہا ہے',
+  'Downloading Tafsir': 'تفسیر ڈاؤن لوڈ ہو رہی ہے',
+  'All Completed': 'سب مکمل ہو گیا',
+  'Failed to download translation': 'ترجمہ ڈاؤن لوڈ کرنے میں ناکام',
+  'Failed to download tafsir': 'تفسیر ڈاؤن لوڈ کرنے میں ناکام',
+  'Progress': 'پیش رفت',
+  'Processing tafsir': 'تفسیر پروسیس ہو رہی ہے',
+  //
 };
-Map<String, String> sw = {
-  'Translation of Quran': 'Tafsiri ya Quran',
+Map<String, String> swahili = {
+  'Al Quran': 'Kurani', 'Privacy Policy': 'Sera ya Faragha',
   'Select a language for app': 'Chagua lugha ya programu',
-  'Privacy Policy': 'Sera ya faragha',
-  'Previous': 'Uliopita',
+  'Previous': 'Iliyopita',
   'Setup': 'Usanidi',
-  'Next': 'Ijayo',
-  'Al Quran': 'Qurani Tukufu',
-  'introText':
-      'Programu ya Qurani yenye kila kitu na Tafsiri katika lugha 69 na vitabu vya tafsiri 180+, Tefsir katika lugha 6 na vitabu vya tafsiri 30, na usomaji wa zaidi ya wasomaji 35 wa Qurani',
-  'We collected all data form this website':
-      'Tulikusanya yote kutoka kwenye tovuti hii',
-  'Translation Book': 'Kitabu cha tafsiri',
-  'Choice Recitation': 'Tajwi ya uchaguzi',
-  "Select language for Quran's Tafsir": 'Chagua lugha kwa Tafsiri ya Quran',
-  'Tafsir Books of Quran': 'Vitabu vya Tafsiri ya Quran',
-  'Choice your favorite Reciter of Quran':
-      'Chagua msomaji wako mwenye kupenda wa Quran',
-  'intro_text':
-      "Programu kamili ya Al Quran yenye Tafsiri kwa lugha 69 na vitabu vya tafsiri zaidi ya 180, Tafsiri kwa lugha 6 na vitabu vya Tafsiri zaidi ya 30, na Qur'an msomaji wa Qur'an",
-  'previous': 'Uliopita',
-  'Surah': 'Sura',
-  'Juzs': 'Sehemu',
-  'LogIn': 'Ingia',
-  'Home': 'Nyumbani',
-  'Favorite': 'Kipendwa',
-  'Book Mark': 'Alamisho',
-  'Notes': 'Maelezo',
-  'Settings': 'Mipangilio',
-  'Others Platforms': 'Jukwaa Nyingine',
-  'loginReason':
-      'Unahitaji kuingia ili kupata huduma zaidi. Kwa mfano, unaweza kuhifadhi maelezo yako kwenye wingu na kuyapata kutoka mahali popote.',
-  'Audio': 'Sauti',
-  'Profile': 'Profaili',
-  'All Reciters List': "Orodha ya Wasomaji Wote wa Qur'an",
-  'No Book Mark Found': 'Hakuna Alamisho Yoyopatikana',
-  'Empty': 'Tupu',
-
-//
+  'Data collected from': 'Data zilizokusanywa kutoka',
+  'and': 'na',
+  'Next': 'Inayofuata',
+  'Translation of Quran': 'Tafsiri ya Quran',
+  'Translation Book': 'Kitabu cha Tafsiri',
+  "Select language for Quran's Tafsir": 'Chagua lugha ya Tafsir ya Quran',
+  'Please Select Quran Translation Language':
+      'Tafadhali Chagua Lugha ya Tafsiri ya Quran',
+  'Please select a language for app': 'Tafadhali chagua lugha ya programu',
+  'Please Select Quran Translation Book':
+      'Tafadhali Chagua Kitabu cha Tafsiri ya Quran',
+  'Please Select Quran Tafsir Language':
+      'Tafadhali Chagua Lugha ya Tafsir ya Quran',
+  'Please Select Quran Tafsir Book':
+      'Tafadhali Chagua Kitabu cha Tafsir ya Quran',
+  'Please select a default reciter': 'Tafadhali chagua msomaji chaguo-msingi',
+  'Downloading': 'Inapakua',
+  'Getting Quran': 'Inapakua data za Quran',
+  'Downloading Translation': 'Inapakua Tafsiri',
+  'Downloading Tafsir': 'Inapakua Tafsir',
+  'All Completed': 'Yote Yamekamilika',
+  'Failed to download translation': 'Imeshindwa kupakua tafsiri',
+  'Failed to download tafsir': 'Imeshindwa kupakua tafsir',
+  'Progress': 'Maendeleo',
+  'Processing tafsir': 'Inachakata tafsir',
+  //
 };
-Map<String, String> ko = {
-  'Translation of Quran': '코란 번역',
-  'Select a language for app': '앱의 언어를 선택하세요',
-  'Privacy Policy': '개인정보 보호정책',
+Map<String, String> korean = {
+  'Al Quran': '코란', 'Privacy Policy': '개인 정보 정책',
+  'Select a language for app': '앱 언어 선택',
   'Previous': '이전',
   'Setup': '설정',
+  'Data collected from': '데이터 수집 출처',
+  'and': '그리고',
   'Next': '다음',
-  'Al Quran': '알 꾸란',
-  'introText':
-      '69개 언어로 번역된 180권 이상의 번역서, 6개 언어로 된 타프시르 및 30권의 타프시르 책과 35명 이상의 꾸란 낭송자의 낭송을 포함한 올인원 알꾸란 앱',
-  'We collected all data form this website': '이 웹사이트에서 모든 데이터를 수집했습니다',
+  'Translation of Quran': '코란 번역',
   'Translation Book': '번역서',
-  'Choice Recitation': '선택된 낭독',
-  "Select language for Quran's Tafsir": '꾸란의 타프시르 언어를 선택하세요',
-  'Tafsir Books of Quran': '꾸란의 타프시르 책',
-  'Choice your favorite Reciter of Quran': '선호하는 꾸란 낭독자를 선택하세요',
-  'intro_text':
-      '올인원 알 꾸르안 앱, 69개 언어로 번역 및 180+권의 번역 책, 6개 언어로 타프시르 및 30+권의 타프시르 책, 그리고 꾸르안 암송자의 암송',
-  'previous': '이전',
-  'Surah': '수라',
-  'Juzs': '부분',
-  'LogIn': '로그인',
-  'Home': '홈',
-  'Favorite': '즐겨찾기',
-  'Book Mark': '책갈피',
-  'Notes': '노트',
-  'Settings': '설정',
-  'Others Platforms': '다른 플랫폼',
-  'loginReason':
-      '더 많은 기능을 사용하려면 로그인해야 합니다. 예를 들어, 노트를 클라우드에 저장하고 어디서나 액세스할 수 있습니다.',
-  'Audio': '오디오',
-  'Profile': '프로필',
-  'All Reciters List': '모든 암송자 목록',
-  'No Book Mark Found': '북마크를 찾을 수 없습니다',
-  'Empty': '빈',
-
-//
+  "Select language for Quran's Tafsir": '쿠란 타프시르 언어 선택',
+  'Please Select Quran Translation Language': '쿠란 번역 언어를 선택하십시오',
+  'Please select a language for app': '앱에 사용할 언어를 선택해주세요',
+  'Please Select Quran Translation Book': '쿠란 번역서를 선택하십시오',
+  'Please Select Quran Tafsir Language': '쿠란 타프시르 언어를 선택하십시오',
+  'Please Select Quran Tafsir Book': '쿠란 타프시르 책을 선택하십시오',
+  'Please select a default reciter': '기본 낭독자를 선택하십시오',
+  'Downloading': '다운로드 중',
+  'Getting Quran': '쿠란 데이터 다운로드 중',
+  'Downloading Translation': '번역 다운로드 중',
+  'Downloading Tafsir': '타프시르 다운로드 중',
+  'All Completed': '모두 완료됨',
+  'Failed to download translation': '번역 다운로드 실패',
+  'Failed to download tafsir': '타프시르 다운로드 실패',
+  'Progress': '진행',
+  'Processing tafsir': '타프시르 처리 중',
+  //
 };
-Map<String, String> tr = {
-  'Translation of Quran': "Kuran'ın Tercümesi",
-  'Select a language for app': 'Uygulama için bir dil seçin',
-  'Privacy Policy': 'Gizlilik Politikası',
+Map<String, String> turkish = {
+  'Al Quran': 'Kur\'an', 'Privacy Policy': 'Gizlilik Politikası',
+  'Select a language for app': 'Uygulama dilini seçin',
   'Previous': 'Önceki',
   'Setup': 'Kurulum',
+  'Data collected from': 'Veriler şuradan toplandı',
+  'and': 've',
   'Next': 'Sonraki',
-  'Al Quran': 'Kuran',
-  'introText':
-      "Hepsi bir arada 69 dilde çeviri ve 180'den fazla çeviri kitabı, 6 dilde tefsir ile 30 tefsir kitabı ve 35'ten fazla Kur'an okuyucusunun tilavetiyle Al Kur'an uygulaması",
-  'We collected all data form this website': 'Bu siteden tüm verileri topladık',
-  'Translation Book': 'Çeviri Kitabı',
-  'Choice Recitation': 'Seçim Tefsiri',
-  "Select language for Quran's Tafsir": "Kuran'ın Tefsiri için dili seçin",
-  'Tafsir Books of Quran': "Kuran'ın Tefsir Kitapları",
-  'Choice your favorite Reciter of Quran': "Favori Kur'an okuyucunuzu seçin",
-  'intro_text':
-      "Tümleşik Kur'an-ı Kerim Uygulaması, 69 dilde çeviri ve 180+ çeviri kitabı, 6 dilde Tefsir ve 30+ Tefsir kitabı ve Kur'an-ı Kerim okuru'nun tilaveti ile",
-  'previous': 'Önceki',
-  'Surah': 'Sure',
-  'Juzs': 'Kısımlar',
-  'LogIn': 'Giriş yap',
-  'Home': 'Anasayfa',
-  'Favorite': 'Favoriler',
-  'Book Mark': 'Yer İmi',
-  'Notes': 'Notlar',
-  'Settings': 'Ayarlar',
-  'Others Platforms': 'Diğer Platformlar',
-  'loginReason':
-      'Daha fazla özellik için giriş yapmanız gerekir. Örneğin, notlarınızı buluta kaydedebilir ve her yerden erişebilirsiniz.',
-  'Audio': 'Ses',
-  'Profile': 'Profil',
-  'All Reciters List': "Tüm Kur'an Okuma Üstatları Listesi",
-  'No Book Mark Found': 'Hiç Yer İmi Bulunamadı',
-  'Empty': 'Boş',
-
-//
+  'Translation of Quran': 'Kur\'an Tercümesi',
+  'Translation Book': 'Tercüme Kitabı',
+  "Select language for Quran's Tafsir": 'Kur\'an Tefsiri için dil seçin',
+  'Please Select Quran Translation Language':
+      'Lütfen Kur\'an Tercümesi Dilini Seçin',
+  'Please select a language for app': 'Lütfen uygulama için bir dil seçin',
+  'Please Select Quran Translation Book': 'Lütfen Kur\'an Tercüme Kitabı Seçin',
+  'Please Select Quran Tafsir Language': 'Lütfen Kur\'an Tefsiri Dilini Seçin',
+  'Please Select Quran Tafsir Book': 'Lütfen Kur\'an Tefsir Kitabı Seçin',
+  'Please select a default reciter': 'Lütfen varsayılan bir okuyucu seçin',
+  'Downloading': 'İndiriliyor',
+  'Getting Quran': 'Kur\'an Verileri İndiriliyor',
+  'Downloading Translation': 'Tercüme İndiriliyor',
+  'Downloading Tafsir': 'Tefsir İndiriliyor',
+  'All Completed': 'Hepsi Tamamlandı',
+  'Failed to download translation': 'Tercüme indirilemedi',
+  'Failed to download tafsir': 'Tefsir indirilemedi',
+  'Progress': 'İlerleme',
+  'Processing tafsir': 'Tefsir işleniyor',
+  //
 };
-Map<String, String> vi = {
-  'Translation of Quran': 'Bản dịch của kinh Quran',
-  'Select a language for app': 'Chọn ngôn ngữ cho ứng dụng',
-  'Privacy Policy': 'Chính sách bảo mật',
+Map<String, String> vietnamese = {
+  'Al Quran': 'Kinh Qur\'an', 'Privacy Policy': 'Chính sách bảo mật',
+  'Select a language for app': 'Chọn ngôn ngữ ứng dụng',
   'Previous': 'Trước',
-  'Setup': 'Cài đặt',
+  'Setup': 'Thiết lập',
+  'Data collected from': 'Dữ liệu thu thập từ',
+  'and': 'và',
   'Next': 'Tiếp theo',
-  'Al Quran': 'Kinh Quran',
-  'introText':
-      'Ứng dụng Al Quran tất cả trong một với bản dịch sang 69 ngôn ngữ và hơn 180 sách dịch thuật, Tefsir bằng 6 ngôn ngữ với 30 sách tafsir và hơn 35 người đọc kinh Quran',
-  'We collected all data form this website':
-      'Chúng tôi đã thu thập tất cả dữ liệu từ trang web này',
+  'Translation of Quran': 'Bản dịch Kinh Quran',
   'Translation Book': 'Sách dịch',
-  'Choice Recitation': 'Lời đọc chọn lọc',
-  "Select language for Quran's Tafsir": 'Chọn ngôn ngữ cho Tafsir của Quran',
-  'Tafsir Books of Quran': 'Sách Tafsir của Quran',
-  'Choice your favorite Reciter of Quran':
-      'Chọn người đọc Quran yêu thích của bạn',
-  'intro_text':
-      "Ứng dụng Al Quran All-in-one với Dịch thuật 69 ngôn ngữ & hơn 180 cuốn sách dịch thuật, Tafsir 6 ngôn ngữ với hơn 30 cuốn sách Tafsir & đọc tụng của người đọc kinh Qur'an",
-  'previous': 'Trước đó',
-  'Surah': 'Sura',
-  'Juzs': 'Phần',
-  'LogIn': 'Đăng nhập',
-  'Home': 'Trang chủ',
-  'Favorite': 'Yêu thích',
-  'Book Mark': 'Dấu trang',
-  'Notes': 'Ghi chú',
-  'Settings': 'Cài đặt',
-  'Others Platforms': 'Nền Tảng Khác',
-  'loginReason':
-      'Bạn cần đăng nhập để sử dụng nhiều tính năng hơn. Ví dụ: bạn có thể lưu trữ ghi chú của mình trên đám mây và truy cập chúng từ bất kỳ đâu.',
-  'Audio': 'Âm thanh',
-  'Profile': 'Hồ sơ',
-  'All Reciters List': 'Danh sách Tất cả Độc Kinh',
-  'No Book Mark Found': 'Không Tìm Thấy Dấu Trang',
-  'Empty': 'Trống',
-
-//
+  "Select language for Quran's Tafsir": 'Chọn ngôn ngữ cho Tafsir Kinh Quran',
+  'Please Select Quran Translation Language':
+      'Vui lòng chọn Ngôn ngữ dịch Kinh Quran',
+  'Please select a language for app': 'Vui lòng chọn ngôn ngữ cho ứng dụng',
+  'Please Select Quran Translation Book': 'Vui lòng chọn Sách dịch Kinh Quran',
+  'Please Select Quran Tafsir Language':
+      'Vui lòng chọn Ngôn ngữ Tafsir Kinh Quran',
+  'Please Select Quran Tafsir Book': 'Vui lòng chọn Sách Tafsir Kinh Quran',
+  'Please select a default reciter':
+      'Vui lòng chọn một người ngâm thơ mặc định',
+  'Downloading': 'Đang tải xuống',
+  'Getting Quran': 'Đang tải dữ liệu Kinh Quran',
+  'Downloading Translation': 'Đang tải bản dịch',
+  'Downloading Tafsir': 'Đang tải Tafsir',
+  'All Completed': 'Tất cả đã hoàn tất',
+  'Failed to download translation': 'Tải xuống bản dịch không thành công',
+  'Failed to download tafsir': 'Tải xuống tafsir không thành công',
+  'Progress': 'Tiến độ',
+  'Processing tafsir': 'Đang xử lý tafsir',
+  //
 };
-Map<String, String> ta = {
-  'Translation of Quran': 'குர்ஆன் மொழிபெயர்ப்பு',
-  'Select a language for app': 'அப்பிற்கு ஒரு மொழியைத் தேர்ந்தெடுக்கவும்',
-  'Privacy Policy': 'தனியுரிமைக் கொள்கை',
+Map<String, String> tamil = {
+  'Al Quran': 'அல் குர்ஆன்', 'Privacy Policy': 'தனியுரிமைக் கொள்கை',
+  'Select a language for app': 'பயன்பாட்டிற்கான மொழியைத் தேர்ந்தெடுக்கவும்',
   'Previous': 'முந்தைய',
-  'Setup': 'அமைப்பு',
-  'Next': 'அடுத்தது',
-  'Al Quran': 'அல் குர்ஆன்',
-  'introText':
-      '69 மொழிகளில் மொழிபெயர்ப்பு மற்றும் 180+ மொழிபெயர்ப்பு புத்தகங்கள், 6 மொழிகளில் 30 தஃப்ஸீர் புத்தகங்கள் மற்றும் 35 குர்ஆன் வாசிப்பு பாடகர்கள் உள்ள ஒரே இடத்தில் அனைத்து குர்ஆன் பயன்பாட்டில்',
-  'We collected all data form this website':
-      'நாங்கள் இந்த இணையதளத்திலிருந்து அனைத்து தரவுகளையும் சேகரித்துள்ளோம்',
+  'Setup': 'அமைவு',
+  'Data collected from': 'தரவு சேகரிக்கப்பட்டது',
+  'and': 'மற்றும்',
+  'Next': 'அடுத்து',
+  'Translation of Quran': 'குர்ஆன் மொழிபெயர்ப்பு',
   'Translation Book': 'மொழிபெயர்ப்பு புத்தகம்',
-  'Choice Recitation': 'தேர்ந்தெடுக்கப்பட்ட ஓதல்',
   "Select language for Quran's Tafsir":
-      'குர்ஆனின் தஃப்ஸீர் மொழியைத் தேர்ந்தெடுக்கவும்',
-  'Tafsir Books of Quran': 'குர்ஆனின் தஃப்ஸீர் புத்தகங்கள்',
-  'Choice your favorite Reciter of Quran':
-      'உங்கள் பிடித்த குர்ஆன் வாசகரை தேர்ந்தெடுக்கவும்',
-  'intro_text':
-      'அனைத்தும் ஒன்றாகும் அல்குர்ஆன் ஆப், 69 மொழிகளில் மொழிபெயர்ப்பு மற்றும் 180+ மொழிபெயர்ப்பு புத்தகங்கள், 6 மொழிகளில் தஃப்ஸீர் மற்றும் 30+ தஃப்ஸீர் புத்தகங்கள் மற்றும் குர்ஆன் ஓதுபவரின் ஓதுதல்',
-  'previous': 'முந்தைய',
-  'Surah': 'சூரா',
-  'Juzs': 'பகுதிகள்',
-  'LogIn': 'உள்நுழை',
-  'Home': 'முகப்பு',
-  'Favorite': 'பிடித்தவை',
-  'Book Mark': 'புத்தகக் குறியீடு',
-  'Notes': 'குறிப்புகள்',
-  'Settings': 'அமைப்புகள்',
-  'Others Platforms': 'மற்ற தளங்கள்',
-  'loginReason':
-      'மேலும் சிறப்பம்சங்களைப் பயன்படுத்த நீங்கள் உள்நுழைய வேண்டும். உதாரணமாக, நீங்கள் உங்கள் குறிப்புகளை மேகத்தில் சேமித்து எந்த இடத்திலிருந்தும் அணுகலாம்.',
-  'Audio': 'ஆடியோ',
-  'Profile': 'பிரொபைல்',
-  'All Reciters List': 'அனைத்து ஓதுபவர்கள் பட்டியல்',
-  'No Book Mark Found': 'புத்தகக் குறியீடு எதுவும் காணப்படவில்லை',
-  'Empty': 'காலி',
-
-//
+      'குர்ஆன் தஃப்சீர் மொழிக்குத் தேர்ந்தெடுக்கவும்',
+  'Please Select Quran Translation Language':
+      'குர்ஆன் மொழிபெயர்ப்பு மொழியைத் தேர்ந்தெடுக்கவும்',
+  'Please select a language for app':
+      'பயன்பாட்டிற்கு ஒரு மொழியைத் தேர்ந்தெடுக்கவும்',
+  'Please Select Quran Translation Book':
+      'குர்ஆன் மொழிபெயர்ப்பு புத்தகத்தைத் தேர்ந்தெடுக்கவும்',
+  'Please Select Quran Tafsir Language':
+      'குர்ஆன் தஃப்சீர் மொழியைத் தேர்ந்தெடுக்கவும்',
+  'Please Select Quran Tafsir Book':
+      'குர்ஆன் தஃப்சீர் புத்தகத்தைத் தேர்ந்தெடுக்கவும்',
+  'Please select a default reciter': 'இயல்புநிலை ஓதுபவரைத் தேர்ந்தெடுக்கவும்',
+  'Downloading': 'பதிவிறக்கம் செய்கிறது',
+  'Getting Quran': 'குர்ஆன் தரவு பதிவிறக்கம் செய்கிறது',
+  'Downloading Translation': 'மொழிபெயர்ப்பு பதிவிறக்கம் செய்கிறது',
+  'Downloading Tafsir': 'தஃப்சீர் பதிவிறக்கம் செய்கிறது',
+  'All Completed': 'அனைத்தும் முடிந்தது',
+  'Failed to download translation': 'மொழிபெயர்ப்பைப் பதிவிறக்க முடியவில்லை',
+  'Failed to download tafsir': 'தஃப்சீர் பதிவிறக்கம் செய்ய முடியவில்லை',
+  'Progress': 'முன்னேற்றம்',
+  'Processing tafsir': 'தஃப்சீர் செயலாக்கப்படுகின்றது',
+  //
 };
-Map<String, String> it = {
-  'Translation of Quran': 'Traduzione del Corano',
-  'Select a language for app': "Seleziona una lingua per l'app",
-  'Privacy Policy': 'Informativa sulla privacy',
+Map<String, String> italian = {
+  'Al Quran': 'Il Corano', 'Privacy Policy': 'Informativa sulla privacy',
+  'Select a language for app': 'Seleziona la lingua dell\'app',
   'Previous': 'Precedente',
-  'Setup': 'Configurazione',
+  'Setup': 'Impostazioni',
+  'Data collected from': 'Dati raccolti da',
+  'and': 'e',
   'Next': 'Prossimo',
-  'Al Quran': 'Il Corano',
-  'introText':
-      'App tutto in uno Al Quran con traduzione in 69 lingue e oltre 180 libri di traduzione, Tafsir in 6 lingue con 30 libri di tafsir e recitazione di oltre 35 recitatori del Corano',
-  'We collected all data form this website':
-      'Abbiamo raccolto tutti i dati da questo sito web',
+  'Translation of Quran': 'Traduzione del Corano',
   'Translation Book': 'Libro di traduzione',
-  'Choice Recitation': 'Recitazione scelta',
   "Select language for Quran's Tafsir":
       'Seleziona la lingua per il Tafsir del Corano',
-  'Tafsir Books of Quran': 'Libri di Tafsir del Corano',
-  'Choice your favorite Reciter of Quran':
-      'Scegli il tuo recitatore preferito del Corano',
-  'intro_text':
-      'App Al Corano tutto in uno con traduzione in 69 lingue e oltre 180 libri di traduzione, Tafsir in 6 lingue con oltre 30 libri di Tafsir e recitazione del recitatore del Corano',
-  'previous': 'Precedente',
-  'Surah': 'Sura',
-  'Juzs': 'Parti',
-  'LogIn': 'Accedi',
-  'Home': 'Home',
-  'Favorite': 'Preferiti',
-  'Book Mark': 'Segnalibro',
-  'Notes': 'Note',
-  'Settings': 'Impostazioni',
-  'Others Platforms': 'Altre Piattaforme',
-  'loginReason':
-      'Devi accedere per utilizzare più funzioni. Ad esempio, puoi salvare le tue note nel cloud e accedervi da qualsiasi luogo.',
-  'Audio': 'Audio',
-  'Profile': 'Profilo',
-  'All Reciters List': 'Elenco di Tutti i Recitatori',
-  'No Book Mark Found': 'Nessun Segnalibro Trovato',
-  'Empty': 'Vuoto'
-
-//
+  'Please Select Quran Translation Language':
+      'Si prega di selezionare la lingua di traduzione del Corano',
+  'Please select a language for app':
+      'Per favore, seleziona una lingua per l\'app',
+  'Please Select Quran Translation Book':
+      'Si prega di selezionare il libro di traduzione del Corano',
+  'Please Select Quran Tafsir Language':
+      'Si prega di selezionare la lingua del Tafsir del Corano',
+  'Please Select Quran Tafsir Book':
+      'Si prega di selezionare il libro del Tafsir del Corano',
+  'Please select a default reciter':
+      'Si prega di selezionare un recitatore predefinito',
+  'Downloading': 'Download in corso',
+  'Getting Quran': 'Download dei dati del Corano in corso',
+  'Downloading Translation': 'Download della traduzione in corso',
+  'Downloading Tafsir': 'Download del Tafsir in corso',
+  'All Completed': 'Tutto completato',
+  'Failed to download translation': 'Download della traduzione fallito',
+  'Failed to download tafsir': 'Download del Tafsir fallito',
+  'Progress': 'Progresso',
+  'Processing tafsir': 'Tafsir in elaborazione',
+  //
 };
