@@ -67,9 +67,9 @@ class _QuranTabState extends State<QuranTab> {
                           curve: Curves.easeIn,
                         );
                       },
-                      child: const Text(
-                        'Surah',
-                        style: TextStyle(
+                      child: Text(
+                        'Surah'.tr,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -99,9 +99,9 @@ class _QuranTabState extends State<QuranTab> {
                           curve: Curves.easeIn,
                         );
                       },
-                      child: const Text(
-                        'Juz',
-                        style: TextStyle(
+                      child: Text(
+                        'Juz'.tr,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -132,9 +132,9 @@ class _QuranTabState extends State<QuranTab> {
                           curve: Curves.easeIn,
                         );
                       },
-                      child: const Text(
-                        'Pages',
-                        style: TextStyle(
+                      child: Text(
+                        'Pages'.tr,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),

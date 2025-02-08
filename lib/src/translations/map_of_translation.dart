@@ -87,28 +87,30 @@ List<String> used20LanguageList = [
   'Tamil',
   'Italian',
 ];
-Map<String, String> aboutDeveloperTranslations = {
-  'chinese': '关于开发者',
-  'hindi': 'डेवलपर के बारे में',
-  'english': 'About Developer',
-  'spanish': 'Acerca del desarrollador',
-  'arabic': 'حول المطور',
-  'bengali': 'ডেভেলপার সম্পর্কে',
-  'portuguese': 'Sobre o Desenvolvedor',
-  'russian': 'О разработчике',
-  'japanese': '開発者について',
-  'punjabi': 'ڈیولپر بارے',
-  'german': 'Über den Entwickler',
-  'french': 'À propos du développeur',
-  'indonesian': 'Tentang Pengembang',
-  'urdu': 'ڈیولپر کے بارے میں',
-  'swahili': 'Kuhusu Msanidi Programu',
-  'korean': '개발자 정보',
-  'turkish': 'Geliştirici Hakkında',
-  'vietnamese': 'Về nhà phát triển',
-  'tamil': 'டெவலப்பரைப் பற்றி',
-  'italian': 'Informazioni sullo sviluppatore',
+
+Map<String, String> translations = {
+  'chinese': '继续',
+  'hindi': 'जारी रखें',
+  'english': 'Continue',
+  'spanish': 'Continuar',
+  'arabic': 'متابعة',
+  'bengali': 'চালিয়ে যান',
+  'portuguese': 'Continuar',
+  'russian': 'Продолжить',
+  'japanese': '続行',
+  'punjabi': 'ਜਾਰੀ ਰੱਖੋ',
+  'german': 'Fortsetzen',
+  'french': 'Continuer',
+  'indonesian': 'Lanjutkan',
+  'urdu': 'جاری رکھیں',
+  'swahili': 'Endelea',
+  'korean': '계속',
+  'turkish': 'Devam Et',
+  'vietnamese': 'Tiếp tục',
+  'tamil': 'தொடர்க',
+  'italian': 'Continua',
 };
+
 Map<String, String> chinese = {
   'Al Quran': '古兰经', 'Privacy Policy': '隐私政策',
   'Select a language for app': '选择应用语言',
@@ -155,6 +157,43 @@ Map<String, String> chinese = {
   'Share App': '分享应用',
   'My Apps': '我的应用',
   'About Developer': '关于开发者',
+  'Surah': '古兰经章节',
+  'Juz': '番',
+  'Pages': '页',
+  'Get the best experience by logging in': '登录以获得最佳体验',
+  'why_should_logged': '您可以将您最喜欢的播放列表保存到云端。并从上次停止的地方继续收听。无需担心丢失播放列表。我们已为您搞定。',
+  'Login': '登录',
+  'Audio History': '音频历史记录',
+  'Listened': '已听',
+  'Sort by increasing Surah Number': '按古兰经章节序号递增排序',
+  'Sort by decreasing Surah Number': '按古兰经章节序号递减排序',
+  'Sort by increasing surah duration': '按古兰经章节时长递增排序',
+  'Sort by decreasing surah duration': '按古兰经章节时长递减排序',
+  'Sort by increasing listened duration': '按收听时长递增排序',
+  'Sort by decreasing listened duration': '按收听时长递减排序',
+  'Welcome': '欢迎来到\n古兰经注释和音频应用',
+  'Email': '电子邮件',
+  'type your email': '输入您的电子邮件',
+  'Please enter a valid email': '请输入有效的电子邮件',
+  'Password': '密码',
+  'type your password': '输入您的密码',
+  'Password must be at least 6 characters': '密码必须至少 6 个字符',
+  'Login unsuccessful': '登录失败',
+  'Login successful': '登录成功',
+  'You have successfully logged in': '您已成功登录',
+  'Signup then login': '注册后登录',
+  'Or': '或',
+  'Logout': '登出',
+  'Backup changes to cloud': '备份更改到云端',
+  'Click to Backup Playlists': '点击备份播放列表',
+  'Successful': '成功',
+  'Found issue': '发现问题',
+  'Click to Backup Groups': '点击备份群组',
+  'Click to Backup Notes': '点击备份笔记',
+  'You data will be replaced!': '您的数据将被替换！',
+  'backupWarning': '如果您之前备份过数据，它将被新数据替换。我们正在为备份功能开发更多功能。您要继续吗？',
+  'Cancel': '取消',
+  'Continue': '继续',
   //
 };
 Map<String, String> hindi = {
@@ -206,6 +245,53 @@ Map<String, String> hindi = {
   'Share App': 'ऐप शेयर करें',
   'My Apps': 'मेरे ऐप्स',
   'About Developer': 'डेवलपर के बारे में',
+  'Surah': 'सूरह',
+  'Juz': 'जुज़',
+  'Pages': 'पृष्ठ',
+  'Get the best experience by logging in':
+      'लॉग इन करके सर्वोत्तम अनुभव प्राप्त करें',
+  'why_should_logged':
+      'आप अपनी पसंदीदा प्लेलिस्ट को क्लाउड में सहेज सकते हैं। और वहीं से सुनना जारी रख सकते हैं जहाँ आपने छोड़ा था। अपनी प्लेलिस्ट खोने के बारे में चिंता करने की कोई आवश्यकता नहीं है। हमने आपको कवर कर लिया है।',
+  'Login': 'लॉगिन',
+  'Audio History': 'ऑडियो इतिहास',
+  'Listened': 'सुना गया',
+  'Sort by increasing Surah Number':
+      'सूरह संख्या बढ़ाने के क्रम में क्रमबद्ध करें',
+  'Sort by decreasing Surah Number':
+      'सूरह संख्या घटाने के क्रम में क्रमबद्ध करें',
+  'Sort by increasing surah duration':
+      'सूरह अवधि बढ़ाने के क्रम में क्रमबद्ध करें',
+  'Sort by decreasing surah duration':
+      'सूरह अवधि घटाने के क्रम में क्रमबद्ध करें',
+  'Sort by increasing listened duration':
+      'सुने गए अवधि बढ़ाने के क्रम में क्रमबद्ध करें',
+  'Sort by decreasing listened duration':
+      'सुने गए अवधि घटाने के क्रम में क्रमबद्ध करें',
+  'Welcome': 'अल कुरान तफ़सीर और ऑडियो में आपका स्वागत है',
+  'Email': 'ईमेल',
+  'type your email': 'अपना ईमेल टाइप करें',
+  'Please enter a valid email': 'कृपया एक मान्य ईमेल दर्ज करें',
+  'Password': 'पासवर्ड',
+  'type your password': 'अपना पासवर्ड टाइप करें',
+  'Password must be at least 6 characters':
+      'पासवर्ड कम से कम 6 अक्षरों का होना चाहिए',
+  'Login unsuccessful': 'लॉगिन विफल',
+  'Login successful': 'लॉगिन सफल',
+  'You have successfully logged in': 'आपने सफलतापूर्वक लॉग इन कर लिया है',
+  'Signup then login': 'साइन अप करें फिर लॉगिन करें',
+  'Or': 'या',
+  'Logout': 'लॉग आउट',
+  'Backup changes to cloud': 'बदलाव क्लाउड पर बैकअप करें',
+  'Click to Backup Playlists': 'प्लेलिस्ट का बैकअप लेने के लिए क्लिक करें',
+  'Successful': 'सफल',
+  'Found issue': 'समस्या मिली',
+  'Click to Backup Groups': 'ग्रुप्स का बैकअप लेने के लिए क्लिक करें',
+  'Click to Backup Notes': 'नोट्स का बैकअप लेने के लिए क्लिक करें',
+  'You data will be replaced!': 'आपका डेटा बदल दिया जाएगा!',
+  'backupWarning':
+      'यदि आपने पहले अपने डेटा का बैकअप लिया था, तो वह नए डेटा से बदल दिया जाएगा। हम बैकअप कार्यक्षमता के लिए और अधिक सुविधाओं पर काम कर रहे हैं। क्या आप जारी रखना चाहते हैं?',
+  'Cancel': 'रद्द करें',
+  'Continue': 'जारी रखें',
   //
 };
 Map<String, String> english = {
@@ -256,6 +342,49 @@ Map<String, String> english = {
   'Share App': 'Share App',
   'My Apps': 'My Apps',
   'About Developer': 'About Developer',
+  'Surah': 'Surah',
+  'Juz': 'Juz',
+  'Pages': 'Pages',
+  'Get the best experience by logging in':
+      'Get the best experience by logging in',
+  'why_should_logged':
+      'You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
+  'Login': 'Login',
+  'Audio History': 'Audio History',
+  'Listened': 'Listened',
+  'Sort by increasing Surah Number': 'Sort by increasing Surah Number',
+  'Sort by decreasing Surah Number': 'Sort by decreasing Surah Number',
+  'Sort by increasing surah duration': 'Sort by increasing surah duration',
+  'Sort by decreasing surah duration': 'Sort by decreasing surah duration',
+  'Sort by increasing listened duration':
+      'Sort by increasing listened duration',
+  'Sort by decreasing listened duration':
+      'Sort by decreasing listened duration',
+  'Welcome': 'Welcome to\nAl Quran Tafsir and Audio',
+  'Email': 'Email',
+  'type your email': 'Type your email',
+  'Please enter a valid email': 'Please enter a valid email',
+  'Password': 'Password',
+  'type your password': 'Type your password',
+  'Password must be at least 6 characters':
+      'Password must be at least 6 characters',
+  'Login unsuccessful': 'Login unsuccessful',
+  'Login successful': 'Login successful',
+  'You have successfully logged in': 'You have successfully logged in',
+  'Signup then login': 'Sign up then login',
+  'Or': 'Or',
+  'Logout': 'Logout',
+  'Backup changes to cloud': 'Backup changes to cloud',
+  'Click to Backup Playlists': 'Click to Backup Playlists',
+  'Successful': 'Successful',
+  'Found issue': 'Found issue',
+  'Click to Backup Groups': 'Click to Backup Groups',
+  'Click to Backup Notes': 'Click to Backup Notes',
+  'You data will be replaced!': 'You data will be replaced!',
+  'backupWarning':
+      'If you did backup your data previously, it will be replaced by the new data. We are working on more features for backup functionality. Do you want to continue?',
+  'Cancel': 'Cancel',
+  'Continue': 'Continue',
   //
 };
 Map<String, String> spanish = {
@@ -315,6 +444,55 @@ Map<String, String> spanish = {
   'Share App': 'Compartir aplicación',
   'My Apps': 'Mis aplicaciones',
   'About Developer': 'Acerca del desarrollador',
+  'Surah': 'Sura',
+  'Juz': 'Juz',
+  'Pages': 'Páginas',
+  'Get the best experience by logging in':
+      'Obtén la mejor experiencia al iniciar sesión',
+  'why_should_logged':
+      'Puedes guardar tu lista de reproducción favorita en la nube. Y continuar escuchando desde donde lo dejaste. No te preocupes por perder tu lista de reproducción. Te tenemos cubierto.',
+  'Login': 'Iniciar sesión',
+  'Audio History': 'Historial de audio',
+  'Listened': 'Escuchado',
+  'Sort by increasing Surah Number': 'Ordenar por número de Sura ascendente',
+  'Sort by decreasing Surah Number': 'Ordenar por número de Sura descendente',
+  'Sort by increasing surah duration':
+      'Ordenar por duración de Sura ascendente',
+  'Sort by decreasing surah duration':
+      'Ordenar por duración de Sura descendente',
+  'Sort by increasing listened duration':
+      'Ordenar por duración de escucha ascendente',
+  'Sort by decreasing listened duration':
+      'Ordenar por duración de escucha descendente',
+  'Welcome': 'Bienvenido a\nTafsir y Audio del Corán',
+  'Email': 'Correo electrónico',
+  'type your email': 'Escribe tu correo electrónico',
+  'Please enter a valid email':
+      'Por favor, introduce un correo electrónico válido',
+  'Password': 'Contraseña',
+  'type your password': 'Escribe tu contraseña',
+  'Password must be at least 6 characters':
+      'La contraseña debe tener al menos 6 caracteres',
+  'Login unsuccessful': 'Inicio de sesión fallido',
+  'Login successful': 'Inicio de sesión exitoso',
+  'You have successfully logged in': 'Has iniciado sesión correctamente',
+  'Signup then login': 'Regístrate y luego inicia sesión',
+  'Or': 'O',
+  'Logout': 'Cerrar sesión',
+  'Backup changes to cloud': 'Guardar cambios en la nube',
+  'Click to Backup Playlists':
+      'Haz clic para hacer copia de seguridad de las listas de reproducción',
+  'Successful': 'Exitoso',
+  'Found issue': 'Problema encontrado',
+  'Click to Backup Groups':
+      'Haz clic para hacer copia de seguridad de los grupos',
+  'Click to Backup Notes':
+      'Haz clic para hacer copia de seguridad de las notas',
+  'You data will be replaced!': '¡Sus datos serán reemplazados!',
+  'backupWarning':
+      'Si previamente hizo una copia de seguridad de sus datos, se reemplazarán con los nuevos datos. Estamos trabajando en más funciones para la funcionalidad de copia de seguridad. ¿Desea continuar?',
+  'Cancel': 'Cancelar',
+  'Continue': 'Continuar',
   //
 };
 Map<String, String> arabic = {
@@ -364,6 +542,46 @@ Map<String, String> arabic = {
   'Share App': 'مشاركة التطبيق',
   'My Apps': 'تطبيقاتي',
   'About Developer': 'حول المطور',
+  'Surah': 'سورة',
+  'Juz': 'جزء',
+  'Pages': 'صفحات',
+  'Get the best experience by logging in': 'احصل على أفضل تجربة بتسجيل الدخول',
+  'why_should_logged':
+      'يمكنك حفظ قائمة التشغيل المفضلة لديك في السحابة. واستمر في الاستماع من حيث توقفت. لا داعي للقلق بشأن فقدان قائمة التشغيل الخاصة بك. نحن نغطيك.',
+  'Login': 'تسجيل الدخول',
+  'Audio History': 'سجل الصوت',
+  'Listened': 'استمع',
+  'Sort by increasing Surah Number': 'فرز حسب رقم السورة تصاعديًا',
+  'Sort by decreasing Surah Number': 'فرز حسب رقم السورة تنازليًا',
+  'Sort by increasing surah duration': 'فرز حسب مدة السورة تصاعديًا',
+  'Sort by decreasing surah duration': 'فرز حسب مدة السورة تنازليًا',
+  'Sort by increasing listened duration': 'فرز حسب مدة الاستماع تصاعديًا',
+  'Sort by decreasing listened duration': 'فرز حسب مدة الاستماع تنازليًا',
+  'Welcome': 'مرحبًا بك في\nتفسير القرآن الكريم والصوت',
+  'Email': 'البريد الإلكتروني',
+  'type your email': 'اكتب بريدك الإلكتروني',
+  'Please enter a valid email': 'الرجاء إدخال بريد إلكتروني صالح',
+  'Password': 'كلمة المرور',
+  'type your password': 'اكتب كلمة مرورك',
+  'Password must be at least 6 characters':
+      'يجب أن تتكون كلمة المرور من 6 أحرف على الأقل',
+  'Login unsuccessful': 'تسجيل الدخول غير ناجح',
+  'Login successful': 'تسجيل الدخول ناجح',
+  'You have successfully logged in': 'لقد تم تسجيل دخولك بنجاح',
+  'Signup then login': 'اشترك ثم سجل الدخول',
+  'Or': 'أو',
+  'Logout': 'تسجيل الخروج',
+  'Backup changes to cloud': 'احتفظ بنسخة احتياطية للتغييرات في السحابة',
+  'Click to Backup Playlists': 'انقر لنسخ قوائم التشغيل احتياطيًا',
+  'Successful': 'ناجح',
+  'Found issue': 'تم العثور على مشكلة',
+  'Click to Backup Groups': 'انقر لنسخ المجموعات احتياطيًا',
+  'Click to Backup Notes': 'انقر لنسخ الملاحظات احتياطيًا',
+  'You data will be replaced!': 'سيتم استبدال بياناتك!',
+  'backupWarning':
+      'إذا قمت بنسخ بياناتك احتياطيًا مسبقًا، فسيتم استبدالها بالبيانات الجديدة. نحن نعمل على المزيد من الميزات لوظيفة النسخ الاحتياطي. هل تريد المتابعة؟',
+  'Cancel': 'إلغاء',
+  'Continue': 'متابعة',
   //
 };
 Map<String, String> bengali = {
@@ -420,6 +638,48 @@ Map<String, String> bengali = {
   'Share App': 'অ্যাপ শেয়ার করুন',
   'My Apps': 'আমার অ্যাপস',
   'About Developer': 'ডেভেলপার সম্পর্কে',
+  'Surah': 'সূরা',
+  'Juz': 'পারা',
+  'Pages': 'পৃষ্ঠা',
+  'Get the best experience by logging in': 'লগ ইন করে সেরা অভিজ্ঞতা পান',
+  'why_should_logged':
+      'আপনি আপনার পছন্দের প্লেলিস্ট ক্লাউডে সংরক্ষণ করতে পারেন। এবং যেখানে আপনি বন্ধ করেছিলেন সেখান থেকে শোনা চালিয়ে যেতে পারেন। আপনার প্লেলিস্ট হারানোর বিষয়ে চিন্তা করার দরকার নেই। আমরা আপনাকে কভার করেছি।',
+  'Login': 'লগইন',
+  'Audio History': 'অডিও ইতিহাস',
+  'Listened': 'শোনা হয়েছে',
+  'Sort by increasing Surah Number': 'সূরা নম্বর বৃদ্ধির অনুসারে সাজান',
+  'Sort by decreasing Surah Number': 'সূরা নম্বর হ্রাসের অনুসারে সাজান',
+  'Sort by increasing surah duration': 'সূরা সময়কাল বৃদ্ধির অনুসারে সাজান',
+  'Sort by decreasing surah duration': 'সূরা সময়কাল হ্রাসের অনুসারে সাজান',
+  'Sort by increasing listened duration':
+      'শোনা সময়ের দৈর্ঘ্য বৃদ্ধির অনুসারে সাজান',
+  'Sort by decreasing listened duration':
+      'শোনা সময়ের দৈর্ঘ্য হ্রাসের অনুসারে সাজান',
+  'Welcome': 'আল কুরআন তাফসীর ও অডিওতে স্বাগতম',
+  'Email': 'ইমেইল',
+  'type your email': 'আপনার ইমেইল টাইপ করুন',
+  'Please enter a valid email': 'অনুগ্রহ করে একটি বৈধ ইমেল প্রবেশ করুন',
+  'Password': 'পাসওয়ার্ড',
+  'type your password': 'আপনার পাসওয়ার্ড টাইপ করুন',
+  'Password must be at least 6 characters':
+      'পাসওয়ার্ড কমপক্ষে 6 অক্ষরের হতে হবে',
+  'Login unsuccessful': 'লগইন অসফল',
+  'Login successful': 'লগইন সফল হয়েছে',
+  'You have successfully logged in': 'আপনি সফলভাবে লগইন করেছেন',
+  'Signup then login': 'সাইন আপ করুন তারপর লগইন করুন',
+  'Or': 'অথবা',
+  'Logout': 'লগ আউট',
+  'Backup changes to cloud': 'ক্লাউডে পরিবর্তনের ব্যাকআপ নিন',
+  'Click to Backup Playlists': 'প্লেলিস্ট ব্যাকআপ করতে ক্লিক করুন',
+  'Successful': 'সফল',
+  'Found issue': 'সমস্যা পাওয়া গেছে',
+  'Click to Backup Groups': 'গ্রুপ ব্যাকআপ করতে ক্লিক করুন',
+  'Click to Backup Notes': 'নোট ব্যাকআপ করতে ক্লিক করুন',
+  'You data will be replaced!': 'আপনার ডেটা প্রতিস্থাপিত করা হবে!',
+  'backupWarning':
+      'আপনি যদি পূর্বে আপনার ডেটা ব্যাকআপ করে থাকেন তবে এটি নতুন ডেটা দ্বারা প্রতিস্থাপিত হবে। আমরা ব্যাকআপ কার্যকারিতার জন্য আরও বৈশিষ্ট্য নিয়ে কাজ করছি। আপনি কি চালিয়ে যেতে চান?',
+  'Cancel': 'বাতিল',
+  'Continue': 'চালিয়ে যান',
   //
 };
 Map<String, String> portuguese = {
@@ -477,6 +737,51 @@ Map<String, String> portuguese = {
   'Share App': 'Compartilhar App',
   'My Apps': 'Meus Apps',
   'About Developer': 'Sobre o Desenvolvedor',
+  'Surah': 'Surata',
+  'Juz': 'Juz',
+  'Pages': 'Páginas',
+  'Get the best experience by logging in':
+      'Obtenha a melhor experiência ao iniciar sessão',
+  'why_should_logged':
+      'Você pode salvar sua playlist favorita na nuvem. E continue ouvindo de onde parou. Não precisa se preocupar em perder sua playlist. Nós protegemos você.',
+  'Login': 'Login',
+  'Audio History': 'Histórico de áudio',
+  'Listened': 'Ouvido',
+  'Sort by increasing Surah Number': 'Ordenar por número de Surata crescente',
+  'Sort by decreasing Surah Number': 'Ordenar por número de Surata decrescente',
+  'Sort by increasing surah duration':
+      'Ordenar por duração de Surata crescente',
+  'Sort by decreasing surah duration':
+      'Ordenar por duração de Surata decrescente',
+  'Sort by increasing listened duration':
+      'Ordenar por duração de audição crescente',
+  'Sort by decreasing listened duration':
+      'Ordenar por duração de audição decrescente',
+  'Welcome': 'Bem-vindo ao\nTafsir e Áudio do Alcorão',
+  'Email': 'Email',
+  'type your email': 'Digite seu email',
+  'Please enter a valid email': 'Por favor, insira um email válido',
+  'Password': 'Senha',
+  'type your password': 'Digite sua senha',
+  'Password must be at least 6 characters':
+      'A senha deve ter pelo menos 6 caracteres',
+  'Login unsuccessful': 'Login falhou',
+  'Login successful': 'Login bem-sucedido',
+  'You have successfully logged in': 'Você iniciou sessão com sucesso',
+  'Signup then login': 'Inscreva-se e depois faça login',
+  'Or': 'Ou',
+  'Logout': 'Sair',
+  'Backup changes to cloud': 'Salvar alterações na nuvem',
+  'Click to Backup Playlists': 'Clique para Fazer Backup das Playlists',
+  'Successful': 'Bem-sucedido',
+  'Found issue': 'Problema encontrado',
+  'Click to Backup Groups': 'Clique para Fazer Backup dos Grupos',
+  'Click to Backup Notes': 'Clique para Fazer Backup das Notas',
+  'You data will be replaced!': 'Seus dados serão substituídos!',
+  'backupWarning':
+      'Se você fez backup de seus dados anteriormente, ele será substituído pelos novos dados. Estamos trabalhando em mais recursos para a funcionalidade de backup. Deseja continuar?',
+  'Cancel': 'Cancelar',
+  'Continue': 'Continuar',
   //
 };
 Map<String, String> russian = {
@@ -532,6 +837,53 @@ Map<String, String> russian = {
   'Share App': 'Поделиться приложением',
   'My Apps': 'Мои приложения',
   'About Developer': 'О разработчике',
+  'Surah': 'Сура',
+  'Juz': 'Джуз',
+  'Pages': 'Страницы',
+  'Get the best experience by logging in':
+      'Получите максимум возможностей, войдя в систему',
+  'why_should_logged':
+      'Вы можете сохранить свой любимый плейлист в облако. И продолжить прослушивание с того места, где остановились. Не нужно беспокоиться о потере плейлиста. Мы вас прикроем.',
+  'Login': 'Войти',
+  'Audio History': 'История аудио',
+  'Listened': 'Прослушано',
+  'Sort by increasing Surah Number': 'Сортировать по возрастанию номера суры',
+  'Sort by decreasing Surah Number': 'Сортировать по убыванию номера суры',
+  'Sort by increasing surah duration':
+      'Сортировать по возрастанию длительности суры',
+  'Sort by decreasing surah duration':
+      'Сортировать по убыванию длительности суры',
+  'Sort by increasing listened duration':
+      'Сортировать по возрастанию продолжительности прослушивания',
+  'Sort by decreasing listened duration':
+      'Сортировать по убыванию продолжительности прослушивания',
+  'Welcome': 'Добро пожаловать в\nАль Коран Тафсир и Аудио',
+  'Email': 'Электронная почта',
+  'type your email': 'Введите свой адрес электронной почты',
+  'Please enter a valid email':
+      'Пожалуйста, введите действительный адрес электронной почты',
+  'Password': 'Пароль',
+  'type your password': 'Введите свой пароль',
+  'Password must be at least 6 characters':
+      'Пароль должен содержать не менее 6 символов',
+  'Login unsuccessful': 'Вход не выполнен',
+  'Login successful': 'Вход выполнен успешно',
+  'You have successfully logged in': 'Вы успешно вошли в систему',
+  'Signup then login': 'Зарегистрироваться, затем войти',
+  'Or': 'Или',
+  'Logout': 'Выйти',
+  'Backup changes to cloud': 'Сохранить изменения в облако',
+  'Click to Backup Playlists':
+      'Нажмите, чтобы сделать резервную копию плейлистов',
+  'Successful': 'Успешно',
+  'Found issue': 'Проблема обнаружена',
+  'Click to Backup Groups': 'Нажмите, чтобы сделать резервную копию групп',
+  'Click to Backup Notes': 'Нажмите, чтобы сделать резервную копию заметок',
+  'You data will be replaced!': 'Ваши данные будут заменены!',
+  'backupWarning':
+      'Если вы ранее создавали резервную копию своих данных, она будет заменена новыми данными. Мы работаем над новыми функциями для резервного копирования. Вы хотите продолжить?',
+  'Cancel': 'Отмена',
+  'Continue': 'Продолжить',
   //
 };
 Map<String, String> japanese = {
@@ -580,6 +932,45 @@ Map<String, String> japanese = {
   'Share App': 'アプリを共有',
   'My Apps': 'マイアプリ',
   'About Developer': '開発者について',
+  'Surah': 'スーラ',
+  'Juz': 'ジュズ',
+  'Pages': 'ページ',
+  'Get the best experience by logging in': 'ログインして最高の体験を',
+  'why_should_logged':
+      'お気に入りのプレイリストをクラウドに保存できます。そして、前回停止したところからリスニングを再開できます。プレイリストを失う心配はありません。私たちにお任せください。',
+  'Login': 'ログイン',
+  'Audio History': 'オーディオ履歴',
+  'Listened': '聴きました',
+  'Sort by increasing Surah Number': 'スーラ番号の昇順でソート',
+  'Sort by decreasing Surah Number': 'スーラ番号の降順でソート',
+  'Sort by increasing surah duration': 'スーラの長さの昇順でソート',
+  'Sort by decreasing surah duration': 'スーラの長さの降順でソート',
+  'Sort by increasing listened duration': 'リスニング時間の昇順でソート',
+  'Sort by decreasing listened duration': 'リスニング時間の降順でソート',
+  'Welcome': 'アル・コーラン\nタفسィールとオーディオへようこそ',
+  'Email': 'メール',
+  'type your email': 'メールアドレスを入力してください',
+  'Please enter a valid email': '有効なメールアドレスを入力してください',
+  'Password': 'パスワード',
+  'type your password': 'パスワードを入力してください',
+  'Password must be at least 6 characters': 'パスワードは6文字以上でなければなりません',
+  'Login unsuccessful': 'ログインに失敗しました',
+  'Login successful': 'ログインに成功しました',
+  'You have successfully logged in': 'ログインに成功しました',
+  'Signup then login': 'サインアップしてログイン',
+  'Or': 'または',
+  'Logout': 'ログアウト',
+  'Backup changes to cloud': '変更をクラウドにバックアップ',
+  'Click to Backup Playlists': 'プレイリストをバックアップするにはクリックしてください',
+  'Successful': '成功',
+  'Found issue': '問題が見つかりました',
+  'Click to Backup Groups': 'グループをバックアップするにはクリックしてください',
+  'Click to Backup Notes': 'メモをバックアップするにはクリックしてください',
+  'You data will be replaced!': 'データは置き換えられます！',
+  'backupWarning':
+      '以前にデータをバックアップした場合、新しいデータに置き換えられます。バックアップ機能のさらなる機能に取り組んでいます。続行しますか？',
+  'Cancel': 'キャンセル',
+  'Continue': '続行',
   //
 };
 Map<String, String> punjabi = {
@@ -629,6 +1020,50 @@ Map<String, String> punjabi = {
   'Share App': 'ایپ شیئر کرو',
   'My Apps': 'میریاں ایپس',
   'About Developer': 'ڈیولپر بارے',
+  'Surah': 'سورہ',
+  'Juz': 'جُز',
+  'Pages': 'صفحے',
+  'Get the best experience by logging in': 'لاگ ان کر کے بہترین تجربہ حاصل کرو',
+  'why_should_logged':
+      'تُسی اپنی پسندیدہ پلے لسٹ کلاؤڈ وچ محفوظ کر سکدے او۔ تے جتھوں تُسی چھڈیا سی اتھوں سُننا جاری رکھ سکدے او۔ اپنی پلے لسٹ گواچن دی فکر کرن دی کوئی لوڑ نئیں۔ اسیں تہانوں کور کر لیا اے۔',
+  'Login': 'لاگ ان',
+  'Audio History': 'آڈیو تریخ',
+  'Listened': 'سنیا گیا',
+  'Sort by increasing Surah Number': 'سورہ نمبر ودھاؤن دے حساب نال ترتیب دیو',
+  'Sort by decreasing Surah Number': 'سورہ نمبر گھٹاؤن دے حساب نال ترتیب دیو',
+  'Sort by increasing surah duration':
+      'سورہ دورانیہ ودھاؤن دے حساب نال ترتیب دیو',
+  'Sort by decreasing surah duration':
+      'سورہ دورانیہ گھٹاؤن دے حساب نال ترتیب دیو',
+  'Sort by increasing listened duration':
+      'سنے گئے دورانیہ ودھاؤن دے حساب نال ترتیب دیو',
+  'Sort by decreasing listened duration':
+      'سنے گئے دورانیہ گھٹاؤن دے حساب نال ترتیب دیو',
+  'Welcome': 'القرآن تفسیر تے آڈیو وچ خوش آمدید',
+  'Email': 'ای میل',
+  'type your email': 'اپنا ای میل لکھو',
+  'Please enter a valid email': 'براہ کرم اک معتبر ای میل درج کرو',
+  'Password': 'پاس ورڈ',
+  'type your password': 'اپنا پاس ورڈ لکھو',
+  'Password must be at least 6 characters':
+      'پاس ورڈ گھٹو گھٹ 6 اکھراں دا ہونا چاہیدا اے',
+  'Login unsuccessful': 'لاگ ان ناکام',
+  'Login successful': 'لاگ ان کامیاب',
+  'You have successfully logged in': 'تُسی کامیابی نال لاگ ان کر لیا اے',
+  'Signup then login': 'سائن اپ فیر لاگ ان',
+  'Or': 'یا',
+  'Logout': 'لاگ آؤٹ',
+  'Backup changes to cloud': 'تبدیلیاں کلاؤڈ تے بیک اپ کرو',
+  'Click to Backup Playlists': 'ਪਲੇਲਿਸਟਾਂ ਦਾ ਬੈਕਅੱਪ ਲੈਣ ਲਈ ਕਲਿੱਕ ਕਰੋ',
+  'Successful': 'ਸਫਲ',
+  'Found issue': 'ਮੁੱਦਾ ਮਿਲਿਆ',
+  'Click to Backup Groups': 'ਗਰੁੱਪਾਂ ਦਾ ਬੈਕਅੱਪ ਲੈਣ ਲਈ ਕਲਿੱਕ ਕਰੋ',
+  'Click to Backup Notes': 'ਨੋਟਸ ਦਾ ਬੈਕਅੱਪ ਲੈਣ ਲਈ ਕਲਿੱਕ ਕਰੋ',
+  'You data will be replaced!': 'ਤੁਹਾਡਾ ਡਾਟਾ ਬਦਲ ਦਿੱਤਾ ਜਾਵੇਗਾ!',
+  'backupWarning':
+      'ਜੇਕਰ ਤੁਸੀਂ ਪਹਿਲਾਂ ਆਪਣੇ ਡੇਟਾ ਦਾ ਬੈਕਅੱਪ ਲਿਆ ਸੀ, ਤਾਂ ਇਹ ਨਵੇਂ ਡੇਟਾ ਨਾਲ ਬਦਲ ਦਿੱਤਾ ਜਾਵੇਗਾ। ਅਸੀਂ ਬੈਕਅੱਪ ਕਾਰਜਕੁਸ਼ਲਤਾ ਲਈ ਹੋਰ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ \'ਤੇ ਕੰਮ ਕਰ ਰਹੇ ਹਾਂ। ਕੀ ਤੁਸੀਂ ਜਾਰੀ ਰੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ?',
+  'Cancel': 'ਰੱਦ ਕਰੋ',
+  'Continue': 'ਜਾਰੀ ਰੱਖੋ',
   //
 };
 Map<String, String> german = {
@@ -687,6 +1122,51 @@ Map<String, String> german = {
   'Share App': 'App teilen',
   'My Apps': 'Meine Apps',
   'About Developer': 'Über den Entwickler',
+  'Surah': 'Sure',
+  'Juz': 'Dschuz',
+  'Pages': 'Seiten',
+  'Get the best experience by logging in':
+      'Melden Sie sich an, um das beste Erlebnis zu erhalten',
+  'why_should_logged':
+      'Sie können Ihre Lieblings-Playlist in der Cloud speichern. Und hören Sie dort weiter, wo Sie aufgehört haben. Sie müssen sich keine Sorgen machen, Ihre Playlist zu verlieren. Wir kümmern uns darum.',
+  'Login': 'Anmelden',
+  'Audio History': 'Audio-Verlauf',
+  'Listened': 'Gehört',
+  'Sort by increasing Surah Number': 'Nach aufsteigender Surennummer sortieren',
+  'Sort by decreasing Surah Number': 'Nach absteigender Surennummer sortieren',
+  'Sort by increasing surah duration':
+      'Nach aufsteigender Surenlänge sortieren',
+  'Sort by decreasing surah duration': 'Nach absteigender Surenlänge sortieren',
+  'Sort by increasing listened duration':
+      'Nach aufsteigender Hörzeit sortieren',
+  'Sort by decreasing listened duration': 'Nach absteigender Hörzeit sortieren',
+  'Welcome': 'Willkommen bei\nAl Quran Tafsir und Audio',
+  'Email': 'E-Mail',
+  'type your email': 'Geben Sie Ihre E-Mail-Adresse ein',
+  'Please enter a valid email':
+      'Bitte geben Sie eine gültige E-Mail-Adresse ein',
+  'Password': 'Passwort',
+  'type your password': 'Geben Sie Ihr Passwort ein',
+  'Password must be at least 6 characters':
+      'Das Passwort muss mindestens 6 Zeichen lang sein',
+  'Login unsuccessful': 'Anmeldung fehlgeschlagen',
+  'Login successful': 'Anmeldung erfolgreich',
+  'You have successfully logged in': 'Sie haben sich erfolgreich angemeldet',
+  'Signup then login': 'Anmelden und dann einloggen',
+  'Or': 'Oder',
+  'Logout': 'Abmelden',
+  'Backup changes to cloud': 'Änderungen in der Cloud sichern',
+  'Click to Backup Playlists':
+      'Klicken Sie hier, um Wiedergabelisten zu sichern',
+  'Successful': 'Erfolgreich',
+  'Found issue': 'Problem gefunden',
+  'Click to Backup Groups': 'Klicken Sie hier, um Gruppen zu sichern',
+  'Click to Backup Notes': 'Klicken Sie hier, um Notizen zu sichern',
+  'You data will be replaced!': 'Ihre Daten werden ersetzt!',
+  'backupWarning':
+      'Wenn Sie Ihre Daten zuvor gesichert haben, werden diese durch die neuen Daten ersetzt. Wir arbeiten an weiteren Funktionen für die Backup-Funktionalität. Möchten Sie fortfahren?',
+  'Cancel': 'Abbrechen',
+  'Continue': 'Fortsetzen',
   //
 };
 Map<String, String> french = {
@@ -746,6 +1226,50 @@ Map<String, String> french = {
   'Share App': 'Partager l\'appli',
   'My Apps': 'Mes applications',
   'About Developer': 'À propos du développeur',
+  'Surah': 'Sourate',
+  'Juz': 'Juz',
+  'Pages': 'Pages',
+  'Get the best experience by logging in':
+      'Profitez d\'une expérience optimale en vous connectant',
+  'why_should_logged':
+      'Vous pouvez enregistrer votre playlist préférée dans le cloud. Et continuez à écouter là où vous vous êtes arrêté. Pas besoin de vous inquiéter de perdre votre playlist. Nous avons ce qu\'il vous faut.',
+  'Login': 'Se connecter',
+  'Audio History': 'Historique audio',
+  'Listened': 'Écouté',
+  'Sort by increasing Surah Number': 'Trier par numéro de sourate croissant',
+  'Sort by decreasing Surah Number': 'Trier par numéro de sourate décroissant',
+  'Sort by increasing surah duration': 'Trier par durée de sourate croissante',
+  'Sort by decreasing surah duration':
+      'Trier par durée de sourate décroissante',
+  'Sort by increasing listened duration':
+      'Trier par durée d\'écoute croissante',
+  'Sort by decreasing listened duration':
+      'Trier par durée d\'écoute décroissante',
+  'Welcome': 'Bienvenue sur\nAl Quran Tafsir et Audio',
+  'Email': 'E-mail',
+  'type your email': 'Tapez votre e-mail',
+  'Please enter a valid email': 'Veuillez saisir un e-mail valide',
+  'Password': 'Mot de passe',
+  'type your password': 'Tapez votre mot de passe',
+  'Password must be at least 6 characters':
+      'Le mot de passe doit contenir au moins 6 caractères',
+  'Login unsuccessful': 'Échec de la connexion',
+  'Login successful': 'Connexion réussie',
+  'You have successfully logged in': 'Vous êtes connecté avec succès',
+  'Signup then login': 'S\'inscrire puis se connecter',
+  'Or': 'Ou',
+  'Logout': 'Se déconnecter',
+  'Backup changes to cloud': 'Sauvegarder les modifications sur le cloud',
+  'Click to Backup Playlists': 'Cliquez pour sauvegarder les playlists',
+  'Successful': 'Réussi',
+  'Found issue': 'Problème trouvé',
+  'Click to Backup Groups': 'Cliquez pour sauvegarder les groupes',
+  'Click to Backup Notes': 'Cliquez pour sauvegarder les notes',
+  'You data will be replaced!': 'Vos données seront remplacées !',
+  'backupWarning':
+      'Si vous avez précédemment sauvegardé vos données, elles seront remplacées par les nouvelles données. Nous travaillons sur d\'autres fonctionnalités pour la fonction de sauvegarde. Voulez-vous continuer ?',
+  'Cancel': 'Annuler',
+  'Continue': 'Continuer',
   //
 };
 Map<String, String> indonesian = {
@@ -797,6 +1321,51 @@ Map<String, String> indonesian = {
   'Share App': 'Bagikan Aplikasi',
   'My Apps': 'Aplikasi Saya',
   'About Developer': 'Tentang Pengembang',
+  'Surah': 'Surah',
+  'Juz': 'Juz',
+  'Pages': 'Halaman',
+  'Get the best experience by logging in':
+      'Dapatkan pengalaman terbaik dengan masuk',
+  'why_should_logged':
+      'Anda dapat menyimpan daftar putar favorit Anda ke cloud. Dan lanjutkan mendengarkan dari tempat Anda berhenti. Tidak perlu khawatir kehilangan daftar putar Anda. Kami siap membantu Anda.',
+  'Login': 'Masuk',
+  'Audio History': 'Riwayat Audio',
+  'Listened': 'Didengarkan',
+  'Sort by increasing Surah Number': 'Urutkan berdasarkan Nomor Surah Menaik',
+  'Sort by decreasing Surah Number': 'Urutkan berdasarkan Nomor Surah Menurun',
+  'Sort by increasing surah duration':
+      'Urutkan berdasarkan Durasi Surah Menaik',
+  'Sort by decreasing surah duration':
+      'Urutkan berdasarkan Durasi Surah Menurun',
+  'Sort by increasing listened duration':
+      'Urutkan berdasarkan Durasi Didengarkan Menaik',
+  'Sort by decreasing listened duration':
+      'Urutkan berdasarkan Durasi Didengarkan Menurun',
+  'Welcome': 'Selamat Datang di\nTafsir dan Audio Al-Qur\'an',
+  'Email': 'Email',
+  'type your email': 'Ketik email Anda',
+  'Please enter a valid email': 'Silakan masukkan email yang valid',
+  'Password': 'Kata sandi',
+  'type your password': 'Ketik kata sandi Anda',
+  'Password must be at least 6 characters':
+      'Kata sandi harus minimal 6 karakter',
+  'Login unsuccessful': 'Login tidak berhasil',
+  'Login successful': 'Login berhasil',
+  'You have successfully logged in': 'Anda berhasil masuk',
+  'Signup then login': 'Daftar lalu masuk',
+  'Or': 'Atau',
+  'Logout': 'Keluar',
+  'Backup changes to cloud': 'Cadangkan perubahan ke cloud',
+  'Click to Backup Playlists': 'Klik untuk Mencadangkan Daftar Putar',
+  'Successful': 'Berhasil',
+  'Found issue': 'Masalah ditemukan',
+  'Click to Backup Groups': 'Klik untuk Mencadangkan Grup',
+  'Click to Backup Notes': 'Klik untuk Mencadangkan Catatan',
+  'You data will be replaced!': 'Data Anda akan diganti!',
+  'backupWarning':
+      'Jika Anda sudah mencadangkan data Anda sebelumnya, data tersebut akan diganti dengan data baru. Kami sedang mengerjakan lebih banyak fitur untuk fungsionalitas pencadangan. Apakah Anda ingin melanjutkan?',
+  'Cancel': 'Batal',
+  'Continue': 'Lanjutkan',
   //
 };
 Map<String, String> urdu = {
@@ -849,6 +1418,49 @@ Map<String, String> urdu = {
   'Share App': 'ایپ شیئر کریں',
   'My Apps': 'میری ایپس',
   'About Developer': 'ڈیولپر کے بارے میں',
+  'Surah': 'سورہ',
+  'Juz': 'جزء',
+  'Pages': 'صفحات',
+  'Get the best experience by logging in':
+      'لاگ ان کر کے بہترین تجربہ حاصل کریں',
+  'why_should_logged':
+      'آپ اپنی پسندیدہ پلے لسٹ کو کلاؤڈ میں محفوظ کر سکتے ہیں۔ اور جہاں سے آپ نے چھوڑا تھا وہیں سے سننا جاری رکھ سکتے ہیں۔ اپنی پلے لسٹ کھونے کے بارے میں فکر کرنے کی ضرورت نہیں ہے۔ ہم نے آپ کو کور کر لیا ہے۔',
+  'Login': 'لاگ ان',
+  'Audio History': 'آڈیو تاریخ',
+  'Listened': 'سنا گیا',
+  'Sort by increasing Surah Number': 'سورہ نمبر بڑھتے ہوئے ترتیب دیں',
+  'Sort by decreasing Surah Number': 'سورہ نمبر گھٹتے ہوئے ترتیب دیں',
+  'Sort by increasing surah duration': 'سورہ دورانیہ بڑھتے ہوئے ترتیب دیں',
+  'Sort by decreasing surah duration': 'سورہ دورانیہ گھٹتے ہوئے ترتیب دیں',
+  'Sort by increasing listened duration':
+      'سنے گئے دورانیہ بڑھتے ہوئے ترتیب دیں',
+  'Sort by decreasing listened duration':
+      'سنے گئے دورانیہ گھٹتے ہوئے ترتیب دیں',
+  'Welcome': 'القرآن تفسیر اور آڈیو میں خوش آمدید',
+  'Email': 'ای میل',
+  'type your email': 'اپنا ای میل ٹائپ کریں',
+  'Please enter a valid email': 'براہ کرم ایک معتبر ای میل درج کریں',
+  'Password': 'پاس ورڈ',
+  'type your password': 'اپنا پاس ورڈ ٹائپ کریں',
+  'Password must be at least 6 characters':
+      'پاس ورڈ کم از کم 6 حروف کا ہونا چاہیے۔',
+  'Login unsuccessful': 'لاگ ان ناکام',
+  'Login successful': 'لاگ ان کامیاب',
+  'You have successfully logged in': 'آپ نے کامیابی کے ساتھ لاگ ان کر لیا ہے۔',
+  'Signup then login': 'سائن اپ پھر لاگ ان',
+  'Or': 'یا',
+  'Logout': 'لاگ آؤٹ',
+  'Backup changes to cloud': 'تبدیلیاں کلاؤڈ پر بیک اپ کریں',
+  'Click to Backup Playlists': 'پلے لسٹس کا بیک اپ لینے کے لیے کلک کریں',
+  'Successful': 'کامیاب',
+  'Found issue': 'مسئلہ ملا',
+  'Click to Backup Groups': 'گروپس کا بیک اپ لینے کے لیے کلک کریں',
+  'Click to Backup Notes': 'نوٹس کا بیک اپ لینے کے لیے کلک کریں',
+  'You data will be replaced!': 'آپ کا ڈیٹا تبدیل کر دیا جائے گا!',
+  'backupWarning':
+      'اگر آپ نے پہلے اپنے ڈیٹا کا بیک اپ لیا تھا، تو یہ نئے ڈیٹا سے بدل دیا جائے گا۔ ہم بیک اپ کی فعالیت کے لیے مزید خصوصیات پر کام کر رہے ہیں۔ کیا آپ جاری رکھنا چاہتے ہیں؟',
+  'Cancel': 'منسوخ کریں',
+  'Continue': 'جاری رکھیں',
   //
 };
 Map<String, String> swahili = {
@@ -902,6 +1514,48 @@ Map<String, String> swahili = {
   'Share App': 'Shiriki App',
   'My Apps': 'Apps Zangu',
   'About Developer': 'Kuhusu Msanidi Programu',
+  'Surah': 'Surah',
+  'Juz': 'Juzu',
+  'Pages': 'Kurasa',
+  'Get the best experience by logging in': 'Pata uzoefu bora kwa kuingia',
+  'why_should_logged':
+      'Unaweza kuhifadhi orodha yako ya kucheza unayoipenda kwenye wingu. Na uendelee kusikiliza kutoka pale ulipoishia. Hakuna haja ya kuwa na wasiwasi kuhusu kupoteza orodha yako ya kucheza. Tumekusaidia.',
+  'Login': 'Ingia',
+  'Audio History': 'Historia ya Sauti',
+  'Listened': 'Iliyosikilizwa',
+  'Sort by increasing Surah Number': 'Panga kwa kuongeza Nambari ya Surah',
+  'Sort by decreasing Surah Number': 'Panga kwa kupunguza Nambari ya Surah',
+  'Sort by increasing surah duration': 'Panga kwa kuongeza muda wa Surah',
+  'Sort by decreasing surah duration': 'Panga kwa kupunguza muda wa Surah',
+  'Sort by increasing listened duration':
+      'Panga kwa kuongeza muda wa kusikiliza',
+  'Sort by decreasing listened duration':
+      'Panga kwa kupunguza muda wa kusikiliza',
+  'Welcome': 'Karibu kwenye\nAl Quran Tafsir na Sauti',
+  'Email': 'Barua pepe',
+  'type your email': 'Andika barua pepe yako',
+  'Please enter a valid email': 'Tafadhali ingiza barua pepe sahihi',
+  'Password': 'Nenosiri',
+  'type your password': 'Andika nenosiri lako',
+  'Password must be at least 6 characters':
+      'Nenosiri lazima liwe na herufi 6 au zaidi',
+  'Login unsuccessful': 'Kuingia hakukufaulu',
+  'Login successful': 'Kuingia kumefaulu',
+  'You have successfully logged in': 'Umefanikiwa kuingia',
+  'Signup then login': 'Jisajili kisha uingie',
+  'Or': 'Au',
+  'Logout': 'Ondoka',
+  'Backup changes to cloud': 'Hifadhi nakala za mabadiliko kwenye wingu',
+  'Click to Backup Playlists': 'Bofya Kuhifadhi Nakala za Orodha za Kucheza',
+  'Successful': 'Imefaulu',
+  'Found issue': 'Tatizo limepatikana',
+  'Click to Backup Groups': 'Bofya Kuhifadhi Nakala za Makundi',
+  'Click to Backup Notes': 'Bofya Kuhifadhi Nakala za Vidokezo',
+  'You data will be replaced!': 'Data yako itabadilishwa!',
+  'backupWarning':
+      'Ikiwa ulihifadhi nakala ya data yako hapo awali, itabadilishwa na data mpya. Tunafanya kazi kwenye vipengele zaidi vya utendakazi wa kuhifadhi nakala. Ungependa kuendelea?',
+  'Cancel': 'Ghairi',
+  'Continue': 'Endelea',
   //
 };
 Map<String, String> korean = {
@@ -950,6 +1604,45 @@ Map<String, String> korean = {
   'Share App': '앱 공유',
   'My Apps': '내 앱',
   'About Developer': '개발자 정보',
+  'Surah': '수라',
+  'Juz': '주즈',
+  'Pages': '페이지',
+  'Get the best experience by logging in': '로그인하여 최고의 경험을 얻으세요',
+  'why_should_logged':
+      '좋아하는 재생 목록을 클라우드에 저장할 수 있습니다. 그리고 중단했던 부분부터 계속 들을 수 있습니다. 재생 목록을 잃을 염려가 없습니다. 저희가 책임지겠습니다.',
+  'Login': '로그인',
+  'Audio History': '오디오 기록',
+  'Listened': '들었습니다',
+  'Sort by increasing Surah Number': '수라 번호 오름차순으로 정렬',
+  'Sort by decreasing Surah Number': '수라 번호 내림차순으로 정렬',
+  'Sort by increasing surah duration': '수라 길이 오름차순으로 정렬',
+  'Sort by decreasing surah duration': '수라 길이 내림차순으로 정렬',
+  'Sort by increasing listened duration': '들은 시간 오름차순으로 정렬',
+  'Sort by decreasing listened duration': '들은 시간 내림차순으로 정렬',
+  'Welcome': '알 쿠란 타프시르 및 오디오에 오신 것을 환영합니다',
+  'Email': '이메일',
+  'type your email': '이메일을 입력하세요',
+  'Please enter a valid email': '유효한 이메일을 입력하세요',
+  'Password': '비밀번호',
+  'type your password': '비밀번호를 입력하세요',
+  'Password must be at least 6 characters': '비밀번호는 최소 6자 이상이어야 합니다',
+  'Login unsuccessful': '로그인 실패',
+  'Login successful': '로그인 성공',
+  'You have successfully logged in': '로그인에 성공했습니다',
+  'Signup then login': '가입 후 로그인',
+  'Or': '또는',
+  'Logout': '로그아웃',
+  'Backup changes to cloud': '클라우드에 변경 사항 백업',
+  'Click to Backup Playlists': '재생 목록 백업을 클릭하세요',
+  'Successful': '성공',
+  'Found issue': '문제가 발견되었습니다',
+  'Click to Backup Groups': '그룹 백업을 클릭하세요',
+  'Click to Backup Notes': '노트 백업을 클릭하세요',
+  'You data will be replaced!': '데이터가 교체됩니다!',
+  'backupWarning':
+      '이전에 데이터를 백업한 경우 새 데이터로 대체됩니다. 백업 기능을 위한 더 많은 기능을 개발 중입니다. 계속하시겠습니까?',
+  'Cancel': '취소',
+  'Continue': '계속',
   //
 };
 Map<String, String> turkish = {
@@ -1001,6 +1694,52 @@ Map<String, String> turkish = {
   'Share App': 'Uygulamayı Paylaş',
   'My Apps': 'Uygulamalarım',
   'About Developer': 'Geliştirici Hakkında',
+  'Surah': 'Sure',
+  'Juz': 'Cüz',
+  'Pages': 'Sayfalar',
+  'Get the best experience by logging in':
+      'Giriş yaparak en iyi deneyimi yaşayın',
+  'why_should_logged':
+      'Favori çalma listenizi buluta kaydedebilirsiniz. Ve kaldığınız yerden dinlemeye devam edin. Çalma listenizi kaybetme konusunda endişelenmenize gerek yok. Sizi destekliyoruz.',
+  'Login': 'Giriş Yap',
+  'Audio History': 'Ses Geçmişi',
+  'Listened': 'Dinlendi',
+  'Sort by increasing Surah Number':
+      'Sure Numarasına Göre Artan Şekilde Sırala',
+  'Sort by decreasing Surah Number':
+      'Sure Numarasına Göre Azalan Şekilde Sırala',
+  'Sort by increasing surah duration':
+      'Sure Süresine Göre Artan Şekilde Sırala',
+  'Sort by decreasing surah duration':
+      'Sure Süresine Göre Azalan Şekilde Sırala',
+  'Sort by increasing listened duration':
+      'Dinleme Süresine Göre Artan Şekilde Sırala',
+  'Sort by decreasing listened duration':
+      'Dinleme Süresine Göre Azalan Şekilde Sırala',
+  'Welcome': 'Al-Quran Tefsir ve Ses\'e Hoş Geldiniz',
+  'Email': 'E-posta',
+  'type your email': 'E-postanızı yazın',
+  'Please enter a valid email': 'Lütfen geçerli bir e-posta girin',
+  'Password': 'Şifre',
+  'type your password': 'Şifrenizi yazın',
+  'Password must be at least 6 characters': 'Şifre en az 6 karakter olmalıdır',
+  'Login unsuccessful': 'Giriş başarısız',
+  'Login successful': 'Giriş başarılı',
+  'You have successfully logged in': 'Başarıyla giriş yaptınız',
+  'Signup then login': 'Kaydol sonra giriş yap',
+  'Or': 'Veya',
+  'Logout': 'Çıkış Yap',
+  'Backup changes to cloud': 'Değişiklikleri buluta yedekle',
+  'Click to Backup Playlists': 'Oynatma Listelerini Yedeklemek için Tıklayın',
+  'Successful': 'Başarılı',
+  'Found issue': 'Sorun bulundu',
+  'Click to Backup Groups': 'Grupları Yedeklemek için Tıklayın',
+  'Click to Backup Notes': 'Notları Yedeklemek için Tıklayın',
+  'You data will be replaced!': 'Verileriniz değiştirilecek!',
+  'backupWarning':
+      'Verilerinizi daha önce yedeklediyseniz, yeni verilerle değiştirilecektir. Yedekleme işlevi için daha fazla özellik üzerinde çalışıyoruz. Devam etmek istiyor musunuz?',
+  'Cancel': 'İptal',
+  'Continue': 'Devam Et',
   //
 };
 Map<String, String> vietnamese = {
@@ -1054,6 +1793,50 @@ Map<String, String> vietnamese = {
   'Share App': 'Chia sẻ ứng dụng',
   'My Apps': 'Ứng dụng của tôi',
   'About Developer': 'Về nhà phát triển',
+  'Surah': 'Chương Kinh',
+  'Juz': 'Juz',
+  'Pages': 'Trang',
+  'Get the best experience by logging in':
+      'Đăng nhập để có trải nghiệm tốt nhất',
+  'why_should_logged':
+      'Bạn có thể lưu danh sách phát yêu thích của mình lên đám mây. Và tiếp tục nghe từ nơi bạn đã dừng lại. Không cần phải lo lắng về việc mất danh sách phát của bạn. Chúng tôi sẽ lo liệu cho bạn.',
+  'Login': 'Đăng nhập',
+  'Audio History': 'Lịch sử âm thanh',
+  'Listened': 'Đã nghe',
+  'Sort by increasing Surah Number': 'Sắp xếp theo số thứ tự chương tăng dần',
+  'Sort by decreasing Surah Number': 'Sắp xếp theo số thứ tự chương giảm dần',
+  'Sort by increasing surah duration':
+      'Sắp xếp theo thời lượng chương tăng dần',
+  'Sort by decreasing surah duration':
+      'Sắp xếp theo thời lượng chương giảm dần',
+  'Sort by increasing listened duration':
+      'Sắp xếp theo thời lượng nghe tăng dần',
+  'Sort by decreasing listened duration':
+      'Sắp xếp theo thời lượng nghe giảm dần',
+  'Welcome': 'Chào mừng bạn đến với\nTafsir và Âm thanh Al Quran',
+  'Email': 'Email',
+  'type your email': 'Nhập email của bạn',
+  'Please enter a valid email': 'Vui lòng nhập một email hợp lệ',
+  'Password': 'Mật khẩu',
+  'type your password': 'Nhập mật khẩu của bạn',
+  'Password must be at least 6 characters': 'Mật khẩu phải có ít nhất 6 ký tự',
+  'Login unsuccessful': 'Đăng nhập không thành công',
+  'Login successful': 'Đăng nhập thành công',
+  'You have successfully logged in': 'Bạn đã đăng nhập thành công',
+  'Signup then login': 'Đăng ký rồi đăng nhập',
+  'Or': 'Hoặc',
+  'Logout': 'Đăng xuất',
+  'Backup changes to cloud': 'Sao lưu các thay đổi lên đám mây',
+  'Click to Backup Playlists': 'Nhấp để Sao lưu Danh sách phát',
+  'Successful': 'Thành công',
+  'Found issue': 'Tìm thấy vấn đề',
+  'Click to Backup Groups': 'Nhấp để Sao lưu Nhóm',
+  'Click to Backup Notes': 'Nhấp để Sao lưu Ghi chú',
+  'You data will be replaced!': 'Dữ liệu của bạn sẽ bị thay thế!',
+  'backupWarning':
+      'Nếu bạn đã sao lưu dữ liệu của mình trước đó, dữ liệu đó sẽ bị thay thế bằng dữ liệu mới. Chúng tôi đang nỗ lực phát triển thêm các tính năng cho chức năng sao lưu. Bạn có muốn tiếp tục không?',
+  'Cancel': 'Hủy bỏ',
+  'Continue': 'Tiếp tục',
   //
 };
 Map<String, String> tamil = {
@@ -1104,13 +1887,62 @@ Map<String, String> tamil = {
   'Home': 'முகப்பு',
   'Jump to Ayah': 'வசனத்திற்குச் செல்',
   'Notes': 'குறிப்புகள்',
-  'Others Platforms': 'பிற தளங்கள்',
+  'Others Platforms': 'மற்ற தளங்கள்',
   'About App': 'பயன்பாட்டைப் பற்றி',
   'Give Feedback': 'கருத்து தெரிவிக்கவும்',
   'Rate App': 'பயன்பாட்டை மதிப்பிடுங்கள்',
   'Share App': 'பயன்பாட்டைப் பகிரவும்',
   'My Apps': 'எனது பயன்பாடுகள்',
   'About Developer': 'டெவலப்பரைப் பற்றி',
+  'Surah': 'சூரா',
+  'Juz': 'ஜுஸ்வு',
+  'Pages': 'பக்கங்கள்',
+  'Get the best experience by logging in':
+      'உள்நுழைந்து சிறந்த அனுபவத்தைப் பெறுங்கள்',
+  'why_should_logged':
+      'உங்களுக்குப் பிடித்த பிளேலிஸ்ட்டை கிளவுட்டில் சேமிக்கலாம். மேலும் நீங்கள் விட்டுச் சென்ற இடத்திலிருந்து தொடர்ந்து கேட்கலாம். உங்கள் பிளேலிஸ்ட்டை இழந்துவிடுவது குறித்து கவலைப்படத் தேவையில்லை. நாங்கள் உங்களைப் பார்த்துக் கொள்வோம்.',
+  'Login': 'உள்நுழை',
+  'Audio History': 'ஆடியோ வரலாறு',
+  'Listened': 'கேட்டது',
+  'Sort by increasing Surah Number':
+      'சூரா எண்ணை அதிகரிக்கும் வரிசையில் வரிசைப்படுத்தவும்',
+  'Sort by decreasing Surah Number':
+      'சூரா எண்ணை குறைக்கும் வரிசையில் வரிசைப்படுத்தவும்',
+  'Sort by increasing surah duration':
+      'சூரா கால அளவை அதிகரிக்கும் வரிசையில் வரிசைப்படுத்தவும்',
+  'Sort by decreasing surah duration':
+      'சூரா கால அளவை குறைக்கும் வரிசையில் வரிசைப்படுத்தவும்',
+  'Sort by increasing listened duration':
+      'கேட்ட கால அளவை அதிகரிக்கும் வரிசையில் வரிசைப்படுத்தவும்',
+  'Sort by decreasing listened duration':
+      'கேட்ட கால அளவை குறைக்கும் வரிசையில் வரிசைப்படுத்தவும்',
+  'Welcome': 'அல் குர்ஆன் தஃப்சீர் மற்றும் ஆடியோவுக்கு வரவேற்கிறோம்',
+  'Email': 'மின்னஞ்சல்',
+  'type your email': 'உங்கள் மின்னஞ்சலை உள்ளிடவும்',
+  'Please enter a valid email': 'சரியான மின்னஞ்சலை உள்ளிடவும்',
+  'Password': 'கடவுச்சொல்',
+  'type your password': 'உங்கள் கடவுச்சொல்லை உள்ளிடவும்',
+  'Password must be at least 6 characters':
+      'கடவுச்சொல் குறைந்தது 6 எழுத்துகள் இருக்க வேண்டும்',
+  'Login unsuccessful': 'உள்நுழைவு தோல்வியடைந்தது',
+  'Login successful': 'உள்நுழைவு வெற்றிகரமானது',
+  'You have successfully logged in':
+      'நீங்கள் வெற்றிகரமாக உள்நுழைந்துவிட்டீர்கள்',
+  'Signup then login': 'பதிவு செய்து பின்னர் உள்நுழைக',
+  'Or': 'அல்லது',
+  'Logout': 'கணக்கிலிருந்து வெளியேறு',
+  'Backup changes to cloud': 'கிளவுக்கில் மாற்றங்களை காப்புப் பிரதி எடுக்கவும்',
+  'Click to Backup Playlists':
+      'பிளேலிஸ்ட்களை காப்புப் பிரதி எடுக்க கிளிக் செய்யவும்',
+  'Successful': 'வெற்றி',
+  'Found issue': 'சிக்கல் கண்டறியப்பட்டது',
+  'Click to Backup Groups': 'குழுக்களை காப்புப் பிரதி எடுக்க கிளிக் செய்யவும்',
+  'Click to Backup Notes': 'குறிப்புகளை காப்புப் பிரதி எடுக்க கிளிக் செய்யவும்',
+  'You data will be replaced!': 'உங்கள் தரவு மாற்றப்படும்!',
+  'backupWarning':
+      'நீங்கள் முன்பு உங்கள் தரவை காப்புப் பிரதி எடுத்திருந்தால், அது புதிய தரவுகளால் மாற்றப்படும். காப்புப் பிரதி செயல்பாட்டிற்கான கூடுதல் அம்சங்களில் நாங்கள் பணியாற்றி வருகிறோம். நீங்கள் தொடர விரும்புகிறீர்களா?',
+  'Cancel': 'ரத்து செய்',
+  'Continue': 'தொடர்க',
   //
 };
 Map<String, String> italian = {
@@ -1168,5 +2000,50 @@ Map<String, String> italian = {
   'Share App': 'Condividi l\'app',
   'My Apps': 'Le mie app',
   'About Developer': 'Informazioni sullo sviluppatore',
+  'Surah': 'Sura',
+  'Juz': 'Juz',
+  'Pages': 'Pagine',
+  'Get the best experience by logging in':
+      'Ottieni la migliore esperienza effettuando l\'accesso',
+  'why_should_logged':
+      'Puoi salvare la tua playlist preferita nel cloud. E continua ad ascoltare da dove avevi interrotto. Non c\'è bisogno di preoccuparsi di perdere la tua playlist. Ci pensiamo noi.',
+  'Login': 'Accedi',
+  'Audio History': 'Cronologia audio',
+  'Listened': 'Ascoltato',
+  'Sort by increasing Surah Number': 'Ordina per numero di Sura crescente',
+  'Sort by decreasing Surah Number': 'Ordina per numero di Sura decrescente',
+  'Sort by increasing surah duration': 'Ordina per durata della Sura crescente',
+  'Sort by decreasing surah duration':
+      'Ordina per durata della Sura decrescente',
+  'Sort by increasing listened duration':
+      'Ordina per durata di ascolto crescente',
+  'Sort by decreasing listened duration':
+      'Ordina per durata di ascolto decrescente',
+  'Welcome': 'Benvenuto in\nAl Quran Tafsir e Audio',
+  'Email': 'Email',
+  'type your email': 'Digita la tua email',
+  'Please enter a valid email':
+      'Per favore, inserisci un indirizzo email valido',
+  'Password': 'Password',
+  'type your password': 'Digita la tua password',
+  'Password must be at least 6 characters':
+      'La password deve essere lunga almeno 6 caratteri',
+  'Login unsuccessful': 'Accesso non riuscito',
+  'Login successful': 'Accesso riuscito',
+  'You have successfully logged in': 'Hai effettuato l\'accesso con successo',
+  'Signup then login': 'Registrati e poi accedi',
+  'Or': 'O',
+  'Logout': 'Disconnetti',
+  'Backup changes to cloud': 'Salva le modifiche nel cloud',
+  'Click to Backup Playlists': 'Clicca per eseguire il backup delle playlist',
+  'Successful': 'Riuscito',
+  'Found issue': 'Problema trovato',
+  'Click to Backup Groups': 'Clicca per eseguire il backup dei gruppi',
+  'Click to Backup Notes': 'Clicca per eseguire il backup delle note',
+  'You data will be replaced!': 'I tuoi dati saranno sostituiti!',
+  'backupWarning':
+      'Se hai eseguito il backup dei tuoi dati in precedenza, verranno sostituiti dai nuovi dati. Stiamo lavorando su altre funzionalità per la funzione di backup. Vuoi continuare?',
+  'Cancel': 'Annulla',
+  'Continue': 'Continua',
   //
 };

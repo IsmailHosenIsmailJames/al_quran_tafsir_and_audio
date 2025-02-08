@@ -404,7 +404,7 @@ class _CollectionTabState extends State<CollectionTab> {
                 ),
                 child: Column(
                   children: List.generate(ayahKey.length, (i) {
-                    int surahNumber = int.parse(ayahKey[i].split(':')[i]);
+                    int surahNumber = int.parse(ayahKey[i].split(':')[0]);
                     int ayahNumber = int.parse(ayahKey[i].split(':')[1]);
                     return GestureDetector(
                       onTap: () {
@@ -477,8 +477,8 @@ class _CollectionTabState extends State<CollectionTab> {
                           builder: (context) {
                             return AlertDialog(
                               title: const Text('Are you sure?'),
-                              content:
-                                  const Text("Once deleted, it can't be recovered"),
+                              content: const Text(
+                                  "Once deleted, it can't be recovered"),
                               actions: [
                                 TextButton.icon(
                                   onPressed: () {

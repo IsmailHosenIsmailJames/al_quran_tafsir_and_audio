@@ -39,50 +39,50 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Gap(20),
-                  const Text(
-                    'Welcome to\nAl Quran Tafsir and Audio',
+                  Text(
+                    'Welcome'.tr,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Gap(5),
-                  const Text('Get the best experience by logging in'),
+                  Text('Get the best experience by logging in'.tr),
                   Text(
-                    'You can save your favorite groups, playlists, notes and history to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
+                    'why_should_logged'.tr,
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.grey.shade600,
                     ),
                   ),
                   const Gap(20),
-                  const Text(
-                    'Email',
+                  Text(
+                    'Email'.tr,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextFormField(
                     controller: emailController,
-                    decoration: const InputDecoration(
-                      hintText: 'type your email...',
+                    decoration: InputDecoration(
+                      hintText: '${'type your email'.tr}...',
                     ),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (EmailValidator.validate(value ?? '')) {
                         return null;
                       } else {
-                        return 'Please enter a valid email';
+                        return 'Please enter a valid email'.tr;
                       }
                     },
                   ),
                   const Gap(10),
-                  const Text(
-                    'Password',
+                  Text(
+                    'Password'.tr,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextFormField(
                     controller: passwordController,
-                    decoration: const InputDecoration(
-                      hintText: 'type your password...',
+                    decoration: InputDecoration(
+                      hintText: '${'type your password'.tr}...',
                     ),
                     obscureText: true,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (value!.length >= 6) {
                         return null;
                       } else {
-                        return 'Password must be at least 6 characters';
+                        return 'Password must be at least 6 characters'.tr;
                       }
                     },
                   ),
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (error != null) {
                           toastification.show(
                             context: context,
-                            title: const Text('Login unsuccessful'),
+                            title: Text('Login unsuccessful'.tr),
                             description: Text(error),
                             type: ToastificationType.error,
                             autoCloseDuration: const Duration(seconds: 5),
@@ -125,9 +125,9 @@ class _LoginPageState extends State<LoginPage> {
                         } else {
                           toastification.show(
                             context: context,
-                            title: const Text('Login successful'),
+                            title: Text('Login successful'.tr),
                             description:
-                                const Text('You have successfully logged in'),
+                                Text('You have successfully logged in'.tr),
                             type: ToastificationType.success,
                             autoCloseDuration: const Duration(seconds: 3),
                           );
@@ -141,13 +141,13 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.white,
                               ),
                             )
-                          : const Text('Login'),
+                          : Text('Login'.tr),
                     ),
                   ),
                   const Gap(5),
                   Center(
                       child: Text(
-                    'Or',
+                    'Or'.tr,
                     style: TextStyle(color: Colors.grey.shade600),
                   )),
                   const Gap(5),
@@ -173,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (error != null) {
                           toastification.show(
                             context: context,
-                            title: const Text('Signup unsuccessful'),
+                            title: Text('Login unsuccessful'.tr),
                             description: Text(error),
                             type: ToastificationType.error,
                             autoCloseDuration: const Duration(seconds: 5),
@@ -181,9 +181,9 @@ class _LoginPageState extends State<LoginPage> {
                         } else {
                           toastification.show(
                             context: context,
-                            title: const Text('Signup successful'),
+                            title: Text('Login successful'.tr),
                             description:
-                                const Text('You have successfully signed up'),
+                                Text('You have successfully logged in'.tr),
                             type: ToastificationType.success,
                             autoCloseDuration: const Duration(seconds: 3),
                           );
@@ -197,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.white,
                               ),
                             )
-                          : const Text('Sign Up'),
+                          : Text('Signup then login'.tr),
                     ),
                   ),
                 ],

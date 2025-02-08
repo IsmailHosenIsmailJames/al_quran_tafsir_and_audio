@@ -50,11 +50,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(20),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
                     child: Text(
-                      'Get the best experience by logging in ->',
-                      style: TextStyle(
+                      '${'Get the best experience by logging in'.tr} ->',
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -64,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      'You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
+                      'why_should_logged'.tr,
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey.shade600,
@@ -83,17 +83,17 @@ class _ProfilePageState extends State<ProfilePage> {
                           setState(() {});
                         },
                         iconAlignment: IconAlignment.end,
-                        child: const Row(
+                        child: Row(
                           children: [
-                            Spacer(),
+                            const Spacer(),
                             Text(
-                              'Login',
-                              style: TextStyle(
+                              'Login'.tr,
+                              style: const TextStyle(
                                 fontSize: 16,
                               ),
                             ),
-                            Spacer(),
-                            Icon(Icons.fast_forward_rounded),
+                            const Spacer(),
+                            const Icon(Icons.fast_forward_rounded),
                           ],
                         ),
                       ),
@@ -109,12 +109,12 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                'Audio History',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Text(
+                'Audio History'.tr,
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                'Listened ${formatDuration(Duration(seconds: getTotalDurationInSeconds()))}',
+                '${'Listened'.tr} ${formatDuration(Duration(seconds: getTotalDurationInSeconds()))}',
                 style: const TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
@@ -137,7 +137,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         PopupMenuItem(
                           value: 'surahIncreasing',
                           child: Text(
-                            'Sort by increasing Surah Number',
+                            'Sort by increasing Surah Number'.tr,
                             style: TextStyle(
                               color: sortBy == 'surahIncreasing'
                                   ? Colors.green
@@ -148,7 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         PopupMenuItem(
                           value: 'surahDecreasing',
                           child: Text(
-                            'Sort by decreasing Surah Number',
+                            'Sort by decreasing Surah Number'.tr,
                             style: TextStyle(
                               color: sortBy == 'surahDecreasing'
                                   ? Colors.green
@@ -159,7 +159,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         PopupMenuItem(
                           value: 'increasing',
                           child: Text(
-                            'Sort by increasing surah duration',
+                            'Sort by increasing surah duration'.tr,
                             style: TextStyle(
                               color:
                                   sortBy == 'increasing' ? Colors.green : null,
@@ -169,7 +169,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         PopupMenuItem(
                           value: 'decreasing',
                           child: Text(
-                            'Sort by decreasing surah duration',
+                            'Sort by decreasing surah duration'.tr,
                             style: TextStyle(
                               color:
                                   sortBy == 'decreasing' ? Colors.green : null,
@@ -179,7 +179,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         PopupMenuItem(
                           value: 'increasingListened',
                           child: Text(
-                            'Sort by increasing listened duration',
+                            'Sort by increasing listened duration'.tr,
                             style: TextStyle(
                               color: sortBy == 'increasingListened'
                                   ? Colors.green
@@ -190,7 +190,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         PopupMenuItem(
                           value: 'decreasingListened',
                           child: Text(
-                            'Sort by decreasing listened duration',
+                            'Sort by decreasing listened duration'.tr,
                             style: TextStyle(
                               color: sortBy == 'decreasingListened'
                                   ? Colors.green
@@ -483,15 +483,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                 await authController.logout();
                                 toastification.show(
                                   context: context,
-                                  title: const Text('Successful'),
-                                  description: const Text('Logout successful'),
+                                  title: Text('Successful'.tr),
                                   type: ToastificationType.success,
                                   autoCloseDuration: const Duration(seconds: 3),
                                 );
                                 setState(() {});
                               },
                               icon: const Icon(Icons.logout_rounded),
-                              label: const Text('logout'),
+                              label: Text('Logout'.tr),
                             ),
                           ),
                         ],
@@ -501,9 +500,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               const Gap(10),
-              const Text(
-                'Backup changes to cloud',
-                style: TextStyle(
+              Text(
+                'Backup changes to cloud'.tr,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -515,7 +514,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 contentPadding: const EdgeInsets.all(5),
                 horizontalTitleGap: 5,
-                title: const Text('Click to Backup Playlists'),
+                title: Text('Click to Backup Playlists'.tr),
                 trailing: backUpAsyncPlaylist
                     ? const CircularProgressIndicator(strokeWidth: 3)
                     : isBackedUpPlaylist
@@ -535,33 +534,35 @@ class _ProfilePageState extends State<ProfilePage> {
                   if (isBackedUpPlaylist) {
                     return;
                   }
-                  showDataLoseAlertDialog(() async {
-                    setState(() {
-                      backUpAsyncPlaylist = true;
-                    });
-                    String? error =
-                        await audioController.backupPlayList(allPlaylist);
-                    setState(() {
-                      backUpAsyncPlaylist = false;
-                    });
-                    if (error == null) {
-                      toastification.show(
-                        context: context,
-                        title: const Text('Successful'),
-                        description: const Text('Backup process successful'),
-                        type: ToastificationType.success,
-                        autoCloseDuration: const Duration(seconds: 3),
-                      );
-                    } else {
-                      toastification.show(
-                        context: context,
-                        title: const Text('Found issue'),
-                        description: Text(error),
-                        type: ToastificationType.error,
-                        autoCloseDuration: const Duration(seconds: 5),
-                      );
-                    }
-                  });
+                  showDataLoseAlertDialog(
+                    () async {
+                      setState(() {
+                        backUpAsyncPlaylist = true;
+                      });
+                      String? error =
+                          await audioController.backupPlayList(allPlaylist);
+                      setState(() {
+                        backUpAsyncPlaylist = false;
+                      });
+                      if (error == null) {
+                        toastification.show(
+                          context: context,
+                          title: Text('Successful'.tr),
+                          type: ToastificationType.success,
+                          autoCloseDuration: const Duration(seconds: 3),
+                        );
+                      } else {
+                        toastification.show(
+                          context: context,
+                          title: Text('Found issue'.tr),
+                          description: Text(error),
+                          type: ToastificationType.error,
+                          autoCloseDuration: const Duration(seconds: 5),
+                        );
+                      }
+                    },
+                    Hive.box('cloud_play_list').keys.isNotEmpty,
+                  );
                 },
               ),
               const Gap(10),
@@ -572,7 +573,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 contentPadding: const EdgeInsets.all(5),
                 horizontalTitleGap: 5,
-                title: const Text('Click to Backup Groups'),
+                title: Text('Click to Backup Groups'.tr),
                 trailing: backUpAsyncGroup
                     ? const CircularProgressIndicator(strokeWidth: 3)
                     : isBackedUpCollection
@@ -592,36 +593,38 @@ class _ProfilePageState extends State<ProfilePage> {
                   if (isBackedUpCollection) {
                     return;
                   }
-                  showDataLoseAlertDialog(() async {
-                    setState(() {
-                      backUpAsyncGroup = true;
-                    });
-                    CollectionController collectionController =
-                        Get.put(CollectionController());
+                  showDataLoseAlertDialog(
+                    () async {
+                      setState(() {
+                        backUpAsyncGroup = true;
+                      });
+                      CollectionController collectionController =
+                          Get.put(CollectionController());
 
-                    String? error = await homePageController.backupGroups(
-                        collectionController.collectionList.value);
-                    setState(() {
-                      backUpAsyncGroup = false;
-                    });
-                    if (error == null) {
-                      toastification.show(
-                        context: context,
-                        title: const Text('Successful'),
-                        description: const Text('Backup process successful'),
-                        type: ToastificationType.success,
-                        autoCloseDuration: const Duration(seconds: 3),
-                      );
-                    } else {
-                      toastification.show(
-                        context: context,
-                        title: const Text('Found issue'),
-                        description: Text(error),
-                        type: ToastificationType.error,
-                        autoCloseDuration: const Duration(seconds: 5),
-                      );
-                    }
-                  });
+                      String? error = await homePageController.backupGroups(
+                          collectionController.collectionList.value);
+                      setState(() {
+                        backUpAsyncGroup = false;
+                      });
+                      if (error == null) {
+                        toastification.show(
+                          context: context,
+                          title: Text('Successful'.tr),
+                          type: ToastificationType.success,
+                          autoCloseDuration: const Duration(seconds: 3),
+                        );
+                      } else {
+                        toastification.show(
+                          context: context,
+                          title: Text('Found issue'.tr),
+                          description: Text(error),
+                          type: ToastificationType.error,
+                          autoCloseDuration: const Duration(seconds: 5),
+                        );
+                      }
+                    },
+                    Hive.box('cloud_collections_db').keys.isNotEmpty,
+                  );
                 },
               ),
               const Gap(10),
@@ -632,7 +635,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 contentPadding: const EdgeInsets.all(5),
                 horizontalTitleGap: 5,
-                title: const Text('Click to Backup Notes'),
+                title: Text('Click to Backup Notes'.tr),
                 trailing: backUpAsyncNote
                     ? const CircularProgressIndicator(strokeWidth: 3)
                     : isBackedUpNote
@@ -652,37 +655,39 @@ class _ProfilePageState extends State<ProfilePage> {
                   if (isBackedUpNote) {
                     return;
                   }
-                  showDataLoseAlertDialog(() async {
-                    setState(() {
-                      backUpAsyncNote = true;
-                    });
+                  showDataLoseAlertDialog(
+                    () async {
+                      setState(() {
+                        backUpAsyncNote = true;
+                      });
 
-                    NotesController notesController =
-                        Get.put(NotesController());
-                    notesController.onInit();
-                    String? error = await homePageController
-                        .backupNote(notesController.notes.value);
-                    setState(() {
-                      backUpAsyncNote = false;
-                    });
-                    if (error == null) {
-                      toastification.show(
-                        context: context,
-                        title: const Text('Successful'),
-                        description: const Text('Backup process successful'),
-                        type: ToastificationType.success,
-                        autoCloseDuration: const Duration(seconds: 3),
-                      );
-                    } else {
-                      toastification.show(
-                        context: context,
-                        title: const Text('Found issue'),
-                        description: Text(error),
-                        type: ToastificationType.error,
-                        autoCloseDuration: const Duration(seconds: 5),
-                      );
-                    }
-                  });
+                      NotesController notesController =
+                          Get.put(NotesController());
+                      notesController.onInit();
+                      String? error = await homePageController
+                          .backupNote(notesController.notes.value);
+                      setState(() {
+                        backUpAsyncNote = false;
+                      });
+                      if (error == null) {
+                        toastification.show(
+                          context: context,
+                          title: Text('Successful'.tr),
+                          type: ToastificationType.success,
+                          autoCloseDuration: const Duration(seconds: 3),
+                        );
+                      } else {
+                        toastification.show(
+                          context: context,
+                          title: Text('Found issue'.tr),
+                          description: Text(error),
+                          type: ToastificationType.error,
+                          autoCloseDuration: const Duration(seconds: 5),
+                        );
+                      }
+                    },
+                    Hive.box('cloud_notes_db').keys.isNotEmpty,
+                  );
                 },
               ),
             ],
@@ -692,32 +697,35 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  showDataLoseAlertDialog(Function function) {
+  showDataLoseAlertDialog(Function function, bool isShowDialog) {
     log('Called');
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          insetPadding: const EdgeInsets.all(10),
-          title: const Text('You data will be replaced!'),
-          content: const Text(
-              'If you did backup your data previously, it will be replaced by the new data. We are working on more features for backup functionality. Do you want to continue?'),
-          actions: [
-            OutlinedButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.close),
-              label: const Text('Cancel'),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                function();
-                Navigator.pop(context);
-              },
-              label: const Text('Continue'),
-            )
-          ],
-        );
-      },
-    );
+    if (isShowDialog) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            insetPadding: const EdgeInsets.all(10),
+            title: Text('You data will be replaced!'.tr),
+            content: Text('backupWarning'.tr),
+            actions: [
+              OutlinedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.close),
+                label: Text('Cancel'.tr),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {
+                  function();
+                  Navigator.pop(context);
+                },
+                label: Text('Continue'.tr),
+              )
+            ],
+          );
+        },
+      );
+    } else {
+      function();
+    }
   }
 }
