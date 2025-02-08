@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/model.dart';
@@ -531,34 +532,36 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 tileColor: Colors.grey.withValues(alpha: 0.2),
                 onTap: () async {
-                  if (isBackedUpCollection) {
+                  if (isBackedUpPlaylist) {
                     return;
                   }
-                  setState(() {
-                    backUpAsyncPlaylist = true;
+                  showDataLoseAlertDialog(() async {
+                    setState(() {
+                      backUpAsyncPlaylist = true;
+                    });
+                    String? error =
+                        await audioController.backupPlayList(allPlaylist);
+                    setState(() {
+                      backUpAsyncPlaylist = false;
+                    });
+                    if (error == null) {
+                      toastification.show(
+                        context: context,
+                        title: const Text('Successful'),
+                        description: const Text('Backup process successful'),
+                        type: ToastificationType.success,
+                        autoCloseDuration: const Duration(seconds: 3),
+                      );
+                    } else {
+                      toastification.show(
+                        context: context,
+                        title: const Text('Found issue'),
+                        description: Text(error),
+                        type: ToastificationType.error,
+                        autoCloseDuration: const Duration(seconds: 5),
+                      );
+                    }
                   });
-                  String? error =
-                      await audioController.backupPlayList(allPlaylist);
-                  setState(() {
-                    backUpAsyncPlaylist = false;
-                  });
-                  if (error == null) {
-                    toastification.show(
-                      context: context,
-                      title: const Text('Successful'),
-                      description: const Text('Backup process successful'),
-                      type: ToastificationType.success,
-                      autoCloseDuration: const Duration(seconds: 3),
-                    );
-                  } else {
-                    toastification.show(
-                      context: context,
-                      title: const Text('Found issue'),
-                      description: Text(error),
-                      type: ToastificationType.error,
-                      autoCloseDuration: const Duration(seconds: 5),
-                    );
-                  }
                 },
               ),
               const Gap(10),
@@ -589,34 +592,36 @@ class _ProfilePageState extends State<ProfilePage> {
                   if (isBackedUpCollection) {
                     return;
                   }
-                  setState(() {
-                    backUpAsyncGroup = true;
-                  });
-                  CollectionController collectionController =
-                      Get.put(CollectionController());
+                  showDataLoseAlertDialog(() async {
+                    setState(() {
+                      backUpAsyncGroup = true;
+                    });
+                    CollectionController collectionController =
+                        Get.put(CollectionController());
 
-                  String? error = await homePageController
-                      .backupGroups(collectionController.collectionList.value);
-                  setState(() {
-                    backUpAsyncGroup = false;
+                    String? error = await homePageController.backupGroups(
+                        collectionController.collectionList.value);
+                    setState(() {
+                      backUpAsyncGroup = false;
+                    });
+                    if (error == null) {
+                      toastification.show(
+                        context: context,
+                        title: const Text('Successful'),
+                        description: const Text('Backup process successful'),
+                        type: ToastificationType.success,
+                        autoCloseDuration: const Duration(seconds: 3),
+                      );
+                    } else {
+                      toastification.show(
+                        context: context,
+                        title: const Text('Found issue'),
+                        description: Text(error),
+                        type: ToastificationType.error,
+                        autoCloseDuration: const Duration(seconds: 5),
+                      );
+                    }
                   });
-                  if (error == null) {
-                    toastification.show(
-                      context: context,
-                      title: const Text('Successful'),
-                      description: const Text('Backup process successful'),
-                      type: ToastificationType.success,
-                      autoCloseDuration: const Duration(seconds: 3),
-                    );
-                  } else {
-                    toastification.show(
-                      context: context,
-                      title: const Text('Found issue'),
-                      description: Text(error),
-                      type: ToastificationType.error,
-                      autoCloseDuration: const Duration(seconds: 5),
-                    );
-                  }
                 },
               ),
               const Gap(10),
@@ -647,40 +652,72 @@ class _ProfilePageState extends State<ProfilePage> {
                   if (isBackedUpNote) {
                     return;
                   }
-                  setState(() {
-                    backUpAsyncNote = true;
-                  });
+                  showDataLoseAlertDialog(() async {
+                    setState(() {
+                      backUpAsyncNote = true;
+                    });
 
-                  NotesController notesController = Get.put(NotesController());
-                  notesController.onInit();
-                  String? error = await homePageController
-                      .backupNote(notesController.notes.value);
-                  setState(() {
-                    backUpAsyncNote = false;
+                    NotesController notesController =
+                        Get.put(NotesController());
+                    notesController.onInit();
+                    String? error = await homePageController
+                        .backupNote(notesController.notes.value);
+                    setState(() {
+                      backUpAsyncNote = false;
+                    });
+                    if (error == null) {
+                      toastification.show(
+                        context: context,
+                        title: const Text('Successful'),
+                        description: const Text('Backup process successful'),
+                        type: ToastificationType.success,
+                        autoCloseDuration: const Duration(seconds: 3),
+                      );
+                    } else {
+                      toastification.show(
+                        context: context,
+                        title: const Text('Found issue'),
+                        description: Text(error),
+                        type: ToastificationType.error,
+                        autoCloseDuration: const Duration(seconds: 5),
+                      );
+                    }
                   });
-                  if (error == null) {
-                    toastification.show(
-                      context: context,
-                      title: const Text('Successful'),
-                      description: const Text('Backup process successful'),
-                      type: ToastificationType.success,
-                      autoCloseDuration: const Duration(seconds: 3),
-                    );
-                  } else {
-                    toastification.show(
-                      context: context,
-                      title: const Text('Found issue'),
-                      description: Text(error),
-                      type: ToastificationType.error,
-                      autoCloseDuration: const Duration(seconds: 5),
-                    );
-                  }
                 },
               ),
             ],
           );
         },
       ),
+    );
+  }
+
+  showDataLoseAlertDialog(Function function) {
+    log('Called');
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          insetPadding: const EdgeInsets.all(10),
+          title: const Text('You data will be replaced!'),
+          content: const Text(
+              'If you did backup your data previously, it will be replaced by the new data. We are working on more features for backup functionality. Do you want to continue?'),
+          actions: [
+            OutlinedButton.icon(
+              onPressed: () {},
+              icon: const Icon(Icons.close),
+              label: const Text('Cancel'),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                function();
+                Navigator.pop(context);
+              },
+              label: const Text('Continue'),
+            )
+          ],
+        );
+      },
     );
   }
 }

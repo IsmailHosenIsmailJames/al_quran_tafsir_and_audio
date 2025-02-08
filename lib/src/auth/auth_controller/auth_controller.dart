@@ -1,6 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:math' as math;
 
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/controller/collection_model.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/notes/controller/notes_controller.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/notes/models/notes_model.dart';
 import 'package:appwrite/appwrite.dart';
 import 'package:get/get.dart';
 import 'package:appwrite/models.dart';
@@ -44,9 +49,11 @@ class AuthController extends GetxController {
     }
     final user = await AppWriteConfig.account.get();
     loggedInUser.value = user;
+    String id = user.$id;
+    final AuthController authController = Get.find<AuthController>();
+
+    // get playlist
     try {
-      String id = user.$id;
-      final AuthController authController = Get.find<AuthController>();
       final response = await Databases(AppWriteConfig.client).getDocument(
         databaseId: authController.databaseID,
         collectionId: authController.collectionIDPlayList,
@@ -75,11 +82,86 @@ class AuthController extends GetxController {
 
       HomePageController homePageController = Get.find<HomePageController>();
       homePageController.reloadPlayList();
-
-      return null;
     } on AppwriteException catch (e) {
       log(e.message.toString());
     }
+
+    // get notes
+    try {
+      final response = await Databases(AppWriteConfig.client).getDocument(
+        databaseId: authController.databaseID,
+        collectionId: authController.collectionIDNotes,
+        documentId: id,
+      );
+
+      await Hive.box('cloud_notes_db').clear();
+      if (response.data['notes'] != null) {
+        await Hive.box('cloud_notes_db').put(
+          'all_notes',
+          response.data['notes'],
+        );
+        List<String> rawNotesList =
+            List<String>.from(jsonDecode(response.data['notes']));
+        List<NotesModel> notesList = [];
+        for (var rawPlayNote in rawNotesList) {
+          final decodeSingleNote = NotesModel.fromJson(rawPlayNote);
+          notesList.add(decodeSingleNote);
+        }
+        await Hive.box('notes_db').clear();
+        for (var note in notesList) {
+          await Hive.box('notes_db').put(
+            math.Random().nextInt(100000).toString(),
+            note.toJson(),
+          );
+        }
+        final NotesController notesController = Get.put(NotesController());
+        notesController.onInit();
+      }
+    } on AppwriteException catch (e) {
+      log(e.message.toString());
+    }
+
+    // get collections
+    try {
+      final response = await Databases(AppWriteConfig.client).getDocument(
+        databaseId: authController.databaseID,
+        collectionId: authController.collectionIDCollections,
+        documentId: id,
+      );
+
+      await Hive.box('cloud_collections_db').clear();
+      if (response.data['collections'] != null) {
+        await Hive.box('cloud_collections_db').put(
+          'all_collections',
+          response.data['collections'],
+        );
+
+        log(response.data['collections'],
+            name: "response.data['collections'],");
+        List<String> rawCollectionList =
+            List<String>.from(jsonDecode(response.data['collections']));
+        log(rawCollectionList.toString(), name: 'rawCollectionList,');
+        List<CollectionInfoModel> collectionModelList = [];
+        for (var rawCollect in rawCollectionList) {
+          final decodeSingleCollection =
+              CollectionInfoModel.fromJson(rawCollect);
+          collectionModelList.add(decodeSingleCollection);
+        }
+        await Hive.box('collections_db').clear();
+        for (var note in collectionModelList) {
+          await Hive.box('collections_db').put(
+            math.Random().nextInt(100000).toString(),
+            note.toJson(),
+          );
+        }
+        final CollectionController collectionController =
+            Get.put(CollectionController());
+        collectionController.onInit();
+      }
+    } on AppwriteException catch (e) {
+      log(e.message.toString());
+    }
+
     return null;
   }
 

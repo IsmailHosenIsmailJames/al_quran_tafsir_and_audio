@@ -14,6 +14,7 @@ class NotesController extends GetxController {
       NotesModel notesModel = NotesModel.fromJson(notesDB.get(key));
       notes.add(notesModel);
     }
+    notes.sort((a, b) => a.dateTimestamp.compareTo(b.dateTimestamp));
     super.onInit();
   }
 }

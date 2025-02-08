@@ -127,7 +127,7 @@ class ManageQuranAudio {
               ),
             ),
             tag: MediaItem(
-              id: "${reciter.name}$i",
+              id: '${reciter.name}$i',
               title: reciter.name,
             )),
       );

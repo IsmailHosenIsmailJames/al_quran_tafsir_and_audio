@@ -83,6 +83,7 @@ class HomePageController extends GetxController {
       }
 
       List<String> rawPlaylistData = [];
+      notes.sort((a, b) => a.dateTimestamp.compareTo(b.dateTimestamp));
       for (var playList in notes) {
         rawPlaylistData.add(playList.toJson());
       }
@@ -129,6 +130,7 @@ class HomePageController extends GetxController {
       }
 
       List<String> rawGroupsData = [];
+      groups.sort((a, b) => a.id.compareTo(b.id));
       for (var playList in groups) {
         rawGroupsData.add(playList.toJson());
       }

@@ -14,11 +14,15 @@ class CollectionController extends GetxController {
 
   @override
   void onInit() {
+    collectionList.value = [];
     Hive.box('collections_db').keys.forEach((key) {
       CollectionInfoModel collectionInfoModel =
           CollectionInfoModel.fromJson(Hive.box('collections_db').get(key));
       collectionList.add(collectionInfoModel);
     });
+    collectionList.value.sort(
+      (a, b) => a.id.compareTo(b.id),
+    );
     super.onInit();
   }
 }
