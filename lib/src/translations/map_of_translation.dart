@@ -87,30 +87,28 @@ List<String> used20LanguageList = [
   'Tamil',
   'Italian',
 ];
-
-Map<String, String> historyTrackingPlaylistFeatureTranslations = {
-  'chinese': '历史记录跟踪与播放列表功能',
-  'hindi': 'इतिहास ट्रैकिंग और प्लेलिस्ट सुविधा',
-  'english': 'History Tracking & Playlist Feature',
-  'spanish': 'Seguimiento del historial y función de lista de reproducción',
-  'arabic': 'تتبع التاريخ وميزة قائمة التشغيل',
-  'bengali': 'ইতিহাস ট্র্যাকিং এবং প্লেলিস্ট বৈশিষ্ট্য',
-  'portuguese': 'Rastreamento de Histórico e Recurso de Playlist',
-  'russian': 'Отслеживание истории и функция плейлистов',
-  'japanese': '履歴追跡とプレイリスト機能',
-  'punjabi': 'تریخ ٹریکنگ تے پلے لسٹ فیچر',
-  'german': 'Verlaufsverfolgung & Playlist-Funktion',
-  'french': 'Suivi de l\'historique et fonctionnalité de playlist',
-  'indonesian': 'Pelacakan Riwayat & Fitur Daftar Putar',
-  'urdu': 'تاریخ سے باخبر رہنا اور پلے لسٹ فیچر',
-  'swahili': 'Ufuatiliaji wa Historia na Kipengele cha Orodha ya Kucheza',
-  'korean': '기록 추적 및 재생 목록 기능',
-  'turkish': 'Geçmiş Takibi ve Oynatma Listesi Özelliği',
-  'vietnamese': 'Theo dõi lịch sử & Tính năng danh sách phát',
-  'tamil': 'வரலாற்று கண்காணிப்பு & பிளேலிஸ்ட் அம்சம்',
-  'italian': 'Tracciamento della cronologia e funzione playlist',
+Map<String, String> aboutDeveloperTranslations = {
+  'chinese': '关于开发者',
+  'hindi': 'डेवलपर के बारे में',
+  'english': 'About Developer',
+  'spanish': 'Acerca del desarrollador',
+  'arabic': 'حول المطور',
+  'bengali': 'ডেভেলপার সম্পর্কে',
+  'portuguese': 'Sobre o Desenvolvedor',
+  'russian': 'О разработчике',
+  'japanese': '開発者について',
+  'punjabi': 'ڈیولپر بارے',
+  'german': 'Über den Entwickler',
+  'french': 'À propos du développeur',
+  'indonesian': 'Tentang Pengembang',
+  'urdu': 'ڈیولپر کے بارے میں',
+  'swahili': 'Kuhusu Msanidi Programu',
+  'korean': '개발자 정보',
+  'turkish': 'Geliştirici Hakkında',
+  'vietnamese': 'Về nhà phát triển',
+  'tamil': 'டெவலப்பரைப் பற்றி',
+  'italian': 'Informazioni sullo sviluppatore',
 };
-
 Map<String, String> chinese = {
   'Al Quran': '古兰经', 'Privacy Policy': '隐私政策',
   'Select a language for app': '选择应用语言',
@@ -143,6 +141,20 @@ Map<String, String> chinese = {
   'Rich Notes, Bookmarks & Collections': '丰富笔记、书签和收藏集',
   'Cloud Backup & Sync': '云备份与同步',
   'History Tracking & Playlist Feature': '历史记录跟踪与播放列表功能',
+  'Quran': '古兰经',
+  'Recitation': '提拉瓦',
+  'Collection': '收藏',
+  'Profile': '个人资料',
+  'Home': '首页',
+  'Jump to Ayah': '跳转到经文',
+  'Notes': '笔记',
+  'Others Platforms': '其他平台',
+  'About App': '关于应用',
+  'Give Feedback': '提供反馈',
+  'Rate App': '评价应用',
+  'Share App': '分享应用',
+  'My Apps': '我的应用',
+  'About Developer': '关于开发者',
   //
 };
 Map<String, String> hindi = {
@@ -180,6 +192,20 @@ Map<String, String> hindi = {
   'Rich Notes, Bookmarks & Collections': 'रिच नोट्स, बुकमार्क और संग्रह',
   'Cloud Backup & Sync': 'क्लाउड बैकअप और सिंक',
   'History Tracking & Playlist Feature': 'इतिहास ट्रैकिंग और प्लेलिस्ट सुविधा',
+  'Quran': 'कुरान',
+  'Recitation': 'तिलावत',
+  'Collection': 'संग्रह',
+  'Profile': 'प्रोफ़ाइल',
+  'Home': 'होम',
+  'Jump to Ayah': 'आयत पर जाएँ',
+  'Notes': 'नोट्स',
+  'Others Platforms': 'अन्य प्लेटफॉर्म',
+  'About App': 'ऐप के बारे में',
+  'Give Feedback': 'प्रतिक्रिया दें',
+  'Rate App': 'ऐप रेट करें',
+  'Share App': 'ऐप शेयर करें',
+  'My Apps': 'मेरे ऐप्स',
+  'About Developer': 'डेवलपर के बारे में',
   //
 };
 Map<String, String> english = {
@@ -216,6 +242,20 @@ Map<String, String> english = {
   'Rich Notes, Bookmarks & Collections': 'Rich Notes, Bookmarks & Collections',
   'Cloud Backup & Sync': 'Cloud Backup & Sync',
   'History Tracking & Playlist Feature': 'History Tracking & Playlist Feature',
+  'Quran': 'Quran',
+  'Recitation': 'Tilawat',
+  'Collection': 'Collection',
+  'Profile': 'Profile',
+  'Home': 'Home',
+  'Jump to Ayah': 'Jump to Ayah',
+  'Notes': 'Notes',
+  'Others Platforms': 'Other Platforms',
+  'About App': 'About App',
+  'Give Feedback': 'Give Feedback',
+  'Rate App': 'Rate App',
+  'Share App': 'Share App',
+  'My Apps': 'My Apps',
+  'About Developer': 'About Developer',
   //
 };
 Map<String, String> spanish = {
@@ -261,6 +301,20 @@ Map<String, String> spanish = {
   'Cloud Backup & Sync': 'Copia de seguridad y sincronización en la nube',
   'History Tracking & Playlist Feature':
       'Seguimiento del historial y función de lista de reproducción',
+  'Quran': 'Corán',
+  'Recitation': 'Tilawat',
+  'Collection': 'Colección',
+  'Profile': 'Perfil',
+  'Home': 'Inicio',
+  'Jump to Ayah': 'Ir al aleya',
+  'Notes': 'Notas',
+  'Others Platforms': 'Otras plataformas',
+  'About App': 'Acerca de la aplicación',
+  'Give Feedback': 'Dar feedback',
+  'Rate App': 'Valora la aplicación',
+  'Share App': 'Compartir aplicación',
+  'My Apps': 'Mis aplicaciones',
+  'About Developer': 'Acerca del desarrollador',
   //
 };
 Map<String, String> arabic = {
@@ -296,6 +350,20 @@ Map<String, String> arabic = {
   'Rich Notes, Bookmarks & Collections': 'ملاحظات غنية وإشارات مرجعية ومجموعات',
   'Cloud Backup & Sync': 'النسخ الاحتياطي السحابي والمزامنة',
   'History Tracking & Playlist Feature': 'تتبع التاريخ وميزة قائمة التشغيل',
+  'Quran': 'قرآن',
+  'Recitation': 'تلاوة',
+  'Collection': 'مجموعة',
+  'Profile': 'الملف الشخصي',
+  'Home': 'الرئيسية',
+  'Jump to Ayah': 'انتقال إلى آية',
+  'Notes': 'ملاحظات',
+  'Others Platforms': 'منصات أخرى',
+  'About App': 'حول التطبيق',
+  'Give Feedback': 'إعطاء ملاحظات',
+  'Rate App': 'قيم التطبيق',
+  'Share App': 'مشاركة التطبيق',
+  'My Apps': 'تطبيقاتي',
+  'About Developer': 'حول المطور',
   //
 };
 Map<String, String> bengali = {
@@ -338,6 +406,20 @@ Map<String, String> bengali = {
   'Cloud Backup & Sync': 'ক্লাউড ব্যাকআপ ও সিঙ্ক',
   'History Tracking & Playlist Feature':
       'ইতিহাস ট্র্যাকিং এবং প্লেলিস্ট বৈশিষ্ট্য',
+  'Quran': 'কুরআন',
+  'Recitation': 'তিলাওয়াত',
+  'Collection': 'সংগ্রহ',
+  'Profile': 'প্রোফাইল',
+  'Home': 'হোম',
+  'Jump to Ayah': 'আয়াতে ঝাঁপ দাও',
+  'Notes': 'নোট',
+  'Others Platforms': 'অন্যান্য প্ল্যাটফর্ম',
+  'About App': 'অ্যাপ সম্পর্কে',
+  'Give Feedback': 'মতামত দিন',
+  'Rate App': 'অ্যাপ রেট করুন',
+  'Share App': 'অ্যাপ শেয়ার করুন',
+  'My Apps': 'আমার অ্যাপস',
+  'About Developer': 'ডেভেলপার সম্পর্কে',
   //
 };
 Map<String, String> portuguese = {
@@ -381,6 +463,20 @@ Map<String, String> portuguese = {
   'Cloud Backup & Sync': 'Backup e Sincronização na Nuvem',
   'History Tracking & Playlist Feature':
       'Rastreamento de Histórico e Recurso de Playlist',
+  'Quran': 'Corão',
+  'Recitation': 'Tilawat',
+  'Collection': 'Coleção',
+  'Profile': 'Perfil',
+  'Home': 'Início',
+  'Jump to Ayah': 'Ir para Ayah',
+  'Notes': 'Notas',
+  'Others Platforms': 'Outras plataformas',
+  'About App': 'Sobre a App',
+  'Give Feedback': 'Dar feedback',
+  'Rate App': 'Avalie a App',
+  'Share App': 'Compartilhar App',
+  'My Apps': 'Meus Apps',
+  'About Developer': 'Sobre o Desenvolvedor',
   //
 };
 Map<String, String> russian = {
@@ -422,6 +518,20 @@ Map<String, String> russian = {
   'Cloud Backup & Sync': 'Облачное резервное копирование и синхронизация',
   'History Tracking & Playlist Feature':
       'Отслеживание истории и функция плейлистов',
+  'Quran': 'Коран',
+  'Recitation': 'Тиляват',
+  'Collection': 'Коллекция',
+  'Profile': 'Профиль',
+  'Home': 'Главная',
+  'Jump to Ayah': 'Перейти к Аяту',
+  'Notes': 'Заметки',
+  'Others Platforms': 'Другие платформы',
+  'About App': 'О приложении',
+  'Give Feedback': 'Оставить отзыв',
+  'Rate App': 'Оценить приложение',
+  'Share App': 'Поделиться приложением',
+  'My Apps': 'Мои приложения',
+  'About Developer': 'О разработчике',
   //
 };
 Map<String, String> japanese = {
@@ -456,6 +566,20 @@ Map<String, String> japanese = {
   'Rich Notes, Bookmarks & Collections': 'リッチノート、ブックマーク、コレクション',
   'Cloud Backup & Sync': 'クラウドバックアップと同期',
   'History Tracking & Playlist Feature': '履歴追跡とプレイリスト機能',
+  'Quran': 'コーラン',
+  'Recitation': 'ティラーワ',
+  'Collection': 'コレクション',
+  'Profile': 'プロフィール',
+  'Home': 'ホーム',
+  'Jump to Ayah': 'アヤにジャンプ',
+  'Notes': 'メモ',
+  'Others Platforms': '他のプラットフォーム',
+  'About App': 'アプリについて',
+  'Give Feedback': 'フィードバックを送る',
+  'Rate App': 'アプリを評価する',
+  'Share App': 'アプリを共有',
+  'My Apps': 'マイアプリ',
+  'About Developer': '開発者について',
   //
 };
 Map<String, String> punjabi = {
@@ -491,6 +615,20 @@ Map<String, String> punjabi = {
   'Rich Notes, Bookmarks & Collections': 'رچ نوٹس، بُک مارکس تے مجموعے',
   'Cloud Backup & Sync': 'کلاؤڈ بیک اپ تے سنک',
   'History Tracking & Playlist Feature': 'تریخ ٹریکنگ تے پلے لسٹ فیچر',
+  'Quran': 'قرآن',
+  'Recitation': 'تلاوت',
+  'Collection': 'مجموعہ',
+  'Profile': 'پروفائل',
+  'Home': 'گھر',
+  'Jump to Ayah': 'آیت تے جاؤ',
+  'Notes': 'نوٹس',
+  'Others Platforms': 'ہور پلیٹ فارم',
+  'About App': 'ایپ بارے',
+  'Give Feedback': 'فیڈبیک دیو',
+  'Rate App': 'ایپ نوں ریٹ کرو',
+  'Share App': 'ایپ شیئر کرو',
+  'My Apps': 'میریاں ایپس',
+  'About Developer': 'ڈیولپر بارے',
   //
 };
 Map<String, String> german = {
@@ -535,6 +673,20 @@ Map<String, String> german = {
   'Cloud Backup & Sync': 'Cloud-Backup & Synchronisierung',
   'History Tracking & Playlist Feature':
       'Verlaufsverfolgung & Playlist-Funktion',
+  'Quran': 'Koran',
+  'Recitation': 'Tilawat',
+  'Collection': 'Sammlung',
+  'Profile': 'Profil',
+  'Home': 'Startseite',
+  'Jump to Ayah': 'Zu Vers springen',
+  'Notes': 'Notizen',
+  'Others Platforms': 'Andere Plattformen',
+  'About App': 'Über die App',
+  'Give Feedback': 'Feedback geben',
+  'Rate App': 'App bewerten',
+  'Share App': 'App teilen',
+  'My Apps': 'Meine Apps',
+  'About Developer': 'Über den Entwickler',
   //
 };
 Map<String, String> french = {
@@ -580,6 +732,20 @@ Map<String, String> french = {
   'Cloud Backup & Sync': 'Sauvegarde et synchronisation cloud',
   'History Tracking & Playlist Feature':
       'Suivi de l\'historique et fonctionnalité de playlist',
+  'Quran': 'Coran',
+  'Recitation': 'Tilawat',
+  'Collection': 'Collection',
+  'Profile': 'Profil',
+  'Home': 'Accueil',
+  'Jump to Ayah': 'Aller à l\'Ayah',
+  'Notes': 'Notes',
+  'Others Platforms': 'Autres plateformes',
+  'About App': 'À propos de l\'application',
+  'Give Feedback': 'Donner votre avis',
+  'Rate App': 'Noter l\'appli',
+  'Share App': 'Partager l\'appli',
+  'My Apps': 'Mes applications',
+  'About Developer': 'À propos du développeur',
   //
 };
 Map<String, String> indonesian = {
@@ -617,6 +783,20 @@ Map<String, String> indonesian = {
   'Cloud Backup & Sync': 'Backup & Sinkronisasi Cloud',
   'History Tracking & Playlist Feature':
       'Pelacakan Riwayat & Fitur Daftar Putar',
+  'Quran': 'Quran',
+  'Recitation': 'Tilawat',
+  'Collection': 'Koleksi',
+  'Profile': 'Profil',
+  'Home': 'Beranda',
+  'Jump to Ayah': 'Lompat ke Ayat',
+  'Notes': 'Catatan',
+  'Others Platforms': 'Platform Lain',
+  'About App': 'Tentang Aplikasi',
+  'Give Feedback': 'Berikan Masukan',
+  'Rate App': 'Beri Nilai Aplikasi',
+  'Share App': 'Bagikan Aplikasi',
+  'My Apps': 'Aplikasi Saya',
+  'About Developer': 'Tentang Pengembang',
   //
 };
 Map<String, String> urdu = {
@@ -655,6 +835,20 @@ Map<String, String> urdu = {
   'Rich Notes, Bookmarks & Collections': 'رچ نوٹس، بُک مارکس اور مجموعے',
   'Cloud Backup & Sync': 'کلاؤڈ بیک اپ اور سنک',
   'History Tracking & Playlist Feature': 'تاریخ سے باخبر رہنا اور پلے لسٹ فیچر',
+  'Quran': 'قرآن',
+  'Recitation': 'تلاوت',
+  'Collection': 'مجموعہ',
+  'Profile': 'پروفائل',
+  'Home': 'ہوم',
+  'Jump to Ayah': 'آیت پر جائیں',
+  'Notes': 'نوٹس',
+  'Others Platforms': 'دیگر پلیٹ فارم',
+  'About App': 'ایپ کے بارے میں',
+  'Give Feedback': 'فیڈ بیک دیں',
+  'Rate App': 'ایپ ریٹ کریں',
+  'Share App': 'ایپ شیئر کریں',
+  'My Apps': 'میری ایپس',
+  'About Developer': 'ڈیولپر کے بارے میں',
   //
 };
 Map<String, String> swahili = {
@@ -694,6 +888,20 @@ Map<String, String> swahili = {
   'Cloud Backup & Sync': 'Hifadhi Nakala na Usawazishaji Wingu',
   'History Tracking & Playlist Feature':
       'Ufuatiliaji wa Historia na Kipengele cha Orodha ya Kucheza',
+  'Quran': 'Quran',
+  'Recitation': 'Tilawat',
+  'Collection': 'Mkusanyiko',
+  'Profile': 'Wasifu',
+  'Home': 'Nyumbani',
+  'Jump to Ayah': 'Ruka hadi Ayah',
+  'Notes': 'Vidokezo',
+  'Others Platforms': 'Majukwaa Mengine',
+  'About App': 'Kuhusu App',
+  'Give Feedback': 'Toa Maoni',
+  'Rate App': 'Kadiria App',
+  'Share App': 'Shiriki App',
+  'My Apps': 'Apps Zangu',
+  'About Developer': 'Kuhusu Msanidi Programu',
   //
 };
 Map<String, String> korean = {
@@ -728,6 +936,20 @@ Map<String, String> korean = {
   'Rich Notes, Bookmarks & Collections': '풍부한 메모, 북마크 및 컬렉션',
   'Cloud Backup & Sync': '클라우드 백업 및 동기화',
   'History Tracking & Playlist Feature': '기록 추적 및 재생 목록 기능',
+  'Quran': '쿠란',
+  'Recitation': '틸라와트',
+  'Collection': '컬렉션',
+  'Profile': '프로필',
+  'Home': '홈',
+  'Jump to Ayah': '구절로 이동',
+  'Notes': '메모',
+  'Others Platforms': '다른 플랫폼',
+  'About App': '앱 정보',
+  'Give Feedback': '피드백 제공',
+  'Rate App': '앱 평가하기',
+  'Share App': '앱 공유',
+  'My Apps': '내 앱',
+  'About Developer': '개발자 정보',
   //
 };
 Map<String, String> turkish = {
@@ -765,6 +987,20 @@ Map<String, String> turkish = {
   'Cloud Backup & Sync': 'Bulut Yedekleme ve Senkronizasyon',
   'History Tracking & Playlist Feature':
       'Geçmiş Takibi ve Oynatma Listesi Özelliği',
+  'Quran': 'Kur\'an',
+  'Recitation': 'Tilavet',
+  'Collection': 'Koleksiyon',
+  'Profile': 'Profil',
+  'Home': 'Anasayfa',
+  'Jump to Ayah': 'Ayete Git',
+  'Notes': 'Notlar',
+  'Others Platforms': 'Diğer Platformlar',
+  'About App': 'Uygulama Hakkında',
+  'Give Feedback': 'Geri Bildirim Verin',
+  'Rate App': 'Uygulamayı Değerlendir',
+  'Share App': 'Uygulamayı Paylaş',
+  'My Apps': 'Uygulamalarım',
+  'About Developer': 'Geliştirici Hakkında',
   //
 };
 Map<String, String> vietnamese = {
@@ -804,6 +1040,20 @@ Map<String, String> vietnamese = {
   'Cloud Backup & Sync': 'Sao lưu & Đồng bộ đám mây',
   'History Tracking & Playlist Feature':
       'Theo dõi lịch sử & Tính năng danh sách phát',
+  'Quran': 'Kinh Quran',
+  'Recitation': 'Tilawat',
+  'Collection': 'Bộ sưu tập',
+  'Profile': 'Hồ sơ',
+  'Home': 'Trang chủ',
+  'Jump to Ayah': 'Đi đến Ayah',
+  'Notes': 'Ghi chú',
+  'Others Platforms': 'Nền tảng khác',
+  'About App': 'Về ứng dụng',
+  'Give Feedback': 'Gửi phản hồi',
+  'Rate App': 'Đánh giá ứng dụng',
+  'Share App': 'Chia sẻ ứng dụng',
+  'My Apps': 'Ứng dụng của tôi',
+  'About Developer': 'Về nhà phát triển',
   //
 };
 Map<String, String> tamil = {
@@ -847,6 +1097,20 @@ Map<String, String> tamil = {
   'Cloud Backup & Sync': 'கிளவுட் காப்புப்பிரதி & ஒத்திசைவு',
   'History Tracking & Playlist Feature':
       'வரலாற்று கண்காணிப்பு & பிளேலிஸ்ட் அம்சம்',
+  'Quran': 'குர்ஆன்',
+  'Recitation': 'திலாவத்',
+  'Collection': 'தொகுப்பு',
+  'Profile': 'சுயவிவரம்',
+  'Home': 'முகப்பு',
+  'Jump to Ayah': 'வசனத்திற்குச் செல்',
+  'Notes': 'குறிப்புகள்',
+  'Others Platforms': 'பிற தளங்கள்',
+  'About App': 'பயன்பாட்டைப் பற்றி',
+  'Give Feedback': 'கருத்து தெரிவிக்கவும்',
+  'Rate App': 'பயன்பாட்டை மதிப்பிடுங்கள்',
+  'Share App': 'பயன்பாட்டைப் பகிரவும்',
+  'My Apps': 'எனது பயன்பாடுகள்',
+  'About Developer': 'டெவலப்பரைப் பற்றி',
   //
 };
 Map<String, String> italian = {
@@ -890,5 +1154,19 @@ Map<String, String> italian = {
   'Cloud Backup & Sync': 'Backup e sincronizzazione cloud',
   'History Tracking & Playlist Feature':
       'Tracciamento della cronologia e funzione playlist',
+  'Quran': 'Corano',
+  'Recitation': 'Tilawat',
+  'Collection': 'Collezione',
+  'Profile': 'Profilo',
+  'Home': 'Home',
+  'Jump to Ayah': 'Vai all\'Ayah',
+  'Notes': 'Note',
+  'Others Platforms': 'Altre piattaforme',
+  'About App': 'Informazioni sull\'app',
+  'Give Feedback': 'Dai un feedback',
+  'Rate App': 'Valuta l\'app',
+  'Share App': 'Condividi l\'app',
+  'My Apps': 'Le mie app',
+  'About Developer': 'Informazioni sullo sviluppatore',
   //
 };

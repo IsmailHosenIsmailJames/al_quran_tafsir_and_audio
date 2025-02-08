@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             MediaQuery.of(context).platformBrightness == Brightness.dark));
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Al Quran'),
+        title: Text('Al Quran'.tr),
         actions: [
           IconButton(
             onPressed: () {
@@ -101,22 +101,22 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: isDark ? Colors.white : Colors.grey.shade700,
         backgroundColor: Colors.green.shade700,
         elevation: 0,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(FluentIcons.book_24_filled),
-            label: 'Quran',
+            icon: const Icon(FluentIcons.book_24_filled),
+            label: 'Quran'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.audiotrack_rounded),
-            label: 'Recitation',
+            icon: const Icon(Icons.audiotrack_rounded),
+            label: 'Recitation'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentIcons.collections_24_filled),
-            label: 'Collection',
+            icon: const Icon(FluentIcons.collections_24_filled),
+            label: 'Collection'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentIcons.person_24_filled),
-            label: 'Profile',
+            icon: const Icon(FluentIcons.person_24_filled),
+            label: 'Profile'.tr,
           ),
         ],
       ),

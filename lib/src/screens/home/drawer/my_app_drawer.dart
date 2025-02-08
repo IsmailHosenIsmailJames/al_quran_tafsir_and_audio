@@ -100,9 +100,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'Home',
-              style: TextStyle(
+            title: Text(
+              'Home'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -122,9 +122,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'Jump to Ayah',
-              style: TextStyle(
+            title: Text(
+              'Jump to Ayah'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -146,9 +146,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'Notes',
-              style: TextStyle(
+            title: Text(
+              'Notes'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -165,9 +165,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'Others Platforms',
-              style: TextStyle(
+            title: Text(
+              'Others Platforms'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -185,9 +185,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'About App',
-              style: TextStyle(
+            title: Text(
+              'About App'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -212,9 +212,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'Give Feedback',
-              style: TextStyle(
+            title: Text(
+              'Give Feedback'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -234,9 +234,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'Rate App',
-              style: TextStyle(
+            title: Text(
+              'Rate App'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -256,9 +256,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'Privacy Policy',
-              style: TextStyle(
+            title: Text(
+              'Privacy Policy'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -277,9 +277,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'Share App',
-              style: TextStyle(
+            title: Text(
+              'Share App'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -297,9 +297,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'My Apps',
-              style: TextStyle(
+            title: Text(
+              'My Apps'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -315,9 +315,9 @@ class MyAppDrawer extends StatelessWidget {
               color: Colors.green.shade600,
               size: 20,
             ),
-            title: const Text(
-              'About Developer',
-              style: TextStyle(
+            title: Text(
+              'About Developer'.tr,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
