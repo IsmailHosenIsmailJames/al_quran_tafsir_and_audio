@@ -56,15 +56,15 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
               ),
             ),
             const Spacer(),
-            TextButton(
-              onPressed: () {
-                launchUrl(
-                  Uri.parse(
-                      'https://www.freeprivacypolicy.com/live/d8c08904-a100-4f0b-94d8-13d86a8c8605'),
-                );
-              },
-              child: Text('Privacy Policy'.tr),
-            ),
+            // TextButton(
+            //   onPressed: () {
+            //     launchUrl(
+            //       Uri.parse(
+            //           'https://www.freeprivacypolicy.com/live/d8c08904-a100-4f0b-94d8-13d86a8c8605'),
+            //     );
+            //   },
+            //   child: Text('Privacy Policy'.tr),
+            // ),
           ],
         ),
         actions: [themeIconButton],

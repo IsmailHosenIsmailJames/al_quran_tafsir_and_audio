@@ -1,3 +1,4 @@
+import 'package:al_quran_tafsir_and_audio/src/functions/get_native_surah_name.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/juz_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
@@ -164,7 +165,7 @@ class _QuranTabState extends State<QuranTab> {
                     QuranSurahInfoModel quranSurahInfoModel =
                         QuranSurahInfoModel.fromMap(allChaptersInfo[index]);
                     return Container(
-                      height: 50,
+                      height: 52,
                       width: double.infinity,
                       margin:
                           const EdgeInsets.only(left: 10, right: 10, top: 5),
@@ -206,7 +207,10 @@ class _QuranTabState extends State<QuranTab> {
                             ),
                             const Gap(10),
                             Text(
-                              quranSurahInfoModel.nameSimple,
+                              getSurahNativeName(
+                                Get.locale?.languageCode ?? 'en',
+                                index,
+                              ),
                               style: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -225,7 +229,7 @@ class _QuranTabState extends State<QuranTab> {
                                   ),
                                 ),
                                 Text(
-                                  '${quranSurahInfoModel.versesCount} ayahs',
+                                  '${quranSurahInfoModel.versesCount} ${'ayahs'.tr}',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Colors.grey.shade600,
@@ -297,12 +301,13 @@ class _QuranTabState extends State<QuranTab> {
                                 const Spacer(),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
-                                      '${surahCountInJuz(juzInfoModel)} surahs',
+                                      '${surahCountInJuz(juzInfoModel)} ${'Surah'.tr}',
                                     ),
                                     Text(
-                                      '${getAyahCountJuz(juzInfoModel)} ayahs',
+                                      '${getAyahCountJuz(juzInfoModel)} ${'ayahs'.tr}',
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.grey.shade600,
@@ -415,7 +420,7 @@ class _QuranTabState extends State<QuranTab> {
                                               ),
                                             ),
                                             Text(
-                                              '${(end - start) + 1} ayahs',
+                                              '${(end - start) + 1} ${'ayahs'.tr}',
                                               style: TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.grey.shade600,
@@ -508,7 +513,7 @@ class _QuranTabState extends State<QuranTab> {
                                   ),
                                 ),
                                 Text(
-                                  '${pagesInfo[index]['e']! - pagesInfo[index]['s']! + 1} ayahs',
+                                  '${pagesInfo[index]['e']! - pagesInfo[index]['s']! + 1} ${'ayahs'.tr}',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Colors.grey.shade600,

@@ -88,29 +88,6 @@ List<String> used20LanguageList = [
   'Italian',
 ];
 
-Map<String, String> translations = {
-  'chinese': '继续',
-  'hindi': 'जारी रखें',
-  'english': 'Continue',
-  'spanish': 'Continuar',
-  'arabic': 'متابعة',
-  'bengali': 'চালিয়ে যান',
-  'portuguese': 'Continuar',
-  'russian': 'Продолжить',
-  'japanese': '続行',
-  'punjabi': 'ਜਾਰੀ ਰੱਖੋ',
-  'german': 'Fortsetzen',
-  'french': 'Continuer',
-  'indonesian': 'Lanjutkan',
-  'urdu': 'جاری رکھیں',
-  'swahili': 'Endelea',
-  'korean': '계속',
-  'turkish': 'Devam Et',
-  'vietnamese': 'Tiếp tục',
-  'tamil': 'தொடர்க',
-  'italian': 'Continua',
-};
-
 Map<String, String> chinese = {
   'Al Quran': '古兰经', 'Privacy Policy': '隐私政策',
   'Select a language for app': '选择应用语言',
@@ -194,6 +171,7 @@ Map<String, String> chinese = {
   'backupWarning': '如果您之前备份过数据，它将被新数据替换。我们正在为备份功能开发更多功能。您要继续吗？',
   'Cancel': '取消',
   'Continue': '继续',
+  'ayahs': '经文',
   //
 };
 Map<String, String> hindi = {
@@ -292,6 +270,7 @@ Map<String, String> hindi = {
       'यदि आपने पहले अपने डेटा का बैकअप लिया था, तो वह नए डेटा से बदल दिया जाएगा। हम बैकअप कार्यक्षमता के लिए और अधिक सुविधाओं पर काम कर रहे हैं। क्या आप जारी रखना चाहते हैं?',
   'Cancel': 'रद्द करें',
   'Continue': 'जारी रखें',
+  'ayahs': 'आयतें',
   //
 };
 Map<String, String> english = {
@@ -385,6 +364,7 @@ Map<String, String> english = {
       'If you did backup your data previously, it will be replaced by the new data. We are working on more features for backup functionality. Do you want to continue?',
   'Cancel': 'Cancel',
   'Continue': 'Continue',
+  'ayahs': 'Ayahs',
   //
 };
 Map<String, String> spanish = {
@@ -493,6 +473,7 @@ Map<String, String> spanish = {
       'Si previamente hizo una copia de seguridad de sus datos, se reemplazarán con los nuevos datos. Estamos trabajando en más funciones para la funcionalidad de copia de seguridad. ¿Desea continuar?',
   'Cancel': 'Cancelar',
   'Continue': 'Continuar',
+  'ayahs': 'Aleyas',
   //
 };
 Map<String, String> arabic = {
@@ -582,6 +563,7 @@ Map<String, String> arabic = {
       'إذا قمت بنسخ بياناتك احتياطيًا مسبقًا، فسيتم استبدالها بالبيانات الجديدة. نحن نعمل على المزيد من الميزات لوظيفة النسخ الاحتياطي. هل تريد المتابعة؟',
   'Cancel': 'إلغاء',
   'Continue': 'متابعة',
+  'ayahs': 'آيات',
   //
 };
 Map<String, String> bengali = {
@@ -680,6 +662,7 @@ Map<String, String> bengali = {
       'আপনি যদি পূর্বে আপনার ডেটা ব্যাকআপ করে থাকেন তবে এটি নতুন ডেটা দ্বারা প্রতিস্থাপিত হবে। আমরা ব্যাকআপ কার্যকারিতার জন্য আরও বৈশিষ্ট্য নিয়ে কাজ করছি। আপনি কি চালিয়ে যেতে চান?',
   'Cancel': 'বাতিল',
   'Continue': 'চালিয়ে যান',
+  'ayahs': 'আয়াত',
   //
 };
 Map<String, String> portuguese = {
@@ -782,6 +765,7 @@ Map<String, String> portuguese = {
       'Se você fez backup de seus dados anteriormente, ele será substituído pelos novos dados. Estamos trabalhando em mais recursos para a funcionalidade de backup. Deseja continuar?',
   'Cancel': 'Cancelar',
   'Continue': 'Continuar',
+  'ayahs': 'Ayahs',
   //
 };
 Map<String, String> russian = {
@@ -884,6 +868,7 @@ Map<String, String> russian = {
       'Если вы ранее создавали резервную копию своих данных, она будет заменена новыми данными. Мы работаем над новыми функциями для резервного копирования. Вы хотите продолжить?',
   'Cancel': 'Отмена',
   'Continue': 'Продолжить',
+  'ayahs': 'Аяты',
   //
 };
 Map<String, String> japanese = {
@@ -971,6 +956,7 @@ Map<String, String> japanese = {
       '以前にデータをバックアップした場合、新しいデータに置き換えられます。バックアップ機能のさらなる機能に取り組んでいます。続行しますか？',
   'Cancel': 'キャンセル',
   'Continue': '続行',
+  'ayahs': 'アーヤ',
   //
 };
 Map<String, String> punjabi = {
@@ -1064,6 +1050,7 @@ Map<String, String> punjabi = {
       'ਜੇਕਰ ਤੁਸੀਂ ਪਹਿਲਾਂ ਆਪਣੇ ਡੇਟਾ ਦਾ ਬੈਕਅੱਪ ਲਿਆ ਸੀ, ਤਾਂ ਇਹ ਨਵੇਂ ਡੇਟਾ ਨਾਲ ਬਦਲ ਦਿੱਤਾ ਜਾਵੇਗਾ। ਅਸੀਂ ਬੈਕਅੱਪ ਕਾਰਜਕੁਸ਼ਲਤਾ ਲਈ ਹੋਰ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ \'ਤੇ ਕੰਮ ਕਰ ਰਹੇ ਹਾਂ। ਕੀ ਤੁਸੀਂ ਜਾਰੀ ਰੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ?',
   'Cancel': 'ਰੱਦ ਕਰੋ',
   'Continue': 'ਜਾਰੀ ਰੱਖੋ',
+  'ayahs': 'ਆਇਤਾਂ',
   //
 };
 Map<String, String> german = {
@@ -1167,6 +1154,7 @@ Map<String, String> german = {
       'Wenn Sie Ihre Daten zuvor gesichert haben, werden diese durch die neuen Daten ersetzt. Wir arbeiten an weiteren Funktionen für die Backup-Funktionalität. Möchten Sie fortfahren?',
   'Cancel': 'Abbrechen',
   'Continue': 'Fortsetzen',
+  'ayahs': 'Ayahs',
   //
 };
 Map<String, String> french = {
@@ -1270,6 +1258,7 @@ Map<String, String> french = {
       'Si vous avez précédemment sauvegardé vos données, elles seront remplacées par les nouvelles données. Nous travaillons sur d\'autres fonctionnalités pour la fonction de sauvegarde. Voulez-vous continuer ?',
   'Cancel': 'Annuler',
   'Continue': 'Continuer',
+  'ayahs': 'Ayahs',
   //
 };
 Map<String, String> indonesian = {
@@ -1366,6 +1355,7 @@ Map<String, String> indonesian = {
       'Jika Anda sudah mencadangkan data Anda sebelumnya, data tersebut akan diganti dengan data baru. Kami sedang mengerjakan lebih banyak fitur untuk fungsionalitas pencadangan. Apakah Anda ingin melanjutkan?',
   'Cancel': 'Batal',
   'Continue': 'Lanjutkan',
+  'ayahs': 'Ayat',
   //
 };
 Map<String, String> urdu = {
@@ -1461,6 +1451,7 @@ Map<String, String> urdu = {
       'اگر آپ نے پہلے اپنے ڈیٹا کا بیک اپ لیا تھا، تو یہ نئے ڈیٹا سے بدل دیا جائے گا۔ ہم بیک اپ کی فعالیت کے لیے مزید خصوصیات پر کام کر رہے ہیں۔ کیا آپ جاری رکھنا چاہتے ہیں؟',
   'Cancel': 'منسوخ کریں',
   'Continue': 'جاری رکھیں',
+  'ayahs': 'آیات',
   //
 };
 Map<String, String> swahili = {
@@ -1556,6 +1547,7 @@ Map<String, String> swahili = {
       'Ikiwa ulihifadhi nakala ya data yako hapo awali, itabadilishwa na data mpya. Tunafanya kazi kwenye vipengele zaidi vya utendakazi wa kuhifadhi nakala. Ungependa kuendelea?',
   'Cancel': 'Ghairi',
   'Continue': 'Endelea',
+  'ayahs': 'Aya',
   //
 };
 Map<String, String> korean = {
@@ -1643,6 +1635,7 @@ Map<String, String> korean = {
       '이전에 데이터를 백업한 경우 새 데이터로 대체됩니다. 백업 기능을 위한 더 많은 기능을 개발 중입니다. 계속하시겠습니까?',
   'Cancel': '취소',
   'Continue': '계속',
+  'ayahs': '아야',
   //
 };
 Map<String, String> turkish = {
@@ -1740,6 +1733,7 @@ Map<String, String> turkish = {
       'Verilerinizi daha önce yedeklediyseniz, yeni verilerle değiştirilecektir. Yedekleme işlevi için daha fazla özellik üzerinde çalışıyoruz. Devam etmek istiyor musunuz?',
   'Cancel': 'İptal',
   'Continue': 'Devam Et',
+  'ayahs': 'Ayetler',
   //
 };
 Map<String, String> vietnamese = {
@@ -1837,6 +1831,7 @@ Map<String, String> vietnamese = {
       'Nếu bạn đã sao lưu dữ liệu của mình trước đó, dữ liệu đó sẽ bị thay thế bằng dữ liệu mới. Chúng tôi đang nỗ lực phát triển thêm các tính năng cho chức năng sao lưu. Bạn có muốn tiếp tục không?',
   'Cancel': 'Hủy bỏ',
   'Continue': 'Tiếp tục',
+  'ayahs': 'Ayah',
   //
 };
 Map<String, String> tamil = {
@@ -1943,6 +1938,7 @@ Map<String, String> tamil = {
       'நீங்கள் முன்பு உங்கள் தரவை காப்புப் பிரதி எடுத்திருந்தால், அது புதிய தரவுகளால் மாற்றப்படும். காப்புப் பிரதி செயல்பாட்டிற்கான கூடுதல் அம்சங்களில் நாங்கள் பணியாற்றி வருகிறோம். நீங்கள் தொடர விரும்புகிறீர்களா?',
   'Cancel': 'ரத்து செய்',
   'Continue': 'தொடர்க',
+  'ayahs': 'ஆயத்துகள்',
   //
 };
 Map<String, String> italian = {
@@ -2045,5 +2041,6 @@ Map<String, String> italian = {
       'Se hai eseguito il backup dei tuoi dati in precedenza, verranno sostituiti dai nuovi dati. Stiamo lavorando su altre funzionalità per la funzione di backup. Vuoi continuare?',
   'Cancel': 'Annulla',
   'Continue': 'Continua',
+  'ayahs': 'Ayah',
   //
 };
