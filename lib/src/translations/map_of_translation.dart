@@ -172,6 +172,10 @@ Map<String, String> chinese = {
   'Cancel': '取消',
   'Continue': '继续',
   'ayahs': '经文',
+  'Makkah': '麦加',
+  'Madinah': '麦地那',
+  'Reciter': '古兰经朗诵者',
+  'Change': '更改',
   //
 };
 Map<String, String> hindi = {
@@ -271,6 +275,10 @@ Map<String, String> hindi = {
   'Cancel': 'रद्द करें',
   'Continue': 'जारी रखें',
   'ayahs': 'आयतें',
+  'Makkah': 'मक्का',
+  'Madinah': 'मदीना',
+  'Reciter': 'क़ुरान पढ़नेवाला',
+  'Change': 'बदलें',
   //
 };
 Map<String, String> english = {
@@ -365,6 +373,10 @@ Map<String, String> english = {
   'Cancel': 'Cancel',
   'Continue': 'Continue',
   'ayahs': 'Ayahs',
+  'Makkah': 'Makkah',
+  'Madinah': 'Madinah',
+  'Reciter': 'Quran Reciter',
+  'Change': 'Change',
   //
 };
 Map<String, String> spanish = {
@@ -474,6 +486,10 @@ Map<String, String> spanish = {
   'Cancel': 'Cancelar',
   'Continue': 'Continuar',
   'ayahs': 'Aleyas',
+  'Makkah': 'La Meca',
+  'Madinah': 'Medina',
+  'Reciter': 'Recitador del Corán',
+  'Change': 'Cambiar',
   //
 };
 Map<String, String> arabic = {
@@ -564,6 +580,10 @@ Map<String, String> arabic = {
   'Cancel': 'إلغاء',
   'Continue': 'متابعة',
   'ayahs': 'آيات',
+  'Makkah': 'مكة',
+  'Madinah': 'المدينة المنورة',
+  'Reciter': 'قارئ القرآن',
+  'Change': 'تغيير',
   //
 };
 Map<String, String> bengali = {
@@ -663,6 +683,10 @@ Map<String, String> bengali = {
   'Cancel': 'বাতিল',
   'Continue': 'চালিয়ে যান',
   'ayahs': 'আয়াত',
+  'Makkah': 'মক্কা',
+  'Madinah': 'মদিনা',
+  'Reciter': 'কুরআন তেলাওয়াতকারী',
+  'Change': 'পরিবর্তন',
   //
 };
 Map<String, String> portuguese = {
@@ -766,6 +790,10 @@ Map<String, String> portuguese = {
   'Cancel': 'Cancelar',
   'Continue': 'Continuar',
   'ayahs': 'Ayahs',
+  'Makkah': 'Meca',
+  'Madinah': 'Medina',
+  'Reciter': 'Recitador do Alcorão',
+  'Change': 'Mudar',
   //
 };
 Map<String, String> russian = {
@@ -869,6 +897,10 @@ Map<String, String> russian = {
   'Cancel': 'Отмена',
   'Continue': 'Продолжить',
   'ayahs': 'Аяты',
+  'Makkah': 'Мекка',
+  'Madinah': 'Медина',
+  'Reciter': 'Чтец Корана',
+  'Change': 'Изменить',
   //
 };
 Map<String, String> japanese = {
@@ -957,6 +989,10 @@ Map<String, String> japanese = {
   'Cancel': 'キャンセル',
   'Continue': '続行',
   'ayahs': 'アーヤ',
+  'Makkah': 'メッカ',
+  'Madinah': 'マディーナ',
+  'Reciter': 'コーラン朗読者',
+  'Change': '変更',
   //
 };
 Map<String, String> punjabi = {
@@ -1051,6 +1087,10 @@ Map<String, String> punjabi = {
   'Cancel': 'ਰੱਦ ਕਰੋ',
   'Continue': 'ਜਾਰੀ ਰੱਖੋ',
   'ayahs': 'ਆਇਤਾਂ',
+  'Makkah': 'ਮੱਕਾ',
+  'Madinah': 'ਮਦੀਨਾ',
+  'Reciter': 'कुरान पढ़ने वाला',
+  'Change': 'ਬਦਲੋ',
   //
 };
 Map<String, String> german = {
@@ -1155,6 +1195,10 @@ Map<String, String> german = {
   'Cancel': 'Abbrechen',
   'Continue': 'Fortsetzen',
   'ayahs': 'Ayahs',
+  'Makkah': 'Mekka',
+  'Madinah': 'Medina',
+  'Reciter': 'Koranrezitator',
+  'Change': 'Ändern',
   //
 };
 Map<String, String> french = {
@@ -1259,6 +1303,10 @@ Map<String, String> french = {
   'Cancel': 'Annuler',
   'Continue': 'Continuer',
   'ayahs': 'Ayahs',
+  'Makkah': 'La Mecque',
+  'Madinah': 'Médine',
+  'Reciter': 'Récitateur du Coran',
+  'Change': 'Changer',
   //
 };
 Map<String, String> indonesian = {
@@ -1356,6 +1404,10 @@ Map<String, String> indonesian = {
   'Cancel': 'Batal',
   'Continue': 'Lanjutkan',
   'ayahs': 'Ayat',
+  'Makkah': 'Mekkah',
+  'Madinah': 'Madinah',
+  'Reciter': 'Pembaca Al-Qur\'an',
+  'Change': 'Ubah',
   //
 };
 Map<String, String> urdu = {
@@ -1452,6 +1504,10 @@ Map<String, String> urdu = {
   'Cancel': 'منسوخ کریں',
   'Continue': 'جاری رکھیں',
   'ayahs': 'آیات',
+  'Makkah': 'مکہ',
+  'Madinah': 'مدینہ',
+  'Reciter': 'قرآن کی تلاوت کرنے والا',
+  'Change': 'تبدیل کریں',
   //
 };
 Map<String, String> swahili = {
@@ -1548,6 +1604,10 @@ Map<String, String> swahili = {
   'Cancel': 'Ghairi',
   'Continue': 'Endelea',
   'ayahs': 'Aya',
+  'Makkah': 'Makka',
+  'Madinah': 'Madina',
+  'Reciter': 'Msomaji wa Kurani',
+  'Change': 'Badilisha',
   //
 };
 Map<String, String> korean = {
@@ -1636,6 +1696,10 @@ Map<String, String> korean = {
   'Cancel': '취소',
   'Continue': '계속',
   'ayahs': '아야',
+  'Makkah': '메카',
+  'Madinah': '메디나',
+  'Reciter': '코란 암송가',
+  'Change': '변경',
   //
 };
 Map<String, String> turkish = {
@@ -1734,6 +1798,10 @@ Map<String, String> turkish = {
   'Cancel': 'İptal',
   'Continue': 'Devam Et',
   'ayahs': 'Ayetler',
+  'Makkah': 'Mekke',
+  'Madinah': 'Medine',
+  'Reciter': 'Kur\'an Okuyucusu',
+  'Change': 'Değiştir',
   //
 };
 Map<String, String> vietnamese = {
@@ -1832,6 +1900,10 @@ Map<String, String> vietnamese = {
   'Cancel': 'Hủy bỏ',
   'Continue': 'Tiếp tục',
   'ayahs': 'Ayah',
+  'Makkah': 'Mecca',
+  'Madinah': 'Medina',
+  'Reciter': 'Người ngâm thơ kinh Koran',
+  'Change': 'Thay đổi',
   //
 };
 Map<String, String> tamil = {
@@ -1939,6 +2011,10 @@ Map<String, String> tamil = {
   'Cancel': 'ரத்து செய்',
   'Continue': 'தொடர்க',
   'ayahs': 'ஆயத்துகள்',
+  'Makkah': 'மெக்கா',
+  'Madinah': 'மதீனா',
+  'Reciter': 'குரான் ஓதுபவர்',
+  'Change': 'மாற்று',
   //
 };
 Map<String, String> italian = {
@@ -2042,5 +2118,9 @@ Map<String, String> italian = {
   'Cancel': 'Annulla',
   'Continue': 'Continua',
   'ayahs': 'Ayah',
+  'Makkah': 'La Mecca',
+  'Madinah': 'Medina',
+  'Reciter': 'Recitatore del Corano',
+  'Change': 'Cambia',
   //
 };

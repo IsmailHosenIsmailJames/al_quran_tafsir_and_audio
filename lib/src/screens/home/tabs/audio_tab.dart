@@ -1,6 +1,8 @@
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/play_quran_audio.dart';
+import 'package:al_quran_tafsir_and_audio/src/functions/get_native_surah_name.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_recitations.dart';
 import 'package:al_quran_tafsir_and_audio/src/theme/theme_controller.dart';
@@ -52,9 +54,9 @@ class _AudioTabState extends State<AudioTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Reciter',
-                    style: TextStyle(
+                  Text(
+                    'Reciter'.tr,
+                    style: const TextStyle(
                       fontSize: 14,
                     ),
                   ),
@@ -103,7 +105,7 @@ class _AudioTabState extends State<AudioTab> {
                           }
                         }
                       },
-                      child: const Text('Change'),
+                      child: Text('Change'.tr),
                     ),
                   ),
                 ],
@@ -201,6 +203,8 @@ class _AudioTabState extends State<AudioTab> {
                   reciter: audioController.currentReciterModel.value,
                   surahNumber: index,
                 );
+                QuranSurahInfoModel quranSurahInfoModel =
+                    QuranSurahInfoModel.fromMap(allChaptersInfo[index]);
                 return GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
@@ -216,81 +220,89 @@ class _AudioTabState extends State<AudioTab> {
                     margin: const EdgeInsets.only(bottom: 5),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(7)),
-                    child: Obx(
-                      () => Row(
-                        children: [
-                          const Gap(3),
-                          SizedBox(
-                            height: 34,
-                            width: 34,
-                            child: getPlayButton(index, audioController),
-                          ),
-                          const Gap(10),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                ("${index + 1}. ${allChaptersInfo[index]['name_simple'] ?? ""}")
-                                    .replaceAll('-', ' '),
-                                style: Theme.of(context).textTheme.bodyLarge,
-                              ),
-                              Text(
-                                "${(allChaptersInfo[index]['revelation_place'] ?? "".capitalizeFirst)}"
-                                    .capitalizeFirst,
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                "${(allChaptersInfo[index]['name_arabic'] ?? "")}"
-                                    .capitalizeFirst,
-                                style: Theme.of(context).textTheme.bodyLarge,
-                              ),
-                              Text(
-                                ayahCount[index].toString(),
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                            ],
-                          ),
-                          const Gap(5),
-                          if (homePageController.selectForPlaylistMode.value ==
-                              false)
-                            getPopUpButton(audioController, index, context,
-                                currentPlaylist),
-                          if (homePageController.selectForPlaylistMode.value ==
-                              true)
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Obx(
+                        () => Row(
+                          children: [
+                            const Gap(3),
                             SizedBox(
                               height: 40,
                               width: 40,
-                              child: Checkbox(
-                                value: homePageController.containsInPlaylist(
-                                    audioController.currentReciterModel.value,
-                                    index),
-                                onChanged: (value) {
-                                  if (value == true) {
-                                    homePageController.addToPlaylist(
+                              child: getPlayButton(index, audioController),
+                            ),
+                            const Gap(10),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  ("${index + 1}. ${getSurahNativeName(Get.locale?.languageCode ?? 'en', quranSurahInfoModel.id - 1)}")
+                                      .replaceAll('-', ' '),
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                                Text(
+                                  "${(allChaptersInfo[index]['revelation_place'] ?? "".capitalizeFirst)}"
+                                      .capitalizeFirst
+                                      .tr,
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "${(allChaptersInfo[index]['name_arabic'] ?? "")}"
+                                      .capitalizeFirst,
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                                Text(
+                                  ayahCount[index].toString(),
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ],
+                            ),
+                            const Gap(5),
+                            if (homePageController
+                                    .selectForPlaylistMode.value ==
+                                false)
+                              getPopUpButton(audioController, index, context,
+                                  currentPlaylist),
+                            if (homePageController
+                                    .selectForPlaylistMode.value ==
+                                true)
+                              SizedBox(
+                                height: 40,
+                                width: 40,
+                                child: Checkbox(
+                                  value: homePageController.containsInPlaylist(
                                       audioController.currentReciterModel.value,
-                                      index,
-                                    );
-                                  } else {
-                                    homePageController.removeToPlaylist(
+                                      index),
+                                  onChanged: (value) {
+                                    if (value == true) {
+                                      homePageController.addToPlaylist(
                                         audioController
                                             .currentReciterModel.value,
-                                        index);
-                                  }
-                                },
+                                        index,
+                                      );
+                                    } else {
+                                      homePageController.removeToPlaylist(
+                                          audioController
+                                              .currentReciterModel.value,
+                                          index);
+                                    }
+                                  },
+                                ),
                               ),
-                            ),
-                          if (homePageController.selectForPlaylistMode.value ==
-                              true)
-                            const Gap(8),
-                        ],
+                            if (homePageController
+                                    .selectForPlaylistMode.value ==
+                                true)
+                              const Gap(8),
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -1,3 +1,4 @@
+import 'package:al_quran_tafsir_and_audio/src/functions/get_native_surah_meaning.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/get_native_surah_name.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/juz_info_model.dart';
@@ -26,6 +27,7 @@ class _QuranTabState extends State<QuranTab> {
   ScrollController scrollControllerTab3 = ScrollController();
   @override
   Widget build(BuildContext context) {
+    String local = Get.locale?.languageCode ?? 'en';
     double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
@@ -159,13 +161,12 @@ class _QuranTabState extends State<QuranTab> {
                 radius: const Radius.circular(10),
                 child: ListView.builder(
                   controller: scrollControllerTab1,
-                  padding: const EdgeInsets.only(bottom: 100, top: 5),
+                  padding: const EdgeInsets.only(bottom: 100),
                   itemCount: 114,
                   itemBuilder: (context, index) {
                     QuranSurahInfoModel quranSurahInfoModel =
                         QuranSurahInfoModel.fromMap(allChaptersInfo[index]);
                     return Container(
-                      height: 52,
                       width: double.infinity,
                       margin:
                           const EdgeInsets.only(left: 10, right: 10, top: 5),
@@ -206,15 +207,31 @@ class _QuranTabState extends State<QuranTab> {
                               ),
                             ),
                             const Gap(10),
-                            Text(
-                              getSurahNativeName(
-                                Get.locale?.languageCode ?? 'en',
-                                index,
-                              ),
-                              style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  getSurahNativeName(
+                                    local,
+                                    index,
+                                  ),
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  getSurahNativeMeaning(
+                                    local,
+                                    index,
+                                  ),
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
                             ),
                             const Spacer(),
                             Column(
@@ -230,9 +247,9 @@ class _QuranTabState extends State<QuranTab> {
                                 ),
                                 Text(
                                   '${quranSurahInfoModel.versesCount} ${'ayahs'.tr}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 12,
-                                    color: Colors.grey.shade600,
+                                    color: Colors.grey,
                                   ),
                                 )
                               ],
@@ -262,10 +279,10 @@ class _QuranTabState extends State<QuranTab> {
                           height: 55,
                           width: double.infinity,
                           margin: const EdgeInsets.only(
-                              left: 10, right: 10, top: 10),
+                              left: 10, right: 10, top: 5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(7),
-                            color: Colors.grey.withValues(alpha: 0.2),
+                            color: Colors.grey.withValues(alpha: 0.1),
                           ),
                           child: TextButton(
                             style: TextButton.styleFrom(
@@ -352,7 +369,6 @@ class _QuranTabState extends State<QuranTab> {
                                 );
 
                                 return Container(
-                                  height: 55,
                                   margin: const EdgeInsets.all(2.5),
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -376,8 +392,8 @@ class _QuranTabState extends State<QuranTab> {
                                       Get.to(
                                         () => SurahView(
                                           ayahStart: startAyahOfSurah + start,
-                                          titleToShow:
-                                              quranSurahInfoModel.nameSimple,
+                                          titleToShow: getSurahNativeName(local,
+                                              quranSurahInfoModel.id - 1),
                                           ayahEnd: startAyahOfSurah + end,
                                         ),
                                       );
@@ -393,7 +409,11 @@ class _QuranTabState extends State<QuranTab> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              quranSurahInfoModel.nameSimple,
+                                              getSurahNativeName(
+                                                Get.locale?.languageCode ??
+                                                    'en',
+                                                quranSurahInfoModel.id - 1,
+                                              ),
                                               style: const TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
@@ -456,7 +476,6 @@ class _QuranTabState extends State<QuranTab> {
                       allChaptersInfo[pagesInfo[index]['sn']! - 1],
                     );
                     return Container(
-                      height: 50,
                       width: double.infinity,
                       margin:
                           const EdgeInsets.only(left: 10, right: 10, top: 5),
@@ -470,7 +489,8 @@ class _QuranTabState extends State<QuranTab> {
                             () => SurahView(
                               ayahStart: pagesInfo[index]['s']! - 1,
                               ayahEnd: pagesInfo[index]['e']!,
-                              titleToShow: quranSurahInfoModel.nameSimple,
+                              titleToShow: getSurahNativeName(
+                                  local, quranSurahInfoModel.id - 1),
                             ),
                           );
                         },
@@ -494,7 +514,8 @@ class _QuranTabState extends State<QuranTab> {
                             ),
                             const Gap(10),
                             Text(
-                              quranSurahInfoModel.nameSimple,
+                              getSurahNativeName(
+                                  local, quranSurahInfoModel.id - 1),
                               style: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -547,17 +568,28 @@ Widget getJuzName(JuzInfoModel juzInfoModel, TextStyle textStyle) {
 
   if (firstSurahNumber == lastSurahNumber) {
     return Text(
-      firstSurahInfo.nameSimple,
+      getSurahNativeName(
+        Get.locale?.languageCode ?? 'en',
+        firstSurahInfo.id - 1,
+      ),
       style: textStyle,
     );
   } else {
     return Row(children: [
-      Text(firstSurahInfo.nameSimple, style: textStyle),
+      Text(
+          getSurahNativeName(
+            Get.locale?.languageCode ?? 'en',
+            firstSurahInfo.id - 1,
+          ),
+          style: textStyle),
       const Gap(2),
       const Text(' - '),
       const Gap(2),
       Text(
-        lastSurahInfo.nameSimple,
+        getSurahNativeName(
+          Get.locale?.languageCode ?? 'en',
+          lastSurahInfo.id - 1,
+        ),
         style: textStyle,
       )
     ]);
