@@ -39,7 +39,7 @@ class _AllNotesState extends State<AllNotes> {
           const Gap(10),
           getAddNewNotesButton(),
           Gap(MediaQuery.of(context).size.height * 0.3),
-          const Center(child: Text('No notes found')),
+          Center(child: Text('No notes found'.tr)),
         ],
       );
     }
@@ -208,7 +208,7 @@ class _AllNotesState extends State<AllNotes> {
           setState(() {});
         },
         icon: const Icon(Icons.add),
-        label: const Text('Add New Note'),
+        label: Text('Add New Note'.tr),
       ),
     );
   }

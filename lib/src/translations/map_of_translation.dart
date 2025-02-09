@@ -88,6 +88,29 @@ List<String> used20LanguageList = [
   'Italian',
 ];
 
+Map<String, String> translations = {
+  'chinese': '未找到笔记',
+  'hindi': 'कोई नोट नहीं मिला',
+  'english': 'No notes found',
+  'spanish': 'No se encontraron notas',
+  'arabic': 'لم يتم العثور على ملاحظات',
+  'bengali': 'কোনো নোট পাওয়া যায়নি',
+  'portuguese': 'Nenhuma nota encontrada',
+  'russian': 'Заметки не найдены',
+  'japanese': 'メモが見つかりません',
+  'punjabi': 'ਕੋਈ ਨੋਟ ਨਹੀਂ ਮਿਲਿਆ',
+  'german': 'Keine Notizen gefunden',
+  'french': 'Aucune note trouvée',
+  'indonesian': 'Tidak ada catatan ditemukan',
+  'urdu': 'کوئی نوٹس نہیں ملا',
+  'swahili': 'Hakuna madokezo yaliyopatikana',
+  'korean': '노트를 찾을 수 없습니다',
+  'turkish': 'Not bulunamadı',
+  'vietnamese': 'Không tìm thấy ghi chú',
+  'tamil': 'குறிப்புகள் எதுவும் இல்லை',
+  'italian': 'Nessuna nota trovata',
+};
+
 Map<String, String> chinese = {
   'Al Quran': '古兰经', 'Privacy Policy': '隐私政策',
   'Select a language for app': '选择应用语言',
@@ -176,6 +199,14 @@ Map<String, String> chinese = {
   'Madinah': '麦地那',
   'Reciter': '古兰经朗诵者',
   'Change': '更改',
+  'Groups': '群组',
+  'Playlist': '播放列表',
+  'Create New Group': '创建新群组',
+  'No groups found': '未找到群组',
+  'No PlayList found': '未找到播放列表',
+  'Create PlayList': '创建播放列表',
+  'Add New Note': '添加新笔记',
+  'No notes found': '未找到笔记',
   //
 };
 Map<String, String> hindi = {
@@ -279,6 +310,14 @@ Map<String, String> hindi = {
   'Madinah': 'मदीना',
   'Reciter': 'क़ुरान पढ़नेवाला',
   'Change': 'बदलें',
+  'Groups': 'ग्रुप्स',
+  'Playlist': 'प्लेलिस्ट',
+  'Create New Group': 'नया ग्रुप बनाएं',
+  'No groups found': 'कोई ग्रुप नहीं मिला',
+  'No PlayList found': 'कोई प्लेलिस्ट नहीं मिली',
+  'Create PlayList': 'प्लेलिस्ट बनाएं',
+  'Add New Note': 'नया नोट जोड़ें',
+  'No notes found': 'कोई नोट नहीं मिला',
   //
 };
 Map<String, String> english = {
@@ -377,6 +416,14 @@ Map<String, String> english = {
   'Madinah': 'Madinah',
   'Reciter': 'Quran Reciter',
   'Change': 'Change',
+  'Groups': 'Groups',
+  'Playlist': 'Playlist',
+  'Create New Group': 'Create New Group',
+  'No groups found': 'No groups found',
+  'No PlayList found': 'No PlayList found',
+  'Create PlayList': 'Create PlayList',
+  'Add New Note': 'Add New Note',
+  'No notes found': 'No notes found',
   //
 };
 Map<String, String> spanish = {
@@ -490,6 +537,14 @@ Map<String, String> spanish = {
   'Madinah': 'Medina',
   'Reciter': 'Recitador del Corán',
   'Change': 'Cambiar',
+  'Groups': 'Grupos',
+  'Playlist': 'Lista de reproducción',
+  'Create New Group': 'Crear nuevo grupo',
+  'No groups found': 'No se encontraron grupos',
+  'No PlayList found': 'No se encontró ninguna lista de reproducción',
+  'Create PlayList': 'Crear lista de reproducción',
+  'Add New Note': 'Añadir nueva nota',
+  'No notes found': 'No se encontraron notas',
   //
 };
 Map<String, String> arabic = {
@@ -584,6 +639,14 @@ Map<String, String> arabic = {
   'Madinah': 'المدينة المنورة',
   'Reciter': 'قارئ القرآن',
   'Change': 'تغيير',
+  'Groups': 'مجموعات',
+  'Playlist': 'قائمة التشغيل',
+  'Create New Group': 'إنشاء مجموعة جديدة',
+  'No groups found': 'لم يتم العثور على مجموعات',
+  'No PlayList found': 'لم يتم العثور على قائمة تشغيل',
+  'Create PlayList': 'إنشاء قائمة تشغيل',
+  'Add New Note': 'إضافة ملاحظة جديدة',
+  'No notes found': 'لم يتم العثور على ملاحظات',
   //
 };
 Map<String, String> bengali = {
@@ -687,6 +750,14 @@ Map<String, String> bengali = {
   'Madinah': 'মদিনা',
   'Reciter': 'কুরআন তেলাওয়াতকারী',
   'Change': 'পরিবর্তন',
+  'Groups': 'গ্রুপ',
+  'Playlist': 'প্লেলিস্ট',
+  'Create New Group': 'নতুন গ্রুপ তৈরি করুন',
+  'No groups found': 'কোনো গ্রুপ পাওয়া যায়নি',
+  'No PlayList found': 'কোনো প্লেলিস্ট পাওয়া যায়নি',
+  'Create PlayList': 'প্লেলিস্ট তৈরি করুন',
+  'Add New Note': 'নতুন নোট যোগ করুন',
+  'No notes found': 'কোনো নোট পাওয়া যায়নি',
   //
 };
 Map<String, String> portuguese = {
@@ -794,6 +865,14 @@ Map<String, String> portuguese = {
   'Madinah': 'Medina',
   'Reciter': 'Recitador do Alcorão',
   'Change': 'Mudar',
+  'Groups': 'Grupos',
+  'Playlist': 'Playlist',
+  'Create New Group': 'Criar Novo Grupo',
+  'No groups found': 'Nenhum grupo encontrado',
+  'No PlayList found': 'Nenhuma playlist encontrada',
+  'Create PlayList': 'Criar Playlist',
+  'Add New Note': 'Adicionar Nova Nota',
+  'No notes found': 'Nenhuma nota encontrada',
   //
 };
 Map<String, String> russian = {
@@ -901,6 +980,14 @@ Map<String, String> russian = {
   'Madinah': 'Медина',
   'Reciter': 'Чтец Корана',
   'Change': 'Изменить',
+  'Groups': 'Группы',
+  'Playlist': 'Плейлист',
+  'Create New Group': 'Создать новую группу',
+  'No groups found': 'Группы не найдены',
+  'No PlayList found': 'Плейлисты не найдены',
+  'Create PlayList': 'Создать плейлист',
+  'Add New Note': 'Добавить новую заметку',
+  'No notes found': 'Заметки не найдены',
   //
 };
 Map<String, String> japanese = {
@@ -993,6 +1080,14 @@ Map<String, String> japanese = {
   'Madinah': 'マディーナ',
   'Reciter': 'コーラン朗読者',
   'Change': '変更',
+  'Groups': 'グループ',
+  'Playlist': 'プレイリスト',
+  'Create New Group': '新しいグループを作成',
+  'No groups found': 'グループが見つかりません',
+  'No PlayList found': 'プレイリストが見つかりません',
+  'Create PlayList': 'プレイリストを作成',
+  'Add New Note': '新しいメモを追加',
+  'No notes found': 'メモが見つかりません',
   //
 };
 Map<String, String> punjabi = {
@@ -1091,6 +1186,14 @@ Map<String, String> punjabi = {
   'Madinah': 'ਮਦੀਨਾ',
   'Reciter': 'कुरान पढ़ने वाला',
   'Change': 'ਬਦਲੋ',
+  'Groups': 'ਗਰੁੱਪ',
+  'Playlist': 'ਪਲੇਲਿਸਟ',
+  'Create New Group': 'ਨਵਾਂ ਗਰੁੱਪ ਬਣਾਓ',
+  'No groups found': 'ਕੋਈ ਗਰੁੱਪ ਨਹੀਂ ਮਿਲਿਆ',
+  'No PlayList found': 'ਕੋਈ ਪਲੇਲਿਸਟ ਨਹੀਂ ਮਿਲੀ',
+  'Create PlayList': 'ਪਲੇਲਿਸਟ ਬਣਾਓ',
+  'Add New Note': 'ਨਵਾਂ ਨੋਟ ਸ਼ਾਮਲ ਕਰੋ',
+  'No notes found': 'ਕੋਈ ਨੋਟ ਨਹੀਂ ਮਿਲਿਆ',
   //
 };
 Map<String, String> german = {
@@ -1199,6 +1302,14 @@ Map<String, String> german = {
   'Madinah': 'Medina',
   'Reciter': 'Koranrezitator',
   'Change': 'Ändern',
+  'Groups': 'Gruppen',
+  'Playlist': 'Wiedergabeliste',
+  'Create New Group': 'Neue Gruppe erstellen',
+  'No groups found': 'Keine Gruppen gefunden',
+  'No PlayList found': 'Keine Wiedergabeliste gefunden',
+  'Create PlayList': 'Wiedergabeliste erstellen',
+  'Add New Note': 'Neue Notiz hinzufügen',
+  'No notes found': 'Keine Notizen gefunden',
   //
 };
 Map<String, String> french = {
@@ -1307,6 +1418,14 @@ Map<String, String> french = {
   'Madinah': 'Médine',
   'Reciter': 'Récitateur du Coran',
   'Change': 'Changer',
+  'Groups': 'Groupes',
+  'Playlist': 'Playlist',
+  'Create New Group': 'Créer un nouveau groupe',
+  'No groups found': 'Aucun groupe trouvé',
+  'No PlayList found': 'Aucune playlist trouvée',
+  'Create PlayList': 'Créer une playlist',
+  'Add New Note': 'Ajouter une nouvelle note',
+  'No notes found': 'Aucune note trouvée',
   //
 };
 Map<String, String> indonesian = {
@@ -1408,6 +1527,14 @@ Map<String, String> indonesian = {
   'Madinah': 'Madinah',
   'Reciter': 'Pembaca Al-Qur\'an',
   'Change': 'Ubah',
+  'Groups': 'Grup',
+  'Playlist': 'Daftar Putar',
+  'Create New Group': 'Buat Grup Baru',
+  'No groups found': 'Tidak ada grup ditemukan',
+  'No PlayList found': 'Tidak ada Daftar Putar ditemukan',
+  'Create PlayList': 'Buat Daftar Putar',
+  'Add New Note': 'Tambah Catatan Baru',
+  'No notes found': 'Tidak ada catatan ditemukan',
   //
 };
 Map<String, String> urdu = {
@@ -1508,6 +1635,14 @@ Map<String, String> urdu = {
   'Madinah': 'مدینہ',
   'Reciter': 'قرآن کی تلاوت کرنے والا',
   'Change': 'تبدیل کریں',
+  'Groups': 'گروپس',
+  'Playlist': 'پلے لسٹ',
+  'Create New Group': 'نیا گروپ بنائیں',
+  'No groups found': 'کوئی گروپس نہیں ملا',
+  'No PlayList found': 'کوئی پلے لسٹ نہیں ملی',
+  'Create PlayList': 'پلے لسٹ بنائیں',
+  'Add New Note': 'نیا نوٹ شامل کریں',
+  'No notes found': 'کوئی نوٹس نہیں ملا',
   //
 };
 Map<String, String> swahili = {
@@ -1608,6 +1743,14 @@ Map<String, String> swahili = {
   'Madinah': 'Madina',
   'Reciter': 'Msomaji wa Kurani',
   'Change': 'Badilisha',
+  'Groups': 'Makundi',
+  'Playlist': 'Orodha ya kucheza',
+  'Create New Group': 'Unda Kikundi Kipya',
+  'No groups found': 'Hakuna makundi yaliyopatikana',
+  'No PlayList found': 'Hakuna Orodha ya kucheza iliyopatikana',
+  'Create PlayList': 'Unda Orodha ya kucheza',
+  'Add New Note': 'Ongeza Dokezo Jipya',
+  'No notes found': 'Hakuna madokezo yaliyopatikana',
   //
 };
 Map<String, String> korean = {
@@ -1700,6 +1843,14 @@ Map<String, String> korean = {
   'Madinah': '메디나',
   'Reciter': '코란 암송가',
   'Change': '변경',
+  'Groups': '그룹',
+  'Playlist': '재생 목록',
+  'Create New Group': '새 그룹 만들기',
+  'No groups found': '그룹을 찾을 수 없습니다',
+  'No PlayList found': '재생 목록을 찾을 수 없습니다',
+  'Create PlayList': '재생 목록 만들기',
+  'Add New Note': '새 노트 추가',
+  'No notes found': '노트를 찾을 수 없습니다',
   //
 };
 Map<String, String> turkish = {
@@ -1802,6 +1953,14 @@ Map<String, String> turkish = {
   'Madinah': 'Medine',
   'Reciter': 'Kur\'an Okuyucusu',
   'Change': 'Değiştir',
+  'Groups': 'Gruplar',
+  'Playlist': 'Oynatma Listesi',
+  'Create New Group': 'Yeni Grup Oluştur',
+  'No groups found': 'Grup bulunamadı',
+  'No PlayList found': 'Oynatma Listesi bulunamadı',
+  'Create PlayList': 'Oynatma Listesi Oluştur',
+  'Add New Note': 'Yeni Not Ekle',
+  'No notes found': 'Not bulunamadı',
   //
 };
 Map<String, String> vietnamese = {
@@ -1904,6 +2063,14 @@ Map<String, String> vietnamese = {
   'Madinah': 'Medina',
   'Reciter': 'Người ngâm thơ kinh Koran',
   'Change': 'Thay đổi',
+  'Groups': 'Nhóm',
+  'Playlist': 'Danh sách phát',
+  'Create New Group': 'Tạo Nhóm Mới',
+  'No groups found': 'Không tìm thấy nhóm',
+  'No PlayList found': 'Không tìm thấy Danh sách phát',
+  'Create PlayList': 'Tạo Danh sách phát',
+  'Add New Note': 'Thêm Ghi chú Mới',
+  'No notes found': 'Không tìm thấy ghi chú',
   //
 };
 Map<String, String> tamil = {
@@ -2015,6 +2182,14 @@ Map<String, String> tamil = {
   'Madinah': 'மதீனா',
   'Reciter': 'குரான் ஓதுபவர்',
   'Change': 'மாற்று',
+  'Groups': 'குழுக்கள்',
+  'Playlist': 'PlayList',
+  'Create New Group': 'புதிய குழுவை உருவாக்கு',
+  'No groups found': 'குழுக்கள் எதுவும் இல்லை',
+  'No PlayList found': 'PlayList எதுவும் இல்லை',
+  'Create PlayList': 'PlayList உருவாக்கு',
+  'Add New Note': 'புதிய குறிப்பைச் சேர்க்கவும்',
+  'No notes found': 'குறிப்புகள் எதுவும் இல்லை',
   //
 };
 Map<String, String> italian = {
@@ -2122,5 +2297,13 @@ Map<String, String> italian = {
   'Madinah': 'Medina',
   'Reciter': 'Recitatore del Corano',
   'Change': 'Cambia',
+  'Groups': 'Gruppi',
+  'Playlist': 'Playlist',
+  'Create New Group': 'Crea nuovo gruppo',
+  'No groups found': 'Nessun gruppo trovato',
+  'No PlayList found': 'Nessuna playlist trovata',
+  'Create PlayList': 'Crea playlist',
+  'Add New Note': 'Aggiungi nuova nota',
+  'No notes found': 'Nessuna nota trovata',
   //
 };

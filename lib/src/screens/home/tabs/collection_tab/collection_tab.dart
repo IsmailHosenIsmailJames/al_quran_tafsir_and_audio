@@ -119,15 +119,15 @@ class _CollectionTabState extends State<CollectionTab> {
                       curve: Curves.easeIn,
                     );
                   },
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(FluentIcons.bookmark_24_filled),
-                      Gap(5),
+                      const Icon(FluentIcons.bookmark_24_filled),
+                      const Gap(5),
                       Text(
-                        'Groups',
-                        style: TextStyle(
+                        'Groups'.tr,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -161,15 +161,15 @@ class _CollectionTabState extends State<CollectionTab> {
                       curve: Curves.easeIn,
                     );
                   },
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.playlist_play_rounded),
-                      Gap(5),
+                      const Icon(Icons.playlist_play_rounded),
+                      const Gap(5),
                       Text(
-                        'Playlist',
-                        style: TextStyle(
+                        'Playlist'.tr,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -206,15 +206,15 @@ class _CollectionTabState extends State<CollectionTab> {
                       curve: Curves.easeIn,
                     );
                   },
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(FluentIcons.notepad_24_filled),
-                      Gap(5),
+                      const Icon(FluentIcons.notepad_24_filled),
+                      const Gap(5),
                       Text(
-                        'Notes',
-                        style: TextStyle(
+                        'Notes'.tr,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -283,13 +283,13 @@ class _CollectionTabState extends State<CollectionTab> {
             ),
           ),
           const Gap(10),
-          const Text('No PlayList found'),
+          Text('No PlayList found'.tr),
           const Gap(10),
           ElevatedButton.icon(
             onPressed: createANewPlayList,
             icon: const Icon(Icons.add),
-            label: const Text(
-              'Create PlayList',
+            label: Text(
+              'Create PlayList'.tr,
             ),
           ),
         ],
@@ -322,13 +322,13 @@ class _CollectionTabState extends State<CollectionTab> {
                     );
                     setState(() {});
                   },
-                  child: const Text('Create New Group'),
+                  child: Text('Create New Group'.tr),
                 ),
               ),
               if (collectionController.collectionList.isEmpty)
                 Gap(MediaQuery.of(context).size.height * 0.3),
               if (collectionController.collectionList.isEmpty)
-                const Text('No groups found'),
+                Text('No groups found'.tr),
             ],
           );
         }
