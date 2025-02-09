@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
@@ -58,11 +57,11 @@ class _SettingsPageState extends State<SettingsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           children: [
             Icon(FluentIcons.settings_24_regular),
             Gap(10),
-            Text('Settings'),
+            Text('Settings'.tr),
           ],
         ),
       ),
@@ -72,8 +71,8 @@ class _SettingsPageState extends State<SettingsPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Theme Brightness',
+            Text(
+              'Theme Brightness'.tr,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             const Gap(7),
@@ -88,7 +87,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 isExpanded: true,
                 items: [
-                  const DropdownMenuItem(
+                  DropdownMenuItem(
                     value: 'system',
                     child: Row(
                       children: [
@@ -98,11 +97,11 @@ class _SettingsPageState extends State<SettingsPage> {
                           size: 18,
                         ),
                         Gap(10),
-                        Text('System default'),
+                        Text('System default'.tr),
                       ],
                     ),
                   ),
-                  const DropdownMenuItem(
+                  DropdownMenuItem(
                     value: 'dark',
                     child: Row(
                       children: [
@@ -112,11 +111,11 @@ class _SettingsPageState extends State<SettingsPage> {
                           size: 18,
                         ),
                         Gap(10),
-                        Text('Dark'),
+                        Text('Dark'.tr),
                       ],
                     ),
                   ),
-                  const DropdownMenuItem(
+                  DropdownMenuItem(
                     value: 'light',
                     child: Row(
                       children: [
@@ -126,7 +125,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           size: 18,
                         ),
                         Gap(10),
-                        Text('Light'),
+                        Text('Light'.tr),
                       ],
                     ),
                   ),
@@ -134,8 +133,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            const Text(
-              'Quran Script Type',
+            Text(
+              'Quran Script Type'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -167,8 +166,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            const Text(
-              'Quran Font Size',
+            Text(
+              'Quran Font Size'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -223,8 +222,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            const Text(
-              'Translation Font Size',
+            Text(
+              'Translation Font Size'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -276,8 +275,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const Gap(15),
-            const Text(
-              'Translation Book',
+            Text(
+              'Translation Book'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -299,7 +298,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Book Name',
+                        'Book Name'.tr,
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
@@ -308,7 +307,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       const Gap(5),
                       Text(
-                        'Author',
+                        'Author'.tr,
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
@@ -317,7 +316,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       const Gap(5),
                       Text(
-                        'Language',
+                        'Language'.tr,
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
@@ -336,16 +335,16 @@ class _SettingsPageState extends State<SettingsPage> {
                       );
                       setState(() {});
                     },
-                    child: const Text(
-                      'Change',
+                    child: Text(
+                      'Change'.tr,
                     ),
                   )
                 ],
               ),
             ),
             const Gap(15),
-            const Text(
-              'Tafsir Book',
+            Text(
+              'Tafsir Book'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -367,7 +366,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Book Name',
+                        'Book Name'.tr,
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
@@ -376,7 +375,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       const Gap(5),
                       Text(
-                        'Author',
+                        'Author'.tr,
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
@@ -385,7 +384,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       const Gap(5),
                       Text(
-                        'Language',
+                        'Language'.tr,
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
@@ -404,16 +403,16 @@ class _SettingsPageState extends State<SettingsPage> {
                       );
                       setState(() {});
                     },
-                    child: const Text(
-                      'Change',
+                    child: Text(
+                      'Change'.tr,
                     ),
                   )
                 ],
               ),
             ),
             const Gap(15),
-            const Text(
-              'Audio Cached',
+            Text(
+              'Audio Cached'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -443,9 +442,9 @@ class _SettingsPageState extends State<SettingsPage> {
 
                     return getListOfCacheWidget(keys, data);
                   } else if (snapshot.hasError) {
-                    return const Center(
+                    return Center(
                       child: Text(
-                        'Cache Not Found',
+                        'Cache Not Found'.tr,
                       ),
                     );
                   } else if (snapshot.connectionState ==
@@ -469,7 +468,7 @@ class _SettingsPageState extends State<SettingsPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(width: 100, child: Text('Cache Size')),
+            SizedBox(width: 100, child: Text('Cache Size'.tr)),
             SizedBox(
               width: 100,
               child: FutureBuilder<int>(
@@ -496,22 +495,21 @@ class _SettingsPageState extends State<SettingsPage> {
                     // ignore: avoid_function_literals_in_foreach_calls
                     for (var element in value!) {
                       await File(element['path']).delete();
-                      log(element['path'], name: 'deleted');
                     }
                   }
                   setState(() {});
                 },
-                child: const Text('Clean'),
+                child: Text('Clean'.tr),
               ),
             ),
           ],
         ),
         const Divider(),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(width: 100, child: Text('Last Modified')),
-            SizedBox(width: 100, child: Text('Cache Size')),
+            SizedBox(width: 100, child: Text('Last Modified'.tr)),
+            SizedBox(width: 100, child: Text('Cache Size'.tr)),
             Gap(100),
           ],
         ),
@@ -542,11 +540,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       onPressed: () async {
                         for (var element in current) {
                           await File(element['path']).delete();
-                          log(element['path'], name: 'deleted');
                         }
                         setState(() {});
                       },
-                      child: const Text('Clean'),
+                      child: Text('Clean'.tr),
                     ),
                   ),
                 ),

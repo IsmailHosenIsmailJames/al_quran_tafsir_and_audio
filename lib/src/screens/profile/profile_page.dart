@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/model.dart';
+import 'package:al_quran_tafsir_and_audio/src/functions/get_native_surah_name.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/home_page_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/notes/controller/notes_controller.dart';
@@ -267,9 +268,8 @@ class _ProfilePageState extends State<ProfilePage> {
               Row(
                 children: [
                   Text(
-                    allChaptersInfo[currentTrackingModel.surahNumber]
-                            ['name_simple'] ??
-                        '',
+                    getSurahNativeName(Get.locale?.languageCode ?? 'en',
+                        currentTrackingModel.surahNumber),
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -277,18 +277,24 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   const Gap(10),
                   (didNotPlayed)
-                      ? const Text(
-                          "Didn't played yet",
+                      ? Text(
+                          "Didn't played yet".tr,
                           style: TextStyle(
                             fontSize: 10,
                             color: Colors.grey,
                           ),
                         )
-                      : Text(
-                          'Listened: ${formatDuration(Duration(seconds: currentTrackingModel.totalPlayedDurationInSeconds))} | Played ${currentTrackingModel.playedAyah.length} / ${ayahCount[currentTrackingModel.surahNumber]} ayahs',
-                          style: const TextStyle(
-                            fontSize: 10,
-                            color: Colors.grey,
+                      : SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.54,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Text(
+                              '${'Listened'.tr}: ${formatDuration(Duration(seconds: currentTrackingModel.totalPlayedDurationInSeconds))} | ${'Played'.tr} ${currentTrackingModel.playedAyah.length} / ${ayahCount[currentTrackingModel.surahNumber]} ${'ayahs'.tr}',
+                              style: const TextStyle(
+                                fontSize: 10,
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         ),
                 ],
