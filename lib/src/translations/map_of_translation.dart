@@ -88,27 +88,28 @@ List<String> used20LanguageList = [
   'Italian',
 ];
 const Map<String, String> translations = {
-  'chinese': '创建群组',
-  'hindi': 'समूह बनाएं',
-  'english': 'Create Group',
-  'spanish': 'Crear grupo',
-  'arabic': 'إنشاء مجموعة',
-  'bengali': 'গ্রুপ তৈরি করুন',
-  'portuguese': 'Criar Grupo',
-  'russian': 'Создать группу',
-  'japanese': 'グループを作成',
-  'punjabi': 'ਗਰੁੱਪ ਬਣਾਓ',
-  'german': 'Gruppe erstellen',
-  'french': 'Créer un groupe',
-  'indonesian': 'Buat Grup',
-  'urdu': 'گروپ بنائیں',
-  'swahili': 'Unda Kikundi',
-  'korean': '그룹 만들기',
-  'turkish': 'Grup Oluştur',
-  'vietnamese': 'Tạo nhóm',
-  'tamil': 'குழுவை உருவாக்கு',
-  'italian': 'Crea Gruppo',
+  'chinese': '添加到播放列表',
+  'hindi': 'प्लेलिस्ट में जोड़ें',
+  'english': 'Add to Playlist',
+  'spanish': 'Añadir a la lista de reproducción',
+  'arabic': 'أضف إلى قائمة التشغيل',
+  'bengali': 'প্লেলিস্টে যোগ করুন',
+  'portuguese': 'Adicionar à Playlist',
+  'russian': 'Добавить в плейлист',
+  'japanese': 'プレイリストに追加',
+  'punjabi': 'ਪਲੇਲਿਸਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ',
+  'german': 'Zur Wiedergabeliste hinzufügen',
+  'french': 'Ajouter à la playlist',
+  'indonesian': 'Tambahkan ke Daftar Putar',
+  'urdu': 'پلے لسٹ میں شامل کریں',
+  'swahili': 'Ongeza kwenye Orodha ya kucheza',
+  'korean': '재생 목록에 추가',
+  'turkish': 'Oynatma Listesine Ekle',
+  'vietnamese': 'Thêm vào Danh sách phát',
+  'tamil': 'PlayList இல் சேர்',
+  'italian': 'Aggiungi alla playlist',
 };
+
 Map<String, String> chinese = {
   'Al Quran': '古兰经', 'Privacy Policy': '隐私政策',
   'Select a language for app': '选择应用语言',
@@ -252,6 +253,11 @@ Map<String, String> chinese = {
   'Collection name already exists': '收藏集名称已存在',
   'Save Changes': '保存更改',
   'Create Group': '创建群组',
+  'Adding to:': '添加到：',
+  'Selected:': '已选择：',
+  'Done': '完成',
+  'Already Exits': '已存在',
+  'Add to Playlist': '添加到播放列表',
 
   ///
 };
@@ -413,6 +419,11 @@ Map<String, String> hindi = {
   'Collection name already exists': 'संग्रह का नाम पहले से मौजूद है',
   'Save Changes': 'बदलाव सुरक्षित करें',
   'Create Group': 'समूह बनाएं',
+  'Adding to:': 'इसमें जोड़ना:',
+  'Selected:': 'चयनित:',
+  'Done': 'हो गया',
+  'Already Exits': 'पहले से मौजूद है',
+  'Add to Playlist': 'प्लेलिस्ट में जोड़ें',
 
   ///
 };
@@ -570,6 +581,11 @@ Map<String, String> english = {
   'Collection name already exists': 'Collection name already exists',
   'Save Changes': 'Save Changes',
   'Create Group': 'Create Group',
+  'Adding to:': 'Adding to:',
+  'Selected:': 'Selected:',
+  'Done': 'Done',
+  'Already Exits': 'Already Exists',
+  'Add to Playlist': 'Add to Playlist',
 
   ///
 };
@@ -744,6 +760,11 @@ Map<String, String> spanish = {
   'Collection name already exists': 'El nombre de la colección ya existe',
   'Save Changes': 'Guardar cambios',
   'Create Group': 'Crear grupo',
+  'Adding to:': 'Añadiendo a:',
+  'Selected:': 'Seleccionado:',
+  'Done': 'Hecho',
+  'Already Exits': 'Ya existe',
+  'Add to Playlist': 'Añadir a la lista de reproducción',
 
   ///
 };
@@ -896,6 +917,11 @@ Map<String, String> arabic = {
   'Collection name already exists': 'اسم المجموعة موجود بالفعل',
   'Save Changes': 'حفظ التغييرات',
   'Create Group': 'إنشاء مجموعة',
+  'Adding to:': 'إضافة إلى:',
+  'Selected:': 'تم الاختيار:',
+  'Done': 'تم',
+  'Already Exits': 'موجود بالفعل',
+  'Add to Playlist': 'أضف إلى قائمة التشغيل',
 
   ///
 };
@@ -1057,6 +1083,11 @@ Map<String, String> bengali = {
   'Collection name already exists': 'সংগ্রহের নাম ইতিমধ্যে বিদ্যমান',
   'Save Changes': 'পরিবর্তন সংরক্ষণ করুন',
   'Create Group': 'গ্রুপ তৈরি করুন',
+  'Adding to:': 'যোগ করা হচ্ছে:',
+  'Selected:': 'নির্বাচিত:',
+  'Done': 'হয়ে গেছে',
+  'Already Exits': 'ইতিমধ্যেই বিদ্যমান',
+  'Add to Playlist': 'প্লেলিস্টে যোগ করুন',
 
   ///
 };
@@ -1224,6 +1255,11 @@ Map<String, String> portuguese = {
   'Collection name already exists': 'Nome da coleção já existe',
   'Save Changes': 'Salvar alterações',
   'Create Group': 'Criar Grupo',
+  'Adding to:': 'Adicionando a:',
+  'Selected:': 'Selecionado:',
+  'Done': 'Feito',
+  'Already Exits': 'Já Existe',
+  'Add to Playlist': 'Adicionar à Playlist',
 
   ///
 };
@@ -1390,6 +1426,11 @@ Map<String, String> russian = {
   'Collection name already exists': 'Название коллекции уже существует',
   'Save Changes': 'Сохранить изменения',
   'Create Group': 'Создать группу',
+  'Adding to:': 'Добавление в:',
+  'Selected:': 'Выбрано:',
+  'Done': 'Готово',
+  'Already Exits': 'Уже существует',
+  'Add to Playlist': 'Добавить в плейлист',
 
   ///
 };
@@ -1540,6 +1581,11 @@ Map<String, String> japanese = {
   'Collection name already exists': 'コレクション名は既に存在します',
   'Save Changes': '変更を保存',
   'Create Group': 'グループを作成',
+  'Adding to:': '追加先：',
+  'Selected:': '選択済み：',
+  'Done': '完了',
+  'Already Exits': '既に存在します',
+  'Add to Playlist': 'プレイリストに追加',
 
   ///
 };
@@ -1696,6 +1742,11 @@ Map<String, String> punjabi = {
   'Collection name already exists': 'ਸੰਗ੍ਰਹਿ ਦਾ ਨਾਮ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਮੌਜੂਦ ਹੈ',
   'Save Changes': 'ਬਦਲਾਅ ਸੁਰੱਖਿਅਤ ਕਰੋ',
   'Create Group': 'ਗਰੁੱਪ ਬਣਾਓ',
+  'Adding to:': 'ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਨਾ:',
+  'Selected:': 'ਚੁਣਿਆ ਗਿਆ:',
+  'Done': 'ਹੋ ਗਿਆ',
+  'Already Exits': 'ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਮੌਜੂਦ ਹੈ',
+  'Add to Playlist': 'ਪਲੇਲਿਸਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ',
 
   ///
 };
@@ -1865,6 +1916,11 @@ Map<String, String> german = {
   'Collection name already exists': 'Sammlungsname existiert bereits',
   'Save Changes': 'Änderungen speichern',
   'Create Group': 'Gruppe erstellen',
+  'Adding to:': 'Hinzufügen zu:',
+  'Selected:': 'Ausgewählt:',
+  'Done': 'Fertig',
+  'Already Exits': 'Existiert bereits',
+  'Add to Playlist': 'Zur Wiedergabeliste hinzufügen',
 
   ///
 };
@@ -2034,6 +2090,11 @@ Map<String, String> french = {
   'Collection name already exists': 'Le nom de la collection existe déjà',
   'Save Changes': 'Sauvegarder les modifications',
   'Create Group': 'Créer un groupe',
+  'Adding to:': 'Ajout à :',
+  'Selected:': 'Sélectionné:',
+  'Done': 'Terminé',
+  'Already Exits': 'Existe déjà',
+  'Add to Playlist': 'Ajouter à la playlist',
 
   ///
 };
@@ -2194,6 +2255,11 @@ Map<String, String> indonesian = {
   'Collection name already exists': 'Nama koleksi sudah ada',
   'Save Changes': 'Simpan Perubahan',
   'Create Group': 'Buat Grup',
+  'Adding to:': 'Menambahkan ke:',
+  'Selected:': 'Dipilih:',
+  'Done': 'Selesai',
+  'Already Exits': 'Sudah Ada',
+  'Add to Playlist': 'Tambahkan ke Daftar Putar',
 
   ///
 };
@@ -2353,6 +2419,11 @@ Map<String, String> urdu = {
   'Collection name already exists': 'مجموعہ کا نام پہلے سے موجود ہے۔',
   'Save Changes': 'تبدیلیاں محفوظ کریں',
   'Create Group': 'گروپ بنائیں',
+  'Adding to:': 'میں شامل کرنا:',
+  'Selected:': 'منتخب شدہ:',
+  'Done': 'ہو گیا',
+  'Already Exits': 'پہلے سے موجود ہے',
+  'Add to Playlist': 'پلے لسٹ میں شامل کریں',
 
   ///
 };
@@ -2513,6 +2584,11 @@ Map<String, String> swahili = {
   'Collection name already exists': 'Jina la mkusanyiko tayari lipo',
   'Save Changes': 'Hifadhi Mabadiliko',
   'Create Group': 'Unda Kikundi',
+  'Adding to:': 'Inaongezwa kwa:',
+  'Selected:': 'Imechaguliwa:',
+  'Done': 'Nimemaliza',
+  'Already Exits': 'Tayari Ipo',
+  'Add to Playlist': 'Ongeza kwenye Orodha ya kucheza',
 
   ///
 };
@@ -2663,6 +2739,11 @@ Map<String, String> korean = {
   'Collection name already exists': '컬렉션 이름이 이미 있습니다.',
   'Save Changes': '변경 사항 저장',
   'Create Group': '그룹 만들기',
+  'Adding to:': '추가 대상:',
+  'Selected:': '선택됨:',
+  'Done': '완료',
+  'Already Exits': '이미 존재합니다',
+  'Add to Playlist': '재생 목록에 추가',
 
   ///
 };
@@ -2825,6 +2906,11 @@ Map<String, String> turkish = {
   'Collection name already exists': 'Koleksiyon adı zaten mevcut',
   'Save Changes': 'Değişiklikleri Kaydet',
   'Create Group': 'Grup Oluştur',
+  'Adding to:': 'Ekleniyor:',
+  'Selected:': 'Seçilen:',
+  'Done': 'Bitti',
+  'Already Exits': 'Zaten Var',
+  'Add to Playlist': 'Oynatma Listesine Ekle',
 
   ///
 };
@@ -2986,6 +3072,11 @@ Map<String, String> vietnamese = {
   'Collection name already exists': 'Tên bộ sưu tập đã tồn tại',
   'Save Changes': 'Lưu thay đổi',
   'Create Group': 'Tạo nhóm',
+  'Adding to:': 'Đang thêm vào:',
+  'Selected:': 'Đã chọn:',
+  'Done': 'Xong',
+  'Already Exits': 'Đã tồn tại',
+  'Add to Playlist': 'Thêm vào Danh sách phát',
 
   ///
 };
@@ -3156,6 +3247,11 @@ Map<String, String> tamil = {
   'Collection name already exists': 'சேகரிப்பு பெயர் ஏற்கனவே உள்ளது',
   'Save Changes': 'மாற்றங்களை சேமி',
   'Create Group': 'குழுவை உருவாக்கு',
+  'Adding to:': 'சேர்க்கப்படுகிறது:',
+  'Selected:': 'தேர்ந்தெடுக்கப்பட்டது:',
+  'Done': 'முடிந்தது',
+  'Already Exits': 'ஏற்கனவே உள்ளது',
+  'Add to Playlist': 'PlayList இல் சேர்',
 
   ///
 };
@@ -3324,6 +3420,11 @@ Map<String, String> italian = {
   'Collection name already exists': 'Il nome della raccolta esiste già',
   'Save Changes': 'Salva modifiche',
   'Create Group': 'Crea Gruppo',
+  'Adding to:': 'Aggiunta a:',
+  'Selected:': 'Selezionato:',
+  'Done': 'Fatto',
+  'Already Exits': 'Esiste già',
+  'Add to Playlist': 'Aggiungi alla playlist',
 
   ///
 };

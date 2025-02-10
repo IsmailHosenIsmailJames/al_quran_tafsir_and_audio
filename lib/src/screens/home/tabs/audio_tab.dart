@@ -139,7 +139,7 @@ class _AudioTabState extends State<AudioTab> {
                         children: [
                           Row(
                             children: [
-                              const Text('Adding to'),
+                              Text('${'Adding to:'.tr} '),
                               const Gap(5),
                               Text(
                                 homePageController.nameOfEditingPlaylist.value,
@@ -155,7 +155,7 @@ class _AudioTabState extends State<AudioTab> {
                             child: Row(
                               children: [
                                 Text(
-                                    'Selected: ${homePageController.selectedForPlaylist.length}'),
+                                    '${'Selected:'.tr} ${homePageController.selectedForPlaylist.length}'),
                                 const Spacer(),
                                 const Gap(5),
                                 OutlinedButton.icon(
@@ -170,7 +170,7 @@ class _AudioTabState extends State<AudioTab> {
                                         .clear();
                                   },
                                   icon: const Icon(Icons.close),
-                                  label: const Text('Cancel'),
+                                  label: Text('Cancel'.tr),
                                 ),
                                 const Gap(5),
                                 ElevatedButton.icon(
@@ -178,7 +178,7 @@ class _AudioTabState extends State<AudioTab> {
                                     addSelectedDataToPlayList(context);
                                   },
                                   icon: const Icon(Icons.done),
-                                  label: const Text('Done'),
+                                  label: Text('Done'.tr),
                                 ),
                               ],
                             ),
@@ -446,8 +446,8 @@ class _AudioTabState extends State<AudioTab> {
                   child: Column(
                     children: [
                       const Gap(10),
-                      const Text(
-                        'Add to',
+                      Text(
+                        'Adding to:'.tr,
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -479,7 +479,7 @@ class _AudioTabState extends State<AudioTab> {
                                 if (isAlreadyExits) {
                                   toastification.show(
                                     context: context,
-                                    title: const Text('Already Exits'),
+                                    title: Text('Already Exits'.tr),
                                     type: ToastificationType.info,
                                     autoCloseDuration:
                                         const Duration(seconds: 2),
@@ -493,9 +493,7 @@ class _AudioTabState extends State<AudioTab> {
                                   Navigator.pop(context);
                                   toastification.show(
                                     context: context,
-                                    title: Text(
-                                      'Successfully added to ${playListName[index]}',
-                                    ),
+                                    title: Text('Successful'.tr),
                                     autoCloseDuration:
                                         const Duration(seconds: 3),
                                     type: ToastificationType.success,
@@ -521,7 +519,7 @@ class _AudioTabState extends State<AudioTab> {
       itemBuilder: (context) {
         return [
           PopupMenuItem(
-            value: 'Favorite',
+            value: 'Favorite'.tr,
             child: Row(
               children: [
                 Icon(
@@ -534,13 +532,13 @@ class _AudioTabState extends State<AudioTab> {
               ],
             ),
           ),
-          const PopupMenuItem(
-            value: 'Playlist',
+          PopupMenuItem(
+            value: 'Playlist'.tr,
             child: Row(
               children: [
                 Icon(Icons.playlist_add_rounded),
                 Gap(7),
-                Text('Add to Playlist'),
+                Text('Add to Playlist'.tr),
               ],
             ),
           ),
