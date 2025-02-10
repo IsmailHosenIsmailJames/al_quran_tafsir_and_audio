@@ -5,6 +5,7 @@ import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/c
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/profile_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/quran_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dart';
+import 'package:al_quran_tafsir_and_audio/src/translations/map_of_translation.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -126,6 +127,7 @@ class _HomePageState extends State<HomePage> {
 
 Dialog getSearchWidgetPopup(BuildContext context) {
   TextEditingController controller = TextEditingController();
+  String lanCode = Get.locale?.languageCode ?? 'en';
   return Dialog(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(7),
@@ -164,10 +166,44 @@ Dialog getSearchWidgetPopup(BuildContext context) {
               leading: const Icon(
                 Icons.search_rounded,
               ),
-              hintText: 'type to search...',
+              hintText: '${'type to search'.tr}...',
             ),
           ),
-          const Gap(10),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text('${'Search'.tr} ${'Language'.tr}'),
+                const Gap(10),
+                Expanded(
+                  child: SizedBox(
+                    height: 40,
+                    child: DropdownButtonFormField(
+                      padding: EdgeInsets.zero,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        contentPadding: EdgeInsets.only(left: 10),
+                      ),
+                      value: lanCode,
+                      items: List.generate(
+                        used20LanguageMap.length,
+                        (index) {
+                          return DropdownMenuItem(
+                            value: used20LanguageMap[index]['Code']!,
+                            onTap: () {
+                              lanCode = used20LanguageMap[index]['Code']!;
+                            },
+                            child: Text(used20LanguageMap[index]['Native']!),
+                          );
+                        },
+                      ),
+                      onChanged: (value) {},
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: SizedBox(
@@ -177,10 +213,13 @@ Dialog getSearchWidgetPopup(BuildContext context) {
                 onPressed: () {
                   Navigator.pop(context);
                   Get.to(
-                    () => ShowSearchResult(searchQuery: controller.text),
+                    () => ShowSearchResult(
+                      searchQuery: controller.text,
+                      lanCode: lanCode,
+                    ),
                   );
                 },
-                label: const Text('Search'),
+                label: Text('Search'.tr),
                 icon: const Icon(Icons.search_rounded),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
@@ -14,7 +15,9 @@ import 'package:http/http.dart';
 
 class ShowSearchResult extends StatefulWidget {
   final String searchQuery;
-  const ShowSearchResult({super.key, required this.searchQuery});
+  final String lanCode;
+  const ShowSearchResult(
+      {super.key, required this.searchQuery, required this.lanCode});
 
   @override
   State<ShowSearchResult> createState() => _ShowSearchResultState();
@@ -32,10 +35,12 @@ class _ShowSearchResultState extends State<ShowSearchResult> {
   void searchData(String q, bool newSearch) async {
     isLoading = true;
     String url =
-        'https://api.quran.com/api/v4/search?q=$q&language=${Get.locale?.languageCode}';
+        'https://api.quran.com/api/v4/search?q=$q&language=${widget.lanCode}';
     try {
       await get(Uri.parse(url)).then(
         (value) {
+          log(value.body);
+          log(value.statusCode.toString());
           isLoading = false;
           if (value.statusCode == 200) {
             Map data = jsonDecode(value.body);
@@ -56,6 +61,7 @@ class _ShowSearchResultState extends State<ShowSearchResult> {
         },
       );
     } catch (e) {
+      log(e.toString());
       searchResModel = null;
     }
 

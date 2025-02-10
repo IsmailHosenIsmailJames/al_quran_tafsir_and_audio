@@ -10,7 +10,6 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -214,28 +213,6 @@ class MyAppDrawer extends StatelessWidget {
             ),
             title: Text(
               'Give Feedback'.tr,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ListTile(
-            minTileHeight: 45,
-            onTap: () async {
-              final InAppReview inAppReview = InAppReview.instance;
-
-              if (await inAppReview.isAvailable()) {
-                inAppReview.requestReview();
-              }
-            },
-            leading: Icon(
-              Icons.star_rounded,
-              color: Colors.green.shade600,
-              size: 20,
-            ),
-            title: Text(
-              'Rate App'.tr,
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

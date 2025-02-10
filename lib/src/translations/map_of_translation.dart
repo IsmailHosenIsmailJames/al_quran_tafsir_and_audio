@@ -89,26 +89,26 @@ List<String> used20LanguageList = [
 ];
 
 Map<String, String> translations = {
-  'chinese': '缓存大小',
-  'hindi': 'कैश का आकार',
-  'english': 'Cache Size',
-  'spanish': 'Tamaño de caché',
-  'arabic': 'حجم ذاكرة التخزين المؤقت',
-  'bengali': 'ক্যাশের আকার',
-  'portuguese': 'Tamanho do cache',
-  'russian': 'Размер кэша',
-  'japanese': 'キャッシュサイズ',
-  'punjabi': 'ਕੈਸ਼ ਦਾ ਆਕਾਰ',
-  'german': 'Cache-Größe',
-  'french': 'Taille du cache',
-  'indonesian': 'Ukuran Cache',
-  'urdu': 'کیش کا حجم',
-  'swahili': 'Ukubwa wa Cache',
-  'korean': '캐시 크기',
-  'turkish': 'Önbellek Boyutu',
-  'vietnamese': 'Kích thước bộ nhớ cache',
-  'tamil': 'Cache அளவு',
-  'italian': 'Dimensione della cache',
+  'chinese': '搜索',
+  'hindi': 'खोजें',
+  'english': 'Search',
+  'spanish': 'Buscar',
+  'arabic': 'بحث',
+  'bengali': 'অনুসন্ধান',
+  'portuguese': 'Pesquisar',
+  'russian': 'Поиск',
+  'japanese': '検索',
+  'punjabi': 'ਖੋਜ',
+  'german': 'Suche',
+  'french': 'Rechercher',
+  'indonesian': 'Cari',
+  'urdu': 'تلاش',
+  'swahili': 'Tafuta',
+  'korean': '검색',
+  'turkish': 'Ara',
+  'vietnamese': 'Tìm kiếm',
+  'tamil': 'தேடல்',
+  'italian': 'Cerca',
 };
 
 Map<String, String> chinese = {
@@ -226,6 +226,8 @@ Map<String, String> chinese = {
   'Cache Size': '缓存大小',
   'Clean': '清除',
   'Last Modified': '上次修改',
+  'type to search': '输入以搜索',
+  'Search': '搜索',
   //
 };
 Map<String, String> hindi = {
@@ -356,6 +358,8 @@ Map<String, String> hindi = {
   'Cache Size': 'कैश का आकार',
   'Clean': 'साफ़ करें',
   'Last Modified': 'अंतिम बार संशोधित',
+  'type to search': 'खोजने के लिए टाइप करें',
+  'Search': 'खोजें',
   //
 };
 Map<String, String> english = {
@@ -481,6 +485,8 @@ Map<String, String> english = {
   'Cache Size': 'Cache Size',
   'Clean': 'Clean',
   'Last Modified': 'Last Modified',
+  'type to search': 'Type to search',
+  'Search': 'Search',
   //
 };
 Map<String, String> spanish = {
@@ -621,6 +627,8 @@ Map<String, String> spanish = {
   'Cache Size': 'Tamaño de caché',
   'Clean': 'Limpiar',
   'Last Modified': 'Última modificación',
+  'type to search': 'Escribe para buscar',
+  'Search': 'Buscar',
   //
 };
 Map<String, String> arabic = {
@@ -742,6 +750,8 @@ Map<String, String> arabic = {
   'Cache Size': 'حجم ذاكرة التخزين المؤقت',
   'Clean': 'تنظيف',
   'Last Modified': 'آخر تعديل',
+  'type to search': 'اكتب للبحث',
+  'Search': 'بحث',
   //
 };
 Map<String, String> bengali = {
@@ -872,6 +882,8 @@ Map<String, String> bengali = {
   'Cache Size': 'ক্যাশের আকার',
   'Clean': 'পরিষ্কার',
   'Last Modified': 'সর্বশেষ পরিবর্তিত',
+  'type to search': 'অনুসন্ধান করতে টাইপ করুন',
+  'Search': 'অনুসন্ধান',
   //
 };
 Map<String, String> portuguese = {
@@ -1006,6 +1018,8 @@ Map<String, String> portuguese = {
   'Cache Size': 'Tamanho do cache',
   'Clean': 'Limpar',
   'Last Modified': 'Última modificação',
+  'type to search': 'Digite para pesquisar',
+  'Search': 'Pesquisar',
   //
 };
 Map<String, String> russian = {
@@ -1140,6 +1154,8 @@ Map<String, String> russian = {
   'Cache Size': 'Размер кэша',
   'Clean': 'Очистить',
   'Last Modified': 'Последнее изменение',
+  'type to search': 'Введите для поиска',
+  'Search': 'Поиск',
   //
 };
 Map<String, String> japanese = {
@@ -1259,6 +1275,8 @@ Map<String, String> japanese = {
   'Cache Size': 'キャッシュサイズ',
   'Clean': 'クリーン',
   'Last Modified': '最終更新',
+  'type to search': '検索するには入力',
+  'Search': '検索',
   //
 };
 Map<String, String> punjabi = {
@@ -1384,6 +1402,8 @@ Map<String, String> punjabi = {
   'Cache Size': 'ਕੈਸ਼ ਦਾ ਆਕਾਰ',
   'Clean': 'ਸਾਫ਼',
   'Last Modified': 'ਆਖਰੀ ਵਾਰ ਸੋਧਿਆ ਗਿਆ',
+  'type to search': 'ਖੋਜਣ ਲਈ ਟਾਈਪ ਕਰੋ',
+  'Search': 'ਖੋਜ',
   //
 };
 Map<String, String> german = {
@@ -1519,6 +1539,8 @@ Map<String, String> german = {
   'Cache Size': 'Cache-Größe',
   'Clean': 'Säubern',
   'Last Modified': 'Zuletzt geändert',
+  'type to search': 'Zum Suchen tippen',
+  'Search': 'Suche',
   //
 };
 Map<String, String> french = {
@@ -1654,6 +1676,8 @@ Map<String, String> french = {
   'Cache Size': 'Taille du cache',
   'Clean': 'Nettoyer',
   'Last Modified': 'Dernière modification',
+  'type to search': 'Tapez pour rechercher',
+  'Search': 'Rechercher',
   //
 };
 Map<String, String> indonesian = {
@@ -1782,6 +1806,8 @@ Map<String, String> indonesian = {
   'Cache Size': 'Ukuran Cache',
   'Clean': 'Bersihkan',
   'Last Modified': 'Terakhir Diubah',
+  'type to search': 'Ketik untuk mencari',
+  'Search': 'Cari',
   //
 };
 Map<String, String> urdu = {
@@ -1909,6 +1935,8 @@ Map<String, String> urdu = {
   'Cache Size': 'کیش کا حجم',
   'Clean': 'صاف',
   'Last Modified': 'آخری ترمیم',
+  'type to search': 'تلاش کرنے کے لیے ٹائپ کریں',
+  'Search': 'تلاش',
   //
 };
 Map<String, String> swahili = {
@@ -2036,6 +2064,8 @@ Map<String, String> swahili = {
   'Cache Size': 'Ukubwa wa Cache',
   'Clean': 'Safi',
   'Last Modified': 'Ilibadilishwa Mwisho',
+  'type to search': 'Andika ili utafute',
+  'Search': 'Tafuta',
   //
 };
 Map<String, String> korean = {
@@ -2155,6 +2185,8 @@ Map<String, String> korean = {
   'Cache Size': '캐시 크기',
   'Clean': '청소',
   'Last Modified': '최종 수정',
+  'type to search': '검색하려면 입력하세요',
+  'Search': '검색',
   //
 };
 Map<String, String> turkish = {
@@ -2284,6 +2316,8 @@ Map<String, String> turkish = {
   'Cache Size': 'Önbellek Boyutu',
   'Clean': 'Temizle',
   'Last Modified': 'Son Değiştirilme',
+  'type to search': 'Aramak için yazın',
+  'Search': 'Ara',
   //
 };
 Map<String, String> vietnamese = {
@@ -2413,6 +2447,8 @@ Map<String, String> vietnamese = {
   'Cache Size': 'Kích thước bộ nhớ cache',
   'Clean': 'Làm sạch',
   'Last Modified': 'Sửa đổi lần cuối',
+  'type to search': 'Nhập để tìm kiếm',
+  'Search': 'Tìm kiếm',
   //
 };
 Map<String, String> tamil = {
@@ -2551,6 +2587,8 @@ Map<String, String> tamil = {
   'Cache Size': 'Cache அளவு',
   'Clean': 'சுத்தம்',
   'Last Modified': 'கடைசியாக மாற்றப்பட்டது',
+  'type to search': 'தேட தட்டச்சு செய்க',
+  'Search': 'தேடல்',
   //
 };
 Map<String, String> italian = {
@@ -2685,5 +2723,7 @@ Map<String, String> italian = {
   'Cache Size': 'Dimensione della cache',
   'Clean': 'Pulisci',
   'Last Modified': 'Ultima modifica',
+  'type to search': 'Digita per cercare',
+  'Search': 'Cerca',
   //
 };
