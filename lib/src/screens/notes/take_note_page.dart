@@ -59,8 +59,8 @@ class _TakeNotePageState extends State<TakeNotePage> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 5,
-        title: const Text(
-          'Take Note',
+        title: Text(
+          'Take Note'.tr,
         ),
         actions: [
           ElevatedButton.icon(
@@ -90,7 +90,7 @@ class _TakeNotePageState extends State<TakeNotePage> {
             icon: const Icon(
               Icons.done,
             ),
-            label: Text(widget.previousData == null ? 'Save' : 'Update'),
+            label: Text(widget.previousData == null ? 'Save'.tr : 'Update'.tr),
           ),
         ],
       ),
@@ -102,9 +102,9 @@ class _TakeNotePageState extends State<TakeNotePage> {
               Row(
                 children: [
                   const Gap(8),
-                  const Text(
-                    'Ayahs',
-                    style: TextStyle(
+                  Text(
+                    'ayahs'.tr,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -125,7 +125,7 @@ class _TakeNotePageState extends State<TakeNotePage> {
                         setState(() {});
                       },
                       icon: const Icon(Icons.add),
-                      label: const Text('Add'),
+                      label: Text('Add'.tr),
                     ),
                   ),
                 ],
@@ -138,7 +138,7 @@ class _TakeNotePageState extends State<TakeNotePage> {
                   borderRadius: BorderRadius.circular(7),
                 ),
                 child: ayahsListKey.isEmpty
-                    ? const Text('No ayahs selected')
+                    ? Text('No ayahs selected'.tr)
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -175,11 +175,11 @@ class _TakeNotePageState extends State<TakeNotePage> {
                       ),
               ),
               const Gap(10),
-              const Padding(
-                padding: EdgeInsets.only(left: 8),
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
                 child: Text(
-                  'Notes',
-                  style: TextStyle(
+                  'Notes'.tr,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),

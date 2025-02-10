@@ -175,26 +175,6 @@ class MyAppDrawer extends StatelessWidget {
           ListTile(
             minTileHeight: 45,
             onTap: () {
-              Get.to(
-                () => const AboutAppPage(),
-              );
-            },
-            leading: Icon(
-              Icons.info_rounded,
-              color: Colors.green.shade600,
-              size: 20,
-            ),
-            title: Text(
-              'About App'.tr,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ListTile(
-            minTileHeight: 45,
-            onTap: () {
               Navigator.pop(context);
               final Uri emailLaunchUri = Uri(
                 scheme: 'mailto',
@@ -294,6 +274,27 @@ class MyAppDrawer extends StatelessWidget {
             ),
             title: Text(
               'About Developer'.tr,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            minTileHeight: 45,
+            onTap: () {
+              Navigator.pop(context);
+              Get.to(
+                () => const AboutAppPage(),
+              );
+            },
+            leading: Icon(
+              Icons.info_rounded,
+              color: Colors.green.shade600,
+              size: 20,
+            ),
+            title: Text(
+              'About App'.tr,
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

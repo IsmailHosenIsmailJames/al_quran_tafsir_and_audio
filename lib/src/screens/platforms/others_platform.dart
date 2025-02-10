@@ -22,42 +22,11 @@ class OthersPlatform extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text:
-                              'We are happy to say now Al Quran Tafsir and Audio ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'app also support on ',
-                        ),
-                        TextSpan(
-                          text: 'Windows, Linux & Web. ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextSpan(
-                          text:
-                              'All these platform have both mobile view and desktop view depends on your app window width. If you have Computer, then Make sure that you have installed our Al Quran Tafsir & Audio application.',
-                        ),
-                      ],
-                    ),
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
-                    textAlign: TextAlign.justify,
-                  ),
-                  const Gap(50),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
                     child: Text(
-                      'Get Windows installer here:',
-                      style: TextStyle(
+                      '${'Get Windows installer here'.tr}:',
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
@@ -91,10 +60,10 @@ class OthersPlatform extends StatelessWidget {
                     ),
                   ),
                   const Gap(20),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      'Get Linux build here:',
+                      '${'Get Linux build here'.tr}:',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -129,10 +98,10 @@ class OthersPlatform extends StatelessWidget {
                     ),
                   ),
                   const Gap(20),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      'Go to our Web App:',
+                      '${'Go to our Web App'.tr}:',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,

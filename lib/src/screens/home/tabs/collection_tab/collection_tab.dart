@@ -968,8 +968,8 @@ class _CollectionTabState extends State<CollectionTab> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Name of the PlayList',
+                Text(
+                  'Name of the PlayList'.tr,
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -988,15 +988,15 @@ class _CollectionTabState extends State<CollectionTab> {
                   ),
                   child: TextFormField(
                     controller: playListController,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter the name of the PlayList',
+                    decoration: InputDecoration(
+                      hintText: 'Enter the name of the PlayList'.tr,
                       border: InputBorder.none,
                     ),
                     autofocus: true,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter the name of the PlayList';
+                        return 'Please enter the name of the PlayList'.tr;
                       } else {
                         return null;
                       }
@@ -1013,8 +1013,9 @@ class _CollectionTabState extends State<CollectionTab> {
                             .containsKey(playListController.text.trim())) {
                           toastification.show(
                             context: context,
-                            title: const Text(
-                                'PlayList already exists or name is not allowed'),
+                            title: Text(
+                                'PlayList already exists or name is not allowed'
+                                    .tr),
                             type: ToastificationType.error,
                             autoCloseDuration: const Duration(seconds: 2),
                           );
@@ -1028,16 +1029,15 @@ class _CollectionTabState extends State<CollectionTab> {
                       } else {
                         toastification.show(
                           context: context,
-                          title:
-                              const Text('Empty PlayList name is not allowed'),
+                          title: Text('Empty PlayList name is not allowed'.tr),
                           type: ToastificationType.error,
                           autoCloseDuration: const Duration(seconds: 2),
                         );
                       }
                     },
                     icon: const Icon(Icons.add),
-                    label: const Text(
-                      'Create PlayList',
+                    label: Text(
+                      'Create PlayList'.tr,
                     ),
                   ),
                 ),

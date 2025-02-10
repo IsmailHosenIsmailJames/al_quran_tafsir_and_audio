@@ -114,7 +114,7 @@ class ManageQuranAudio {
     await audioPlayer.stop();
     reciter ??= findRecitationModel();
     List<LockCachingAudioSource> audioSources = [];
-    int ayahNumber = ayahCount[surahNumber];
+    int ayahNumber = ayahCount[surahNumber + 1];
     for (var i = 0; i < ayahNumber; i++) {
       audioSources.add(
         LockCachingAudioSource(

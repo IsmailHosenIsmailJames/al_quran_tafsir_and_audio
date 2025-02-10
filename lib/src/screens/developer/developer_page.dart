@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,7 +11,7 @@ class DeveloperPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About Developer'),
+        title: Text('About Developer'.tr),
       ),
       body: ListView(
         padding: const EdgeInsets.all(10),
@@ -43,8 +44,8 @@ class DeveloperPage extends StatelessWidget {
               ),
             ),
           ),
-          const Text(
-            'I am programmer who try to learn new things everyday. Focused on Full Stack Cross Platform supported Application development using flutter. I also love to play with IOT',
+          Text(
+            'about_me'.tr,
             textAlign: TextAlign.center,
           ),
           const Gap(20),

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:al_quran_tafsir_and_audio/src/functions/safe_substring.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/controller/universal_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_tafsir_language.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/choice_translation_language.dart';
@@ -302,7 +303,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
-                        translationBookName,
+                        safeSubString(translationBookName, 27),
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),
@@ -311,7 +312,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
-                        translationWriter,
+                        safeSubString(translationWriter, 27),
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),
@@ -370,7 +371,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
-                        tafsirBookName,
+                        safeSubString(tafsirBookName, 27),
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),
@@ -379,7 +380,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
-                        tafsirWriter,
+                        safeSubString(tafsirWriter, 27),
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),

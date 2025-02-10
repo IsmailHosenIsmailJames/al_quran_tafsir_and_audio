@@ -87,30 +87,28 @@ List<String> used20LanguageList = [
   'Tamil',
   'Italian',
 ];
-
-Map<String, String> translations = {
-  'chinese': '搜索',
-  'hindi': 'खोजें',
-  'english': 'Search',
-  'spanish': 'Buscar',
-  'arabic': 'بحث',
-  'bengali': 'অনুসন্ধান',
-  'portuguese': 'Pesquisar',
-  'russian': 'Поиск',
-  'japanese': '検索',
-  'punjabi': 'ਖੋਜ',
-  'german': 'Suche',
-  'french': 'Rechercher',
-  'indonesian': 'Cari',
-  'urdu': 'تلاش',
-  'swahili': 'Tafuta',
-  'korean': '검색',
-  'turkish': 'Ara',
-  'vietnamese': 'Tìm kiếm',
-  'tamil': 'தேடல்',
-  'italian': 'Cerca',
+const Map<String, String> translations = {
+  'chinese': '创建群组',
+  'hindi': 'समूह बनाएं',
+  'english': 'Create Group',
+  'spanish': 'Crear grupo',
+  'arabic': 'إنشاء مجموعة',
+  'bengali': 'গ্রুপ তৈরি করুন',
+  'portuguese': 'Criar Grupo',
+  'russian': 'Создать группу',
+  'japanese': 'グループを作成',
+  'punjabi': 'ਗਰੁੱਪ ਬਣਾਓ',
+  'german': 'Gruppe erstellen',
+  'french': 'Créer un groupe',
+  'indonesian': 'Buat Grup',
+  'urdu': 'گروپ بنائیں',
+  'swahili': 'Unda Kikundi',
+  'korean': '그룹 만들기',
+  'turkish': 'Grup Oluştur',
+  'vietnamese': 'Tạo nhóm',
+  'tamil': 'குழுவை உருவாக்கு',
+  'italian': 'Crea Gruppo',
 };
-
 Map<String, String> chinese = {
   'Al Quran': '古兰经', 'Privacy Policy': '隐私政策',
   'Select a language for app': '选择应用语言',
@@ -228,7 +226,34 @@ Map<String, String> chinese = {
   'Last Modified': '上次修改',
   'type to search': '输入以搜索',
   'Search': '搜索',
-  //
+  'Search Result': '搜索结果',
+  'No Search Result Found': '未找到搜索结果',
+  'Translation': '翻译',
+  'Get Windows installer here': '在这里获取 Windows 安装程序',
+  'Get Linux build here': '在这里获取 Linux 构建版本',
+  'Go to our Web App': '转到我们的 Web 应用程序',
+  'about_me': '我是一名程序员，每天都 学习新事物。专注于使用 Flutter 进行全栈跨平台支持的应用程序开发。我也喜欢玩物联网。',
+  'Take Note': '记笔记',
+  'Update': '更新',
+  'Save': '保存',
+  'Add': '添加',
+  'No ayahs selected': '未选择任何经文',
+  'Name of the PlayList': '播放列表名称',
+  'Enter the name of the PlayList': '输入播放列表的名称',
+  'Please enter the name of the PlayList': '请输入播放列表的名称',
+  'PlayList already exists or name is not allowed': '播放列表已存在或名称不允许',
+  'Empty PlayList name is not allowed': '不允许使用空的播放列表名称',
+  'Group Name': '组名',
+  'Type collection name here': '在此处键入收藏集名称',
+  'Description': '描述',
+  'Type description here': '在此处键入描述',
+  'Add New Ayah': '添加新的阿亚',
+  'Group name is required': '组名是必需的',
+  'Collection name already exists': '收藏集名称已存在',
+  'Save Changes': '保存更改',
+  'Create Group': '创建群组',
+
+  ///
 };
 Map<String, String> hindi = {
   'Al Quran': 'अल कुरान', 'Privacy Policy': 'गोपनीयता नीति',
@@ -360,7 +385,36 @@ Map<String, String> hindi = {
   'Last Modified': 'अंतिम बार संशोधित',
   'type to search': 'खोजने के लिए टाइप करें',
   'Search': 'खोजें',
-  //
+  'Search Result': 'खोज परिणाम',
+  'No Search Result Found': 'कोई खोज परिणाम नहीं मिला',
+  'Translation': 'अनुवाद',
+  'Get Windows installer here': 'विंडोज इंस्टॉलर यहां प्राप्त करें',
+  'Get Linux build here': 'लिनक्स बिल्ड यहाँ प्राप्त करें',
+  'Go to our Web App': 'हमारे वेब ऐप पर जाएं',
+  'about_me':
+      'मैं एक प्रोग्रामर हूं जो हर दिन नई चीजें सीखने की कोशिश करता है। Flutter का उपयोग करके फुल स्टैक क्रॉस प्लेटफॉर्म समर्थित एप्लिकेशन डेवलपमेंट पर ध्यान केंद्रित किया गया है। मुझे आईओटी के साथ खेलना भी पसंद है।',
+  'Take Note': 'ध्यान दें',
+  'Update': 'अपडेट करें',
+  'Save': 'सहेजें',
+  'Add': 'जोड़ें',
+  'No ayahs selected': 'कोई आयत नहीं चुनी गई',
+  'Name of the PlayList': 'प्लेलिस्ट का नाम',
+  'Enter the name of the PlayList': 'प्लेलिस्ट का नाम दर्ज करें',
+  'Please enter the name of the PlayList': 'कृपया प्लेलिस्ट का नाम दर्ज करें',
+  'PlayList already exists or name is not allowed':
+      'प्लेलिस्ट पहले से मौजूद है या नाम की अनुमति नहीं है',
+  'Empty PlayList name is not allowed': 'खाली प्लेलिस्ट नाम की अनुमति नहीं है',
+  'Group Name': 'समूह का नाम',
+  'Type collection name here': 'यहां संग्रह का नाम टाइप करें',
+  'Description': 'विवरण',
+  'Type description here': 'यहां विवरण टाइप करें',
+  'Add New Ayah': 'नया आयत जोड़ें',
+  'Group name is required': 'समूह का नाम आवश्यक है',
+  'Collection name already exists': 'संग्रह का नाम पहले से मौजूद है',
+  'Save Changes': 'बदलाव सुरक्षित करें',
+  'Create Group': 'समूह बनाएं',
+
+  ///
 };
 Map<String, String> english = {
   'Al Quran': 'Al-Quran', 'Privacy Policy': 'Privacy Policy',
@@ -487,7 +541,37 @@ Map<String, String> english = {
   'Last Modified': 'Last Modified',
   'type to search': 'Type to search',
   'Search': 'Search',
-  //
+  'Search Result': 'Search Result',
+  'No Search Result Found': 'No Search Result Found',
+  'Translation': 'Translation',
+  'Get Windows installer here': 'Get Windows installer here',
+  'Get Linux build here': 'Get Linux build here',
+  'Go to our Web App': 'Go to our Web App',
+  'about_me':
+      'I am programmer who try to learn new things everyday. Focused on Full Stack Cross Platform supported Application development using flutter. I also love to play with IOT',
+  'Take Note': 'Take Note',
+  'Update': 'Update',
+  'Save': 'Save',
+  'Add': 'Add',
+  'No ayahs selected': 'No ayahs selected',
+  'Name of the PlayList': 'Name of the PlayList',
+  'Enter the name of the PlayList': 'Enter the name of the PlayList',
+  'Please enter the name of the PlayList':
+      'Please enter the name of the PlayList',
+  'PlayList already exists or name is not allowed':
+      'PlayList already exists or name is not allowed',
+  'Empty PlayList name is not allowed': 'Empty PlayList name is not allowed',
+  'Group Name': 'Group Name',
+  'Type collection name here': 'Type collection name here',
+  'Description': 'Description',
+  'Type description here': 'Type description here',
+  'Add New Ayah': 'Add New Ayah',
+  'Group name is required': 'Group name is required',
+  'Collection name already exists': 'Collection name already exists',
+  'Save Changes': 'Save Changes',
+  'Create Group': 'Create Group',
+
+  ///
 };
 Map<String, String> spanish = {
   'Al Quran': 'El Corán', 'Privacy Policy': 'Política de privacidad',
@@ -629,7 +713,39 @@ Map<String, String> spanish = {
   'Last Modified': 'Última modificación',
   'type to search': 'Escribe para buscar',
   'Search': 'Buscar',
-  //
+  'Search Result': 'Resultado de búsqueda',
+  'No Search Result Found': 'No se encontraron resultados de búsqueda',
+  'Translation': 'Traducción',
+  'Get Windows installer here': 'Obtenga el instalador de Windows aquí',
+  'Get Linux build here': 'Obtenga la compilación de Linux aquí',
+  'Go to our Web App': 'Ir a nuestra aplicación web',
+  'about_me':
+      'Soy un programador que intenta aprender cosas nuevas todos los días. Enfocado en el desarrollo de aplicaciones Full Stack multiplataforma compatible con Flutter. También me encanta jugar con IoT.',
+  'Take Note': 'Tomar nota',
+  'Update': 'Actualizar',
+  'Save': 'Guardar',
+  'Add': 'Añadir',
+  'No ayahs selected': 'No se ha seleccionado ninguna aleya',
+  'Name of the PlayList': 'Nombre de la lista de reproducción',
+  'Enter the name of the PlayList':
+      'Introduce el nombre de la lista de reproducción',
+  'Please enter the name of the PlayList':
+      'Por favor, introduzca el nombre de la lista de reproducción',
+  'PlayList already exists or name is not allowed':
+      'La lista de reproducción ya existe o el nombre no está permitido',
+  'Empty PlayList name is not allowed':
+      'No se permite un nombre de lista de reproducción vacío',
+  'Group Name': 'Nombre del grupo',
+  'Type collection name here': 'Escriba el nombre de la colección aquí',
+  'Description': 'Descripción',
+  'Type description here': 'Escriba la descripción aquí',
+  'Add New Ayah': 'Añadir nuevo Ayah',
+  'Group name is required': 'El nombre del grupo es obligatorio',
+  'Collection name already exists': 'El nombre de la colección ya existe',
+  'Save Changes': 'Guardar cambios',
+  'Create Group': 'Crear grupo',
+
+  ///
 };
 Map<String, String> arabic = {
   'Al Quran': 'القرآن', 'Privacy Policy': 'سياسة الخصوصية',
@@ -752,7 +868,36 @@ Map<String, String> arabic = {
   'Last Modified': 'آخر تعديل',
   'type to search': 'اكتب للبحث',
   'Search': 'بحث',
-  //
+  'Search Result': 'نتيجة البحث',
+  'No Search Result Found': 'لم يتم العثور على نتائج بحث',
+  'Translation': 'ترجمة',
+  'Get Windows installer here': 'احصل على برنامج تثبيت Windows هنا',
+  'Get Linux build here': 'احصل على إصدار Linux هنا',
+  'Go to our Web App': 'انتقل إلى تطبيق الويب الخاص بنا',
+  'about_me':
+      'أنا مبرمج أحاول تعلم أشياء جديدة كل يوم. أركز على تطوير تطبيقات Full Stack عبر الأنظمة الأساسية المدعومة باستخدام Flutter. أحب أيضًا اللعب بـ IOT.',
+  'Take Note': 'تدوين ملاحظة',
+  'Update': 'تحديث',
+  'Save': 'حفظ',
+  'Add': 'إضافة',
+  'No ayahs selected': 'لم يتم اختيار أي آيات',
+  'Name of the PlayList': 'اسم قائمة التشغيل',
+  'Enter the name of the PlayList': 'أدخل اسم قائمة التشغيل',
+  'Please enter the name of the PlayList': 'الرجاء إدخال اسم قائمة التشغيل',
+  'PlayList already exists or name is not allowed':
+      'قائمة التشغيل موجودة بالفعل أو الاسم غير مسموح به',
+  'Empty PlayList name is not allowed': 'اسم قائمة التشغيل الفارغ غير مسموح به',
+  'Group Name': 'اسم المجموعة',
+  'Type collection name here': 'اكتب اسم المجموعة هنا',
+  'Description': 'الوصف',
+  'Type description here': 'اكتب الوصف هنا',
+  'Add New Ayah': 'إضافة آية جديدة',
+  'Group name is required': 'اسم المجموعة مطلوب',
+  'Collection name already exists': 'اسم المجموعة موجود بالفعل',
+  'Save Changes': 'حفظ التغييرات',
+  'Create Group': 'إنشاء مجموعة',
+
+  ///
 };
 Map<String, String> bengali = {
   'Al Quran': 'আল কুরআন', 'Privacy Policy': 'গোপনীয়তা নীতি',
@@ -884,7 +1029,36 @@ Map<String, String> bengali = {
   'Last Modified': 'সর্বশেষ পরিবর্তিত',
   'type to search': 'অনুসন্ধান করতে টাইপ করুন',
   'Search': 'অনুসন্ধান',
-  //
+  'Search Result': 'অনুসন্ধানের ফলাফল',
+  'No Search Result Found': 'কোনো অনুসন্ধানের ফলাফল পাওয়া যায়নি',
+  'Translation': 'অনুবাদ',
+  'Get Windows installer here': 'এখানে উইন্ডোজ ইনস্টলার পান',
+  'Get Linux build here': 'এখানে লিনাক্স বিল্ড পান',
+  'Go to our Web App': 'আমাদের ওয়েব অ্যাপে যান',
+  'about_me':
+      'আমি একজন প্রোগ্রামার যে প্রতিদিন নতুন জিনিস শেখার চেষ্টা করে। Flutter ব্যবহার করে ফুল স্ট্যাক ক্রস প্ল্যাটফর্ম সমর্থিত অ্যাপ্লিকেশন ডেভেলপমেন্টের উপর দৃষ্টি নিবদ্ধ করি। আমি আইওটি নিয়ে খেলতে ভালোবাসি।',
+  'Take Note': 'নোট নিন',
+  'Update': 'আপডেট',
+  'Save': 'সংরক্ষণ',
+  'Add': 'যোগ করুন',
+  'No ayahs selected': 'কোন আয়াত নির্বাচন করা হয়নি',
+  'Name of the PlayList': 'প্লেলিস্টের নাম',
+  'Enter the name of the PlayList': 'প্লেলিস্টের নাম লিখুন',
+  'Please enter the name of the PlayList': 'অনুগ্রহ করে প্লেলিস্টের নাম লিখুন',
+  'PlayList already exists or name is not allowed':
+      'প্লেলিস্ট ইতিমধ্যে বিদ্যমান বা নামের অনুমতি নেই',
+  'Empty PlayList name is not allowed': 'খালি প্লেলিস্ট নামের অনুমতি নেই',
+  'Group Name': 'গ্রুপের নাম',
+  'Type collection name here': 'এখানে সংগ্রহের নাম টাইপ করুন',
+  'Description': 'বিবরণ',
+  'Type description here': 'এখানে বিবরণ টাইপ করুন',
+  'Add New Ayah': 'নতুন আয়াত যোগ করুন',
+  'Group name is required': 'গ্রুপের নাম প্রয়োজন',
+  'Collection name already exists': 'সংগ্রহের নাম ইতিমধ্যে বিদ্যমান',
+  'Save Changes': 'পরিবর্তন সংরক্ষণ করুন',
+  'Create Group': 'গ্রুপ তৈরি করুন',
+
+  ///
 };
 Map<String, String> portuguese = {
   'Al Quran': 'Alcorão', 'Privacy Policy': 'Política de Privacidade',
@@ -1020,7 +1194,38 @@ Map<String, String> portuguese = {
   'Last Modified': 'Última modificação',
   'type to search': 'Digite para pesquisar',
   'Search': 'Pesquisar',
-  //
+  'Search Result': 'Resultado da pesquisa',
+  'No Search Result Found': 'Nenhum resultado de pesquisa encontrado',
+  'Translation': 'Tradução',
+  'Get Windows installer here': 'Obtenha o instalador do Windows aqui',
+  'Get Linux build here': 'Obtenha a build do Linux aqui',
+  'Go to our Web App': 'Ir para o nosso aplicativo Web',
+  'about_me':
+      'Sou um programador que tenta aprender coisas novas todos os dias. Focado no desenvolvimento de aplicativos Full Stack multiplataforma suportados por Flutter. Também adoro brincar com IoT.',
+  'Take Note': 'Tome nota',
+  'Update': 'Atualizar',
+  'Save': 'Salvar',
+  'Add': 'Adicionar',
+  'No ayahs selected': 'Nenhuma ayah selecionada',
+  'Name of the PlayList': 'Nome da Playlist',
+  'Enter the name of the PlayList': 'Insira o nome da lista de reprodução',
+  'Please enter the name of the PlayList':
+      'Por favor, insira o nome da lista de reprodução',
+  'PlayList already exists or name is not allowed':
+      'A lista de reprodução já existe ou o nome não é permitido',
+  'Empty PlayList name is not allowed':
+      'Nome de lista de reprodução vazio não permitido',
+  'Group Name': 'Nome do Grupo',
+  'Type collection name here': 'Digite o nome da coleção aqui',
+  'Description': 'Descrição',
+  'Type description here': 'Digite a descrição aqui',
+  'Add New Ayah': 'Adicionar Novo Ayah',
+  'Group name is required': 'Nome do grupo é obrigatório',
+  'Collection name already exists': 'Nome da coleção já existe',
+  'Save Changes': 'Salvar alterações',
+  'Create Group': 'Criar Grupo',
+
+  ///
 };
 Map<String, String> russian = {
   'Al Quran': 'Коран', 'Privacy Policy': 'Политика конфиденциальности',
@@ -1156,7 +1361,37 @@ Map<String, String> russian = {
   'Last Modified': 'Последнее изменение',
   'type to search': 'Введите для поиска',
   'Search': 'Поиск',
-  //
+  'Search Result': 'Результат поиска',
+  'No Search Result Found': 'Результаты поиска не найдены',
+  'Translation': 'Перевод',
+  'Get Windows installer here': 'Получите установщик Windows здесь',
+  'Get Linux build here': 'Получите сборку Linux здесь',
+  'Go to our Web App': 'Перейти к нашему веб-приложению',
+  'about_me':
+      'Я программист, который каждый день старается узнавать что-то новое. Сосредоточен на разработке кроссплатформенных приложений Full Stack с поддержкой Flutter. Я также люблю играть с IOT.',
+  'Take Note': 'Примите к сведению',
+  'Update': 'Обновить',
+  'Save': 'Сохранить',
+  'Add': 'Добавить',
+  'No ayahs selected': 'Аяты не выбраны',
+  'Name of the PlayList': 'Название плейлиста',
+  'Enter the name of the PlayList': 'Введите название плейлиста',
+  'Please enter the name of the PlayList':
+      'Пожалуйста, введите название плейлиста',
+  'PlayList already exists or name is not allowed':
+      'Плейлист уже существует или имя не разрешено',
+  'Empty PlayList name is not allowed': 'Пустое имя плейлиста не разрешено',
+  'Group Name': 'Название группы',
+  'Type collection name here': 'Введите название коллекции здесь',
+  'Description': 'Описание',
+  'Type description here': 'Введите описание здесь',
+  'Add New Ayah': 'Добавить новый аят',
+  'Group name is required': 'Название группы обязательно',
+  'Collection name already exists': 'Название коллекции уже существует',
+  'Save Changes': 'Сохранить изменения',
+  'Create Group': 'Создать группу',
+
+  ///
 };
 Map<String, String> japanese = {
   'Al Quran': 'コーラン', 'Privacy Policy': 'プライバシーポリシー',
@@ -1277,7 +1512,36 @@ Map<String, String> japanese = {
   'Last Modified': '最終更新',
   'type to search': '検索するには入力',
   'Search': '検索',
-  //
+  'Search Result': '検索結果',
+  'No Search Result Found': '検索結果が見つかりません',
+  'Translation': '翻訳',
+  'Get Windows installer here': 'Windows インストーラーをここで入手',
+  'Get Linux build here': 'Linuxビルドをここで入手',
+  'Go to our Web App': 'Webアプリへ移動',
+  'about_me':
+      '私は毎日新しいことを学ぼうとするプログラマーです。 Flutterを使用したフルスタッククロスプラットフォーム対応アプリケーション開発に焦点を当てています。 IOTで遊ぶのも大好きです。',
+  'Take Note': 'メモを取る',
+  'Update': '更新',
+  'Save': '保存',
+  'Add': '追加',
+  'No ayahs selected': 'アヤは選択されていません',
+  'Name of the PlayList': 'プレイリスト名',
+  'Enter the name of the PlayList': 'プレイリストの名前を入力してください',
+  'Please enter the name of the PlayList': 'プレイリストの名前を入力してください',
+  'PlayList already exists or name is not allowed':
+      'プレイリストはすでに存在するか、名前が許可されていません',
+  'Empty PlayList name is not allowed': '空のプレイリスト名は許可されていません',
+  'Group Name': 'グループ名',
+  'Type collection name here': 'ここにコレクション名を入力してください',
+  'Description': '説明',
+  'Type description here': 'ここに説明を入力してください',
+  'Add New Ayah': '新しいアヤを追加',
+  'Group name is required': 'グループ名が必要です',
+  'Collection name already exists': 'コレクション名は既に存在します',
+  'Save Changes': '変更を保存',
+  'Create Group': 'グループを作成',
+
+  ///
 };
 Map<String, String> punjabi = {
   'Al Quran': 'ਅਲ ਕੁਰਾਨ', 'Privacy Policy': 'ਪਰਾਈਵੇਸੀ ਪਾਲਿਸੀ',
@@ -1404,7 +1668,36 @@ Map<String, String> punjabi = {
   'Last Modified': 'ਆਖਰੀ ਵਾਰ ਸੋਧਿਆ ਗਿਆ',
   'type to search': 'ਖੋਜਣ ਲਈ ਟਾਈਪ ਕਰੋ',
   'Search': 'ਖੋਜ',
-  //
+  'Search Result': 'ਖੋਜ ਨਤੀਜਾ',
+  'No Search Result Found': 'ਕੋਈ ਖੋਜ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲਿਆ',
+  'Translation': 'ਅਨੁਵਾਦ',
+  'Get Windows installer here': 'ਵਿੰਡੋਜ਼ ਇੰਸਟਾਲਰ ਇੱਥੇ ਪ੍ਰਾਪਤ ਕਰੋ',
+  'Get Linux build here': 'ਇੱਥੇ ਲੀਨਕਸ ਬਿਲਡ ਪ੍ਰਾਪਤ ਕਰੋ',
+  'Go to our Web App': 'ਸਾਡੇ ਵੈੱਬ ਐਪ ਤੇ ਜਾਓ',
+  'about_me':
+      'ਮੈਂ ਇੱਕ ਪ੍ਰੋਗਰਾਮਰ ਹਾਂ ਜੋ ਹਰ ਰੋਜ਼ ਨਵੀਆਂ ਚੀਜ਼ਾਂ ਸਿੱਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਦਾ ਹੈ। ਫਲਟਰ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਫੁੱਲ ਸਟੈਕ ਕਰਾਸ ਪਲੇਟਫਾਰਮ ਸਪੋਰਟਡ ਐਪਲੀਕੇਸ਼ਨ ਡਿਵੈਲਪਮੈਂਟ \'ਤੇ ਧਿਆਨ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਮੈਨੂੰ IOT ਨਾਲ ਖੇਡਣਾ ਵੀ ਪਸੰਦ ਹੈ।',
+  'Take Note': 'ਨੋਟ ਕਰੋ',
+  'Update': 'ਅੱਪਡੇਟ',
+  'Save': 'ਸੇਵ',
+  'Add': 'ਸ਼ਾਮਲ ਕਰੋ',
+  'No ayahs selected': 'ਕੋਈ ਆਇਤ ਨਹੀਂ ਚੁਣੀ ਗਈ',
+  'Name of the PlayList': 'ਪਲੇਲਿਸਟ ਦਾ ਨਾਮ',
+  'Enter the name of the PlayList': 'ਪਲੇਲਿਸਟ ਦਾ ਨਾਮ ਦਰਜ ਕਰੋ',
+  'Please enter the name of the PlayList': 'ਕਿਰਪਾ ਕਰਕੇ ਪਲੇਲਿਸਟ ਦਾ ਨਾਮ ਦਰਜ ਕਰੋ',
+  'PlayList already exists or name is not allowed':
+      'ਪਲੇਲਿਸਟ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਾਮ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ',
+  'Empty PlayList name is not allowed': 'ਖਾਲੀ ਪਲੇਲਿਸਟ ਨਾਮ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ',
+  'Group Name': 'ਗਰੁੱਪ ਦਾ ਨਾਮ',
+  'Type collection name here': 'ਇੱਥੇ ਸੰਗ੍ਰਹਿ ਦਾ ਨਾਮ ਟਾਈਪ ਕਰੋ',
+  'Description': 'ਵੇਰਵਾ',
+  'Type description here': 'ਇੱਥੇ ਵੇਰਵਾ ਟਾਈਪ ਕਰੋ',
+  'Add New Ayah': 'ਨਵਾਂ ਆਇਤ ਸ਼ਾਮਲ ਕਰੋ',
+  'Group name is required': 'ਗਰੁੱਪ ਦਾ ਨਾਮ ਲੋੜੀਂਦਾ ਹੈ',
+  'Collection name already exists': 'ਸੰਗ੍ਰਹਿ ਦਾ ਨਾਮ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਮੌਜੂਦ ਹੈ',
+  'Save Changes': 'ਬਦਲਾਅ ਸੁਰੱਖਿਅਤ ਕਰੋ',
+  'Create Group': 'ਗਰੁੱਪ ਬਣਾਓ',
+
+  ///
 };
 Map<String, String> german = {
   'Al Quran': 'Der Koran', 'Privacy Policy': 'Datenschutzrichtlinie',
@@ -1541,7 +1834,39 @@ Map<String, String> german = {
   'Last Modified': 'Zuletzt geändert',
   'type to search': 'Zum Suchen tippen',
   'Search': 'Suche',
-  //
+  'Search Result': 'Suchergebnis',
+  'No Search Result Found': 'Keine Suchergebnisse gefunden',
+  'Translation': 'Übersetzung',
+  'Get Windows installer here': 'Windows Installer hier herunterladen',
+  'Get Linux build here': 'Linux-Build hier herunterladen',
+  'Go to our Web App': 'Gehe zu unserer Web-App',
+  'about_me':
+      'Ich bin ein Programmierer, der jeden Tag versucht, neue Dinge zu lernen. Fokussiert auf Full-Stack-Cross-Plattform-unterstützte Anwendungsentwicklung mit Flutter. Ich spiele auch gerne mit IOT.',
+  'Take Note': 'Notiz nehmen',
+  'Update': 'Aktualisieren',
+  'Save': 'Speichern',
+  'Add': 'Hinzufügen',
+  'No ayahs selected': 'Keine Ayahs ausgewählt',
+  'Name of the PlayList': 'Name der Wiedergabeliste',
+  'Enter the name of the PlayList':
+      'Geben Sie den Namen der Wiedergabeliste ein',
+  'Please enter the name of the PlayList':
+      'Bitte geben Sie den Namen der Wiedergabeliste ein',
+  'PlayList already exists or name is not allowed':
+      'Wiedergabeliste existiert bereits oder Name ist nicht zulässig',
+  'Empty PlayList name is not allowed':
+      'Leerer Wiedergabelistenname ist nicht zulässig',
+  'Group Name': 'Gruppenname',
+  'Type collection name here': 'Sammlungsnamen hier eingeben',
+  'Description': 'Beschreibung',
+  'Type description here': 'Beschreibungen hier eingeben',
+  'Add New Ayah': 'Neuen Ayah hinzufügen',
+  'Group name is required': 'Gruppenname ist erforderlich',
+  'Collection name already exists': 'Sammlungsname existiert bereits',
+  'Save Changes': 'Änderungen speichern',
+  'Create Group': 'Gruppe erstellen',
+
+  ///
 };
 Map<String, String> french = {
   'Al Quran': 'Le Coran', 'Privacy Policy': 'Politique de confidentialité',
@@ -1678,7 +2003,39 @@ Map<String, String> french = {
   'Last Modified': 'Dernière modification',
   'type to search': 'Tapez pour rechercher',
   'Search': 'Rechercher',
-  //
+  'Search Result': 'Résultat de la recherche',
+  'No Search Result Found': 'Aucun résultat de recherche trouvé',
+  'Translation': 'Traduction',
+  'Get Windows installer here':
+      'Obtenez le programme d\'installation de Windows ici',
+  'Get Linux build here': 'Obtenez la version Linux ici',
+  'Go to our Web App': 'Aller à notre application Web',
+  'about_me':
+      'Je suis un programmeur qui essaie d\'apprendre de nouvelles choses tous les jours. Axé sur le développement d\'applications Full Stack multiplateformes prises en charge par Flutter. J\'aime aussi jouer avec l\'IoT.',
+  'Take Note': 'Prendre note',
+  'Update': 'Mettre à jour',
+  'Save': 'Enregistrer',
+  'Add': 'Ajouter',
+  'No ayahs selected': 'Aucun verset sélectionné',
+  'Name of the PlayList': 'Nom de la playlist',
+  'Enter the name of the PlayList': 'Entrez le nom de la playlist',
+  'Please enter the name of the PlayList':
+      'Veuillez saisir le nom de la playlist',
+  'PlayList already exists or name is not allowed':
+      'La playlist existe déjà ou le nom n\'est pas autorisé',
+  'Empty PlayList name is not allowed':
+      'Le nom de la playlist vide n\'est pas autorisé',
+  'Group Name': 'Nom du groupe',
+  'Type collection name here': 'Tapez le nom de la collection ici',
+  'Description': 'Description',
+  'Type description here': 'Tapez la description ici',
+  'Add New Ayah': 'Ajouter un nouveau Ayah',
+  'Group name is required': 'Le nom du groupe est obligatoire',
+  'Collection name already exists': 'Le nom de la collection existe déjà',
+  'Save Changes': 'Sauvegarder les modifications',
+  'Create Group': 'Créer un groupe',
+
+  ///
 };
 Map<String, String> indonesian = {
   'Al Quran': 'Al-Qur\'an', 'Privacy Policy': 'Kebijakan Privasi',
@@ -1808,7 +2165,37 @@ Map<String, String> indonesian = {
   'Last Modified': 'Terakhir Diubah',
   'type to search': 'Ketik untuk mencari',
   'Search': 'Cari',
-  //
+  'Search Result': 'Hasil Pencarian',
+  'No Search Result Found': 'Tidak Ada Hasil Pencarian Ditemukan',
+  'Translation': 'Terjemahan',
+  'Get Windows installer here': 'Dapatkan installer Windows di sini',
+  'Get Linux build here': 'Dapatkan build Linux di sini',
+  'Go to our Web App': 'Buka Aplikasi Web Kami',
+  'about_me':
+      'Saya seorang programmer yang mencoba mempelajari hal-hal baru setiap hari. Berfokus pada pengembangan Aplikasi lintas platform Full Stack yang didukung menggunakan flutter. Saya juga suka bermain dengan IOT.',
+  'Take Note': 'Catat',
+  'Update': 'Perbarui',
+  'Save': 'Simpan',
+  'Add': 'Tambah',
+  'No ayahs selected': 'Tidak ada ayat yang dipilih',
+  'Name of the PlayList': 'Nama Daftar Putar',
+  'Enter the name of the PlayList': 'Masukkan nama Daftar Putar',
+  'Please enter the name of the PlayList': 'Silakan masukkan nama Daftar Putar',
+  'PlayList already exists or name is not allowed':
+      'Daftar Putar sudah ada atau nama tidak diizinkan',
+  'Empty PlayList name is not allowed':
+      'Nama Daftar Putar kosong tidak diizinkan',
+  'Group Name': 'Nama Grup',
+  'Type collection name here': 'Ketik nama koleksi di sini',
+  'Description': 'Deskripsi',
+  'Type description here': 'Ketik deskripsi di sini',
+  'Add New Ayah': 'Tambah Ayat Baru',
+  'Group name is required': 'Nama grup diperlukan',
+  'Collection name already exists': 'Nama koleksi sudah ada',
+  'Save Changes': 'Simpan Perubahan',
+  'Create Group': 'Buat Grup',
+
+  ///
 };
 Map<String, String> urdu = {
   'Al Quran': 'القرآن', 'Privacy Policy': 'رازداری کی پالیسی',
@@ -1937,7 +2324,37 @@ Map<String, String> urdu = {
   'Last Modified': 'آخری ترمیم',
   'type to search': 'تلاش کرنے کے لیے ٹائپ کریں',
   'Search': 'تلاش',
-  //
+  'Search Result': 'نتائج تلاش',
+  'No Search Result Found': 'کوئی تلاش کا نتیجہ نہیں ملا',
+  'Translation': 'ترجمہ',
+  'Get Windows installer here': 'ونڈوز انسٹالر یہاں حاصل کریں',
+  'Get Linux build here': 'لینکس بلڈ یہاں حاصل کریں',
+  'Go to our Web App': 'ہمارے ویب ایپ پر جائیں',
+  'about_me':
+      'میں ایک پروگرامر ہوں جو ہر روز نئی چیزیں سیکھنے کی کوشش کرتا ہے۔ فلٹر کا استعمال کرتے ہوئے فل اسٹیک کراس پلیٹ فارم سپورٹڈ ایپلیکیشن ڈویلپمنٹ پر توجہ مرکوز کی گئی ہے۔ مجھے IOT کے ساتھ کھیلنا بھی پسند ہے۔',
+  'Take Note': 'نوٹ لیں',
+  'Update': 'اپ ڈیٹ',
+  'Save': 'محفوظ کریں',
+  'Add': 'شامل کریں',
+  'No ayahs selected': 'کوئی آیات منتخب نہیں کی گئیں',
+  'Name of the PlayList': 'پلے لسٹ کا نام',
+  'Enter the name of the PlayList': 'پلے لسٹ کا نام درج کریں۔',
+  'Please enter the name of the PlayList':
+      'برائے مہربانی پلے لسٹ کا نام درج کریں۔',
+  'PlayList already exists or name is not allowed':
+      'پلے لسٹ پہلے سے موجود ہے یا نام کی اجازت نہیں ہے۔',
+  'Empty PlayList name is not allowed': 'خالی پلے لسٹ نام کی اجازت نہیں ہے۔',
+  'Group Name': 'گروپ کا نام',
+  'Type collection name here': 'یہاں مجموعہ کا نام ٹائپ کریں۔',
+  'Description': 'تفصیل',
+  'Type description here': 'یہاں تفصیل ٹائپ کریں۔',
+  'Add New Ayah': 'نیا آیت شامل کریں۔',
+  'Group name is required': 'گروپ کا نام درکار ہے',
+  'Collection name already exists': 'مجموعہ کا نام پہلے سے موجود ہے۔',
+  'Save Changes': 'تبدیلیاں محفوظ کریں',
+  'Create Group': 'گروپ بنائیں',
+
+  ///
 };
 Map<String, String> swahili = {
   'Al Quran': 'Kurani', 'Privacy Policy': 'Sera ya Faragha',
@@ -2066,7 +2483,38 @@ Map<String, String> swahili = {
   'Last Modified': 'Ilibadilishwa Mwisho',
   'type to search': 'Andika ili utafute',
   'Search': 'Tafuta',
-  //
+  'Search Result': 'Matokeo ya Utafutaji',
+  'No Search Result Found': 'Hakuna Matokeo ya Utafutaji Yaliyopatikana',
+  'Translation': 'Tafsiri',
+  'Get Windows installer here': 'Pata kisakinishi cha Windows hapa',
+  'Get Linux build here': 'Pata toleo la Linux hapa',
+  'Go to our Web App': 'Nenda kwenye Programu yetu ya Wavuti',
+  'about_me':
+      'Mimi ni programu ambaye hujaribu kujifunza mambo mapya kila siku. Nimelenga katika uundaji wa Programu zinazotumia Jukwaa Mtambuka la Full Stack kwa kutumia flutter. Pia napenda kucheza na IOT.',
+  'Take Note': 'Chukua Kumbuka',
+  'Update': 'Sasisha',
+  'Save': 'Hifadhi',
+  'Add': 'Ongeza',
+  'No ayahs selected': 'Hakuna aya zilizochaguliwa',
+  'Name of the PlayList': 'Jina la Orodha ya kucheza',
+  'Enter the name of the PlayList': 'Ingiza jina la Orodha ya kucheza',
+  'Please enter the name of the PlayList':
+      'Tafadhali ingiza jina la Orodha ya kucheza',
+  'PlayList already exists or name is not allowed':
+      'Orodha ya kucheza tayari ipo au jina hairuhusiwi',
+  'Empty PlayList name is not allowed':
+      'Jina tupu la Orodha ya kucheza hairuhusiwi',
+  'Group Name': 'Jina la Kikundi',
+  'Type collection name here': 'Andika jina la mkusanyiko hapa',
+  'Description': 'Maelezo',
+  'Type description here': 'Andika maelezo hapa',
+  'Add New Ayah': 'Ongeza Ayah Mpya',
+  'Group name is required': 'Jina la kikundi linahitajika',
+  'Collection name already exists': 'Jina la mkusanyiko tayari lipo',
+  'Save Changes': 'Hifadhi Mabadiliko',
+  'Create Group': 'Unda Kikundi',
+
+  ///
 };
 Map<String, String> korean = {
   'Al Quran': '코란', 'Privacy Policy': '개인 정보 정책',
@@ -2187,7 +2635,36 @@ Map<String, String> korean = {
   'Last Modified': '최종 수정',
   'type to search': '검색하려면 입력하세요',
   'Search': '검색',
-  //
+  'Search Result': '검색 결과',
+  'No Search Result Found': '검색 결과가 없습니다',
+  'Translation': '번역',
+  'Get Windows installer here': 'Windows 설치 프로그램은 여기에서 받으세요',
+  'Get Linux build here': '여기에서 Linux 빌드를 받으세요',
+  'Go to our Web App': '웹 앱으로 이동',
+  'about_me':
+      '저는 매일 새로운 것을 배우려고 노력하는 프로그래머입니다. Flutter를 사용하여 풀 스택 크로스 플랫폼 지원 애플리케이션 개발에 집중하고 있습니다. IOT를 가지고 노는 것도 좋아합니다.',
+  'Take Note': '메모해 두세요',
+  'Update': '업데이트',
+  'Save': '저장',
+  'Add': '추가',
+  'No ayahs selected': '선택된 아야 없음',
+  'Name of the PlayList': '재생 목록 이름',
+  'Enter the name of the PlayList': '재생 목록 이름을 입력하세요',
+  'Please enter the name of the PlayList': '재생 목록 이름을 입력해주세요',
+  'PlayList already exists or name is not allowed':
+      '재생 목록이 이미 있거나 이름이 허용되지 않습니다.',
+  'Empty PlayList name is not allowed': '빈 재생 목록 이름은 허용되지 않습니다.',
+  'Group Name': '그룹 이름',
+  'Type collection name here': '여기에 컬렉션 이름을 입력하세요',
+  'Description': '설명',
+  'Type description here': '여기에 설명을 입력하세요',
+  'Add New Ayah': '새 아야 추가',
+  'Group name is required': '그룹 이름이 필요합니다',
+  'Collection name already exists': '컬렉션 이름이 이미 있습니다.',
+  'Save Changes': '변경 사항 저장',
+  'Create Group': '그룹 만들기',
+
+  ///
 };
 Map<String, String> turkish = {
   'Al Quran': 'Kur\'an', 'Privacy Policy': 'Gizlilik Politikası',
@@ -2318,7 +2795,38 @@ Map<String, String> turkish = {
   'Last Modified': 'Son Değiştirilme',
   'type to search': 'Aramak için yazın',
   'Search': 'Ara',
-  //
+  'Search Result': 'Arama Sonucu',
+  'No Search Result Found': 'Arama Sonucu Bulunamadı',
+  'Translation': 'Çeviri',
+  'Get Windows installer here': 'Windows yükleyicisini buradan alın',
+  'Get Linux build here': 'Linux derlemesini buradan alın',
+  'Go to our Web App': 'Web Uygulamamıza Git',
+  'about_me':
+      'Her gün yeni şeyler öğrenmeye çalışan bir programcıyım. Flutter kullanarak Full Stack Çapraz Platform destekli Uygulama geliştirmeye odaklandım. Ayrıca IOT ile oynamayı seviyorum.',
+  'Take Note': 'Not Al',
+  'Update': 'Güncelle',
+  'Save': 'Kaydet',
+  'Add': 'Ekle',
+  'No ayahs selected': 'Ayet seçilmedi',
+  'Name of the PlayList': 'Oynatma Listesinin Adı',
+  'Enter the name of the PlayList': 'Oynatma Listesinin adını girin',
+  'Please enter the name of the PlayList':
+      'Lütfen Oynatma Listesinin adını girin',
+  'PlayList already exists or name is not allowed':
+      'Oynatma Listesi zaten var veya isme izin verilmiyor',
+  'Empty PlayList name is not allowed':
+      'Boş Oynatma Listesi adına izin verilmez',
+  'Group Name': 'Grup Adı',
+  'Type collection name here': 'Buraya koleksiyon adını yazın',
+  'Description': 'Açıklama',
+  'Type description here': 'Açıklamayı buraya yazın',
+  'Add New Ayah': 'Yeni Ayet Ekle',
+  'Group name is required': 'Grup adı gerekli',
+  'Collection name already exists': 'Koleksiyon adı zaten mevcut',
+  'Save Changes': 'Değişiklikleri Kaydet',
+  'Create Group': 'Grup Oluştur',
+
+  ///
 };
 Map<String, String> vietnamese = {
   'Al Quran': 'Kinh Qur\'an', 'Privacy Policy': 'Chính sách bảo mật',
@@ -2449,7 +2957,37 @@ Map<String, String> vietnamese = {
   'Last Modified': 'Sửa đổi lần cuối',
   'type to search': 'Nhập để tìm kiếm',
   'Search': 'Tìm kiếm',
-  //
+  'Search Result': 'Kết quả tìm kiếm',
+  'No Search Result Found': 'Không tìm thấy kết quả tìm kiếm',
+  'Translation': 'Bản dịch',
+  'Get Windows installer here': 'Tải trình cài đặt Windows tại đây',
+  'Get Linux build here': 'Tải bản dựng Linux tại đây',
+  'Go to our Web App': 'Truy cập Ứng dụng Web của chúng tôi',
+  'about_me':
+      'Tôi là một lập trình viên luôn cố gắng học hỏi những điều mới mỗi ngày. Tập trung vào phát triển Ứng dụng hỗ trợ đa nền tảng Full Stack bằng flutter. Tôi cũng thích chơi với IOT.',
+  'Take Note': 'Ghi chú',
+  'Update': 'Cập nhật',
+  'Save': 'Lưu',
+  'Add': 'Thêm',
+  'No ayahs selected': 'Chưa chọn ayahs nào',
+  'Name of the PlayList': 'Tên danh sách phát',
+  'Enter the name of the PlayList': 'Nhập tên Danh sách phát',
+  'Please enter the name of the PlayList': 'Vui lòng nhập tên Danh sách phát',
+  'PlayList already exists or name is not allowed':
+      'Danh sách phát đã tồn tại hoặc tên không được phép',
+  'Empty PlayList name is not allowed':
+      'Không được phép để trống tên Danh sách phát',
+  'Group Name': 'Tên nhóm',
+  'Type collection name here': 'Nhập tên bộ sưu tập vào đây',
+  'Description': 'Mô tả',
+  'Type description here': 'Nhập mô tả vào đây',
+  'Add New Ayah': 'Thêm Ayah Mới',
+  'Group name is required': 'Tên nhóm là bắt buộc',
+  'Collection name already exists': 'Tên bộ sưu tập đã tồn tại',
+  'Save Changes': 'Lưu thay đổi',
+  'Create Group': 'Tạo nhóm',
+
+  ///
 };
 Map<String, String> tamil = {
   'Al Quran': 'அல் குர்ஆன்', 'Privacy Policy': 'தனியுரிமைக் கொள்கை',
@@ -2589,7 +3127,37 @@ Map<String, String> tamil = {
   'Last Modified': 'கடைசியாக மாற்றப்பட்டது',
   'type to search': 'தேட தட்டச்சு செய்க',
   'Search': 'தேடல்',
-  //
+  'Search Result': 'தேடல் முடிவு',
+  'No Search Result Found': 'தேடல் முடிவுகள் எதுவும் இல்லை',
+  'Translation': 'மொழிபெயர்ப்பு',
+  'Get Windows installer here': 'இங்கே விண்டோஸ் நிறுவியைப் பெறுங்கள்',
+  'Get Linux build here': 'இங்கே லினக்ஸ் கட்டமைப்பைப் பெறுங்கள்',
+  'Go to our Web App': 'எங்கள் வலை பயன்பாட்டிற்கு செல்க',
+  'about_me':
+      'நான் ஒவ்வொரு நாளும் புதிய விஷயங்களைக் கற்றுக்கொள்ள முயற்சிக்கும் ஒரு நிரலாளர். ஃப்ளட்டரைப் பயன்படுத்தி முழு ஸ்டாக் கிராஸ் பிளாட்ஃபார்ம் ஆதரவு பயன்பாட்டு மேம்பாட்டில் கவனம் செலுத்துகிறேன். நான் IOT உடன் விளையாடுவதையும் விரும்புகிறேன்.',
+  'Take Note': 'குறிப்பு எடு',
+  'Update': 'புதுப்பிப்பு',
+  'Save': 'சேமி',
+  'Add': 'சேர்',
+  'No ayahs selected': 'வசனங்கள் எதுவும் தேர்ந்தெடுக்கப்படவில்லை',
+  'Name of the PlayList': 'PlayList இன் பெயர்',
+  'Enter the name of the PlayList': 'PlayList இன் பெயரை உள்ளிடவும்',
+  'Please enter the name of the PlayList': 'PlayList இன் பெயரை உள்ளிடவும்',
+  'PlayList already exists or name is not allowed':
+      'PlayList ஏற்கனவே உள்ளது அல்லது பெயர் அனுமதிக்கப்படவில்லை',
+  'Empty PlayList name is not allowed':
+      'வெற்று PlayList பெயர் அனுமதிக்கப்படாது',
+  'Group Name': 'குழுவின் பெயர்',
+  'Type collection name here': 'இங்கே சேகரிப்பு பெயரை தட்டச்சு செய்க',
+  'Description': 'விளக்கம்',
+  'Type description here': 'விளக்கத்தை இங்கே தட்டச்சு செய்க',
+  'Add New Ayah': 'புதிய ஆயாவைச் சேர்க்கவும்',
+  'Group name is required': 'குழுவின் பெயர் தேவை',
+  'Collection name already exists': 'சேகரிப்பு பெயர் ஏற்கனவே உள்ளது',
+  'Save Changes': 'மாற்றங்களை சேமி',
+  'Create Group': 'குழுவை உருவாக்கு',
+
+  ///
 };
 Map<String, String> italian = {
   'Al Quran': 'Il Corano', 'Privacy Policy': 'Informativa sulla privacy',
@@ -2725,5 +3293,37 @@ Map<String, String> italian = {
   'Last Modified': 'Ultima modifica',
   'type to search': 'Digita per cercare',
   'Search': 'Cerca',
-  //
+  'Search Result': 'Risultato della ricerca',
+  'No Search Result Found': 'Nessun risultato di ricerca trovato',
+  'Translation': 'Traduzione',
+  'Get Windows installer here':
+      'Scarica il programma di installazione di Windows qui',
+  'Get Linux build here': 'Scarica la build di Linux qui',
+  'Go to our Web App': 'Vai alla nostra Web App',
+  'about_me':
+      'Sono un programmatore che cerca di imparare cose nuove ogni giorno. Concentrato sullo sviluppo di applicazioni multipiattaforma Full Stack supportate da Flutter. Amo anche giocare con l\'IoT.',
+  'Take Note': 'Prendi nota',
+  'Update': 'Aggiorna',
+  'Save': 'Salva',
+  'Add': 'Aggiungi',
+  'No ayahs selected': 'Nessun ayah selezionato',
+  'Name of the PlayList': 'Nome della playlist',
+  'Enter the name of the PlayList': 'Inserisci il nome della playlist',
+  'Please enter the name of the PlayList':
+      'Per favore, inserisci il nome della playlist',
+  'PlayList already exists or name is not allowed':
+      'La playlist esiste già o il nome non è consentito',
+  'Empty PlayList name is not allowed':
+      'Il nome della playlist vuoto non è consentito',
+  'Group Name': 'Nome del gruppo',
+  'Type collection name here': 'Digita qui il nome della raccolta',
+  'Description': 'Descrizione',
+  'Type description here': 'Digita qui la descrizione',
+  'Add New Ayah': 'Aggiungi nuovo Ayah',
+  'Group name is required': 'Il nome del gruppo è obbligatorio',
+  'Collection name already exists': 'Il nome della raccolta esiste già',
+  'Save Changes': 'Salva modifiche',
+  'Create Group': 'Crea Gruppo',
+
+  ///
 };

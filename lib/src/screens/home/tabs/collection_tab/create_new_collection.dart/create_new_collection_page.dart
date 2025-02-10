@@ -39,14 +39,14 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create New Collection'),
+        title: Text('Create New Group'.tr),
       ),
       body: ListView(
         padding: const EdgeInsets.all(10),
         children: [
           const Gap(10),
-          const Text(
-            'Collection Name',
+          Text(
+            'Group Name'.tr,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
@@ -55,13 +55,13 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
           const Gap(7),
           TextFormField(
             controller: nameController,
-            decoration:
-                const InputDecoration(hintText: 'Type collection name here...'),
+            decoration: InputDecoration(
+                hintText: '${'Type collection name here'.tr}...'),
             maxLength: 100,
           ),
           const Gap(10),
-          const Text(
-            'Description',
+          Text(
+            'Description'.tr,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
@@ -70,12 +70,13 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
           const Gap(7),
           TextFormField(
             controller: descriptionController,
-            decoration: const InputDecoration(hintText: 'Type description here...'),
+            decoration:
+                InputDecoration(hintText: '${'Type description here'.tr}...'),
             maxLength: 5000,
           ),
           const Gap(10),
-          const Text(
-            'Ayahs',
+          Text(
+            'ayahs'.tr,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
@@ -92,9 +93,9 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
             child: Column(
               children: <Widget>[
                     if (editingCollection.ayahs?.isNotEmpty != true)
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('No Ayahs Added'),
+                        child: Text('No ayahs selected'.tr),
                       ),
                   ] +
                   List<Widget>.generate(
@@ -159,14 +160,14 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                             });
                             toastification.show(
                               context: context,
-                              title: const Text('Ayah Added'),
+                              title: Text('Successful'.tr),
                               autoCloseDuration: const Duration(seconds: 2),
                               type: ToastificationType.success,
                             );
                           }
                         },
                         icon: const Icon(Icons.add),
-                        label: const Text('Add New Ayah'),
+                        label: Text('Add New Ayah'.tr),
                       ),
                     ),
                   ],
@@ -178,7 +179,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
               if (nameController.text.isEmpty) {
                 toastification.show(
                   context: context,
-                  title: const Text('Collection name is required'),
+                  title: Text('Group name is required'.tr),
                   autoCloseDuration: const Duration(seconds: 2),
                   type: ToastificationType.error,
                 );
@@ -186,7 +187,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
               } else if (editingCollection.ayahs?.isNotEmpty != true) {
                 toastification.show(
                   context: context,
-                  title: const Text('No Ayahs Added'),
+                  title: Text('No ayahs selected'.tr),
                   autoCloseDuration: const Duration(seconds: 2),
                   type: ToastificationType.error,
                 );
@@ -197,7 +198,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                 if (box.containsKey(name)) {
                   toastification.show(
                     context: context,
-                    title: const Text('Collection name already exists'),
+                    title: Text('Collection name already exists'.tr),
                     autoCloseDuration: const Duration(seconds: 2),
                     type: ToastificationType.error,
                   );
@@ -217,9 +218,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
                   }
                   toastification.show(
                     context: context,
-                    title: Text(widget.previousData == null
-                        ? 'Collection Created'
-                        : 'Saved Changes'),
+                    title: Text('Successful'.tr),
                     autoCloseDuration: const Duration(seconds: 2),
                     type: ToastificationType.success,
                   );
@@ -228,9 +227,11 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
               }
             },
             icon: const Icon(Icons.done),
-            label: Text(widget.previousData == null
-                ? 'Create Collection'
-                : 'Save Changes'),
+            label: Text(
+              widget.previousData == null
+                  ? 'Create Group'.tr
+                  : 'Save Changes'.tr,
+            ),
           ),
         ],
       ),

@@ -34,13 +34,13 @@ class MyDevelopedApps extends StatelessWidget {
             title: const Text(
               'Al Quran Tafsir and Audio',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
             subtitle: const Text(
               'All in one Al Quran App with Translation, Tefsir, Quran Audio Book & Notes Backup',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 12,
               ),
             ),
             trailing: const Icon(
@@ -69,13 +69,13 @@ class MyDevelopedApps extends StatelessWidget {
             title: const Text(
               'Al Quran Audio',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
             subtitle: const Text(
               'The Quran Audio Recitation App brings together a curated collection of 79 reciters, providing an immersive auditory experience of the Quran.',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 12,
               ),
             ),
             trailing: const Icon(
@@ -104,13 +104,13 @@ class MyDevelopedApps extends StatelessWidget {
             title: const Text(
               'Rust Book',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
             subtitle: const Text(
               'A Cross Platform & 16 language supported App thats help Rust learners to increase their learning speed.',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 12,
               ),
             ),
             trailing: const Icon(
@@ -139,13 +139,13 @@ class MyDevelopedApps extends StatelessWidget {
             title: const Text(
               'Rust Doc - Everything',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
             subtitle: const Text(
               'Al in one app for Rust programming Language learners. This app contains each and evry documentation that came with Rust installation with lot of others features.',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 12,
               ),
             ),
             trailing: const Icon(
@@ -174,13 +174,13 @@ class MyDevelopedApps extends StatelessWidget {
             title: const Text(
               'Rust STD & Core',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
             subtitle: const Text(
               'Al in one app for Rust programming Language learners. This app contains each and evry documentation that came with Rust installation with lot of others features.',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 12,
               ),
             ),
             trailing: const Icon(
