@@ -41,12 +41,16 @@ class TafsirView extends StatelessWidget {
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(8),
                   controller: scrollController,
-                  child: HtmlWidget(
-                    snapshot.data!,
-                    textStyle: TextStyle(
-                      fontSize: fontSize,
-                    ),
-                  ),
+                  child: (snapshot.data != null && snapshot.data!.isEmpty)
+                      ? Center(
+                          child: Text('No Tafsir Found'.tr),
+                        )
+                      : HtmlWidget(
+                          snapshot.data!,
+                          textStyle: TextStyle(
+                            fontSize: fontSize,
+                          ),
+                        ),
                 ),
               ),
             );
@@ -58,7 +62,7 @@ class TafsirView extends StatelessWidget {
             return Center(
               child: Text(
                 'No Tafsir Found'.tr,
-                style: TextStyle(color: Colors.red),
+                style: const TextStyle(color: Colors.red),
               ),
             );
           }

@@ -156,6 +156,54 @@ class MyAppDrawer extends StatelessWidget {
           ListTile(
             minTileHeight: 45,
             onTap: () {
+              universalController.collectionTabIndex.value = 1;
+              pageController.animateToPage(
+                2,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              );
+              Navigator.pop(context);
+            },
+            leading: Icon(
+              Icons.playlist_play_rounded,
+              color: Colors.green.shade600,
+              size: 20,
+            ),
+            title: Text(
+              'Playlist'.tr,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            minTileHeight: 45,
+            onTap: () {
+              universalController.collectionTabIndex.value = 0;
+              pageController.animateToPage(
+                2,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              );
+              Navigator.pop(context);
+            },
+            leading: Icon(
+              FluentIcons.bookmark_24_filled,
+              color: Colors.green.shade600,
+              size: 20,
+            ),
+            title: Text(
+              'Groups'.tr,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ListTile(
+            minTileHeight: 45,
+            onTap: () {
               Navigator.pop(context);
               Get.to(() => const OthersPlatform());
             },
