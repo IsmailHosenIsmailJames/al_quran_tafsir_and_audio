@@ -17,6 +17,8 @@ import 'package:path_provider/path_provider.dart';
 import '../../core/audio/controller/audio_controller.dart';
 import '../../functions/get_cached_file_size_of_audio.dart';
 import '../../resources/api_response/some_api_response.dart';
+import '../../translations/language_controller.dart';
+import '../../translations/map_of_translation.dart';
 import '../surah_view/common/tajweed_scripts_composer.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -31,6 +33,7 @@ class _SettingsPageState extends State<SettingsPage> {
   final appThemeDataController = Get.find<AppThemeData>();
   final universalController = Get.find<UniversalController>();
   final InfoController infoController = Get.find<InfoController>();
+  final languageController = Get.put(LanguageController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +63,8 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         title: Row(
           children: [
-            Icon(FluentIcons.settings_24_regular),
-            Gap(10),
+            const Icon(FluentIcons.settings_24_regular),
+            const Gap(10),
             Text('Settings'.tr),
           ],
         ),
@@ -74,7 +77,7 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Text(
               'Theme Brightness'.tr,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             const Gap(7),
             Obx(
@@ -92,12 +95,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     value: 'system',
                     child: Row(
                       children: [
-                        Gap(10),
-                        Icon(
+                        const Gap(10),
+                        const Icon(
                           Icons.brightness_4_rounded,
                           size: 18,
                         ),
-                        Gap(10),
+                        const Gap(10),
                         Text('System default'.tr),
                       ],
                     ),
@@ -106,12 +109,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     value: 'dark',
                     child: Row(
                       children: [
-                        Gap(10),
-                        Icon(
+                        const Gap(10),
+                        const Icon(
                           Icons.dark_mode_rounded,
                           size: 18,
                         ),
-                        Gap(10),
+                        const Gap(10),
                         Text('Dark'.tr),
                       ],
                     ),
@@ -120,12 +123,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     value: 'light',
                     child: Row(
                       children: [
-                        Gap(10),
-                        Icon(
+                        const Gap(10),
+                        const Icon(
                           Icons.light_mode_rounded,
                           size: 18,
                         ),
-                        Gap(10),
+                        const Gap(10),
                         Text('Light'.tr),
                       ],
                     ),
@@ -136,7 +139,7 @@ class _SettingsPageState extends State<SettingsPage> {
             const Gap(15),
             Text(
               'Quran Script Type'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -169,7 +172,7 @@ class _SettingsPageState extends State<SettingsPage> {
             const Gap(15),
             Text(
               'Quran Font Size'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -225,7 +228,7 @@ class _SettingsPageState extends State<SettingsPage> {
             const Gap(15),
             Text(
               'Translation Font Size'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -278,7 +281,7 @@ class _SettingsPageState extends State<SettingsPage> {
             const Gap(15),
             Text(
               'Translation Book'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -346,7 +349,7 @@ class _SettingsPageState extends State<SettingsPage> {
             const Gap(15),
             Text(
               'Tafsir Book'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -411,10 +414,57 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15, bottom: 15),
+              child: Row(
+                children: [
+                  Text(
+                    'App Language'.tr,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Gap(15),
+                  Expanded(
+                    child: SizedBox(
+                      height: 40,
+                      child: DropdownButtonFormField(
+                        padding: EdgeInsets.zero,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.only(left: 10),
+                        ),
+                        value: Get.locale?.languageCode ?? 'en',
+                        items: List.generate(
+                          used20LanguageMap.length,
+                          (index) {
+                            return DropdownMenuItem(
+                              value: used20LanguageMap[index]['Code']!,
+                              onTap: () {
+                                String languageCode =
+                                    used20LanguageMap[index]['Code']!;
+                                languageController.changeLanguage =
+                                    languageCode;
+                                final box = Hive.box('user_db');
+                                box.put('app_lan', languageCode);
+                                infoController.appLanCode.value = languageCode;
+                              },
+                              child: Text(used20LanguageMap[index]['Native']!),
+                            );
+                          },
+                        ),
+                        onChanged: (value) {},
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const Gap(15),
             Text(
               'Audio Cached'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -511,7 +561,7 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             SizedBox(width: 100, child: Text('Last Modified'.tr)),
             SizedBox(width: 100, child: Text('Cache Size'.tr)),
-            Gap(100),
+            const Gap(100),
           ],
         ),
         const Gap(10),

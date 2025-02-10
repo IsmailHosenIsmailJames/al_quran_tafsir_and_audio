@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:al_quran_tafsir_and_audio/src/core/audio/widget_audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/audio_tracting.dart';
+import 'package:al_quran_tafsir_and_audio/src/functions/get_native_surah_name.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/safe_substring.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/models/quran_surah_info_model.dart';
@@ -688,7 +689,8 @@ SizedBox getPopUpMenu(
               ayahNumber: currentAyahIndex,
               tafsirBookID: infoController.tafsirBookID.value,
               fontSize: universalController.fontSizeTranslation.value,
-              surahName: surahInfo?.nameSimple,
+              surahName: getSurahNativeName(
+                  Get.locale?.languageCode ?? 'en', (surahInfo?.id ?? 0) - 1),
             ),
           );
         } else if (value == 'bookmark' || value == 'favorite') {

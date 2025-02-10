@@ -39,7 +39,7 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
     return Scaffold(
       appBar: AppBar(
         title: surahName == null
-            ? const Text('Select Ayah')
+            ? Text('Select Ayah'.tr)
             : Text(
                 '$surahName ${(selectedSurahNumber ?? 0) + 1}:${(selectedAyahNumber ?? 0) + 1} '),
         actions: [
@@ -68,9 +68,9 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
               padding: const EdgeInsets.all(10.0),
               child: DropdownButtonFormField(
                 value: selectedSurahNumber,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Select Surah',
+                  hintText: 'Select Surah'.tr,
                 ),
                 menuMaxHeight: MediaQuery.of(context).size.height * 0.5,
                 items: List.generate(
@@ -102,9 +102,9 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
                 padding: const EdgeInsets.all(10.0),
                 child: DropdownButtonFormField(
                   value: selectedAyahNumber,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Select Ayah Number',
+                    hintText: 'Select Ayah'.tr,
                   ),
                   menuMaxHeight: MediaQuery.of(context).size.height * 0.5,
                   items: List.generate(
@@ -140,10 +140,10 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
               ),
             const Gap(15),
             if (selectedSurahNumber != null && selectedAyahNumber != null)
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
-                  'Tafsir',
+                  'Tafsir'.tr,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),

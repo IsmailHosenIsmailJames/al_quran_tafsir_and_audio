@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Gap(20),
                   Text(
                     'Welcome'.tr,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Gap(20),
                   Text(
                     'Email'.tr,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextFormField(
                     controller: emailController,
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Gap(10),
                   Text(
                     'Password'.tr,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextFormField(
                     controller: passwordController,

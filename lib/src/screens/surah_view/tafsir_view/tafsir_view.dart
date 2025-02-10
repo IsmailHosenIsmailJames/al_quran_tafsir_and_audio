@@ -1,6 +1,7 @@
 import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 class TafsirView extends StatelessWidget {
@@ -26,7 +27,7 @@ class TafsirView extends StatelessWidget {
           ? AppBar(
               title: Text(surahName != null
                   ? '$surahName ( ${ayahNumber + 1} )'
-                  : 'Tafsir'),
+                  : 'Tafsir'.tr),
             )
           : null,
       body: FutureBuilder(
@@ -54,9 +55,9 @@ class TafsirView extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else {
-            return const Center(
+            return Center(
               child: Text(
-                'No Tafsir Found',
+                'No Tafsir Found'.tr,
                 style: TextStyle(color: Colors.red),
               ),
             );

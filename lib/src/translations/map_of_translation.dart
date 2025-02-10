@@ -88,28 +88,27 @@ List<String> used20LanguageList = [
   'Italian',
 ];
 const Map<String, String> translations = {
-  'chinese': '添加到播放列表',
-  'hindi': 'प्लेलिस्ट में जोड़ें',
-  'english': 'Add to Playlist',
-  'spanish': 'Añadir a la lista de reproducción',
-  'arabic': 'أضف إلى قائمة التشغيل',
-  'bengali': 'প্লেলিস্টে যোগ করুন',
-  'portuguese': 'Adicionar à Playlist',
-  'russian': 'Добавить в плейлист',
-  'japanese': 'プレイリストに追加',
-  'punjabi': 'ਪਲੇਲਿਸਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ',
-  'german': 'Zur Wiedergabeliste hinzufügen',
-  'french': 'Ajouter à la playlist',
-  'indonesian': 'Tambahkan ke Daftar Putar',
-  'urdu': 'پلے لسٹ میں شامل کریں',
-  'swahili': 'Ongeza kwenye Orodha ya kucheza',
-  'korean': '재생 목록에 추가',
-  'turkish': 'Oynatma Listesine Ekle',
-  'vietnamese': 'Thêm vào Danh sách phát',
-  'tamil': 'PlayList இல் சேர்',
-  'italian': 'Aggiungi alla playlist',
+  'chinese': '应用语言',
+  'hindi': 'ऐप भाषा',
+  'english': 'App Language',
+  'spanish': 'Idioma de la aplicación',
+  'arabic': 'لغة التطبيق',
+  'bengali': 'অ্যাপ ভাষা',
+  'portuguese': 'Idioma do aplicativo',
+  'russian': 'Язык приложения',
+  'japanese': 'アプリの言語',
+  'punjabi': 'ਐਪ ਭਾਸ਼ਾ',
+  'german': 'App-Sprache',
+  'french': 'Langue de l\'application',
+  'indonesian': 'Bahasa Aplikasi',
+  'urdu': 'ایپ کی زبان',
+  'swahili': 'Lugha ya Programu',
+  'korean': '앱 언어',
+  'turkish': 'Uygulama Dili',
+  'vietnamese': 'Ngôn ngữ ứng dụng',
+  'tamil': 'பயன்பாட்டு மொழி',
+  'italian': 'Lingua dell\'app',
 };
-
 Map<String, String> chinese = {
   'Al Quran': '古兰经', 'Privacy Policy': '隐私政策',
   'Select a language for app': '选择应用语言',
@@ -258,6 +257,11 @@ Map<String, String> chinese = {
   'Done': '完成',
   'Already Exits': '已存在',
   'Add to Playlist': '添加到播放列表',
+  'Select Ayah': '选择 Ayah',
+  'Select Surah': '选择古兰经章节',
+  'Tafsir': '泰夫西尔',
+  'No Tafsir Found': '未找到泰夫西尔',
+  'App Language': '应用语言',
 
   ///
 };
@@ -424,6 +428,11 @@ Map<String, String> hindi = {
   'Done': 'हो गया',
   'Already Exits': 'पहले से मौजूद है',
   'Add to Playlist': 'प्लेलिस्ट में जोड़ें',
+  'Select Ayah': 'आयत का चयन करें',
+  'Select Surah': 'सूरह का चयन करें',
+  'Tafsir': 'तफ़सीर',
+  'No Tafsir Found': 'कोई तफ़सीर नहीं मिली',
+  'App Language': 'ऐप भाषा',
 
   ///
 };
@@ -586,6 +595,11 @@ Map<String, String> english = {
   'Done': 'Done',
   'Already Exits': 'Already Exists',
   'Add to Playlist': 'Add to Playlist',
+  'Select Ayah': 'Select Ayah',
+  'Select Surah': 'Select Surah',
+  'Tafsir': 'Tafsir',
+  'No Tafsir Found': 'No Tafsir Found',
+  'App Language': 'App Language',
 
   ///
 };
@@ -765,6 +779,11 @@ Map<String, String> spanish = {
   'Done': 'Hecho',
   'Already Exits': 'Ya existe',
   'Add to Playlist': 'Añadir a la lista de reproducción',
+  'Select Ayah': 'Seleccionar Ayah',
+  'Select Surah': 'Seleccionar Sura',
+  'Tafsir': 'Tafsir',
+  'No Tafsir Found': 'No se encontró Tafsir',
+  'App Language': 'Idioma de la aplicación',
 
   ///
 };
@@ -922,6 +941,11 @@ Map<String, String> arabic = {
   'Done': 'تم',
   'Already Exits': 'موجود بالفعل',
   'Add to Playlist': 'أضف إلى قائمة التشغيل',
+  'Select Ayah': 'اختر آية',
+  'Select Surah': 'اختر سورة',
+  'Tafsir': 'تفسير',
+  'No Tafsir Found': 'لم يتم العثور على تفسير',
+  'App Language': 'لغة التطبيق',
 
   ///
 };
@@ -1088,6 +1112,11 @@ Map<String, String> bengali = {
   'Done': 'হয়ে গেছে',
   'Already Exits': 'ইতিমধ্যেই বিদ্যমান',
   'Add to Playlist': 'প্লেলিস্টে যোগ করুন',
+  'Select Ayah': 'আয়াত নির্বাচন করুন',
+  'Select Surah': 'সূরা নির্বাচন করুন',
+  'Tafsir': 'তাফসীর',
+  'No Tafsir Found': 'কোনো তাফসীর পাওয়া যায়নি',
+  'App Language': 'অ্যাপ ভাষা',
 
   ///
 };
@@ -1260,6 +1289,11 @@ Map<String, String> portuguese = {
   'Done': 'Feito',
   'Already Exits': 'Já Existe',
   'Add to Playlist': 'Adicionar à Playlist',
+  'Select Ayah': 'Selecionar Ayah',
+  'Select Surah': 'Selecionar Surata',
+  'Tafsir': 'Tafsir',
+  'No Tafsir Found': 'Nenhum Tafsir Encontrado',
+  'App Language': 'Idioma do aplicativo',
 
   ///
 };
@@ -1431,6 +1465,11 @@ Map<String, String> russian = {
   'Done': 'Готово',
   'Already Exits': 'Уже существует',
   'Add to Playlist': 'Добавить в плейлист',
+  'Select Ayah': 'Выбрать аят',
+  'Select Surah': 'Выберите суру',
+  'Tafsir': 'Тафсир',
+  'No Tafsir Found': 'Тафсир не найден',
+  'App Language': 'Язык приложения',
 
   ///
 };
@@ -1586,6 +1625,11 @@ Map<String, String> japanese = {
   'Done': '完了',
   'Already Exits': '既に存在します',
   'Add to Playlist': 'プレイリストに追加',
+  'Select Ayah': 'アヤを選択',
+  'Select Surah': 'スーラを選択',
+  'Tafsir': 'タفسィール',
+  'No Tafsir Found': 'タفسィールが見つかりませんでした',
+  'App Language': 'アプリの言語',
 
   ///
 };
@@ -1747,6 +1791,11 @@ Map<String, String> punjabi = {
   'Done': 'ਹੋ ਗਿਆ',
   'Already Exits': 'ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਮੌਜੂਦ ਹੈ',
   'Add to Playlist': 'ਪਲੇਲਿਸਟ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ',
+  'Select Ayah': 'ਆਇਤ ਚੁਣੋ',
+  'Select Surah': 'ਸੂਰਹ ਚੁਣੋ',
+  'Tafsir': 'तफ़सीर',
+  'No Tafsir Found': 'ਕੋਈ ਤਫ਼ਸੀਰ ਨਹੀਂ ਮਿਲੀ',
+  'App Language': 'ਐਪ ਭਾਸ਼ਾ',
 
   ///
 };
@@ -1921,6 +1970,11 @@ Map<String, String> german = {
   'Done': 'Fertig',
   'Already Exits': 'Existiert bereits',
   'Add to Playlist': 'Zur Wiedergabeliste hinzufügen',
+  'Select Ayah': 'Ayah auswählen',
+  'Select Surah': 'Sure auswählen',
+  'Tafsir': 'Tafsir',
+  'No Tafsir Found': 'Kein Tafsir gefunden',
+  'App Language': 'App-Sprache',
 
   ///
 };
@@ -2095,6 +2149,11 @@ Map<String, String> french = {
   'Done': 'Terminé',
   'Already Exits': 'Existe déjà',
   'Add to Playlist': 'Ajouter à la playlist',
+  'Select Ayah': 'Sélectionner Ayah',
+  'Select Surah': 'Sélectionner la sourate',
+  'Tafsir': 'Tafsir',
+  'No Tafsir Found': 'Aucun Tafsir trouvé',
+  'App Language': 'Langue de l\'application',
 
   ///
 };
@@ -2260,6 +2319,11 @@ Map<String, String> indonesian = {
   'Done': 'Selesai',
   'Already Exits': 'Sudah Ada',
   'Add to Playlist': 'Tambahkan ke Daftar Putar',
+  'Select Ayah': 'Pilih Ayah',
+  'Select Surah': 'Pilih Surah',
+  'Tafsir': 'Tafsir',
+  'No Tafsir Found': 'Tafsir Tidak Ditemukan',
+  'App Language': 'Bahasa Aplikasi',
 
   ///
 };
@@ -2424,6 +2488,11 @@ Map<String, String> urdu = {
   'Done': 'ہو گیا',
   'Already Exits': 'پہلے سے موجود ہے',
   'Add to Playlist': 'پلے لسٹ میں شامل کریں',
+  'Select Ayah': 'آیت منتخب کریں',
+  'Select Surah': 'سورہ منتخب کریں',
+  'Tafsir': 'تفسیر',
+  'No Tafsir Found': 'کوئی تفسیر نہیں ملی',
+  'App Language': 'ایپ کی زبان',
 
   ///
 };
@@ -2589,6 +2658,11 @@ Map<String, String> swahili = {
   'Done': 'Nimemaliza',
   'Already Exits': 'Tayari Ipo',
   'Add to Playlist': 'Ongeza kwenye Orodha ya kucheza',
+  'Select Ayah': 'Chagua Ayah',
+  'Select Surah': 'Chagua Surah',
+  'Tafsir': 'Tafsiri',
+  'No Tafsir Found': 'Hakuna Tafsiri Iliyopatikana',
+  'App Language': 'Lugha ya Programu',
 
   ///
 };
@@ -2744,6 +2818,11 @@ Map<String, String> korean = {
   'Done': '완료',
   'Already Exits': '이미 존재합니다',
   'Add to Playlist': '재생 목록에 추가',
+  'Select Ayah': '아야 선택',
+  'Select Surah': '수라 선택',
+  'Tafsir': '타프시르',
+  'No Tafsir Found': '타프시르를 찾을 수 없습니다',
+  'App Language': '앱 언어',
 
   ///
 };
@@ -2911,6 +2990,11 @@ Map<String, String> turkish = {
   'Done': 'Bitti',
   'Already Exits': 'Zaten Var',
   'Add to Playlist': 'Oynatma Listesine Ekle',
+  'Select Ayah': 'Ayet Seç',
+  'Select Surah': 'Sure Seç',
+  'Tafsir': 'Tefsir',
+  'No Tafsir Found': 'Tefsir Bulunamadı',
+  'App Language': 'Uygulama Dili',
 
   ///
 };
@@ -3077,6 +3161,11 @@ Map<String, String> vietnamese = {
   'Done': 'Xong',
   'Already Exits': 'Đã tồn tại',
   'Add to Playlist': 'Thêm vào Danh sách phát',
+  'Select Ayah': 'Chọn Ayah',
+  'Select Surah': 'Chọn Surah',
+  'Tafsir': 'Tafsir',
+  'No Tafsir Found': 'Không tìm thấy Tafsir',
+  'App Language': 'Ngôn ngữ ứng dụng',
 
   ///
 };
@@ -3252,6 +3341,11 @@ Map<String, String> tamil = {
   'Done': 'முடிந்தது',
   'Already Exits': 'ஏற்கனவே உள்ளது',
   'Add to Playlist': 'PlayList இல் சேர்',
+  'Select Ayah': 'ஆயாவைத் தேர்ந்தெடுக்கவும்',
+  'Select Surah': 'சூராவைத் தேர்ந்தெடுக்கவும்',
+  'Tafsir': 'தஃப்சீர்',
+  'No Tafsir Found': 'தஃப்சீர் கிடைக்கவில்லை',
+  'App Language': 'பயன்பாட்டு மொழி',
 
   ///
 };
@@ -3425,6 +3519,11 @@ Map<String, String> italian = {
   'Done': 'Fatto',
   'Already Exits': 'Esiste già',
   'Add to Playlist': 'Aggiungi alla playlist',
+  'Select Ayah': 'Seleziona Ayah',
+  'Select Surah': 'Seleziona Sura',
+  'Tafsir': 'Tafsir',
+  'No Tafsir Found': 'Tafsir non trovato',
+  'App Language': 'Lingua dell\'app',
 
   ///
 };
