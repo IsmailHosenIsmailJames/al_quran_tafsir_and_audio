@@ -56,7 +56,7 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
                   },
                   icon: const Icon(Icons.add),
                   label: const Text('Add')),
-            )
+            ),
         ],
       ),
       body: SingleChildScrollView(
@@ -69,7 +69,7 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
               child: DropdownButtonFormField(
                 value: selectedSurahNumber,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   hintText: 'Select Surah'.tr,
                 ),
                 menuMaxHeight: MediaQuery.of(context).size.height * 0.5,
@@ -103,7 +103,7 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
                 child: DropdownButtonFormField(
                   value: selectedAyahNumber,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     hintText: 'Select Ayah'.tr,
                   ),
                   menuMaxHeight: MediaQuery.of(context).size.height * 0.5,
@@ -141,10 +141,11 @@ class _AddNewAyahForCollectionState extends State<AddNewAyahForCollection> {
             const Gap(15),
             if (selectedSurahNumber != null && selectedAyahNumber != null)
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   'Tafsir'.tr,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),
             if (selectedSurahNumber != null && selectedAyahNumber != null)

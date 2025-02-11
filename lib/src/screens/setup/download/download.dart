@@ -1,11 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:math' as math;
 
+import 'package:al_quran_tafsir_and_audio/src/api/appwrite/config.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/recitation_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/files/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -167,6 +170,21 @@ class _DownloadDataState extends State<DownloadData> {
         });
         return;
       }
+    }
+
+    final db = Databases(AppWriteConfig.client);
+
+    try {
+      db.createDocument(
+        databaseId: '678670ae00193586bc94',
+        collectionId: '67ab3b7b000206fd9fea',
+        documentId: math.Random().nextInt(100000000).toString(),
+        data: {
+          'json': jsonEncode(widget.selection),
+        },
+      );
+    } on AppwriteException catch (e) {
+      log(e.message.toString());
     }
 
     setState(() {

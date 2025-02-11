@@ -92,7 +92,6 @@ class MyAppDrawer extends StatelessWidget {
             minTileHeight: 45,
             onTap: () async {
               Navigator.pop(context);
-
               await Get.off(() => const HomePage());
               pageController.animateToPage(
                 0,
