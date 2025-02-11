@@ -90,9 +90,15 @@ class MyAppDrawer extends StatelessWidget {
           const Gap(20),
           ListTile(
             minTileHeight: 45,
-            onTap: () {
+            onTap: () async {
               Navigator.pop(context);
-              Get.off(() => const HomePage());
+
+              await Get.off(() => const HomePage());
+              pageController.animateToPage(
+                0,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              );
             },
             leading: Icon(
               FluentIcons.home_24_filled,

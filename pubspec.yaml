@@ -50,6 +50,11 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.3
   internet_connection_checker_plus: ^2.7.0
+  # flutter_compass: ^0.8.1
+  # geolocator: ^13.0.2
+
+dependency_overrides:
+  flutter_web_auth_2: 4.1.0
 
 dev_dependencies:
   flutter_test:

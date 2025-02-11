@@ -194,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                           ? const Padding(
                               padding: EdgeInsets.all(3.0),
                               child: CircularProgressIndicator(
-                                color: Colors.white,
+                                color: Colors.green,
                               ),
                             )
                           : Text('Signup then login'.tr),

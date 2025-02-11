@@ -1,0 +1,1 @@
+/home/ismail/dev/al_quran_tafsir_and_audio/build/app/intermediates/cxx/RelWithDebInfo/49112423/obj/arm64-v8a

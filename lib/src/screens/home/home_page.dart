@@ -31,9 +31,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = (themeController.themeModeName.value == 'dark' ||
-        (themeController.themeModeName.value == 'system' &&
-            MediaQuery.of(context).platformBrightness == Brightness.dark));
     return Scaffold(
       appBar: AppBar(
         title: Text('Al Quran'.tr),
@@ -93,33 +90,41 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedBottomNavIndex,
-        onTap: (value) {
-          pageController.jumpToPage(value);
+      bottomNavigationBar: Obx(
+        () {
+          bool isDark = (themeController.themeModeName.value == 'dark' ||
+              (themeController.themeModeName.value == 'system' &&
+                  MediaQuery.of(context).platformBrightness ==
+                      Brightness.dark));
+          return BottomNavigationBar(
+            currentIndex: selectedBottomNavIndex,
+            onTap: (value) {
+              pageController.jumpToPage(value);
+            },
+            selectedItemColor: Colors.green.shade600,
+            unselectedItemColor: isDark ? Colors.white : Colors.grey.shade700,
+            backgroundColor: Colors.green.shade700,
+            elevation: 0,
+            items: [
+              BottomNavigationBarItem(
+                icon: const Icon(FluentIcons.book_24_filled),
+                label: 'Quran'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.audiotrack_rounded),
+                label: 'Recitation'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(FluentIcons.collections_24_filled),
+                label: 'Collection'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(FluentIcons.person_24_filled),
+                label: 'Profile'.tr,
+              ),
+            ],
+          );
         },
-        selectedItemColor: Colors.green.shade600,
-        unselectedItemColor: isDark ? Colors.white : Colors.grey.shade700,
-        backgroundColor: Colors.green.shade700,
-        elevation: 0,
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(FluentIcons.book_24_filled),
-            label: 'Quran'.tr,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.audiotrack_rounded),
-            label: 'Recitation'.tr,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(FluentIcons.collections_24_filled),
-            label: 'Collection'.tr,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(FluentIcons.person_24_filled),
-            label: 'Profile'.tr,
-          ),
-        ],
       ),
     );
   }

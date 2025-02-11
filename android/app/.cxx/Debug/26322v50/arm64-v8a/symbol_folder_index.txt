@@ -1,0 +1,1 @@
+/home/ismail/dev/al_quran_tafsir_and_audio/build/app/intermediates/cxx/Debug/26322v50/obj/arm64-v8a

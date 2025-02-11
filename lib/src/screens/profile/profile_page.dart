@@ -79,11 +79,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          iconAlignment: IconAlignment.end,
+                        ),
                         onPressed: () async {
                           await Get.to(() => const LoginPage());
                           setState(() {});
                         },
-                        iconAlignment: IconAlignment.end,
                         child: Row(
                           children: [
                             const Spacer(),

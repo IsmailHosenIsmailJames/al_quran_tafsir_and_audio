@@ -1,0 +1,2 @@
+/home/ismail/dev/al_quran_tafsir_and_audio/android/app/.cxx/RelWithDebInfo/49112423/arm64-v8a/CMakeFiles/edit_cache.dir
+/home/ismail/dev/al_quran_tafsir_and_audio/android/app/.cxx/RelWithDebInfo/49112423/arm64-v8a/CMakeFiles/rebuild_cache.dir
