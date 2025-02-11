@@ -66,8 +66,8 @@ class _QuranTabState extends State<QuranTab> {
                         quranTabIndex = 0;
                         pageController.animateToPage(
                           0,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.linear,
                         );
                       },
                       child: Text(
@@ -98,8 +98,8 @@ class _QuranTabState extends State<QuranTab> {
                         quranTabIndex = 1;
                         pageController.animateToPage(
                           1,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.linear,
                         );
                       },
                       child: Text(
@@ -131,8 +131,8 @@ class _QuranTabState extends State<QuranTab> {
                         quranTabIndex = 2;
                         pageController.animateToPage(
                           2,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.linear,
                         );
                       },
                       child: Text(
@@ -183,7 +183,8 @@ class _QuranTabState extends State<QuranTab> {
                           Get.to(
                             () => SurahView(
                               ayahStart: start,
-                              titleToShow: quranSurahInfoModel.nameSimple,
+                              titleToShow: getSurahNativeName(
+                                  local, quranSurahInfoModel.id - 1),
                               ayahEnd: start + quranSurahInfoModel.versesCount,
                             ),
                           );
@@ -342,7 +343,7 @@ class _QuranTabState extends State<QuranTab> {
                                       .toDouble() +
                                   20
                               : 0,
-                          duration: const Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 200),
                           margin: const EdgeInsets.only(left: 18, right: 18),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(

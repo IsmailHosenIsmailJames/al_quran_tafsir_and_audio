@@ -27,8 +27,8 @@ class MyAppDrawer extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 50),
         children: [
           Container(
-            height: 165,
-            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+            height: 180,
+            padding: const EdgeInsets.only(top: 35, left: 20, right: 20),
             child: Stack(
               children: [
                 Center(
@@ -96,7 +96,7 @@ class MyAppDrawer extends StatelessWidget {
               pageController.animateToPage(
                 0,
                 duration: const Duration(milliseconds: 400),
-                curve: Curves.easeIn,
+                curve: Curves.linear,
               );
             },
             leading: Icon(
@@ -141,7 +141,7 @@ class MyAppDrawer extends StatelessWidget {
               pageController.animateToPage(
                 2,
                 duration: const Duration(milliseconds: 400),
-                curve: Curves.easeIn,
+                curve: Curves.linear,
               );
               Navigator.pop(context);
             },
@@ -165,7 +165,7 @@ class MyAppDrawer extends StatelessWidget {
               pageController.animateToPage(
                 2,
                 duration: const Duration(milliseconds: 400),
-                curve: Curves.easeIn,
+                curve: Curves.linear,
               );
               Navigator.pop(context);
             },
@@ -189,7 +189,7 @@ class MyAppDrawer extends StatelessWidget {
               pageController.animateToPage(
                 2,
                 duration: const Duration(milliseconds: 400),
-                curve: Curves.easeIn,
+                curve: Curves.linear,
               );
               Navigator.pop(context);
             },

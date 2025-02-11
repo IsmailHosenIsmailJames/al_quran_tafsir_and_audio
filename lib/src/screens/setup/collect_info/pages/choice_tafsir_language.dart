@@ -102,12 +102,12 @@ class _TafsirLanguageState extends State<TafsirLanguage> {
               },
               child: Padding(
                 padding: const EdgeInsets.only(
-                    left: 10, right: 10, bottom: 10, top: 10),
+                    left: 10, right: 10, bottom: 5, top: 5),
                 child: Obx(
                   () => Row(
                     children: [
                       Text(nativeSpelling ?? language[index],
-                          style: const TextStyle(fontSize: 14)),
+                          style: const TextStyle(fontSize: 16)),
                       const Spacer(),
                       if (tafsirLanguage.tafsirIndex.value == index)
                         const CircleAvatar(

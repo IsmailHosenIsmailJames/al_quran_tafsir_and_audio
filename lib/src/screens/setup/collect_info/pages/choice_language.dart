@@ -40,11 +40,10 @@ class _SelectLanguageState extends State<ChoiceLanguage> {
         itemBuilder: (context, index) {
           return Container(
             margin: const EdgeInsets.only(top: 5, bottom: 5),
-            height: 40,
+            height: 50,
             child: TextButton(
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.only(
-                    left: 10, right: 10, bottom: 5, top: 5),
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 7),
                 backgroundColor: Colors.green.shade400.withOpacity(0.1),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(7),
@@ -64,7 +63,6 @@ class _SelectLanguageState extends State<ChoiceLanguage> {
                       used20LanguageMap[index]['Native'].toString(),
                       style: const TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     const Spacer(),

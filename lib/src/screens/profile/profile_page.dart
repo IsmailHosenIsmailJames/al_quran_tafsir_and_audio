@@ -54,7 +54,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(
-                      '${'Get the best experience by logging in'.tr} ->',
+                      'Get the best experience by logging in'.tr,
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -86,18 +86,12 @@ class _ProfilePageState extends State<ProfilePage> {
                           await Get.to(() => const LoginPage());
                           setState(() {});
                         },
-                        child: Row(
-                          children: [
-                            const Spacer(),
-                            Text(
-                              'Login'.tr,
-                              style: const TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                            const Spacer(),
-                            const Icon(Icons.fast_forward_rounded),
-                          ],
+                        child: Text(
+                          'Login'.tr,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

@@ -78,7 +78,7 @@ class _TranslationLanguageState extends State<TranslationLanguage> {
         children: [
           Container(
             padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-            height: 45,
+            height: 50,
             child: CupertinoSearchTextField(
               style: Theme.of(context).textTheme.bodyMedium,
               onChanged: (value) {
@@ -114,11 +114,11 @@ class _TranslationLanguageState extends State<TranslationLanguage> {
               itemBuilder: (context, index) {
                 return Container(
                   margin: const EdgeInsets.only(top: 5, bottom: 5),
-                  height: 40,
+                  height: 50,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      padding: const EdgeInsets.only(
-                          left: 10, right: 10, bottom: 5, top: 5),
+                      padding:
+                          const EdgeInsets.only(left: 10, right: 10, top: 8),
                       backgroundColor: Colors.green.shade400.withOpacity(0.1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(7),
@@ -136,7 +136,7 @@ class _TranslationLanguageState extends State<TranslationLanguage> {
                                 ? nativeName[language[index]] ?? ''
                                 : language[index],
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 16,
                               color: translationLanguageController
                                           .translationLanguage.value ==
                                       language[index]

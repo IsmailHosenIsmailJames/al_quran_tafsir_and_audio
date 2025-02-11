@@ -448,8 +448,8 @@ Container getInfoHeaderWidget(
     child: Row(
       children: [
         Container(
-          height: 120,
-          width: 120,
+          height: 110,
+          width: 110,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
@@ -457,7 +457,7 @@ Container getInfoHeaderWidget(
                     ? 'assets/img/makkah.jpg'
                     : 'assets/img/madina.jpeg',
               ),
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
             borderRadius: BorderRadius.circular(5),
           ),
@@ -468,7 +468,7 @@ Container getInfoHeaderWidget(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Surah Name',
+              'Surah'.tr,
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.bold,
@@ -476,7 +476,7 @@ Container getInfoHeaderWidget(
               ),
             ),
             Text(
-              '${surahInfo.nameSimple.capitalizeFirst} ( ${surahInfo.nameArabic} )',
+              '${getSurahNativeName(Get.locale?.languageCode ?? 'en', surahInfo.id - 1).capitalizeFirst} ( ${surahInfo.nameArabic} )',
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -484,7 +484,7 @@ Container getInfoHeaderWidget(
             ),
             const Gap(3),
             Text(
-              'Revelation Place',
+              'Revelation Place'.tr,
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.bold,
@@ -492,7 +492,7 @@ Container getInfoHeaderWidget(
               ),
             ),
             Text(
-              "${surahInfo.revelationPlace.capitalizeFirst} (${surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
+              "${surahInfo.revelationPlace.capitalizeFirst.tr} (${surahInfo.revelationPlace == "makkah" ? "مكي" : "مدني"} )",
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -500,7 +500,7 @@ Container getInfoHeaderWidget(
             ),
             const Gap(3),
             Text(
-              'Translation book',
+              'Translation Book'.tr,
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.bold,
@@ -508,7 +508,7 @@ Container getInfoHeaderWidget(
               ),
             ),
             Text(
-              safeSubString(translationBookName, 25),
+              safeSubString(translationBookName, 23),
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,

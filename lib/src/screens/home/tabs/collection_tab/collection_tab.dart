@@ -115,8 +115,8 @@ class _CollectionTabState extends State<CollectionTab> {
                     collectionTabIndex = 0;
                     pageController.animateTo(
                       0,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.linear,
                     );
                   },
                   child: Row(
@@ -157,8 +157,8 @@ class _CollectionTabState extends State<CollectionTab> {
                     collectionTabIndex = 1;
                     pageController.animateToPage(
                       1,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.linear,
                     );
                   },
                   child: Row(
@@ -202,8 +202,8 @@ class _CollectionTabState extends State<CollectionTab> {
                     collectionTabIndex = 3;
                     pageController.animateToPage(
                       2,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.linear,
                     );
                   },
                   child: Row(
@@ -774,8 +774,8 @@ class _CollectionTabState extends State<CollectionTab> {
       int index, List<PlayListModel>? currentPlayList) {
     ScrollController scrollController = ScrollController();
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.linear,
       padding: const EdgeInsets.all(10.0),
       height: expandedList.contains(index) ? 300 : 0,
       child: (expandedList.contains(index))

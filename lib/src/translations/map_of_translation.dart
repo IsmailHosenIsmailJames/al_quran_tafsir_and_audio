@@ -111,9 +111,11 @@ const Map<String, String> translations = {
 };
 String s1 = 'about_me';
 String s2 = 'why_should_logged';
+
 Map<String, String> chinese = {
   s1: '我是一名程序员，每天都 学习新事物。专注于使用 Flutter 进行全栈跨平台支持的应用程序开发。我也喜欢玩物联网。',
   s2: '您可以将您最喜欢的播放列表保存到云端。并从上次停止的地方继续收听。无需担心丢失播放列表。我们已为您搞定。',
+  'Revelation Place': '启示之地',
   'Al Quran': '古兰经',
   'Privacy Policy': '隐私政策',
   'Select a language for app': '选择应用语言',
@@ -269,6 +271,7 @@ Map<String, String> chinese = {
 Map<String, String> hindi = {
   s1: 'मैं एक प्रोग्रामर हूं जो हर दिन नई चीजें सीखने की कोशिश करता है। Flutter का उपयोग करके फुल स्टैक क्रॉस प्लेटफॉर्म समर्थित एप्लिकेशन डेवलपमेंट पर ध्यान केंद्रित किया गया है। मुझे आईओटी के साथ खेलना भी पसंद है।',
   s2: 'आप अपनी पसंदीदा प्लेलिस्ट को क्लाउड में सहेज सकते हैं। और वहीं से सुनना जारी रख सकते हैं जहाँ आपने छोड़ा था। अपनी प्लेलिस्ट खोने के बारे में चिंता करने की कोई आवश्यकता नहीं है। हमने आपको कवर कर लिया है।',
+  'Revelation Place': 'रहस्योद्घाटन स्थान',
   'Al Quran': 'अल-कुरान',
   'Privacy Policy': 'गोपनीयता नीति',
   'Select a language for app': 'ऐप के लिए भाषा चुनें',
@@ -427,6 +430,7 @@ Map<String, String> hindi = {
 Map<String, String> english = {
   s1: 'I am programmer who try to learn new things everyday. Focused on Full Stack Cross Platform supported Application development using flutter. I also love to play with IOT',
   s2: 'You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
+  'Revelation Place': 'Revelation Place',
   'Al Quran': 'Al-Quran',
   'Privacy Policy': 'Privacy Policy',
   'Select a language for app': 'Select app language',
@@ -435,7 +439,7 @@ Map<String, String> english = {
   'Data collected from': 'Data collected from',
   'and': 'and',
   'Next': 'Next',
-  'Translation of Quran': 'Translation of Quran',
+  'Translation of Quran': 'Translation Language of Quran',
   'Translation Book': 'Translation Book',
   "Select language for Quran's Tafsir": 'Select language for Quran\'s Tafsir',
   'Please Select Quran Translation Language':
@@ -591,6 +595,7 @@ Map<String, String> english = {
 Map<String, String> spanish = {
   s1: 'Soy un programador que intenta aprender cosas nuevas todos los días. Enfocado en el desarrollo de aplicaciones Full Stack multiplataforma compatible con Flutter. También me encanta jugar con IoT.',
   s2: 'Puedes guardar tu lista de reproducción favorita en la nube. Y continuar escuchando desde donde lo dejaste. No te preocupes por perder tu lista de reproducción. Te tenemos cubierto.',
+  'Revelation Place': 'Lugar de Revelación',
   'Al Quran': 'El Corán',
   'Privacy Policy': 'Política de privacidad',
   'Select a language for app': 'Seleccionar idioma de la aplicación',
@@ -770,6 +775,7 @@ Map<String, String> spanish = {
 Map<String, String> arabic = {
   s1: 'أنا مبرمج أحاول تعلم أشياء جديدة كل يوم. أركز على تطوير تطبيقات Full Stack عبر الأنظمة الأساسية المدعومة باستخدام Flutter. أحب أيضًا اللعب بـ IOT.',
   s2: 'يمكنك حفظ قائمة التشغيل المفضلة لديك في السحابة. واستمر في الاستماع من حيث توقفت. لا داعي للقلق بشأن فقدان قائمة التشغيل الخاصة بك. نحن نغطيك.',
+  'Revelation Place': 'مكان الوحي',
   'Al Quran': 'القرآن الكريم',
   'Privacy Policy': 'سياسة الخصوصية',
   'Select a language for app': 'اختر لغة التطبيق',
@@ -932,6 +938,7 @@ Map<String, String> arabic = {
 Map<String, String> bengali = {
   s1: 'আমি একজন প্রোগ্রামার যে প্রতিদিন নতুন জিনিস শেখার চেষ্টা করে। Flutter ব্যবহার করে ফুল স্ট্যাক ক্রস প্ল্যাটফর্ম সমর্থিত অ্যাপ্লিকেশন ডেভেলপমেন্টের উপর দৃষ্টি নিবদ্ধ করি। আমি আইওটি নিয়ে খেলতে ভালোবাসি।',
   s2: 'আপনি আপনার পছন্দের প্লেলিস্ট ক্লাউডে সংরক্ষণ করতে পারেন। এবং যেখানে আপনি বন্ধ করেছিলেন সেখান থেকে শোনা চালিয়ে যেতে পারেন। আপনার প্লেলিস্ট হারানোর বিষয়ে চিন্তা করার দরকার নেই। আমরা আপনাকে কভার করেছি।',
+  'Revelation Place': 'প্রকাশের স্থান',
   'Al Quran': 'আল কুরআন',
   'Privacy Policy': 'গোপনীয়তা নীতি',
   'Select a language for app': 'অ্যাপের ভাষা নির্বাচন করুন',
@@ -1097,6 +1104,7 @@ Map<String, String> bengali = {
 Map<String, String> portuguese = {
   s1: 'Sou um programador que tenta aprender coisas novas todos os dias. Focado no desenvolvimento de aplicativos Full Stack multiplataforma suportados por Flutter. Também adoro brincar com IoT.',
   s2: 'Você pode salvar sua playlist favorita na nuvem. E continue ouvindo de onde parou. Não precisa se preocupar em perder sua playlist. Nós protegemos você.',
+  'Revelation Place': 'Lugar da Revelação',
   'Al Quran': 'Alcorão',
   'Privacy Policy': 'Política de Privacidade',
   'Select a language for app': 'Selecionar idioma do aplicativo',
@@ -1272,6 +1280,7 @@ Map<String, String> portuguese = {
 Map<String, String> russian = {
   s1: 'Я программист, который каждый день старается узнавать что-то новое. Сосредоточен на разработке кроссплатформенных приложений Full Stack с поддержкой Flutter. Я также люблю играть с IOT.',
   s2: 'Вы можете сохранить свой любимый плейлист в облако. И продолжить прослушивание с того места, где остановились. Не нужно беспокоиться о потере плейлиста. Мы вас прикроем.',
+  'Revelation Place': 'Место Откровения',
   'Al Quran': 'Коран',
   'Privacy Policy': 'Политика конфиденциальности',
   'Select a language for app': 'Выбрать язык приложения',
@@ -1444,6 +1453,7 @@ Map<String, String> russian = {
 Map<String, String> japanese = {
   s1: '私は毎日新しいことを学ぼうとするプログラマーです。 Flutterを使用したフルスタッククロスプラットフォーム対応アプリケーション開発に焦点を当てています。 IOTで遊ぶのも大好きです。',
   s2: 'お気に入りのプレイリストをクラウドに保存できます。そして、前回停止したところからリスニングを再開できます。プレイリストを失う心配はありません。私たちにお任せください。',
+  'Revelation Place': '啓示の場所',
   'Al Quran': 'アル・コーラン',
   'Privacy Policy': 'プライバシーポリシー',
   'Select a language for app': 'アプリの言語を選択',
@@ -1601,6 +1611,7 @@ Map<String, String> japanese = {
 Map<String, String> punjabi = {
   s1: 'ਮੈਂ ਇੱਕ ਪ੍ਰੋਗਰਾਮਰ ਹਾਂ ਜੋ ਹਰ ਰੋਜ਼ ਨਵੀਆਂ ਚੀਜ਼ਾਂ ਸਿੱਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਦਾ ਹੈ। ਫਲਟਰ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਫੁੱਲ ਸਟੈਕ ਕਰਾਸ ਪਲੇਟਫਾਰਮ ਸਪੋਰਟਡ ਐਪਲੀਕੇਸ਼ਨ ਡਿਵੈਲਪਮੈਂਟ \'ਤੇ ਧਿਆਨ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਮੈਨੂੰ IOT ਨਾਲ ਖੇਡਣਾ ਵੀ ਪਸੰਦ ਹੈ।',
   s2: 'تُسی اپنی پسندیدہ پلے لسٹ کلاؤڈ وچ محفوظ کر سکدے او۔ تے جتھوں تُسی چھڈیا سی اتھوں سُننا جاری رکھ سکدے او۔ اپنی پلے لسٹ گواچن دی فکر کرن دی کوئی لوڑ نئیں۔ اسیں تہانوں کور کر لیا اے۔',
+  'Revelation Place': 'ਪ੍ਰਕਾਸ਼ ਸਥਾਨ',
   'Al Quran': 'ਅਲ ਕੁਰਾਨ',
   'Privacy Policy': 'ਗੁਪਤਤਾ ਨੀਤੀ',
   'Select a language for app': 'ਐਪ ਲਈ ਭਾਸ਼ਾ ਚੁਣੋ',
@@ -1763,6 +1774,7 @@ Map<String, String> punjabi = {
 Map<String, String> german = {
   s1: 'Ich bin ein Programmierer, der jeden Tag versucht, neue Dinge zu lernen. Fokussiert auf Full-Stack-Cross-Plattform-unterstützte Anwendungsentwicklung mit Flutter. Ich spiele auch gerne mit IOT.',
   s2: 'Sie können Ihre Lieblings-Playlist in der Cloud speichern. Und hören Sie dort weiter, wo Sie aufgehört haben. Sie müssen sich keine Sorgen machen, Ihre Playlist zu verlieren. Wir kümmern uns darum.',
+  'Revelation Place': 'Offenbarungsort',
   'Al Quran': 'Der Koran',
   'Privacy Policy': 'Datenschutzbestimmungen',
   'Select a language for app': 'App-Sprache auswählen',
@@ -1941,6 +1953,7 @@ Map<String, String> german = {
 Map<String, String> french = {
   s1: 'Je suis un programmeur qui essaie d\'apprendre de nouvelles choses tous les jours. Axé sur le développement d\'applications Full Stack multiplateformes prises en charge par Flutter. J\'aime aussi jouer avec l\'IoT.',
   s2: 'Vous pouvez enregistrer votre playlist préférée dans le cloud. Et continuez à écouter là où vous vous êtes arrêté. Pas besoin de vous inquiéter de perdre votre playlist. Nous avons ce qu\'il vous faut.',
+  'Revelation Place': 'Lieu de Révélation',
   'Al Quran': 'Le Coran',
   'Privacy Policy': 'Politique de confidentialité',
   'Select a language for app': 'Choisir la langue de l\'application',
@@ -2119,6 +2132,7 @@ Map<String, String> french = {
 Map<String, String> indonesian = {
   s1: 'Saya seorang programmer yang mencoba mempelajari hal-hal baru setiap hari. Berfokus pada pengembangan Aplikasi lintas platform Full Stack yang didukung menggunakan flutter. Saya juga suka bermain dengan IOT.',
   s2: 'Anda dapat menyimpan daftar putar favorit Anda ke cloud. Dan lanjutkan mendengarkan dari tempat Anda berhenti. Tidak perlu khawatir kehilangan daftar putar Anda. Kami siap membantu Anda.',
+  'Revelation Place': 'Tempat Wahyu',
   'Al Quran': 'Al-Qur\'an',
   'Privacy Policy': 'Kebijakan Privasi',
   'Select a language for app': 'Pilih bahasa untuk aplikasi',
@@ -2287,6 +2301,7 @@ Map<String, String> indonesian = {
 Map<String, String> urdu = {
   s1: 'میں ایک پروگرامر ہوں جو ہر روز نئی چیزیں سیکھنے کی کوشش کرتا ہے۔ فلٹر کا استعمال کرتے ہوئے فل اسٹیک کراس پلیٹ فارم سپورٹڈ ایپلیکیشن ڈویلپمنٹ پر توجہ مرکوز کی گئی ہے۔ مجھے IOT کے ساتھ کھیلنا بھی پسند ہے۔',
   s2: 'آپ اپنی پسندیدہ پلے لسٹ کو کلاؤڈ میں محفوظ کر سکتے ہیں۔ اور جہاں سے آپ نے چھوڑا تھا وہیں سے سننا جاری رکھ سکتے ہیں۔ اپنی پلے لسٹ کھونے کے بارے میں فکر کرنے کی ضرورت نہیں ہے۔ ہم نے آپ کو کور کر لیا ہے۔',
+  'Revelation Place': 'انکشاف کی جگہ',
   'Al Quran': 'القرآن',
   'Privacy Policy': 'رازداری کی پالیسی',
   'Select a language for app': 'ایپ کے لیے زبان منتخب کریں',
@@ -2450,6 +2465,7 @@ Map<String, String> urdu = {
 Map<String, String> swahili = {
   s1: 'Mimi ni programu ambaye hujaribu kujifunza mambo mapya kila siku. Nimelenga katika uundaji wa Programu zinazotumia Jukwaa Mtambuka la Full Stack kwa kutumia flutter. Pia napenda kucheza na IOT.',
   s2: 'Unaweza kuhifadhi orodha yako ya kucheza unayoipenda kwenye wingu. Na uendelee kusikiliza kutoka pale ulipoishia. Hakuna haja ya kuwa na wasiwasi kuhusu kupoteza orodha yako ya kucheza. Tumekusaidia.',
+  'Revelation Place': 'Mahali pa Ufunuo',
   'Al Quran': 'Kurani Tukufu',
   'Privacy Policy': 'Sera ya Faragha',
   'Select a language for app': 'Chagua lugha ya programu',
@@ -2618,6 +2634,7 @@ Map<String, String> swahili = {
 Map<String, String> korean = {
   s1: '저는 매일 새로운 것을 배우려고 노력하는 프로그래머입니다. Flutter를 사용하여 풀 스택 크로스 플랫폼 지원 애플리케이션 개발에 집중하고 있습니다. IOT를 가지고 노는 것도 좋아합니다.',
   s2: '좋아하는 재생 목록을 클라우드에 저장할 수 있습니다. 그리고 중단했던 부분부터 계속 들을 수 있습니다. 재생 목록을 잃을 염려가 없습니다. 저희가 책임지겠습니다.',
+  'Revelation Place': '계시의 장소',
   'Al Quran': '알 쿠란',
   'Privacy Policy': '개인정보 처리방침',
   'Select a language for app': '앱 언어 선택',
@@ -2775,6 +2792,7 @@ Map<String, String> korean = {
 Map<String, String> turkish = {
   s1: 'Her gün yeni şeyler öğrenmeye çalışan bir programcıyım. Flutter kullanarak Full Stack Çapraz Platform destekli Uygulama geliştirmeye odaklandım. Ayrıca IOT ile oynamayı seviyorum.',
   s2: 'Favori çalma listenizi buluta kaydedebilirsiniz. Ve kaldığınız yerden dinlemeye devam edin. Çalma listenizi kaybetme konusunda endişelenmenize gerek yok. Sizi destekliyoruz.',
+  'Revelation Place': 'Vahiy Yeri',
   'Al Quran': 'Kur\'an',
   'Privacy Policy': 'Gizlilik Politikası',
   'Select a language for app': 'Uygulama dilini seçin',
@@ -2941,6 +2959,7 @@ Map<String, String> turkish = {
 Map<String, String> vietnamese = {
   s1: 'Tôi là một lập trình viên luôn cố gắng học hỏi những điều mới mỗi ngày. Tập trung vào phát triển Ứng dụng hỗ trợ đa nền tảng Full Stack bằng flutter. Tôi cũng thích chơi với IOT.',
   s2: 'Bạn có thể lưu danh sách phát yêu thích của mình lên đám mây. Và tiếp tục nghe từ nơi bạn đã dừng lại. Không cần phải lo lắng về việc mất danh sách phát của bạn. Chúng tôi sẽ lo liệu cho bạn.',
+  'Revelation Place': 'Địa điểm Khải Huyền',
   'Al Quran': 'Kinh Qur\'an',
   'Privacy Policy': 'Chính sách bảo mật',
   'Select a language for app': 'Chọn ngôn ngữ cho ứng dụng',
@@ -3109,6 +3128,7 @@ Map<String, String> vietnamese = {
 Map<String, String> tamil = {
   s1: 'நான் ஒவ்வொரு நாளும் புதிய விஷயங்களைக் கற்றுக்கொள்ள முயற்சிக்கும் ஒரு நிரலாளர். ஃப்ளட்டரைப் பயன்படுத்தி முழு ஸ்டாக் கிராஸ் பிளாட்ஃபார்ம் ஆதரவு பயன்பாட்டு மேம்பாட்டில் கவனம் செலுத்துகிறேன். நான் IOT உடன் விளையாடுவதையும் விரும்புகிறேன்.',
   s2: 'உங்களுக்குப் பிடித்த பிளேலிஸ்ட்டை கிளவுட்டில் சேமிக்கலாம். மேலும் நீங்கள் விட்டுச் சென்ற இடத்திலிருந்து தொடர்ந்து கேட்கலாம். உங்கள் பிளேலிஸ்ட்டை இழந்துவிடுவது குறித்து கவலைப்படத் தேவையில்லை. நாங்கள் உங்களைப் பார்த்துக் கொள்வோம்.',
+  'Revelation Place': 'வெளிப்படுத்துதல் இடம்',
   'Al Quran': 'அல் குர்ஆன்',
   'Privacy Policy': 'தனியுரிமைக் கொள்கை',
   'Select a language for app': 'பயன்பாட்டிற்கான மொழியைத் தேர்ந்தெடுக்கவும்',
@@ -3287,6 +3307,7 @@ Map<String, String> tamil = {
 Map<String, String> italian = {
   s1: 'Sono un programmatore che cerca di imparare cose nuove ogni giorno. Concentrato sullo sviluppo di applicazioni multipiattaforma Full Stack supportate da Flutter. Amo anche giocare con l\'IoT.',
   s2: 'Puoi salvare la tua playlist preferita nel cloud. E continua ad ascoltare da dove avevi interrotto. Non c\'è bisogno di preoccuparsi di perdere la tua playlist. Ci pensiamo noi.',
+  'Revelation Place': 'Luogo della Rivelazione',
   'Al Quran': 'Il Corano',
   'Privacy Policy': 'Informativa sulla privacy',
   'Select a language for app': 'Seleziona la lingua dell\'app',

@@ -39,6 +39,20 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Gap(20),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.grey.withValues(alpha: 0.1),
+                    ),
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      size: 18,
+                    ),
+                  ),
+                  const Gap(10),
                   Text(
                     'Welcome'.tr,
                     style: const TextStyle(
