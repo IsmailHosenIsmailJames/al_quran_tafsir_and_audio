@@ -64,34 +64,36 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animationController,
-      builder: (context, value) {
-        return Obx(
-          () {
-            bool isDark = (themeController.themeModeName.value == 'dark' ||
-                (themeController.themeModeName.value == 'system' &&
-                    MediaQuery.of(context).platformBrightness ==
-                        Brightness.dark));
-            Color colorToApply = isDark ? Colors.white : Colors.grey.shade900;
-            int latestSurahNumber = audioController.currentSurahNumber.value;
+    return SafeArea(
+      child: AnimatedBuilder(
+        animation: animationController,
+        builder: (context, value) {
+          return Obx(
+            () {
+              bool isDark = (themeController.themeModeName.value == 'dark' ||
+                  (themeController.themeModeName.value == 'system' &&
+                      MediaQuery.of(context).platformBrightness ==
+                          Brightness.dark));
+              Color colorToApply = isDark ? Colors.white : Colors.grey.shade900;
+              int latestSurahNumber = audioController.currentSurahNumber.value;
 
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                if (audioController.isSurahAyahMode.value)
-                  Expanded(
-                    child: getSurahView(
-                      isDark,
-                      latestSurahNumber,
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  if (audioController.isSurahAyahMode.value)
+                    Expanded(
+                      child: getSurahView(
+                        isDark,
+                        latestSurahNumber,
+                      ),
                     ),
-                  ),
-                getControllers(context, isDark, colorToApply),
-              ],
-            );
-          },
-        );
-      },
+                  getControllers(context, isDark, colorToApply),
+                ],
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -255,8 +257,9 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                   child: Slider(
                     value: audioController.currentPlayingAyah.value.toDouble(),
                     onChanged: (value) {
-                      ManageQuranAudio.audioPlayer
-                          .seek(const Duration(seconds: 0), index: value.toInt());
+                      ManageQuranAudio.audioPlayer.seek(
+                          const Duration(seconds: 0),
+                          index: value.toInt());
                     },
                     max: audioController.totalAyah.value.toDouble() - 1,
                     min: 0,

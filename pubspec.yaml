@@ -21,7 +21,6 @@ dependencies:
   shared_preferences: ^2.3.4
   dio: ^5.7.0
   gap: ^3.0.1
-  connectivity_plus: ^6.1.1
   google_fonts: ^6.2.1
   icons_launcher: ^3.0.0
   archive: ^4.0.2

@@ -4,9 +4,11 @@ import 'package:al_quran_tafsir_and_audio/src/functions/decode_compressed_string
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/files/functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:toastification/toastification.dart';
 
 import '../../info_controller/info_controller_getx.dart';
@@ -88,51 +90,7 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
                           return;
                         }
 
-                        setState(() {
-                          downloading = true;
-                        });
-
-                        String url = getURLusingTafsirID(
-                          int.parse(infoController.tafsirBookID.value.trim()),
-                        );
-
-                        final tafsirDB = Hive.box('tafsir_db');
-
-                        if (!tafsirDB.keys.contains(
-                            '${infoController.tafsirBookID.value}/1')) {
-                          final response = await get(Uri.parse(url),
-                              headers: {'Content-type': 'text/plain'});
-                          if (response.statusCode == 200) {
-                            String text = response.body;
-
-                            String decodedText =
-                                decompressServerDataWithBZip2(text);
-
-                            List<String> decodedJson =
-                                List<String>.from(jsonDecode(decodedText));
-                            for (int i = 0; i < decodedJson.length; i++) {
-                              await tafsirDB.put(
-                                  '${infoController.tafsirBookID.value}/$i',
-                                  compressStringWithGZip(decodedJson[i]));
-                            }
-                            final info = infoBox.get('selection_info',
-                                defaultValue: false);
-                            info['tafsir_book_ID'] = tafsirBookID;
-                            info['tafsir_language'] =
-                                infoController.tafsirLanguage.value;
-                            infoBox.put('selection_info', info);
-
-                            Get.back();
-                            toastification.show(
-                              context: context,
-                              title: const Text(
-                                'Successful',
-                              ),
-                              type: ToastificationType.success,
-                              autoCloseDuration: const Duration(seconds: 2),
-                            );
-                          }
-                        }
+                        await downloadData(infoBox, tafsirBookID, context);
                       }
                     },
                     icon: const Icon(
@@ -209,5 +167,87 @@ class _ChoiceTafsirBookState extends State<ChoiceTafsirBook> {
         },
       ),
     );
+  }
+
+  void showNoInternetConnectionWidget(
+      Box<dynamic> infoBox, String tafsirBookID, BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          insetPadding: const EdgeInsets.all(10),
+          title: Text(
+            'No internet connection!'.tr,
+            style: const TextStyle(color: Colors.red),
+          ),
+          content: Text(
+              'We need internet connection to download some required documents.'
+                  .tr),
+          actions: [
+            TextButton.icon(
+              onPressed: () {
+                SystemNavigator.pop();
+              },
+              label: Text('Quit'.tr),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pop(context);
+                downloadData(infoBox, tafsirBookID, context);
+              },
+              label: Text('Retry'.tr),
+              icon: const Icon(Icons.repeat),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> downloadData(
+      Box<dynamic> infoBox, String tafsirBookID, BuildContext context) async {
+    if (!(await InternetConnection().hasInternetAccess)) {
+      showNoInternetConnectionWidget(infoBox, tafsirBookID, context);
+      return;
+    }
+    setState(() {
+      downloading = true;
+    });
+
+    String url = getURLusingTafsirID(
+      int.parse(infoController.tafsirBookID.value.trim()),
+    );
+
+    final tafsirDB = Hive.box('tafsir_db');
+
+    if (!tafsirDB.keys.contains('${infoController.tafsirBookID.value}/1')) {
+      final response =
+          await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
+      if (response.statusCode == 200) {
+        String text = response.body;
+
+        String decodedText = decompressServerDataWithBZip2(text);
+
+        List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
+        for (int i = 0; i < decodedJson.length; i++) {
+          await tafsirDB.put('${infoController.tafsirBookID.value}/$i',
+              compressStringWithGZip(decodedJson[i]));
+        }
+        final info = infoBox.get('selection_info', defaultValue: false);
+        info['tafsir_book_ID'] = tafsirBookID;
+        info['tafsir_language'] = infoController.tafsirLanguage.value;
+        infoBox.put('selection_info', info);
+
+        Get.back();
+        toastification.show(
+          context: context,
+          title: const Text(
+            'Successful',
+          ),
+          type: ToastificationType.success,
+          autoCloseDuration: const Duration(seconds: 2),
+        );
+      }
+    }
   }
 }

@@ -10,10 +10,12 @@ import 'package:al_quran_tafsir_and_audio/src/screens/home/home_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/info_controller/info_controller_getx.dart';
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 class DownloadData extends StatefulWidget {
   final Map<String, dynamic> selection;
@@ -44,10 +46,48 @@ class _DownloadDataState extends State<DownloadData> {
     super.initState();
   }
 
+  void showNoInternetConnectionWidget() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          insetPadding: const EdgeInsets.all(10),
+          title: Text(
+            'No internet connection!'.tr,
+            style: const TextStyle(color: Colors.red),
+          ),
+          content: Text(
+              'We need internet connection to download some required documents.'
+                  .tr),
+          actions: [
+            TextButton.icon(
+              onPressed: () {
+                SystemNavigator.pop();
+              },
+              label: Text('Quit'.tr),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pop(context);
+                downloadData();
+              },
+              label: Text('Retry'.tr),
+              icon: const Icon(Icons.repeat),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> downloadData() async {
     setState(() {
       processState = '${'Getting Quran'.tr}...';
     });
+    if (!(await InternetConnection().hasInternetAccess)) {
+      showNoInternetConnectionWidget();
+      return;
+    }
     final quranDB = Hive.box('quran_db');
     List<String> listOfQuranScript = [
       'https://api.quran.com/api/v4/quran/verses/indopak',

@@ -4,9 +4,11 @@ import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_re
 import 'package:al_quran_tafsir_and_audio/src/resources/files/functions.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/setup/collect_info/pages/controller/getx_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:toastification/toastification.dart';
 
 import '../../info_controller/info_controller_getx.dart';
@@ -89,49 +91,7 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
                           return;
                         }
 
-                        setState(() {
-                          downloading = true;
-                        });
-
-                        final translationDB = Hive.box('translation_db');
-                        String translationBookID =
-                            infoController.bookIDTranslation.value;
-                        if (translationDB.keys
-                            .contains('$translationBookID/1')) {
-                        } else {
-                          String url = getURLusingTranslationID(
-                              int.parse(translationBookID.trim()));
-
-                          final response = await get(Uri.parse(url),
-                              headers: {'Content-type': 'text/plain'});
-                          if (response.statusCode == 200) {
-                            String text = response.body;
-                            String decodedText =
-                                decompressServerDataWithBZip2(text);
-                            List<String> decodedJson =
-                                List<String>.from(jsonDecode(decodedText));
-                            for (int i = 0; i < decodedJson.length; i++) {
-                              await translationDB.put(
-                                  '$translationBookID/$i', decodedJson[i]);
-                            }
-                          }
-                        }
-
-                        final info =
-                            infoBox.get('selection_info', defaultValue: false);
-                        info['translation_book_ID'] =
-                            bookTranslationID.toString();
-                        info['translation_language'] =
-                            infoController.translationLanguage.value;
-                        infoBox.put('selection_info', info);
-
-                        Get.back();
-                        toastification.show(
-                          context: context,
-                          title: const Text('Successful'),
-                          type: ToastificationType.success,
-                          autoCloseDuration: const Duration(seconds: 2),
-                        );
+                        await downloadData(infoBox, bookTranslationID, context);
                       } else {
                         showDialog(
                           context: context,
@@ -218,6 +178,84 @@ class _ChoiceTranslationStateBook extends State<ChoiceTranslationBook> {
           );
         },
       ),
+    );
+  }
+
+  void showNoInternetConnectionWidget(
+      Box<dynamic> infoBox, String bookTranslationID, BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          insetPadding: const EdgeInsets.all(10),
+          title: Text(
+            'No internet connection!'.tr,
+            style: const TextStyle(color: Colors.red),
+          ),
+          content: Text(
+              'We need internet connection to download some required documents.'
+                  .tr),
+          actions: [
+            TextButton.icon(
+              onPressed: () {
+                SystemNavigator.pop();
+              },
+              label: Text('Quit'.tr),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pop(context);
+                downloadData(infoBox, bookTranslationID, context);
+              },
+              label: Text('Retry'.tr),
+              icon: const Icon(Icons.repeat),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> downloadData(Box<dynamic> infoBox, String bookTranslationID,
+      BuildContext context) async {
+    if (!(await InternetConnection().hasInternetAccess)) {
+      showNoInternetConnectionWidget(infoBox, bookTranslationID, context);
+      return;
+    }
+    setState(() {
+      downloading = true;
+    });
+
+    final translationDB = Hive.box('translation_db');
+    String translationBookID = infoController.bookIDTranslation.value;
+    if (translationDB.keys.contains('$translationBookID/1')) {
+    } else {
+      String url =
+          getURLusingTranslationID(int.parse(translationBookID.trim()));
+
+      final response =
+          await get(Uri.parse(url), headers: {'Content-type': 'text/plain'});
+      if (response.statusCode == 200) {
+        String text = response.body;
+        String decodedText = decompressServerDataWithBZip2(text);
+        List<String> decodedJson = List<String>.from(jsonDecode(decodedText));
+        for (int i = 0; i < decodedJson.length; i++) {
+          await translationDB.put('$translationBookID/$i', decodedJson[i]);
+        }
+      }
+    }
+
+    final info = infoBox.get('selection_info', defaultValue: false);
+    info['translation_book_ID'] = bookTranslationID.toString();
+    info['translation_language'] = infoController.translationLanguage.value;
+    infoBox.put('selection_info', info);
+
+    Get.back();
+    toastification.show(
+      context: context,
+      title: const Text('Successful'),
+      type: ToastificationType.success,
+      autoCloseDuration: const Duration(seconds: 2),
     );
   }
 }

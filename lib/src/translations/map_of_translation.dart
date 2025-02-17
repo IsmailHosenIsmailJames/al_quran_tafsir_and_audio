@@ -111,8 +111,16 @@ const Map<String, String> translations = {
 };
 String s1 = 'about_me';
 String s2 = 'why_should_logged';
+String needInternet =
+    'We need internet connection to download some required documents.';
 
 Map<String, String> chinese = {
+  ///
+  'Retry': '重试 (Chóngshì)',
+  'Quit': '退出 (Tuìchū)',
+  needInternet:
+      '我们需要互联网连接才能下载所需的文件。(Wǒmen xūyào hùliánwǎng liánjiē cáinéng xiàzǎi suǒxū de wénjiàn.)',
+  'No internet connection!': '无网络连接！(Wú wǎngluò liánjiē!)',
   s1: '我是一名程序员，每天都 学习新事物。专注于使用 Flutter 进行全栈跨平台支持的应用程序开发。我也喜欢玩物联网。',
   s2: '您可以将您最喜欢的播放列表保存到云端。并从上次停止的地方继续收听。无需担心丢失播放列表。我们已为您搞定。',
   'Revelation Place': '启示之地',
@@ -269,6 +277,12 @@ Map<String, String> chinese = {
   'App Language': '应用语言',
 };
 Map<String, String> hindi = {
+  ///
+  'Retry': 'फिर कोशिश करें',
+  'Quit': 'छोड़ें',
+  needInternet:
+      'हमें कुछ ज़रूरी दस्तावेज़ डाउनलोड करने के लिए इंटरनेट कनेक्शन चाहिए।',
+  'No internet connection!': 'इंटरनेट कनेक्शन नहीं है!',
   s1: 'मैं एक प्रोग्रामर हूं जो हर दिन नई चीजें सीखने की कोशिश करता है। Flutter का उपयोग करके फुल स्टैक क्रॉस प्लेटफॉर्म समर्थित एप्लिकेशन डेवलपमेंट पर ध्यान केंद्रित किया गया है। मुझे आईओटी के साथ खेलना भी पसंद है।',
   s2: 'आप अपनी पसंदीदा प्लेलिस्ट को क्लाउड में सहेज सकते हैं। और वहीं से सुनना जारी रख सकते हैं जहाँ आपने छोड़ा था। अपनी प्लेलिस्ट खोने के बारे में चिंता करने की कोई आवश्यकता नहीं है। हमने आपको कवर कर लिया है।',
   'Revelation Place': 'रहस्योद्घाटन स्थान',
@@ -428,6 +442,11 @@ Map<String, String> hindi = {
   'App Language': 'ऐप भाषा',
 };
 Map<String, String> english = {
+  ///
+  'Retry': 'Retry',
+  'Quit': 'Quit',
+  needInternet: needInternet,
+  'No internet connection!': 'No internet connection!',
   s1: 'I am programmer who try to learn new things everyday. Focused on Full Stack Cross Platform supported Application development using flutter. I also love to play with IOT',
   s2: 'You can save your favorite playlist to the cloud. And continue listening from where you left off. No need to worry about losing your playlist. We got you covered.',
   'Revelation Place': 'Revelation Place',
@@ -593,6 +612,12 @@ Map<String, String> english = {
   'App Language': 'App Language',
 };
 Map<String, String> spanish = {
+  ///
+  'Retry': 'Reintentar',
+  'Quit': 'Salir',
+  needInternet:
+      'Necesitamos conexión a internet para descargar algunos documentos necesarios.',
+  'No internet connection!': '¡Sin conexión a internet!',
   s1: 'Soy un programador que intenta aprender cosas nuevas todos los días. Enfocado en el desarrollo de aplicaciones Full Stack multiplataforma compatible con Flutter. También me encanta jugar con IoT.',
   s2: 'Puedes guardar tu lista de reproducción favorita en la nube. Y continuar escuchando desde donde lo dejaste. No te preocupes por perder tu lista de reproducción. Te tenemos cubierto.',
   'Revelation Place': 'Lugar de Revelación',
@@ -773,6 +798,11 @@ Map<String, String> spanish = {
   'App Language': 'Idioma de la aplicación',
 };
 Map<String, String> arabic = {
+  ///
+  'Retry': 'إعادة المحاولة',
+  'Quit': 'خروج',
+  needInternet: 'نحتاج إلى اتصال بالإنترنت لتنزيل بعض المستندات المطلوبة.',
+  'No internet connection!': 'لا يوجد اتصال بالإنترنت!',
   s1: 'أنا مبرمج أحاول تعلم أشياء جديدة كل يوم. أركز على تطوير تطبيقات Full Stack عبر الأنظمة الأساسية المدعومة باستخدام Flutter. أحب أيضًا اللعب بـ IOT.',
   s2: 'يمكنك حفظ قائمة التشغيل المفضلة لديك في السحابة. واستمر في الاستماع من حيث توقفت. لا داعي للقلق بشأن فقدان قائمة التشغيل الخاصة بك. نحن نغطيك.',
   'Revelation Place': 'مكان الوحي',
@@ -936,6 +966,12 @@ Map<String, String> arabic = {
   'App Language': 'لغة التطبيق',
 };
 Map<String, String> bengali = {
+  ///
+  'Retry': 'আবার চেষ্টা করুন',
+  'Quit': 'প্রস্থান',
+  needInternet:
+      'কিছু প্রয়োজনীয় নথি ডাউনলোড করতে আমাদের ইন্টারনেট সংযোগ প্রয়োজন।',
+  'No internet connection!': 'ইন্টারনেট সংযোগ নেই!',
   s1: 'আমি একজন প্রোগ্রামার যে প্রতিদিন নতুন জিনিস শেখার চেষ্টা করে। Flutter ব্যবহার করে ফুল স্ট্যাক ক্রস প্ল্যাটফর্ম সমর্থিত অ্যাপ্লিকেশন ডেভেলপমেন্টের উপর দৃষ্টি নিবদ্ধ করি। আমি আইওটি নিয়ে খেলতে ভালোবাসি।',
   s2: 'আপনি আপনার পছন্দের প্লেলিস্ট ক্লাউডে সংরক্ষণ করতে পারেন। এবং যেখানে আপনি বন্ধ করেছিলেন সেখান থেকে শোনা চালিয়ে যেতে পারেন। আপনার প্লেলিস্ট হারানোর বিষয়ে চিন্তা করার দরকার নেই। আমরা আপনাকে কভার করেছি।',
   'Revelation Place': 'প্রকাশের স্থান',
@@ -1102,6 +1138,12 @@ Map<String, String> bengali = {
   'App Language': 'অ্যাপের ভাষা',
 };
 Map<String, String> portuguese = {
+  ///
+  'Retry': 'Tentar novamente',
+  'Quit': 'Sair',
+  needInternet:
+      'Precisamos de conexão à internet para baixar alguns documentos necessários.',
+  'No internet connection!': 'Sem conexão com a internet!',
   s1: 'Sou um programador que tenta aprender coisas novas todos os dias. Focado no desenvolvimento de aplicativos Full Stack multiplataforma suportados por Flutter. Também adoro brincar com IoT.',
   s2: 'Você pode salvar sua playlist favorita na nuvem. E continue ouvindo de onde parou. Não precisa se preocupar em perder sua playlist. Nós protegemos você.',
   'Revelation Place': 'Lugar da Revelação',
@@ -1278,6 +1320,12 @@ Map<String, String> portuguese = {
   'App Language': 'Idioma do aplicativo',
 };
 Map<String, String> russian = {
+  ///
+  'Retry': 'Повторить',
+  'Quit': 'Выйти',
+  needInternet:
+      'Нам нужно подключение к Интернету, чтобы загрузить необходимые документы.',
+  'No internet connection!': 'Нет подключения к интернету!',
   s1: 'Я программист, который каждый день старается узнавать что-то новое. Сосредоточен на разработке кроссплатформенных приложений Full Stack с поддержкой Flutter. Я также люблю играть с IOT.',
   s2: 'Вы можете сохранить свой любимый плейлист в облако. И продолжить прослушивание с того места, где остановились. Не нужно беспокоиться о потере плейлиста. Мы вас прикроем.',
   'Revelation Place': 'Место Откровения',
@@ -1451,6 +1499,11 @@ Map<String, String> russian = {
   'App Language': 'Язык приложения',
 };
 Map<String, String> japanese = {
+  ///
+  'Retry': '再試行',
+  'Quit': '終了',
+  needInternet: '必要なドキュメントをダウンロードするには、インターネット接続が必要です。',
+  'No internet connection!': 'インターネット接続がありません！',
   s1: '私は毎日新しいことを学ぼうとするプログラマーです。 Flutterを使用したフルスタッククロスプラットフォーム対応アプリケーション開発に焦点を当てています。 IOTで遊ぶのも大好きです。',
   s2: 'お気に入りのプレイリストをクラウドに保存できます。そして、前回停止したところからリスニングを再開できます。プレイリストを失う心配はありません。私たちにお任せください。',
   'Revelation Place': '啓示の場所',
@@ -1609,6 +1662,12 @@ Map<String, String> japanese = {
   'App Language': 'アプリの言語',
 };
 Map<String, String> punjabi = {
+  ///
+  'Retry': 'ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ',
+  'Quit': 'ਛੱਡੋ',
+  needInternet:
+      'ਸਾਨੂੰ ਕੁਝ ਲੋੜੀਂਦੇ ਦਸਤਾਵੇਜ਼ ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਦੀ ਲੋੜ ਹੈ।',
+  'No internet connection!': 'ਕੋਈ ਇੰਟਰਨੈਟ ਕਨੈਕਸ਼ਨ ਨਹੀਂ!',
   s1: 'ਮੈਂ ਇੱਕ ਪ੍ਰੋਗਰਾਮਰ ਹਾਂ ਜੋ ਹਰ ਰੋਜ਼ ਨਵੀਆਂ ਚੀਜ਼ਾਂ ਸਿੱਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਦਾ ਹੈ। ਫਲਟਰ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਫੁੱਲ ਸਟੈਕ ਕਰਾਸ ਪਲੇਟਫਾਰਮ ਸਪੋਰਟਡ ਐਪਲੀਕੇਸ਼ਨ ਡਿਵੈਲਪਮੈਂਟ \'ਤੇ ਧਿਆਨ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਮੈਨੂੰ IOT ਨਾਲ ਖੇਡਣਾ ਵੀ ਪਸੰਦ ਹੈ।',
   s2: 'تُسی اپنی پسندیدہ پلے لسٹ کلاؤڈ وچ محفوظ کر سکدے او۔ تے جتھوں تُسی چھڈیا سی اتھوں سُننا جاری رکھ سکدے او۔ اپنی پلے لسٹ گواچن دی فکر کرن دی کوئی لوڑ نئیں۔ اسیں تہانوں کور کر لیا اے۔',
   'Revelation Place': 'ਪ੍ਰਕਾਸ਼ ਸਥਾਨ',
@@ -1772,6 +1831,12 @@ Map<String, String> punjabi = {
   'App Language': 'ਐਪ ਭਾਸ਼ਾ',
 };
 Map<String, String> german = {
+  ///
+  'Retry': 'Wiederholen',
+  'Quit': 'Beenden',
+  needInternet:
+      'Wir benötigen eine Internetverbindung, um einige erforderliche Dokumente herunterzuladen.',
+  'No internet connection!': 'Keine Internetverbindung!',
   s1: 'Ich bin ein Programmierer, der jeden Tag versucht, neue Dinge zu lernen. Fokussiert auf Full-Stack-Cross-Plattform-unterstützte Anwendungsentwicklung mit Flutter. Ich spiele auch gerne mit IOT.',
   s2: 'Sie können Ihre Lieblings-Playlist in der Cloud speichern. Und hören Sie dort weiter, wo Sie aufgehört haben. Sie müssen sich keine Sorgen machen, Ihre Playlist zu verlieren. Wir kümmern uns darum.',
   'Revelation Place': 'Offenbarungsort',
@@ -1951,6 +2016,12 @@ Map<String, String> german = {
   'App Language': 'App-Sprache',
 };
 Map<String, String> french = {
+  ///
+  'Retry': 'Réessayer',
+  'Quit': 'Quitter',
+  needInternet:
+      'Nous avons besoin d\'une connexion Internet pour télécharger certains documents requis.',
+  'No internet connection!': 'Pas de connexion Internet !',
   s1: 'Je suis un programmeur qui essaie d\'apprendre de nouvelles choses tous les jours. Axé sur le développement d\'applications Full Stack multiplateformes prises en charge par Flutter. J\'aime aussi jouer avec l\'IoT.',
   s2: 'Vous pouvez enregistrer votre playlist préférée dans le cloud. Et continuez à écouter là où vous vous êtes arrêté. Pas besoin de vous inquiéter de perdre votre playlist. Nous avons ce qu\'il vous faut.',
   'Revelation Place': 'Lieu de Révélation',
@@ -2130,6 +2201,12 @@ Map<String, String> french = {
   'App Language': 'Langue de l\'application',
 };
 Map<String, String> indonesian = {
+  ///
+  'Retry': 'Coba lagi',
+  'Quit': 'Keluar',
+  needInternet:
+      'Kami membutuhkan koneksi internet untuk mengunduh beberapa dokumen yang diperlukan.',
+  'No internet connection!': 'Tidak ada koneksi internet!',
   s1: 'Saya seorang programmer yang mencoba mempelajari hal-hal baru setiap hari. Berfokus pada pengembangan Aplikasi lintas platform Full Stack yang didukung menggunakan flutter. Saya juga suka bermain dengan IOT.',
   s2: 'Anda dapat menyimpan daftar putar favorit Anda ke cloud. Dan lanjutkan mendengarkan dari tempat Anda berhenti. Tidak perlu khawatir kehilangan daftar putar Anda. Kami siap membantu Anda.',
   'Revelation Place': 'Tempat Wahyu',
@@ -2299,6 +2376,12 @@ Map<String, String> indonesian = {
   'App Language': 'Bahasa Aplikasi',
 };
 Map<String, String> urdu = {
+  ///
+  'Retry': 'دوبارہ کوشش کریں',
+  'Quit': 'چھوڑیں',
+  needInternet:
+      'ہمیں کچھ ضروری دستاویزات ڈاؤن لوڈ کرنے کے لئے انٹرنیٹ کنکشن کی ضرورت ہے۔',
+  'No internet connection!': 'انٹرنیٹ کنکشن نہیں ہے!',
   s1: 'میں ایک پروگرامر ہوں جو ہر روز نئی چیزیں سیکھنے کی کوشش کرتا ہے۔ فلٹر کا استعمال کرتے ہوئے فل اسٹیک کراس پلیٹ فارم سپورٹڈ ایپلیکیشن ڈویلپمنٹ پر توجہ مرکوز کی گئی ہے۔ مجھے IOT کے ساتھ کھیلنا بھی پسند ہے۔',
   s2: 'آپ اپنی پسندیدہ پلے لسٹ کو کلاؤڈ میں محفوظ کر سکتے ہیں۔ اور جہاں سے آپ نے چھوڑا تھا وہیں سے سننا جاری رکھ سکتے ہیں۔ اپنی پلے لسٹ کھونے کے بارے میں فکر کرنے کی ضرورت نہیں ہے۔ ہم نے آپ کو کور کر لیا ہے۔',
   'Revelation Place': 'انکشاف کی جگہ',
@@ -2463,6 +2546,12 @@ Map<String, String> urdu = {
   'App Language': 'ایپ کی زبان',
 };
 Map<String, String> swahili = {
+  ///
+  'Retry': 'Jaribu tena',
+  'Quit': 'Acha',
+  needInternet:
+      'Tunahitaji muunganisho wa intaneti ili kupakua baadhi ya hati zinazohitajika.',
+  'No internet connection!': 'Hakuna muunganisho wa intaneti!',
   s1: 'Mimi ni programu ambaye hujaribu kujifunza mambo mapya kila siku. Nimelenga katika uundaji wa Programu zinazotumia Jukwaa Mtambuka la Full Stack kwa kutumia flutter. Pia napenda kucheza na IOT.',
   s2: 'Unaweza kuhifadhi orodha yako ya kucheza unayoipenda kwenye wingu. Na uendelee kusikiliza kutoka pale ulipoishia. Hakuna haja ya kuwa na wasiwasi kuhusu kupoteza orodha yako ya kucheza. Tumekusaidia.',
   'Revelation Place': 'Mahali pa Ufunuo',
@@ -2632,6 +2721,11 @@ Map<String, String> swahili = {
   'App Language': 'Lugha ya Programu',
 };
 Map<String, String> korean = {
+  ///
+  'Retry': '다시 시도',
+  'Quit': '종료',
+  needInternet: '필요한 문서를 다운로드하려면 인터넷 연결이 필요합니다.',
+  'No internet connection!': '인터넷 연결이 없습니다!',
   s1: '저는 매일 새로운 것을 배우려고 노력하는 프로그래머입니다. Flutter를 사용하여 풀 스택 크로스 플랫폼 지원 애플리케이션 개발에 집중하고 있습니다. IOT를 가지고 노는 것도 좋아합니다.',
   s2: '좋아하는 재생 목록을 클라우드에 저장할 수 있습니다. 그리고 중단했던 부분부터 계속 들을 수 있습니다. 재생 목록을 잃을 염려가 없습니다. 저희가 책임지겠습니다.',
   'Revelation Place': '계시의 장소',
@@ -2790,6 +2884,12 @@ Map<String, String> korean = {
   'App Language': '앱 언어',
 };
 Map<String, String> turkish = {
+  ///
+  'Retry': 'Tekrar dene',
+  'Quit': 'Çıkış',
+  needInternet:
+      'Gerekli bazı belgeleri indirmek için internet bağlantısına ihtiyacımız var.',
+  'No internet connection!': 'İnternet bağlantısı yok!',
   s1: 'Her gün yeni şeyler öğrenmeye çalışan bir programcıyım. Flutter kullanarak Full Stack Çapraz Platform destekli Uygulama geliştirmeye odaklandım. Ayrıca IOT ile oynamayı seviyorum.',
   s2: 'Favori çalma listenizi buluta kaydedebilirsiniz. Ve kaldığınız yerden dinlemeye devam edin. Çalma listenizi kaybetme konusunda endişelenmenize gerek yok. Sizi destekliyoruz.',
   'Revelation Place': 'Vahiy Yeri',
@@ -2957,6 +3057,12 @@ Map<String, String> turkish = {
   'App Language': 'Uygulama Dili',
 };
 Map<String, String> vietnamese = {
+  ///
+  'Retry': 'Thử lại',
+  'Quit': 'Thoát',
+  needInternet:
+      'Chúng tôi cần kết nối internet để tải xuống một số tài liệu cần thiết.',
+  'No internet connection!': 'Không có kết nối internet!',
   s1: 'Tôi là một lập trình viên luôn cố gắng học hỏi những điều mới mỗi ngày. Tập trung vào phát triển Ứng dụng hỗ trợ đa nền tảng Full Stack bằng flutter. Tôi cũng thích chơi với IOT.',
   s2: 'Bạn có thể lưu danh sách phát yêu thích của mình lên đám mây. Và tiếp tục nghe từ nơi bạn đã dừng lại. Không cần phải lo lắng về việc mất danh sách phát của bạn. Chúng tôi sẽ lo liệu cho bạn.',
   'Revelation Place': 'Địa điểm Khải Huyền',
@@ -3126,6 +3232,12 @@ Map<String, String> vietnamese = {
   'App Language': 'Ngôn ngữ ứng dụng',
 };
 Map<String, String> tamil = {
+  ///
+  'Retry': 'மீண்டும் முயற்சி செய்',
+  'Quit': 'வெளியேறு',
+  needInternet:
+      'தேவையான சில ஆவணங்களைப் பதிவிறக்கம் செய்ய எங்களுக்கு இணைய இணைப்பு தேவை.',
+  'No internet connection!': 'இணைய இணைப்பு இல்லை!',
   s1: 'நான் ஒவ்வொரு நாளும் புதிய விஷயங்களைக் கற்றுக்கொள்ள முயற்சிக்கும் ஒரு நிரலாளர். ஃப்ளட்டரைப் பயன்படுத்தி முழு ஸ்டாக் கிராஸ் பிளாட்ஃபார்ம் ஆதரவு பயன்பாட்டு மேம்பாட்டில் கவனம் செலுத்துகிறேன். நான் IOT உடன் விளையாடுவதையும் விரும்புகிறேன்.',
   s2: 'உங்களுக்குப் பிடித்த பிளேலிஸ்ட்டை கிளவுட்டில் சேமிக்கலாம். மேலும் நீங்கள் விட்டுச் சென்ற இடத்திலிருந்து தொடர்ந்து கேட்கலாம். உங்கள் பிளேலிஸ்ட்டை இழந்துவிடுவது குறித்து கவலைப்படத் தேவையில்லை. நாங்கள் உங்களைப் பார்த்துக் கொள்வோம்.',
   'Revelation Place': 'வெளிப்படுத்துதல் இடம்',
@@ -3305,6 +3417,12 @@ Map<String, String> tamil = {
   'App Language': 'பயன்பாட்டு மொழி',
 };
 Map<String, String> italian = {
+  ///
+  'Retry': 'Riprova',
+  'Quit': 'Esci',
+  needInternet:
+      'Abbiamo bisogno di una connessione internet per scaricare alcuni documenti necessari.',
+  'No internet connection!': 'Nessuna connessione internet!',
   s1: 'Sono un programmatore che cerca di imparare cose nuove ogni giorno. Concentrato sullo sviluppo di applicazioni multipiattaforma Full Stack supportate da Flutter. Amo anche giocare con l\'IoT.',
   s2: 'Puoi salvare la tua playlist preferita nel cloud. E continua ad ascoltare da dove avevi interrotto. Non c\'è bisogno di preoccuparsi di perdere la tua playlist. Ci pensiamo noi.',
   'Revelation Place': 'Luogo della Rivelazione',
