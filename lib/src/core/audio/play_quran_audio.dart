@@ -5,8 +5,10 @@ import 'package:al_quran_tafsir_and_audio/src/core/audio/controller/audio_contro
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/quran_com/all_recitations.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/resources/recitation_info_model.dart';
 import 'package:al_quran_tafsir_and_audio/src/resources/api_response/some_api_response.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 
@@ -131,6 +133,40 @@ class ManageQuranAudio {
             )),
       );
     }
+    if (!(await InternetConnection().hasInternetAccess)) {
+      if (await Hive.box('user_db').get('dontShowAgain', defaultValue: false) ==
+          false) {
+        showDialog(
+          context: Get.context!,
+          builder: (context) {
+            return AlertDialog(
+              insetPadding: const EdgeInsets.all(10),
+              title: Text(
+                'No internet connection!'.tr,
+                style: const TextStyle(color: Colors.red),
+              ),
+              content: Text(
+                  'Internet connection is required if you play this audio for the first time.'
+                      .tr),
+              actions: [
+                TextButton(
+                    onPressed: () async {
+                      await Hive.box('user_db').put('dontShowAgain', true);
+                      Navigator.pop(context);
+                    },
+                    child: Text('Don\'t show again'.tr)),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  label: Text('Okay'.tr),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
     await audioPlayer.setAudioSource(
       ConcatenatingAudioSource(
         children: audioSources,
@@ -138,6 +174,7 @@ class ManageQuranAudio {
       initialIndex: startOn,
       initialPosition: Duration.zero,
     );
+
     if (playInstantly) await audioPlayer.play();
   }
 

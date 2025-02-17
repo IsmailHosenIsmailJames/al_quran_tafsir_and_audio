@@ -116,6 +116,10 @@ String needInternet =
 
 Map<String, String> chinese = {
   ///
+  'Don\'t show again': '不再显示 (Bù zài xiǎnshì)',
+  'Internet connection is required if you play this audio for the first time.':
+      '如果您是第一次播放此音频，则需要互联网连接。(Rúguǒ nín shì dì yī cì bòfàng cǐ yīnpín, zé xūyào hùliánwǎng liánjiē.)',
+  'Okay': '好的 (Hǎo de)',
   'Retry': '重试 (Chóngshì)',
   'Quit': '退出 (Tuìchū)',
   needInternet:
@@ -278,6 +282,10 @@ Map<String, String> chinese = {
 };
 Map<String, String> hindi = {
   ///
+  'Don\'t show again': 'दोबारा न दिखाएं',
+  'Internet connection is required if you play this audio for the first time.':
+      'अगर आप पहली बार यह ऑडियो चला रहे हैं तो इंटरनेट कनेक्शन ज़रूरी है।',
+  'Okay': 'ठीक है',
   'Retry': 'फिर कोशिश करें',
   'Quit': 'छोड़ें',
   needInternet:
@@ -443,6 +451,10 @@ Map<String, String> hindi = {
 };
 Map<String, String> english = {
   ///
+  'Don\'t show again': 'Don\'t show again',
+  'Internet connection is required if you play this audio for the first time.':
+      'Internet connection is required if you play this audio for the first time.',
+  'Okay': 'Okay',
   'Retry': 'Retry',
   'Quit': 'Quit',
   needInternet: needInternet,
@@ -613,6 +625,10 @@ Map<String, String> english = {
 };
 Map<String, String> spanish = {
   ///
+  'Don\'t show again': 'No mostrar de nuevo',
+  'Internet connection is required if you play this audio for the first time.':
+      'Se requiere conexión a internet si reproduces este audio por primera vez.',
+  'Okay': 'De acuerdo',
   'Retry': 'Reintentar',
   'Quit': 'Salir',
   needInternet:
@@ -799,6 +815,10 @@ Map<String, String> spanish = {
 };
 Map<String, String> arabic = {
   ///
+  'Don\'t show again': 'لا تظهر مرة أخرى',
+  'Internet connection is required if you play this audio for the first time.':
+      'مطلوب الاتصال بالإنترنت إذا قمت بتشغيل هذا الصوت لأول مرة.',
+  'Okay': 'حسنًا',
   'Retry': 'إعادة المحاولة',
   'Quit': 'خروج',
   needInternet: 'نحتاج إلى اتصال بالإنترنت لتنزيل بعض المستندات المطلوبة.',
@@ -967,6 +987,10 @@ Map<String, String> arabic = {
 };
 Map<String, String> bengali = {
   ///
+  'Don\'t show again': 'আবার দেখাবেন না',
+  'Internet connection is required if you play this audio for the first time.':
+      'আপনি যদি প্রথমবার এই অডিও চালান তবে ইন্টারনেট সংযোগ প্রয়োজন।',
+  'Okay': 'ঠিক আছে',
   'Retry': 'আবার চেষ্টা করুন',
   'Quit': 'প্রস্থান',
   needInternet:
@@ -1139,6 +1163,10 @@ Map<String, String> bengali = {
 };
 Map<String, String> portuguese = {
   ///
+  'Don\'t show again': 'Não mostrar novamente',
+  'Internet connection is required if you play this audio for the first time.':
+      'É necessária uma conexão à internet se você reproduzir este áudio pela primeira vez.',
+  'Okay': 'Está bem',
   'Retry': 'Tentar novamente',
   'Quit': 'Sair',
   needInternet:
@@ -1321,6 +1349,10 @@ Map<String, String> portuguese = {
 };
 Map<String, String> russian = {
   ///
+  'Don\'t show again': 'Больше не показывать',
+  'Internet connection is required if you play this audio for the first time.':
+      'Требуется подключение к Интернету, если вы воспроизводите это аудио в первый раз.',
+  'Okay': 'Хорошо',
   'Retry': 'Повторить',
   'Quit': 'Выйти',
   needInternet:
@@ -1500,6 +1532,10 @@ Map<String, String> russian = {
 };
 Map<String, String> japanese = {
   ///
+  'Don\'t show again': '二度と表示しない',
+  'Internet connection is required if you play this audio for the first time.':
+      'このオーディオを初めて再生する場合は、インターネット接続が必要です。',
+  'Okay': 'わかりました',
   'Retry': '再試行',
   'Quit': '終了',
   needInternet: '必要なドキュメントをダウンロードするには、インターネット接続が必要です。',
@@ -1663,6 +1699,10 @@ Map<String, String> japanese = {
 };
 Map<String, String> punjabi = {
   ///
+  'Don\'t show again': 'ਦੁਬਾਰਾ ਨਾ ਦਿਖਾਓ',
+  'Internet connection is required if you play this audio for the first time.':
+      'ਜੇਕਰ ਤੁਸੀਂ ਪਹਿਲੀ ਵਾਰ ਇਹ ਆਡੀਓ ਚਲਾ ਰਹੇ ਹੋ ਤਾਂ ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਦੀ ਲੋੜ ਹੈ।',
+  'Okay': 'ਠੀਕ ਹੈ',
   'Retry': 'ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ',
   'Quit': 'ਛੱਡੋ',
   needInternet:
@@ -1832,6 +1872,10 @@ Map<String, String> punjabi = {
 };
 Map<String, String> german = {
   ///
+  'Don\'t show again': 'Nicht mehr anzeigen',
+  'Internet connection is required if you play this audio for the first time.':
+      'Eine Internetverbindung ist erforderlich, wenn Sie dieses Audio zum ersten Mal abspielen.',
+  'Okay': 'Okay',
   'Retry': 'Wiederholen',
   'Quit': 'Beenden',
   needInternet:
@@ -2017,6 +2061,10 @@ Map<String, String> german = {
 };
 Map<String, String> french = {
   ///
+  'Don\'t show again': 'Ne plus afficher',
+  'Internet connection is required if you play this audio for the first time.':
+      'Une connexion Internet est nécessaire si vous écoutez cet audio pour la première fois.',
+  'Okay': 'D\'accord',
   'Retry': 'Réessayer',
   'Quit': 'Quitter',
   needInternet:
@@ -2202,6 +2250,10 @@ Map<String, String> french = {
 };
 Map<String, String> indonesian = {
   ///
+  'Don\'t show again': 'Jangan tampilkan lagi',
+  'Internet connection is required if you play this audio for the first time.':
+      'Koneksi internet diperlukan jika Anda memutar audio ini untuk pertama kalinya.',
+  'Okay': 'Oke',
   'Retry': 'Coba lagi',
   'Quit': 'Keluar',
   needInternet:
@@ -2377,6 +2429,10 @@ Map<String, String> indonesian = {
 };
 Map<String, String> urdu = {
   ///
+  'Don\'t show again': 'دوبارہ مت دکھائیں',
+  'Internet connection is required if you play this audio for the first time.':
+      'اگر آپ پہلی بار یہ آڈیو چلا رہے ہیں تو انٹرنیٹ کنکشن ضروری ہے۔',
+  'Okay': 'ٹھیک ہے',
   'Retry': 'دوبارہ کوشش کریں',
   'Quit': 'چھوڑیں',
   needInternet:
@@ -2547,6 +2603,10 @@ Map<String, String> urdu = {
 };
 Map<String, String> swahili = {
   ///
+  'Don\'t show again': 'Usionyeshe tena',
+  'Internet connection is required if you play this audio for the first time.':
+      'Muunganisho wa intaneti unahitajika ikiwa unacheza sauti hii kwa mara ya kwanza.',
+  'Okay': 'Sawa',
   'Retry': 'Jaribu tena',
   'Quit': 'Acha',
   needInternet:
@@ -2722,6 +2782,10 @@ Map<String, String> swahili = {
 };
 Map<String, String> korean = {
   ///
+  'Don\'t show again': '다시 보지 않기',
+  'Internet connection is required if you play this audio for the first time.':
+      '처음으로 이 오디오를 재생하는 경우 인터넷 연결이 필요합니다.',
+  'Okay': '알았어요',
   'Retry': '다시 시도',
   'Quit': '종료',
   needInternet: '필요한 문서를 다운로드하려면 인터넷 연결이 필요합니다.',
@@ -2885,6 +2949,10 @@ Map<String, String> korean = {
 };
 Map<String, String> turkish = {
   ///
+  'Don\'t show again': 'Tekrar gösterme',
+  'Internet connection is required if you play this audio for the first time.':
+      'Bu sesi ilk kez oynatırsanız internet bağlantısı gereklidir.',
+  'Okay': 'Tamam',
   'Retry': 'Tekrar dene',
   'Quit': 'Çıkış',
   needInternet:
@@ -3058,6 +3126,10 @@ Map<String, String> turkish = {
 };
 Map<String, String> vietnamese = {
   ///
+  'Don\'t show again': 'Không hiển thị lại',
+  'Internet connection is required if you play this audio for the first time.':
+      'Cần có kết nối internet nếu bạn phát âm thanh này lần đầu tiên.',
+  'Okay': 'Được rồi',
   'Retry': 'Thử lại',
   'Quit': 'Thoát',
   needInternet:
@@ -3233,6 +3305,10 @@ Map<String, String> vietnamese = {
 };
 Map<String, String> tamil = {
   ///
+  'Don\'t show again': 'மீண்டும் காட்டாதே',
+  'Internet connection is required if you play this audio for the first time.':
+      'இந்த ஆடியோவை நீங்கள் முதல் முறை இயக்கினால் இணைய இணைப்பு தேவை.',
+  'Okay': 'சரி',
   'Retry': 'மீண்டும் முயற்சி செய்',
   'Quit': 'வெளியேறு',
   needInternet:
@@ -3418,6 +3494,10 @@ Map<String, String> tamil = {
 };
 Map<String, String> italian = {
   ///
+  'Don\'t show again': 'Non mostrare più',
+  'Internet connection is required if you play this audio for the first time.':
+      'È necessaria una connessione Internet se riproduci questo audio per la prima volta.',
+  'Okay': 'Okay',
   'Retry': 'Riprova',
   'Quit': 'Esci',
   needInternet:
