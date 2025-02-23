@@ -34,10 +34,10 @@ packages:
     dependency: "direct main"
     description:
       name: archive
-      sha256: "6199c74e3db4fbfbd04f66d739e72fe11c8a8957d5f219f1f4482dbde6420b5a"
+      sha256: "528579c7e4579719f04b21eeeeddfd73a18b31dabc22766893b7d1be7f49b967"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.2"
+    version: "4.0.3"
   args:
     dependency: transitive
     description:
@@ -378,10 +378,10 @@ packages:
     dependency: transitive
     description:
       name: ffi
-      sha256: "16ed7b077ef01ad6170a3d0c57caa4a112a38d7a2ed5602e0aca9ca6f3d98da6"
+      sha256: "289279317b4b16eb2bb7e271abccd4bf84ec9bdcbe999e278a94b804f5630418"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.3"
+    version: "2.1.4"
   file:
     dependency: transitive
     description:
@@ -410,10 +410,10 @@ packages:
     dependency: transitive
     description:
       name: file_selector_windows
-      sha256: "8f5d2f6590d51ecd9179ba39c64f722edc15226cc93dcc8698466ad36a4a85a4"
+      sha256: "320fcfb6f33caa90f0b58380489fc5ac05d99ee94b61aa96ec2bff0ba81d3c2b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.3+3"
+    version: "0.9.3+4"
   fixnum:
     dependency: transitive
     description:
@@ -479,10 +479,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_keyboard_visibility_temp_fork
-      sha256: cecc44a350a8a369efbc960bb2126386af53cb0597ca6789607cbfb88081b9f4
+      sha256: e3d02900640fbc1129245540db16944a0898b8be81694f4bf04b6c985bed9048
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.4"
+    version: "0.1.5"
   flutter_keyboard_visibility_windows:
     dependency: transitive
     description:
@@ -516,10 +516,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_quill
-      sha256: "0acca7cf646eb2feba5333338d046514c17159741ab5744c7c4290778656fa4a"
+      sha256: "3765d057bb63e6e5b7d5aba7c8fb048ec1b38c8a3428ded8c22e57cf2682a580"
       url: "https://pub.dev"
     source: hosted
-    version: "11.0.0-dev.21"
+    version: "11.0.0"
   flutter_quill_delta_from_html:
     dependency: transitive
     description:
@@ -566,66 +566,66 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_widget_from_html
-      sha256: f3967a5b42896662efdd420b5adaf8a7d3692b0f44462a07c80e3b4c173b1a02
+      sha256: "0dfebf7417df2149de93926520c703db9be0c9017e60dc5cf43cebed37f4d11e"
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.3"
+    version: "0.16.0"
   flutter_widget_from_html_core:
     dependency: transitive
     description:
       name: flutter_widget_from_html_core
-      sha256: b1048fd119a14762e2361bd057da608148a895477846d6149109b2151d2f7abf
+      sha256: f77ea1aa1ba29a38fcce04483f44f12382f541b9e8c2150df37166c23bbbd30f
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.2"
+    version: "0.16.0"
   fwfh_cached_network_image:
     dependency: transitive
     description:
       name: fwfh_cached_network_image
-      sha256: "8e44226801bfba27930673953afce8af44da7e92573be93f60385d9865a089dd"
+      sha256: "8f4896109ff3e42424ccacf9058ba3afe5d575b58946c8ac646ac85ae882ce23"
       url: "https://pub.dev"
     source: hosted
-    version: "0.14.3"
+    version: "0.16.0"
   fwfh_chewie:
     dependency: transitive
     description:
       name: fwfh_chewie
-      sha256: "37bde9cedfb6dc5546176f7f0c56af1e814966cb33ec58f16c9565ed93ccb704"
+      sha256: "1ce7c56894db19881a997813b933835dec142878431370c0eb40f1f878396a25"
       url: "https://pub.dev"
     source: hosted
-    version: "0.14.8"
+    version: "0.16.0"
   fwfh_just_audio:
     dependency: transitive
     description:
       name: fwfh_just_audio
-      sha256: "38dc2c55803bd3cef33042c473e0c40b891ad4548078424641a32032f6a1245f"
+      sha256: "17816168de1fd180fd3d1fd4500e23136630a248a6889b553e2d2067e133c1a6"
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.2"
+    version: "0.16.0"
   fwfh_svg:
     dependency: transitive
     description:
       name: fwfh_svg
-      sha256: "550b1014d12b5528d8bdb6e3b44b58721f3fb1f65d7a852d1623a817008bdfc4"
+      sha256: "82f3eb378186fe39b3e2e01ed48a1830d34b0b9a237d951077e74ff0d99e2ac3"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.3"
+    version: "0.16.0"
   fwfh_url_launcher:
     dependency: transitive
     description:
       name: fwfh_url_launcher
-      sha256: b9f5d55a5ae2c2c07243ba33f7ba49ac9544bdb2f4c16d8139df9ccbebe3449c
+      sha256: "5cf1b1baa16740abaef8eb41a8e16ba430295d5ec20b880e4cb94e2924774f0a"
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.1"
+    version: "0.16.0"
   fwfh_webview:
     dependency: transitive
     description:
       name: fwfh_webview
-      sha256: c0a8b664b642f40f4c252a0ab4e72c22dcd97c7fb3a7e50a6b4bdb6f63afca19
+      sha256: "894aa7d98ebdc2d86d79ac2309173043dec7f102575de87bf9626ddb26104e49"
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.3"
+    version: "0.15.4"
   gap:
     dependency: "direct main"
     description:
@@ -638,10 +638,10 @@ packages:
     dependency: "direct main"
     description:
       name: get
-      sha256: "7172032cf9acae0b16552ff367f211c36b321846509d7e56fc0938def2e147bc"
+      sha256: b3294002946e99314c341bff0b4f3094e631a1f8cf37785e93aa7c2f04b0768e
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0-release-candidate-9.2.1"
+    version: "5.0.0-release-candidate-9.3.2"
   glob:
     dependency: transitive
     description:
@@ -726,10 +726,10 @@ packages:
     dependency: transitive
     description:
       name: image
-      sha256: "8346ad4b5173924b5ddddab782fc7d8a6300178c8b1dc427775405a01701c4a6"
+      sha256: "13d3349ace88f12f4a0d175eb5c12dcdd39d35c4c109a8a13dfeb6d0bd9e31c3"
       url: "https://pub.dev"
     source: hosted
-    version: "4.5.2"
+    version: "4.5.3"
   internet_connection_checker_plus:
     dependency: "direct main"
     description:
@@ -750,10 +750,10 @@ packages:
     dependency: transitive
     description:
       name: js
-      sha256: c1b2e9b5ea78c45e1a0788d29606ba27dc5f71f019f32ca5140f61ef071838cf
+      sha256: "53385261521cc4a0c4658fd0ad07a7d14591cf8fc33abbceae306ddb974888dc"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.1"
+    version: "0.7.2"
   json_annotation:
     dependency: transitive
     description:
@@ -1190,10 +1190,10 @@ packages:
     dependency: transitive
     description:
       name: shared_preferences_android
-      sha256: ea86be7b7114f9e94fddfbb52649e59a03d6627ccd2387ebddcd6624719e9f16
+      sha256: a768fc8ede5f0c8e6150476e14f38e2417c0864ca36bb4582be8e21925a03c22
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.5"
+    version: "2.4.6"
   shared_preferences_foundation:
     dependency: transitive
     description:
@@ -1222,10 +1222,10 @@ packages:
     dependency: transitive
     description:
       name: shared_preferences_web
-      sha256: d2ca4132d3946fec2184261726b355836a82c33d7d5b67af32692aff18a4684e
+      sha256: c49bd060261c9a3f0ff445892695d6212ff603ef3115edbb448509d407600019
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.2"
+    version: "2.4.3"
   shared_preferences_windows:
     dependency: transitive
     description:
@@ -1283,34 +1283,34 @@ packages:
     dependency: transitive
     description:
       name: sqflite
-      sha256: "2d7299468485dca85efeeadf5d38986909c5eb0cd71fd3db2c2f000e6c9454bb"
+      sha256: e2297b1da52f127bc7a3da11439985d9b536f75070f3325e62ada69a5c585d03
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.1"
+    version: "2.4.2"
   sqflite_android:
     dependency: transitive
     description:
       name: sqflite_android
-      sha256: "78f489aab276260cdd26676d2169446c7ecd3484bbd5fead4ca14f3ed4dd9ee3"
+      sha256: "2b3070c5fa881839f8b402ee4a39c1b4d561704d4ebbbcfb808a119bc2a1701b"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   sqflite_common:
     dependency: transitive
     description:
       name: sqflite_common
-      sha256: "761b9740ecbd4d3e66b8916d784e581861fd3c3553eda85e167bc49fdb68f709"
+      sha256: "84731e8bfd8303a3389903e01fb2141b6e59b5973cacbb0929021df08dddbe8b"
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.4+6"
+    version: "2.5.5"
   sqflite_darwin:
     dependency: transitive
     description:
       name: sqflite_darwin
-      sha256: "22adfd9a2c7d634041e96d6241e6e1c8138ca6817018afc5d443fef91dcefa9c"
+      sha256: "279832e5cde3fe99e8571879498c9211f3ca6391b0d818df4e17d9fff5c6ccb3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.1+1"
+    version: "2.4.2"
   sqflite_platform_interface:
     dependency: transitive
     description:
@@ -1347,10 +1347,10 @@ packages:
     dependency: transitive
     description:
       name: synchronized
-      sha256: "69fe30f3a8b04a0be0c15ae6490fc859a78ef4c43ae2dd5e8a623d45bfcf9225"
+      sha256: "0669c70faae6270521ee4f05bffd2919892d42d1276e6c495be80174b6bc0ef6"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.0+3"
+    version: "3.3.1"
   term_glyph:
     dependency: transitive
     description:
@@ -1371,10 +1371,10 @@ packages:
     dependency: "direct main"
     description:
       name: toastification
-      sha256: "4d97fbfa463dfe83691044cba9f37cb185a79bb9205cfecb655fa1f6be126a13"
+      sha256: "658b0e80319335e270078a78bbfc2ddd0deeb8e7e3b4d1bfc04d5183717a9f72"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "3.0.0"
   typed_data:
     dependency: transitive
     description:
@@ -1499,10 +1499,10 @@ packages:
     dependency: transitive
     description:
       name: video_player
-      sha256: "4a8c3492d734f7c39c2588a3206707a05ee80cef52e8c7f3b2078d430c84bc17"
+      sha256: "48941c8b05732f9582116b1c01850b74dbee1d8520cd7e34ad4609d6df666845"
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.2"
+    version: "2.9.3"
   video_player_android:
     dependency: transitive
     description:
@@ -1619,18 +1619,18 @@ packages:
     dependency: transitive
     description:
       name: webview_flutter_wkwebview
-      sha256: "8e0593559bfecd35eb1757d6907ed6b995a41ef82607d6113df897c2805ce6be"
+      sha256: d7403ef4f042714c9ee2b26eaac4cadae7394cb0d4e608b1dd850c3ff96bd893
       url: "https://pub.dev"
     source: hosted
-    version: "3.18.0"
+    version: "3.18.2"
   win32:
     dependency: transitive
     description:
       name: win32
-      sha256: daf97c9d80197ed7b619040e86c8ab9a9dad285e7671ee7390f9180cc828a51e
+      sha256: b89e6e24d1454e149ab20fbb225af58660f0c0bf4475544650700d8e2da54aef
       url: "https://pub.dev"
     source: hosted
-    version: "5.10.1"
+    version: "5.11.0"
   win32_registry:
     dependency: transitive
     description:
@@ -1672,5 +1672,5 @@ packages:
     source: hosted
     version: "3.1.3"
 sdks:
-  dart: ">=3.7.0-0 <4.0.0"
+  dart: ">=3.7.0 <4.0.0"
   flutter: ">=3.27.0"
