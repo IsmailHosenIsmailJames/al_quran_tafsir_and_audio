@@ -10,7 +10,6 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:just_audio_background/just_audio_background.dart';
 
 import '../../functions/audio_tracking/audio_tracting.dart';
 
@@ -89,8 +88,7 @@ class ManageQuranAudio {
   }
 
   static Future<void> playProvidedPlayList(
-      {required List<LockCachingAudioSource> playList,
-      int? initialIndex}) async {
+      {required List<AudioSource> playList, int? initialIndex}) async {
     if (audioController.isStreamRegistered.value == false) {
       await startListening();
     }
@@ -115,22 +113,19 @@ class ManageQuranAudio {
     }
     await audioPlayer.stop();
     reciter ??= findRecitationModel();
-    List<LockCachingAudioSource> audioSources = [];
+    List<AudioSource> audioSources = [];
     int ayahNumber = ayahCount[surahNumber + 1];
     for (var i = 0; i < ayahNumber; i++) {
       audioSources.add(
-        LockCachingAudioSource(
-            Uri.parse(
-              makeAudioUrl(
-                reciter,
-                surahIDFromNumber(
-                    surahNumber: surahNumber + 1, ayahNumber: i + 1),
-              ),
+        AudioSource.uri(
+          Uri.parse(
+            makeAudioUrl(
+              reciter,
+              surahIDFromNumber(
+                  surahNumber: surahNumber + 1, ayahNumber: i + 1),
             ),
-            tag: MediaItem(
-              id: '${reciter.name}$i',
-              title: reciter.name,
-            )),
+          ),
+        ),
       );
     }
     if (!(await InternetConnection().hasInternetAccess)) {
@@ -174,7 +169,7 @@ class ManageQuranAudio {
       initialIndex: startOn,
       initialPosition: Duration.zero,
     );
-
+    await Future.delayed(const Duration(seconds: 1));
     if (playInstantly) await audioPlayer.play();
   }
 
@@ -216,18 +211,6 @@ class ManageQuranAudio {
   /// - [album] set to [reciter]'s name.
   /// - [artist] set to [reciter]'s subfolder.
   /// - [artUri] set to the given [artUri] if not null, or null if null.
-  static MediaItem findMediaItem(
-      {required String surahID,
-      required ReciterInfoModel reciter,
-      Uri? artUri}) {
-    return MediaItem(
-      id: surahID,
-      title: surahID,
-      displayTitle: surahID,
-      album: reciter.name,
-      artUri: artUri,
-    );
-  }
 
   /// Generates a formatted ayah ID string by combining the surah number
   /// and ayah number. Both numbers are zero-padded to three digits.

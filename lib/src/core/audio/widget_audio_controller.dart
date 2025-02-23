@@ -465,21 +465,6 @@ class _WidgetAudioControllerState extends State<WidgetAudioController>
                       ),
                     ),
                   ),
-                SizedBox(
-                  width: 40,
-                  height: 40,
-                  child: IconButton(
-                    style: IconButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                    ),
-                    onPressed: () async {
-                      await ManageQuranAudio.audioPlayer.stop();
-                      await Future.delayed(const Duration(milliseconds: 200));
-                      audioController.isReadyToControl.value = false;
-                    },
-                    icon: const Icon(Icons.close_rounded),
-                  ),
-                ),
               ],
             ),
           ),

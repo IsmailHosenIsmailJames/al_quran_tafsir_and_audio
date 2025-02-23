@@ -232,7 +232,7 @@ class _DownloadDataState extends State<DownloadData> {
       processState = 'All Completed'.tr;
     });
     await Future.delayed(const Duration(seconds: 1));
-    Get.offAll(
+    Get.off(
       () => const HomePage(),
     );
   }

@@ -2,7 +2,6 @@ import 'package:al_quran_tafsir_and_audio/src/al_quran_tafsir_and_audio.dart';
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:just_audio_background/just_audio_background.dart';
 import 'package:window_manager/window_manager.dart';
 
 Future<void> main() async {
@@ -11,28 +10,23 @@ Future<void> main() async {
   await windowManager.ensureInitialized();
 
   WindowOptions windowOptions = const WindowOptions(
-    size: Size(1080, 1920),
-    center: true,
+    size: Size(450, 800),
+    windowButtonVisibility: true,
     backgroundColor: Colors.transparent,
-    skipTaskbar: false,
-    titleBarStyle: TitleBarStyle.hidden,
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();
     await windowManager.focus();
+    await windowManager.setMaximizable(false);
+    await windowManager.setMinimizable(true);
   });
 
   Client client = Client();
 
   client
       .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject('albayanquran')
+      .setProject('alqurantafsirandaudio')
       .setSelfSigned(status: true);
-  await JustAudioBackground.init(
-    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
-    androidNotificationChannelName: 'Quran Audio',
-    androidNotificationOngoing: true,
-  );
   await Hive.initFlutter('al_quran');
   await Hive.openBox('user_db');
   await Hive.openBox('quran_db');
