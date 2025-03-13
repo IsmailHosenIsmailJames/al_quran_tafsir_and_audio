@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:developer';
 
+import 'package:al_quran_tafsir_and_audio/src/core/audio/play_quran_audio.dart';
 import 'package:al_quran_tafsir_and_audio/src/core/audio/widget_audio_controller.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/audio_tracking/audio_tracting.dart';
 import 'package:al_quran_tafsir_and_audio/src/functions/get_native_surah_name.dart';
@@ -68,13 +70,32 @@ class _SurahViewState extends State<SurahView> {
     for (int i = 0; i < totalAyah; i++) {
       items.add(GlobalKey());
     }
+
+    ManageQuranAudio.audioPlayer.currentIndexStream.listen(
+      (event) {
+        if (event != null) {
+          if (!(items.length - 1 < event)) {
+            if (items[event].currentContext != null) {
+              Scrollable.ensureVisible(
+                items[event].currentContext!,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              );
+            }
+          }
+        }
+      },
+    );
     super.initState();
   }
+
+  final keys = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      key: keys,
       appBar: AppBar(
         title: Text(widget.titleToShow ?? 'Surah View'),
         actions: [

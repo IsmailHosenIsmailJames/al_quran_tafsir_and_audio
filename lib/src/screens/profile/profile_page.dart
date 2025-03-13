@@ -275,7 +275,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   (didNotPlayed)
                       ? Text(
                           "Didn't played yet".tr,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 10,
                             color: Colors.grey,
                           ),

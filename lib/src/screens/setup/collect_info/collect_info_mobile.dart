@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:toastification/toastification.dart';
 
 import 'pages/choice_recitations.dart';
@@ -39,6 +40,7 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
 
   final infoController = Get.put(InfoController());
   int pageIndex = 0;
+  PageController pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -61,15 +63,24 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            [
-              const ChoiceLanguage(),
-              const Intro(),
-              const TranslationLanguage(),
-              const ChoiceTranslationBook(),
-              const TafsirLanguage(),
-              const ChoiceTafsirBook(),
-              const RecitationChoice(),
-            ][pageIndex],
+            PageView(
+              controller: pageController,
+              onPageChanged: (value) {
+                setState(() {
+                  pageIndex = value;
+                });
+              },
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                const ChoiceLanguage(),
+                const Intro(),
+                const TranslationLanguage(),
+                const ChoiceTranslationBook(),
+                const TafsirLanguage(),
+                const ChoiceTafsirBook(),
+                const RecitationChoice(),
+              ],
+            ),
             Align(
               alignment: const Alignment(0, 1),
               child: GetX<AppThemeData>(
@@ -101,9 +112,10 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                               onPressed: pageIndex != 0
                                   ? () {
                                       if (pageIndex > 0) {
-                                        setState(() {
-                                          pageIndex--;
-                                        });
+                                        pageController.previousPage(
+                                            duration: const Duration(
+                                                milliseconds: 300),
+                                            curve: Curves.easeIn);
                                       }
                                     }
                                   : null,
@@ -128,16 +140,17 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                             ),
                           ),
                           const Spacer(),
-                          Row(
-                            children: [
-                              getPageIndicator(0, pageIndex),
-                              getPageIndicator(1, pageIndex),
-                              getPageIndicator(2, pageIndex),
-                              getPageIndicator(3, pageIndex),
-                              getPageIndicator(4, pageIndex),
-                              getPageIndicator(5, pageIndex),
-                              getPageIndicator(6, pageIndex),
-                            ],
+                          SmoothPageIndicator(
+                            controller: pageController,
+                            count: 7,
+                            effect: const ExpandingDotsEffect(
+                              dotHeight: 7,
+                              dotWidth: 7,
+                              spacing: 3,
+                              expansionFactor: 4,
+                              activeDotColor: Colors.green,
+                              dotColor: Colors.grey,
+                            ),
                           ),
                           const Spacer(),
                           SizedBox(
@@ -234,9 +247,10 @@ class _CollectInfoPageState extends State<CollectInfoPage> {
                                   }
                                 }
                                 if (pageIndex < 6) {
-                                  setState(() {
-                                    pageIndex++;
-                                  });
+                                  pageController.nextPage(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      curve: Curves.easeIn);
                                 }
                               },
                               child: Row(

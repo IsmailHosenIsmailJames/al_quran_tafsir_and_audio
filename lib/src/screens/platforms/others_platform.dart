@@ -61,10 +61,10 @@ class OthersPlatform extends StatelessWidget {
                   ),
                   const Gap(20),
                   Padding(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Text(
                       '${'Get Linux build here'.tr}:',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
@@ -99,10 +99,10 @@ class OthersPlatform extends StatelessWidget {
                   ),
                   const Gap(20),
                   Padding(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Text(
                       '${'Go to our Web App'.tr}:',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),

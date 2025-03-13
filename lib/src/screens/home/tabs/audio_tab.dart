@@ -448,7 +448,7 @@ class _AudioTabState extends State<AudioTab> {
                       const Gap(10),
                       Text(
                         'Adding to:'.tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const Divider(),
@@ -536,8 +536,8 @@ class _AudioTabState extends State<AudioTab> {
             value: 'Playlist'.tr,
             child: Row(
               children: [
-                Icon(Icons.playlist_add_rounded),
-                Gap(7),
+                const Icon(Icons.playlist_add_rounded),
+                const Gap(7),
                 Text('Add to Playlist'.tr),
               ],
             ),

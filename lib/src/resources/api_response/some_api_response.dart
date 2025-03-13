@@ -503,7 +503,7 @@ List<Map<String, dynamic>> allTranslationLanguage = [
   },
   {
     'id': 156,
-    'name': "فی ظلال القرآن",
+    'name': 'فی ظلال القرآن',
     'author_name': 'سید ابراہیم قطب',
     'slug': 'urdu-sayyid-qatab',
     'language_name': 'urdu',
@@ -524,7 +524,7 @@ List<Map<String, dynamic>> allTranslationLanguage = [
   },
   {
     'id': 97,
-    'name': "تفہیم القرآن - سید ابو الاعلیٰ مودودی",
+    'name': 'تفہیم القرآن - سید ابو الاعلیٰ مودودی',
     'author_name': 'سید ابو الاعلیٰ مودودی',
     'slug': 'ur-al-maududi',
     'language_name': 'urdu',

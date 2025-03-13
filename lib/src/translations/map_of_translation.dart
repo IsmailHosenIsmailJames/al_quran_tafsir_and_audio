@@ -114,8 +114,32 @@ String s2 = 'why_should_logged';
 String needInternet =
     'We need internet connection to download some required documents.';
 
+const Map<String, String> welcomeBackTranslations = {
+  'chinese': '欢迎回来！(Huānyíng huílái!)',
+  'hindi': 'वापस स्वागत है!',
+  'english': 'Welcome Back!',
+  'spanish': '¡Bienvenido de nuevo!',
+  'arabic': 'مرحبا بعودتك!',
+  'bengali': 'ফিরে আসার জন্য স্বাগতম!',
+  'portuguese': 'Bem-vindo de volta!',
+  'russian': 'С возвращением!',
+  'japanese': 'おかえりなさい！',
+  'punjabi': 'ਵਾਪਸ ਆਉਣ \'ਤੇ ਸੁਆਗਤ ਹੈ!',
+  'german': 'Willkommen zurück!',
+  'french': 'Bon retour !',
+  'indonesian': 'Selamat Datang Kembali!',
+  'urdu': 'خوش آمدید!',
+  'swahili': 'Karibu tena!',
+  'korean': '다시 오신 것을 환영합니다!',
+  'turkish': 'Tekrar hoş geldiniz!',
+  'vietnamese': 'Chào mừng trở lại!',
+  'tamil': 'மீண்டும் வருக!',
+  'italian': 'Bentornato!',
+};
+
 Map<String, String> chinese = {
   ///
+  'Welcome Back!': '欢迎回来！(Huānyíng huílái!)',
   'Don\'t show again': '不再显示 (Bù zài xiǎnshì)',
   'Internet connection is required if you play this audio for the first time.':
       '如果您是第一次播放此音频，则需要互联网连接。(Rúguǒ nín shì dì yī cì bòfàng cǐ yīnpín, zé xūyào hùliánwǎng liánjiē.)',
@@ -282,6 +306,7 @@ Map<String, String> chinese = {
 };
 Map<String, String> hindi = {
   ///
+  'Welcome Back!': 'वापस स्वागत है!',
   'Don\'t show again': 'दोबारा न दिखाएं',
   'Internet connection is required if you play this audio for the first time.':
       'अगर आप पहली बार यह ऑडियो चला रहे हैं तो इंटरनेट कनेक्शन ज़रूरी है।',
@@ -451,6 +476,7 @@ Map<String, String> hindi = {
 };
 Map<String, String> english = {
   ///
+  'Welcome Back!': 'Welcome Back!',
   'Don\'t show again': 'Don\'t show again',
   'Internet connection is required if you play this audio for the first time.':
       'Internet connection is required if you play this audio for the first time.',
@@ -625,6 +651,7 @@ Map<String, String> english = {
 };
 Map<String, String> spanish = {
   ///
+  'Welcome Back!': '¡Bienvenido de nuevo!',
   'Don\'t show again': 'No mostrar de nuevo',
   'Internet connection is required if you play this audio for the first time.':
       'Se requiere conexión a internet si reproduces este audio por primera vez.',
@@ -815,6 +842,7 @@ Map<String, String> spanish = {
 };
 Map<String, String> arabic = {
   ///
+  'Welcome Back!': 'مرحبا بعودتك!',
   'Don\'t show again': 'لا تظهر مرة أخرى',
   'Internet connection is required if you play this audio for the first time.':
       'مطلوب الاتصال بالإنترنت إذا قمت بتشغيل هذا الصوت لأول مرة.',
@@ -987,6 +1015,7 @@ Map<String, String> arabic = {
 };
 Map<String, String> bengali = {
   ///
+  'Welcome Back!': 'ফিরে আসার জন্য স্বাগতম!',
   'Don\'t show again': 'আবার দেখাবেন না',
   'Internet connection is required if you play this audio for the first time.':
       'আপনি যদি প্রথমবার এই অডিও চালান তবে ইন্টারনেট সংযোগ প্রয়োজন।',
@@ -1163,6 +1192,7 @@ Map<String, String> bengali = {
 };
 Map<String, String> portuguese = {
   ///
+  'Welcome Back!': 'Bem-vindo de volta!',
   'Don\'t show again': 'Não mostrar novamente',
   'Internet connection is required if you play this audio for the first time.':
       'É necessária uma conexão à internet se você reproduzir este áudio pela primeira vez.',
@@ -1349,6 +1379,7 @@ Map<String, String> portuguese = {
 };
 Map<String, String> russian = {
   ///
+  'Welcome Back!': 'С возвращением!',
   'Don\'t show again': 'Больше не показывать',
   'Internet connection is required if you play this audio for the first time.':
       'Требуется подключение к Интернету, если вы воспроизводите это аудио в первый раз.',
@@ -1532,6 +1563,7 @@ Map<String, String> russian = {
 };
 Map<String, String> japanese = {
   ///
+  'Welcome Back!': 'おかえりなさい！',
   'Don\'t show again': '二度と表示しない',
   'Internet connection is required if you play this audio for the first time.':
       'このオーディオを初めて再生する場合は、インターネット接続が必要です。',
@@ -1699,6 +1731,7 @@ Map<String, String> japanese = {
 };
 Map<String, String> punjabi = {
   ///
+  'Welcome Back!': 'ਵਾਪਸ ਆਉਣ \'ਤੇ ਸੁਆਗਤ ਹੈ!',
   'Don\'t show again': 'ਦੁਬਾਰਾ ਨਾ ਦਿਖਾਓ',
   'Internet connection is required if you play this audio for the first time.':
       'ਜੇਕਰ ਤੁਸੀਂ ਪਹਿਲੀ ਵਾਰ ਇਹ ਆਡੀਓ ਚਲਾ ਰਹੇ ਹੋ ਤਾਂ ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਦੀ ਲੋੜ ਹੈ।',
@@ -1872,6 +1905,7 @@ Map<String, String> punjabi = {
 };
 Map<String, String> german = {
   ///
+  'Welcome Back!': 'Willkommen zurück!',
   'Don\'t show again': 'Nicht mehr anzeigen',
   'Internet connection is required if you play this audio for the first time.':
       'Eine Internetverbindung ist erforderlich, wenn Sie dieses Audio zum ersten Mal abspielen.',
@@ -2061,6 +2095,7 @@ Map<String, String> german = {
 };
 Map<String, String> french = {
   ///
+  'Welcome Back!': 'Bon retour !',
   'Don\'t show again': 'Ne plus afficher',
   'Internet connection is required if you play this audio for the first time.':
       'Une connexion Internet est nécessaire si vous écoutez cet audio pour la première fois.',
@@ -2250,6 +2285,7 @@ Map<String, String> french = {
 };
 Map<String, String> indonesian = {
   ///
+  'Welcome Back!': 'Selamat Datang Kembali!',
   'Don\'t show again': 'Jangan tampilkan lagi',
   'Internet connection is required if you play this audio for the first time.':
       'Koneksi internet diperlukan jika Anda memutar audio ini untuk pertama kalinya.',
@@ -2429,6 +2465,7 @@ Map<String, String> indonesian = {
 };
 Map<String, String> urdu = {
   ///
+  'Welcome Back!': 'خوش آمدید!',
   'Don\'t show again': 'دوبارہ مت دکھائیں',
   'Internet connection is required if you play this audio for the first time.':
       'اگر آپ پہلی بار یہ آڈیو چلا رہے ہیں تو انٹرنیٹ کنکشن ضروری ہے۔',
@@ -2603,6 +2640,7 @@ Map<String, String> urdu = {
 };
 Map<String, String> swahili = {
   ///
+  'Welcome Back!': 'Karibu tena!',
   'Don\'t show again': 'Usionyeshe tena',
   'Internet connection is required if you play this audio for the first time.':
       'Muunganisho wa intaneti unahitajika ikiwa unacheza sauti hii kwa mara ya kwanza.',
@@ -2782,6 +2820,7 @@ Map<String, String> swahili = {
 };
 Map<String, String> korean = {
   ///
+  'Welcome Back!': '다시 오신 것을 환영합니다!',
   'Don\'t show again': '다시 보지 않기',
   'Internet connection is required if you play this audio for the first time.':
       '처음으로 이 오디오를 재생하는 경우 인터넷 연결이 필요합니다.',
@@ -2949,6 +2988,7 @@ Map<String, String> korean = {
 };
 Map<String, String> turkish = {
   ///
+  'Welcome Back!': 'Tekrar hoş geldiniz!',
   'Don\'t show again': 'Tekrar gösterme',
   'Internet connection is required if you play this audio for the first time.':
       'Bu sesi ilk kez oynatırsanız internet bağlantısı gereklidir.',
@@ -3126,6 +3166,7 @@ Map<String, String> turkish = {
 };
 Map<String, String> vietnamese = {
   ///
+  'Welcome Back!': 'Chào mừng trở lại!',
   'Don\'t show again': 'Không hiển thị lại',
   'Internet connection is required if you play this audio for the first time.':
       'Cần có kết nối internet nếu bạn phát âm thanh này lần đầu tiên.',
@@ -3305,6 +3346,7 @@ Map<String, String> vietnamese = {
 };
 Map<String, String> tamil = {
   ///
+  'Welcome Back!': 'மீண்டும் வருக!',
   'Don\'t show again': 'மீண்டும் காட்டாதே',
   'Internet connection is required if you play this audio for the first time.':
       'இந்த ஆடியோவை நீங்கள் முதல் முறை இயக்கினால் இணைய இணைப்பு தேவை.',
@@ -3494,6 +3536,7 @@ Map<String, String> tamil = {
 };
 Map<String, String> italian = {
   ///
+  'Welcome Back!': 'Bentornato!',
   'Don\'t show again': 'Non mostrare più',
   'Internet connection is required if you play this audio for the first time.':
       'È necessaria una connessione Internet se riproduci questo audio per la prima volta.',

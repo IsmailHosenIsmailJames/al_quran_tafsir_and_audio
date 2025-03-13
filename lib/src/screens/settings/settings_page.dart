@@ -306,7 +306,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
-                        safeSubString(translationBookName, 27),
+                        safeSubString(translationBookName, 25),
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),
@@ -315,7 +315,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
-                        safeSubString(translationWriter, 27),
+                        safeSubString(translationWriter, 25),
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),
@@ -374,7 +374,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
-                        safeSubString(tafsirBookName, 27),
+                        safeSubString(tafsirBookName, 25),
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),
@@ -383,7 +383,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         style: TextStyle(color: Colors.grey.shade400),
                       ),
                       Text(
-                        safeSubString(tafsirWriter, 27),
+                        safeSubString(tafsirWriter, 25),
                         style: const TextStyle(fontSize: 16),
                       ),
                       const Gap(5),

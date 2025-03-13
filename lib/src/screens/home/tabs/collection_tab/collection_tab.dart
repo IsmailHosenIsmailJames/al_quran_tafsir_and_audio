@@ -970,7 +970,7 @@ class _CollectionTabState extends State<CollectionTab> {
               children: [
                 Text(
                   'Name of the PlayList'.tr,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),

@@ -85,7 +85,7 @@ class AboutAppPage extends StatelessWidget {
                 ),
               ),
             ),
-            Gap(10),
+            const Gap(10),
             Card(
               elevation: 0,
               color: Colors.green.withValues(alpha: 0.1),

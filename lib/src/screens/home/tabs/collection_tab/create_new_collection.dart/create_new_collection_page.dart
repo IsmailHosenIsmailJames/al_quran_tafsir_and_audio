@@ -47,7 +47,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
           const Gap(10),
           Text(
             'Group Name'.tr,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
@@ -62,7 +62,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
           const Gap(10),
           Text(
             'Description'.tr,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
@@ -77,7 +77,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
           const Gap(10),
           Text(
             'ayahs'.tr,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
@@ -94,7 +94,7 @@ class _CreateNewCollectionPageState extends State<CreateNewCollectionPage> {
               children: <Widget>[
                     if (editingCollection.ayahs?.isNotEmpty != true)
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Text('No ayahs selected'.tr),
                       ),
                   ] +

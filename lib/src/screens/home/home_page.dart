@@ -4,9 +4,11 @@ import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/audio_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/collection_tab/collection_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/profile_tab.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/home/tabs/quran_tab.dart';
+import 'package:al_quran_tafsir_and_audio/src/screens/qibla_direction/qibla_compass_screen.dart';
 import 'package:al_quran_tafsir_and_audio/src/screens/settings/settings_page.dart';
 import 'package:al_quran_tafsir_and_audio/src/translations/map_of_translation.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -73,6 +75,7 @@ class _HomePageState extends State<HomePage> {
               CollectionTab(
                 tabController: pageController,
               ),
+              QiblaCompassScreen(),
               const ProfileTab(),
             ],
           ),
@@ -117,6 +120,10 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                 icon: const Icon(FluentIcons.collections_24_filled),
                 label: 'Collection'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(CupertinoIcons.compass_fill),
+                label: 'Qibla'.tr,
               ),
               BottomNavigationBarItem(
                 icon: const Icon(FluentIcons.person_24_filled),

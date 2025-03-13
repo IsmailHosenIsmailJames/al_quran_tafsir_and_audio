@@ -41,6 +41,10 @@ class Intro extends StatelessWidget {
             ),
           ),
         ),
+        Text(
+          'Welcome Back!'.tr,
+          style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+        ),
         Container(
             padding: const EdgeInsets.only(left: 10, right: 10),
             alignment: Alignment.center,
