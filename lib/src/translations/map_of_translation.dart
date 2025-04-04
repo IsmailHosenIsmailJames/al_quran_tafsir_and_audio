@@ -43,25 +43,25 @@ List<String> nativeSpelling = [
 ];
 
 List<Map<String, String>> used20LanguageMap = [
-  {'English': 'Chinese', 'Native': '中文 (Zhōngwén)', 'Code': 'zh'},
-  {'English': 'Hindi', 'Native': 'हिन्दी (Hindī)', 'Code': 'hi'},
+  {'English': 'Chinese', 'Native': '中文', 'Code': 'zh'},
+  {'English': 'Hindi', 'Native': 'हिन्दी', 'Code': 'hi'},
   {'English': 'English', 'Native': 'English', 'Code': 'en'},
   {'English': 'Spanish', 'Native': 'Español', 'Code': 'es'},
-  {'English': 'Arabic', 'Native': 'العربية (Al-‘Arabīyah)', 'Code': 'ar'},
-  {'English': 'Bengali', 'Native': 'বাংলা (Bāṅlā)', 'Code': 'bn'},
+  {'English': 'Arabic', 'Native': 'العربية', 'Code': 'ar'},
+  {'English': 'Bengali', 'Native': 'বাংলা', 'Code': 'bn'},
   {'English': 'Portuguese', 'Native': 'Português', 'Code': 'pt'},
-  {'English': 'Russian', 'Native': 'Русский (Russkiy)', 'Code': 'ru'},
-  {'English': 'Japanese', 'Native': '日本語 (Nihongo)', 'Code': 'ja'},
-  {'English': 'Punjabi', 'Native': 'ਪੰਜਾਬੀ (Pañjābī)', 'Code': 'pa'},
+  {'English': 'Russian', 'Native': 'Русский', 'Code': 'ru'},
+  {'English': 'Japanese', 'Native': '日本語', 'Code': 'ja'},
+  {'English': 'Punjabi', 'Native': 'ਪੰਜਾਬੀ', 'Code': 'pa'},
   {'English': 'German', 'Native': 'Deutsch', 'Code': 'de'},
   {'English': 'French', 'Native': 'Français', 'Code': 'fr'},
   {'English': 'Indonesian', 'Native': 'Bahasa Indonesia', 'Code': 'id'},
-  {'English': 'Urdu', 'Native': 'اُردُو (Urdū)', 'Code': 'ur'},
+  {'English': 'Urdu', 'Native': 'اُردُو', 'Code': 'ur'},
   {'English': 'Swahili', 'Native': 'Kiswahili', 'Code': 'sw'},
-  {'English': 'Korean', 'Native': '한국어 (Hanguk-eo)', 'Code': 'ko'},
+  {'English': 'Korean', 'Native': '한국어', 'Code': 'ko'},
   {'English': 'Turkish', 'Native': 'Türkçe', 'Code': 'tr'},
   {'English': 'Vietnamese', 'Native': 'Tiếng Việt', 'Code': 'vi'},
-  {'English': 'Tamil', 'Native': 'தமிழ் (Tamiḻ)', 'Code': 'ta'},
+  {'English': 'Tamil', 'Native': 'தமிழ்', 'Code': 'ta'},
   {'English': 'Italian', 'Native': 'Italiano', 'Code': 'it'}
 ];
 
@@ -87,58 +87,37 @@ List<String> used20LanguageList = [
   'Tamil',
   'Italian',
 ];
-const Map<String, String> translations = {
-  'chinese': '应用语言',
-  'hindi': 'ऐप भाषा',
-  'english': 'App Language',
-  'spanish': 'Idioma de la aplicación',
-  'arabic': 'لغة التطبيق',
-  'bengali': 'অ্যাপ ভাষা',
-  'portuguese': 'Idioma do aplicativo',
-  'russian': 'Язык приложения',
-  'japanese': 'アプリの言語',
-  'punjabi': 'ਐਪ ਭਾਸ਼ਾ',
-  'german': 'App-Sprache',
-  'french': 'Langue de l\'application',
-  'indonesian': 'Bahasa Aplikasi',
-  'urdu': 'ایپ کی زبان',
-  'swahili': 'Lugha ya Programu',
-  'korean': '앱 언어',
-  'turkish': 'Uygulama Dili',
-  'vietnamese': 'Ngôn ngữ ứng dụng',
-  'tamil': 'பயன்பாட்டு மொழி',
-  'italian': 'Lingua dell\'app',
-};
 String s1 = 'about_me';
 String s2 = 'why_should_logged';
 String needInternet =
     'We need internet connection to download some required documents.';
 
-const Map<String, String> welcomeBackTranslations = {
-  'chinese': '欢迎回来！(Huānyíng huílái!)',
-  'hindi': 'वापस स्वागत है!',
-  'english': 'Welcome Back!',
-  'spanish': '¡Bienvenido de nuevo!',
-  'arabic': 'مرحبا بعودتك!',
-  'bengali': 'ফিরে আসার জন্য স্বাগতম!',
-  'portuguese': 'Bem-vindo de volta!',
-  'russian': 'С возвращением!',
-  'japanese': 'おかえりなさい！',
-  'punjabi': 'ਵਾਪਸ ਆਉਣ \'ਤੇ ਸੁਆਗਤ ਹੈ!',
-  'german': 'Willkommen zurück!',
-  'french': 'Bon retour !',
-  'indonesian': 'Selamat Datang Kembali!',
-  'urdu': 'خوش آمدید!',
-  'swahili': 'Karibu tena!',
-  'korean': '다시 오신 것을 환영합니다!',
-  'turkish': 'Tekrar hoş geldiniz!',
-  'vietnamese': 'Chào mừng trở lại!',
-  'tamil': 'மீண்டும் வருக!',
-  'italian': 'Bentornato!',
+const Map<String, String> quranTranslationTranslations = {
+  'chinese': '古兰经翻译 (Gǔlánjīng fānyì)',
+  'hindi': 'कुरान का अनुवाद',
+  'english': 'Quran Translation',
+  'spanish': 'Traducción del Corán',
+  'arabic': 'ترجمة القرآن',
+  'bengali': 'কুরআন অনুবাদ',
+  'portuguese': 'Tradução do Alcorão',
+  'russian': 'Перевод Корана',
+  'japanese': 'コーラン翻訳',
+  'punjabi': 'ਕੁਰਾਨ ਦਾ ਅਨੁਵਾਦ',
+  'german': 'Koranübersetzung',
+  'french': 'Traduction du Coran',
+  'indonesian': 'Terjemahan Al-Qur\'an',
+  'urdu': 'قرآن کا ترجمہ',
+  'swahili': 'Tafsiri ya Kurani',
+  'korean': '코란 번역',
+  'turkish': 'Kur\'an Çevirisi',
+  'vietnamese': 'Bản dịch kinh Koran',
+  'tamil': 'குர்ஆன் மொழிபெயர்ப்பு',
+  'italian': 'Traduzione del Corano',
 };
 
 Map<String, String> chinese = {
   ///
+  'Quran Translation': '古兰经翻译 (Gǔlánjīng fānyì)',
   'Welcome Back!': '欢迎回来！(Huānyíng huílái!)',
   'Don\'t show again': '不再显示 (Bù zài xiǎnshì)',
   'Internet connection is required if you play this audio for the first time.':
@@ -306,6 +285,7 @@ Map<String, String> chinese = {
 };
 Map<String, String> hindi = {
   ///
+  'Quran Translation': 'कुरान का अनुवाद',
   'Welcome Back!': 'वापस स्वागत है!',
   'Don\'t show again': 'दोबारा न दिखाएं',
   'Internet connection is required if you play this audio for the first time.':
@@ -476,6 +456,7 @@ Map<String, String> hindi = {
 };
 Map<String, String> english = {
   ///
+  'Quran Translation': 'Quran Translation',
   'Welcome Back!': 'Welcome Back!',
   'Don\'t show again': 'Don\'t show again',
   'Internet connection is required if you play this audio for the first time.':
@@ -651,6 +632,7 @@ Map<String, String> english = {
 };
 Map<String, String> spanish = {
   ///
+  'Quran Translation': 'Traducción del Corán',
   'Welcome Back!': '¡Bienvenido de nuevo!',
   'Don\'t show again': 'No mostrar de nuevo',
   'Internet connection is required if you play this audio for the first time.':
@@ -842,6 +824,7 @@ Map<String, String> spanish = {
 };
 Map<String, String> arabic = {
   ///
+  'Quran Translation': 'ترجمة القرآن',
   'Welcome Back!': 'مرحبا بعودتك!',
   'Don\'t show again': 'لا تظهر مرة أخرى',
   'Internet connection is required if you play this audio for the first time.':
@@ -1015,6 +998,7 @@ Map<String, String> arabic = {
 };
 Map<String, String> bengali = {
   ///
+  'Quran Translation': 'কুরআন অনুবাদ',
   'Welcome Back!': 'ফিরে আসার জন্য স্বাগতম!',
   'Don\'t show again': 'আবার দেখাবেন না',
   'Internet connection is required if you play this audio for the first time.':
@@ -1192,6 +1176,7 @@ Map<String, String> bengali = {
 };
 Map<String, String> portuguese = {
   ///
+  'Quran Translation': 'Tradução do Alcorão',
   'Welcome Back!': 'Bem-vindo de volta!',
   'Don\'t show again': 'Não mostrar novamente',
   'Internet connection is required if you play this audio for the first time.':
@@ -1379,6 +1364,7 @@ Map<String, String> portuguese = {
 };
 Map<String, String> russian = {
   ///
+  'Quran Translation': 'Перевод Корана',
   'Welcome Back!': 'С возвращением!',
   'Don\'t show again': 'Больше не показывать',
   'Internet connection is required if you play this audio for the first time.':
@@ -1563,6 +1549,7 @@ Map<String, String> russian = {
 };
 Map<String, String> japanese = {
   ///
+  'Quran Translation': 'コーラン翻訳',
   'Welcome Back!': 'おかえりなさい！',
   'Don\'t show again': '二度と表示しない',
   'Internet connection is required if you play this audio for the first time.':
@@ -1731,6 +1718,7 @@ Map<String, String> japanese = {
 };
 Map<String, String> punjabi = {
   ///
+  'Quran Translation': 'ਕੁਰਾਨ ਦਾ ਅਨੁਵਾਦ',
   'Welcome Back!': 'ਵਾਪਸ ਆਉਣ \'ਤੇ ਸੁਆਗਤ ਹੈ!',
   'Don\'t show again': 'ਦੁਬਾਰਾ ਨਾ ਦਿਖਾਓ',
   'Internet connection is required if you play this audio for the first time.':
@@ -1905,6 +1893,7 @@ Map<String, String> punjabi = {
 };
 Map<String, String> german = {
   ///
+  'Quran Translation': 'Koranübersetzung',
   'Welcome Back!': 'Willkommen zurück!',
   'Don\'t show again': 'Nicht mehr anzeigen',
   'Internet connection is required if you play this audio for the first time.':
@@ -2095,6 +2084,7 @@ Map<String, String> german = {
 };
 Map<String, String> french = {
   ///
+  'Quran Translation': 'Traduction du Coran',
   'Welcome Back!': 'Bon retour !',
   'Don\'t show again': 'Ne plus afficher',
   'Internet connection is required if you play this audio for the first time.':
@@ -2285,6 +2275,7 @@ Map<String, String> french = {
 };
 Map<String, String> indonesian = {
   ///
+  'Quran Translation': 'Terjemahan Al-Qur\'an',
   'Welcome Back!': 'Selamat Datang Kembali!',
   'Don\'t show again': 'Jangan tampilkan lagi',
   'Internet connection is required if you play this audio for the first time.':
@@ -2465,6 +2456,7 @@ Map<String, String> indonesian = {
 };
 Map<String, String> urdu = {
   ///
+  'Quran Translation': 'قرآن کا ترجمہ',
   'Welcome Back!': 'خوش آمدید!',
   'Don\'t show again': 'دوبارہ مت دکھائیں',
   'Internet connection is required if you play this audio for the first time.':
@@ -2640,6 +2632,7 @@ Map<String, String> urdu = {
 };
 Map<String, String> swahili = {
   ///
+  'Quran Translation': 'Tafsiri ya Kurani',
   'Welcome Back!': 'Karibu tena!',
   'Don\'t show again': 'Usionyeshe tena',
   'Internet connection is required if you play this audio for the first time.':
@@ -2820,6 +2813,7 @@ Map<String, String> swahili = {
 };
 Map<String, String> korean = {
   ///
+  'Quran Translation': '코란 번역',
   'Welcome Back!': '다시 오신 것을 환영합니다!',
   'Don\'t show again': '다시 보지 않기',
   'Internet connection is required if you play this audio for the first time.':
@@ -2988,6 +2982,7 @@ Map<String, String> korean = {
 };
 Map<String, String> turkish = {
   ///
+  'Quran Translation': 'Kur\'an Çevirisi',
   'Welcome Back!': 'Tekrar hoş geldiniz!',
   'Don\'t show again': 'Tekrar gösterme',
   'Internet connection is required if you play this audio for the first time.':
@@ -3166,6 +3161,7 @@ Map<String, String> turkish = {
 };
 Map<String, String> vietnamese = {
   ///
+  'Quran Translation': 'Bản dịch kinh Koran',
   'Welcome Back!': 'Chào mừng trở lại!',
   'Don\'t show again': 'Không hiển thị lại',
   'Internet connection is required if you play this audio for the first time.':
@@ -3346,6 +3342,7 @@ Map<String, String> vietnamese = {
 };
 Map<String, String> tamil = {
   ///
+  'Quran Translation': 'குர்ஆன் மொழிபெயர்ப்பு',
   'Welcome Back!': 'மீண்டும் வருக!',
   'Don\'t show again': 'மீண்டும் காட்டாதே',
   'Internet connection is required if you play this audio for the first time.':
@@ -3536,6 +3533,7 @@ Map<String, String> tamil = {
 };
 Map<String, String> italian = {
   ///
+  'Quran Translation': 'Traduzione del Corano',
   'Welcome Back!': 'Bentornato!',
   'Don\'t show again': 'Non mostrare più',
   'Internet connection is required if you play this audio for the first time.':

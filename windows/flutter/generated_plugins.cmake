@@ -6,6 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus
   desktop_webview_window
   file_selector_windows
+  flutter_localization
   geolocator_windows
   permission_handler_windows
   share_plus
